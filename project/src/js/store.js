@@ -2,7 +2,10 @@
 import womenData from "./gdsData/womenData.js";
 import menData from "./gdsData/menData.js";
 import kidsData from "./gdsData/kidsData.js";
+import Vue from 'vue';
 import Vuex from 'vuex';
+
+Vue.use(Vuex);
 
 const store = new Vuex.Store({
   // (1) 데이터 셋팅구역:

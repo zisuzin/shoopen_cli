@@ -1,4 +1,4 @@
-# shoppingmall
+# project
 
 ## Project setup
 ```

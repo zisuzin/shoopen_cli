@@ -13,19 +13,16 @@
     <li>
       <a href="#" v-on:click.prevent="linkData('all', '기획전')">기획전</a>
     </li>
-    <sub-comp></sub-comp>
   </ul>
 </template>
 
 <script>
-import store from "../js/store.js";
-import SubComp from "./SubComp.vue";
+// 스토어 불러오기
+import store from '../js/store.js';
 
 export default {
-    components: {
-        SubComp,
-    },
-    methods: {
+  name: "CategoryComp",
+  methods: {
     // v-on 클릭시 gnb sub-comp 데이터 변경 발생
     chgData(parm) {
       event.preventDefault();
@@ -49,7 +46,7 @@ export default {
       location.href = "prod.html?cat=" + pm1 + "&" + pm2;
     },
   },
-}
+};
 </script>
 
 <style scoped>
