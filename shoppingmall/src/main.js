@@ -1,10 +1,11 @@
-// import Vue from 'vue'; 
-// import KakaoMap from "../src/components/Kakaomap.vue";
+// 웹&앱 PJ 메인페이지 JS - main.js
+import { createApp } from 'vue/dist/vue.esm-bundler';
+import CategoryComp from "./components/CategoryComp.vue";
 
-// // 카카오맵 컴포넌트
-// Vue.component('Map-api', KakaoMap);
+const app = createApp({
+    components: {
+        'category-comp': CategoryComp 
+    }
+});
 
-// // root 인스턴스 생성
-// new Vue({
-//     el: '#app'
-// });
+app.mount('#app');
