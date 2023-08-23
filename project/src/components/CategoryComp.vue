@@ -10,15 +10,18 @@
     <li class="tgGnb" v-for="(v, i) in $store.state.gnb" :key="i">
       <a href="#" v-on:click="chgData(i)">{{ i.toUpperCase() }}</a>
     </li>
+    <!-- 여기까지 -->
     <li>
       <a href="#" v-on:click.prevent="linkData('all', '기획전')">기획전</a>
     </li>
+    <sub-comp></sub-comp>
   </ul>
 </template>
 
 <script>
 // 스토어 불러오기
 import store from '../js/store.js';
+import SubComp from './SubComp.vue';
 
 export default {
   name: "CategoryComp",
