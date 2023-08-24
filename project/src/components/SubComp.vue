@@ -6,20 +6,20 @@
     </div>
     <dl class="sub">
       <dt class="all"><a href="#" v-text="$store.state.setsubtit3" v-on:click.prevent="linksys($store.state.lnbsrc, 'shoes', '전체')"></a></dt>
-      <dd v-for="(v, n) in $store.state.setdpt1" :key="n" v-on:click.prevent="linksys($store.state.lnbsrc, 'shoes', v)">
-        <a href="#">{{ v }}</a>
+      <dd v-for="(v,n) in $store.state.setdpt1" :key="n" v-on:click.prevent="linksys($store.state.lnbsrc, 'shoes', v)">
+        <a href="#">{{v}}</a>
       </dd>
     </dl>
     <dl class="sub">
       <dt><a href="#" v-text="$store.state.setsubtit4" v-on:click.prevent="linksys($store.state.lnbsrc, 'bag', '전체')"></a></dt>
-      <dd v-for="(v, n) in $store.state.setdpt2" :key="n" v-on:click.prevent="linksys($store.state.lnbsrc, 'bag', v)">
-        <a href="#">{{ v }}</a>
+      <dd v-for="(v,n) in $store.state.setdpt2" :key="n" v-on:click.prevent="linksys($store.state.lnbsrc, 'bag', v)">
+        <a href="#">{{v}}</a>
       </dd>
     </dl>
     <dl class="sub">
       <dt><a href="#" v-text="$store.state.setsubtit5" v-on:click.prevent="linksys($store.state.lnbsrc, 'ac', '전체')"></a></dt>
-      <dd v-for="(v, n) in $store.state.setdpt3" :key="n" v-on:click.prevent="linksys($store.state.lnbsrc, 'ac', v)">
-        <a href="#">{{ v }}</a>
+      <dd v-for="(v,n) in $store.state.setdpt3" :key="n" v-on:click.prevent="linksys($store.state.lnbsrc, 'ac', v)">
+        <a href="#">{{v}}</a>
       </dd>
     </dl>
   </div>

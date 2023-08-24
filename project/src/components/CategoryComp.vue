@@ -7,7 +7,7 @@
       <a href="#" v-on:click.prevent="linkData('all', 'best')">BEST</a>
       <!-- sub-comp 출력되는 gnb -->
     </li>
-    <li class="tgGnb" v-for="(v, i) in $store.state.gnb" :key="i">
+    <li class="tgGnb" v-for="(v,i) in $store.state.gnb" :key="i">
       <a href="#" v-on:click="chgData(i)">{{ i.toUpperCase() }}</a>
     </li>
     <!-- 여기까지 -->
@@ -50,7 +50,7 @@ export default {
     },
     // new, best 클릭 전용 링크시스템
     linkData(pm1, pm2) {
-        this.$router.push(`/product?cat=${pm1}&${pm2}`).catch(() => {});
+      this.$router.push(`/product?cat=${pm1}&${pm2}`).catch(() => {});
     },
   },
 };

@@ -67,7 +67,7 @@ main {
     content: '';
     display: inline-block;
     vertical-align: middle;
-    background: url(../images/icon/ico_top_arrow.png) no-repeat;
+    background: url(../../public/images/icon/ico_top_arrow.png) no-repeat;
     width: 12px;
     height: 18px;
     margin: 0 15px;
@@ -126,7 +126,7 @@ main {
 }
 
 .option-right > .prd_filter_bx > button {
-    background: url(../images/icon/ico_filter.png) no-repeat 100% 50%;
+    background: url(../../public/images/icon/ico_filter.png) no-repeat 100% 50%;
     padding-right: 40px;
     position: relative;
 }
@@ -172,7 +172,7 @@ main {
     position: absolute;
     right: 19px;
     top: 14px;
-    background: url(../images/icon/ico_filter_close.png) no-repeat 100% 50%;
+    background: url(../../public/images/icon/ico_filter_close.png) no-repeat 100% 50%;
     padding-right: 40px;
     line-height: 21px;
 }
@@ -220,7 +220,7 @@ main {
     display: block;
     width: 15px;
     height: 15px;
-    background: url(../images/icon/checkbox.png) no-repeat left top;
+    background: url(../../public/images/icon/checkbox.png) no-repeat left top;
 }
 
 /* 사이즈 출력값 */
@@ -332,7 +332,7 @@ main {
     width: 20px;
     -webkit-appearance: none;
     pointer-events: auto;
-    background: url(../images/icon/icon_range.png) no-repeat 0 0;
+    background: url(../../public/images/icon/icon_range.png) no-repeat 0 0;
 }
 
 .filter_search > table {
@@ -493,7 +493,7 @@ main {
 
 .star {
     display: inline-block;
-    background: url(../images/icon/ico_grade.png) no-repeat 0 -12px;
+    background: url(../../public/images/icon/ico_grade.png) no-repeat 0 -12px;
     width: 60px;
     height: 12px;
     margin-top: 10px;
