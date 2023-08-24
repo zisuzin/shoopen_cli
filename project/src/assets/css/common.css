@@ -19,10 +19,6 @@
   --shoopen-font-eng: "Manrope", sans-serif;
 }
 
-.cont * {
-  /* outline: 1px dashed black; */
-}
-
 /*************** 상단영역 ***************/
 /* 네비게이션 전체박스 */
 .fxbx {
@@ -157,7 +153,7 @@ nav {
 .side > li > a::before {
   content: "";
   display: inline-block;
-  background-image: url(../../public/images/icon/ico_common.png);
+  background-image: url(../images/icon/ico_common.png);
   width: 20px;
   height: 20px;
   filter: brightness(0);
@@ -388,7 +384,7 @@ tr > th:nth-child(3) {
   width: 21px;
   height: 21px;
   border-right: 1px solid #999;
-  background: url(../../public/images/icon/ico_detail_all.png) no-repeat -227px -20px;
+  background: url(../images/icon/ico_detail_all.png) no-repeat -227px -20px;
 }
 
 .opt_num > .plus {
@@ -397,7 +393,7 @@ tr > th:nth-child(3) {
   width: 21px;
   height: 21px;
   border-left: 1px solid #999;
-  background: url(../../public/images/icon/ico_detail_all.png) no-repeat -245px -20px;;
+  background: url(../images/icon/ico_detail_all.png) no-repeat -245px -20px;;
 }
 
 .opt_num input[type="number"]::-webkit-outer-spin-button,
@@ -650,7 +646,7 @@ span.gol {
   right: 10px;
   width: 11px;
   height: 6px;
-  background: url(../../public/images/icon/ico_arrow_set.png) no-repeat 0 0;
+  background: url(../images/icon//ico_arrow_set.png) no-repeat 0 0;
 }
 
 .agreebx {
@@ -812,7 +808,7 @@ footer .info {
   position: absolute;
   width: 24px;
   height: 24px;
-  background: url(../../public/images/icon/icon_cs.svg) no-repeat;
+  background: url(../images/icon/icon_cs.svg) no-repeat;
   background-position: right 0;
   left: 5px;
 }
@@ -832,7 +828,7 @@ footer .info {
 }
 
 .f_tel > i {
-  background: url(../../public/images/icon/icon_tel.svg) no-repeat;
+  background: url(../images/icon/icon_tel.svg) no-repeat;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -881,7 +877,7 @@ footer .info {
 }
 
 .f_sns ul > li > a > i {
-  background: url(../../public/images/icon/icon_sns.svg) no-repeat;
+  background: url(../images/icon/icon_sns.svg) no-repeat;
   display: inline-block;
   width: 100%;
   height: 100%;

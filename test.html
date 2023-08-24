@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contains 메소드</title>
+  </head>
+  <style>
+    .child {
+      width: 200px;
+      height: 100px;
+      text-align: center;
+      line-height: 100px;
+      color: white;
+      font-weight: bold;
+      background-color: red;
+    }
+
+    .green {
+      background-color: green;
+    }
+  </style>
+  <body>
+    <div id="parent">
+      <div class="child">Child Element 1</div>
+      <div class="child">Child Element 2</div>
+      <div class="child">Child Element 3</div>
+    </div>
+
+    <script>
+      const parent = document.getElementById("parent");
+      const children = parent.querySelectorAll(".child");
+      const targetValues = ["Child Element 1", "Child Element 3"];
+
+      children.forEach((child) => {
+        if (targetValues.includes(child.textContent)) {
+          child.classList.add("green");
+        }
+      });
+    </script>
+  </body>
+</html>

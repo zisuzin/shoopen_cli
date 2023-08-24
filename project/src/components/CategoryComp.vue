@@ -25,6 +25,9 @@ import SubComp from './SubComp.vue';
 
 export default {
   name: "CategoryComp",
+  components: {
+    SubComp
+  },
   methods: {
     // v-on 클릭시 gnb sub-comp 데이터 변경 발생
     chgData(parm) {

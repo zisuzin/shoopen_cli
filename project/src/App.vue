@@ -6,7 +6,7 @@
 
 <script>
 import CategoryComp from '@/components/CategoryComp.vue';
-import '../src/css/common.css';
+import '../src/assets/css/common.css';
 
 export default {
   name: 'App',

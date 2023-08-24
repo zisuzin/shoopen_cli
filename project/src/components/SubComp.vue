@@ -27,8 +27,7 @@
 
 <script>
 export default {
-    components: "SubComp",
-    methods: {
+  methods: {
     // gnb클릭시 링크시스템
     linksys(cat1, cat2, cat3) {
       location.href = "sub.html?cat=" + encodeURIComponent(cat1) + "&" + cat2 + "&" + encodeURIComponent(cat3);
