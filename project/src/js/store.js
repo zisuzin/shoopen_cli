@@ -190,10 +190,10 @@ const store = new Vuex.Store({
     getLink(st) {
       // 1. Get방식으로 넘어온 값 받기!
       st.curUrl = location.href;
-
+      
       // 2. index페이지에선 작동 안하게하기
       if(st.curUrl.indexOf("?") === -1) return;
-
+      
       // split(자를기준문자열) -> 배열에 담긴다!
       st.curUrl = st.curUrl.split("=")[1];
       st.curUrl0 = st.curUrl.split("&")[0];
@@ -206,12 +206,12 @@ const store = new Vuex.Store({
       st.curUrl0 = decodeURIComponent(st.curUrl0);
       st.curUrl1 = decodeURIComponent(st.curUrl1);
       st.curUrl2 = decodeURIComponent(st.curUrl2);
+      console.log(st.curUrl)
     },
     // new/best 상품 출력 함수
     chgList(st,pm) {
       // pm은 all, women, men, kids!
       store.state.setcat = pm;
-      console.log(pm)
     },
   }, ////// mutastions 구역 /////
 }); ///////////// 뷰엑스 인스턴스 /////////////
