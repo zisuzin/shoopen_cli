@@ -8,7 +8,7 @@
     </li>
     <!-- sub-comp 출력되는 gnb -->
     <li class="tgGnb" v-for="(v, i) in $store.state.gnb" :key="i">
-      <a href="#" v-on:click="chgData(i)">{{ i.toUpperCase() }}</a>
+      <a href="#" v-on:click.prevent="chgData(i)">{{ i.toUpperCase() }}</a>
     </li>
     <!-- 여기까지 -->
     <li>
