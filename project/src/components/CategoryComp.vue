@@ -5,10 +5,10 @@
     </li>
     <li>
       <a href="#" v-on:click.prevent="linkData('all', 'best')">BEST</a>
+      <!-- sub-comp 출력되는 gnb -->
     </li>
-    <!-- sub-comp 출력되는 gnb -->
     <li class="tgGnb" v-for="(v, i) in $store.state.gnb" :key="i">
-      <a href="#" v-on:click.prevent="chgData(i)">{{ i.toUpperCase() }}</a>
+      <a href="#" v-on:click="chgData(i)">{{ i.toUpperCase() }}</a>
     </li>
     <!-- 여기까지 -->
     <li>
@@ -19,14 +19,15 @@
 </template>
 
 <script>
-// 스토어 불러오기
-import store from '../js/store.js';
-import SubComp from './SubComp.vue';
+// 스토어 가져오기
+import store from "../js/store.js";
+// 자식 컴포넌트 가져오기
+import SubComp from "./SubComp.vue";
 
 export default {
   name: "CategoryComp",
   components: {
-    SubComp
+    SubComp,
   },
   methods: {
     // v-on 클릭시 gnb sub-comp 데이터 변경 발생
@@ -49,11 +50,9 @@ export default {
     },
     // new, best 클릭 전용 링크시스템
     linkData(pm1, pm2) {
-      location.href = "prod.html?cat=" + pm1 + "&" + pm2;
+        this.$router.push(`/product?cat=${pm1}&${pm2}`).catch(() => {});
     },
   },
 };
 </script>
 
-<style scoped>
-</style>

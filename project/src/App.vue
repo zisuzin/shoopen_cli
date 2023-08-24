@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import $ from 'jquery';
 import CategoryComp from '@/components/CategoryComp.vue';
 import '../src/css/common.css';
 
@@ -36,6 +37,21 @@ export default {
   name: 'App',
   components: {
     CategoryComp
+  },
+  mounted() {
+    // 클릭시 li에 클래스 on
+    $(".catbx > .tgGnb").click(function (e) {
+      // 기본기능막기
+      e.preventDefault();
+      $(this).addClass("on").siblings().removeClass("on");
+      $(".top").addClass("on");
+    }); ///////// click ////////////
+
+    // 마우스아웃시 전체 클래스 빼기
+    $("nav").mouseleave(function () {
+      $(".top").removeClass("on");
+      $(".catbx > .tgGnb").removeClass("on");
+    }); ///////// mouseleave //////////
   }
 }
 </script>

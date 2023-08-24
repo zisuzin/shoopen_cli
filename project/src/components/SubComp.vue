@@ -29,12 +29,12 @@
 export default {
   methods: {
     // gnb클릭시 링크시스템
-    linksys(cat1, cat2, cat3) {
-      location.href = "sub.html?cat=" + encodeURIComponent(cat1) + "&" + cat2 + "&" + encodeURIComponent(cat3);
+    linksys(pm1, pm2, pm3) {
+      this.$router.push(`/product?cat=${pm1}&${pm2}&${pm3}`).catch(() => {});
     },
     // // new, best 클릭 전용 링크시스템!! (위랑 헷갈리지 말기!)
     linkData(pm1, pm2) {
-      location.href = "prod.html?cat=" + pm1 + "&" + pm2;
+      this.$router.push(`/product?cat=${pm1}&${pm2}`).catch(() => {});
     },
   },
 };
