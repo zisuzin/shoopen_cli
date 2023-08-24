@@ -211,6 +211,7 @@ const store = new Vuex.Store({
     chgList(st,pm) {
       // pm은 all, women, men, kids!
       store.state.setcat = pm;
+      console.log(pm)
     },
   }, ////// mutastions 구역 /////
 }); ///////////// 뷰엑스 인스턴스 /////////////
