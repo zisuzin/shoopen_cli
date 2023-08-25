@@ -104,7 +104,7 @@
       </section>
       <!-- 5. 신상섹션(컴포넌트)-->
       <NewComp />
-      <!-- section5 : offline -->
+      <!-- 6. 스토어섹션 -->
       <section class="main_store">
         <div class="store">
           <div class="storetit">
@@ -146,7 +146,7 @@
           </div>
           <div class="map_list">
             <div class="map_inner">
-              <div id="map" style="width: 100%; height: 350px"></div>
+              <div id="map"></div>
             </div>
             <!-- 지점 좌표 위 안내툴팁 -->
             <div class="map_info">
@@ -165,13 +165,22 @@
           </div>
         </div>
       </section>
+      <!-- 하단영역 -->
+      <footer id="info">
+        <!-- 속박스 -->
+        <div class="info">
+          <!-- 푸터영역 -->
+          <FootComp/>
+          <p class="f_copyright">COPYRIGHT © WONDERPLACE ALL RIGHTS RESERVED.</p>
+        </div>
+      </footer>
     </div>
   </main>
 </template>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=967c1df5ef6ef37cb1facf79cca53e7b"></script>
 <script>
-import KakaoMap from "../js/map.js";
+import mapSearch from "../js/map.js";
 // 스와이퍼 불러오기
 import Swiper from "swiper";
 import "swiper/swiper-bundle.css";
@@ -181,6 +190,7 @@ import { mData } from "../js/gdsData/mainData.js";
 import BestComp from "./BestComp.vue";
 import MedComp from "./MedComp.vue";
 import NewComp from "./NewComp.vue";
+import FootComp from "./FootComp.vue";
 // 메인 CSS
 import "../css/main.css";
 
@@ -190,6 +200,7 @@ export default {
     BestComp,
     MedComp,
     NewComp,
+    FootComp,
   },
   data() {
     return {
@@ -223,12 +234,14 @@ export default {
     // 카카오맵 API 로드후 메서드 호출!
     if (window.kakao && window.kakao.maps) {
       this.storeMap();
+      mapSearch();
     } else {
       const script = document.createElement("script");
       /* global kakao */
       script.onload = () => kakao.maps.load(this.storeMap);
       script.src = "http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=967c1df5ef6ef37cb1facf79cca53e7b";
       document.head.appendChild(script);
+      mapSearch();
     }
 
     // 메인 배너 함수
