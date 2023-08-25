@@ -15,7 +15,7 @@ const routes = [
     path: '/',
     component: App,
     children: [
-      { path: '/product/new', component: ProdComp },
+      { path: '/product/:new', component: ProdComp },
     ],
   },
 ];

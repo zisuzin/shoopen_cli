@@ -16,7 +16,7 @@
             <!-- 2. 카테고리영역 -->
             <ul class="catbx">
               <li>
-                <router-link :to="{ path: '/product/new' }" :key="$route.fullPath">NEW</router-link>
+                <router-link :to="{ path: '/product/:new' }">NEW</router-link>
               </li>
               <li>
                 <a href="#" v-on:click.prevent="linkData('all', 'best')">BEST</a>
@@ -51,9 +51,6 @@ export default {
   name: "LayoutComp",
   components: {
     SubComp,
-  },
-  created() {
-    store.commit("getLink");
   },
   methods: {
     // v-on 클릭시 gnb sub-comp 데이터 변경 발생

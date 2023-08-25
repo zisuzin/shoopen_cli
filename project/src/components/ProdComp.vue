@@ -4,7 +4,7 @@
     <!-- 속박스 -->
     <div class="cont">
       <div class="new_inner">
-        <h2>{{ $store.state.curUrl1.toUpperCase() }}</h2>
+        <h2>{{ $route.params.new }}</h2>
         <div class="new_items">
           <div class="prod_tab">
             <ul>
