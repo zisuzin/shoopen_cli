@@ -16,10 +16,10 @@
             <!-- 2. 카테고리영역 -->
             <ul class="catbx">
               <li>
-                <router-link :to="{ path: '/product/:new' }">NEW</router-link>
+                <router-link :to="{ path: '/product', query: { cat1: 'new', cat2: 'all' } }">NEW</router-link>
               </li>
               <li>
-                <a href="#" v-on:click.prevent="linkData('all', 'best')">BEST</a>
+                <router-link :to="{ path: '/product', query: { cat1: 'best', cat2: 'all' } }">BEST</router-link>
                 <!-- sub-comp 출력되는 gnb -->
               </li>
               <li class="tgGnb" v-for="(v, i) in $store.state.gnb" :key="i">
@@ -52,6 +52,9 @@ export default {
   components: {
     SubComp,
   },
+  created() {
+    store.commit("getLink");
+  },
   methods: {
     // v-on 클릭시 gnb sub-comp 데이터 변경 발생
     chgData(parm) {
@@ -70,10 +73,6 @@ export default {
       store.state.setdpt1 = store.state.gnb[parm].dpt1;
       store.state.setdpt2 = store.state.gnb[parm].dpt2;
       store.state.setdpt3 = store.state.gnb[parm].dpt3;
-    },
-    // new, best 클릭 전용 링크시스템
-    linkData(pm1, pm2) {
-      this.$router.push(`/product?cat=${pm1}&${pm2}`).catch(() => {});
     },
   },
   mounted() {
