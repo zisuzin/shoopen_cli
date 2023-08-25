@@ -1,9 +1,10 @@
-// 서브 페이지 뷰엑스 스토어 셋팅 JS  - store.js
+// 서브페이지 뷰엑스 스토어 셋팅- store.js
+import Vue from 'vue';
+import Vuex from 'vuex';
+// 더미 데이터들
 import womenData from "./gdsData/womenData.js";
 import menData from "./gdsData/menData.js";
 import kidsData from "./gdsData/kidsData.js";
-import Vue from 'vue';
-import Vuex from 'vuex';
 
 Vue.use(Vuex);
 

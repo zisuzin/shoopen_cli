@@ -9,9 +9,9 @@
           <div class="gnb">
             <!-- 1. 로고영역 -->
             <div class="logo">
-              <a href="index.html">
+              <router-link :to="{ path: '' }">
                 <img src="../public/images/logo/logo.png" alt="메인로고" />
-              </a>
+              </router-link>
             </div>
             <!-- 2. 카테고리영역 -->
             <ul class="catbx">
@@ -40,7 +40,9 @@
 </template>
 
 <script>
+// 제이쿼리 불러오기
 import $ from "jquery";
+// 스오터 불러오기
 import store from "../src/js/store.js";
 // 자식 컴포넌트
 import SubComp from "./components/SubComp.vue";

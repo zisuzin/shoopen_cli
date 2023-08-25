@@ -62,9 +62,13 @@
 <script>
 // 공통기능 함수
 import crossMixin from "../js/common.js";
+// 상품정보데이터
 import prdData from "../js/gdsData/newbestData.js";
+// 제이쿼리 불러오기
 import $ from "jquery";
+// 스토어 불러오기
 import store from "../js/store.js";
+// 서브페이지 CSS
 import "../css/sub.css";
 
 export default {

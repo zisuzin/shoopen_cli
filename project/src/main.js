@@ -4,6 +4,7 @@ import VueRouter from "vue-router";
 import store from './js/store.js'; 
 // 컴포넌트
 import App from '@/App.vue'
+import MainComp from "./components/MainComp.vue";
 import ProdComp from "./components/ProdComp.vue";
 
 // router 기능 확장 선언
@@ -15,6 +16,7 @@ const routes = [
     path: '/',
     component: App,
     children: [
+      { path: '', component: MainComp },
       { path: '/product', component: ProdComp },
     ],
   },
