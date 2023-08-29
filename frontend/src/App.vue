@@ -16,10 +16,10 @@
             <!-- 2. 카테고리영역 -->
             <ul class="catbx">
               <li>
-                <router-link :to="{ path: '/product/new' }">NEW</router-link>
+                <router-link :to="{ path: '/product/all/new' }">NEW</router-link>
               </li>
               <li>
-                <router-link :to="{ path: '/product/best'}">BEST</router-link>
+                <router-link :to="{ path: '/product/all/best'}">BEST</router-link>
                 <!-- sub-comp 출력되는 gnb -->
               </li>
               <li class="tgGnb" v-for="(v, i) in $store.state.gnb" :key="i">
@@ -53,9 +53,6 @@ export default {
   name: "LayoutComp",
   components: {
     SubComp,
-  },
-  created() {
-    store.commit("getLink");
   },
   methods: {
     // v-on 클릭시 gnb sub-comp 데이터 변경 발생

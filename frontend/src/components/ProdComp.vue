@@ -17,7 +17,7 @@
               </div>
               <div class="prod_cont">
                 <ul>
-                  <template v-for="v in prdData[$route.params.id]">
+                  <template v-for="(v,i) in prdData[$route.params.id]">
                     <template v-if="$store.state.setcat === i || $store.state.setcat === 'all'">
                         <li v-for="x in v" :key="x.name">
                           <div class="prodbx">
@@ -82,7 +82,7 @@ import prdData from "../js/gdsData/newbestData.js";
 // 제이쿼리 불러오기
 import $ from "jquery";
 // 스토어 불러오기
-import store from "../js/store.js";
+import store from "../js/store.js"; // eslint-disable-line no-unused-vars
 // 서브페이지 CSS
 import "../css/sub.css";
 
@@ -113,9 +113,12 @@ export default {
     function initCatnum() {
       // lnb 텍스트 저장 변수
       const ary2 = $(".prod_tab li > a");
+      const routePath = '/product/all/:id';
+      const extractVal = routePath.split('/')[2];
 
       ary2.each(function (idx, ele) {
-        if ($(ele).text() === store.state.curUrl1.toUpperCase()) {
+        console.log($(ele).text())
+        if ($(ele).text() === extractVal.toUpperCase()) {
           // 트리거 셋팅
           $(this).parent().trigger("click").addClass("on").siblings().removeClass("on");
         }
