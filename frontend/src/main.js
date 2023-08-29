@@ -17,7 +17,7 @@ const routes = [
     component: App,
     children: [
       { path: '', component: MainComp },
-      { path: '/product/:text', component: ProdComp },
+      { path: '/product/:id', component: ProdComp },
     ],
   },
 ];
