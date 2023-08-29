@@ -1,7 +1,7 @@
 <?php
     $host = "localhost";
     $user = "root";
-    $pw = "c_MfVWJG/R.ZQT-J";
+    $pw = "@t8z8Zrm/0e4b8oR";
     $dbName = "shoopen_db";
 
     /* MySQL 접속 */
