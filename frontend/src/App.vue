@@ -16,10 +16,10 @@
             <!-- 2. 카테고리영역 -->
             <ul class="catbx">
               <li>
-                <router-link :to="{ path: '/product', query: { cat1: 'new', cat2: 'all' } }">NEW</router-link>
+                <router-link :to="{ path: '/product/new' }">NEW</router-link>
               </li>
               <li>
-                <router-link :to="{ path: '/product', query: { cat1: 'best', cat2: 'all' } }">BEST</router-link>
+                <router-link :to="{ path: '/product/best'}">BEST</router-link>
                 <!-- sub-comp 출력되는 gnb -->
               </li>
               <li class="tgGnb" v-for="(v, i) in $store.state.gnb" :key="i">

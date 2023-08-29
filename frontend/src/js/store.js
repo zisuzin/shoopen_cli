@@ -206,7 +206,8 @@ const store = new Vuex.Store({
       st.curUrl = decodeURIComponent(st.curUrl);
       st.curUrl0 = decodeURIComponent(st.curUrl0);
       st.curUrl1 = decodeURIComponent(st.curUrl1);
-      // st.curUrl2 = decodeURIComponent(st.curUrl2);
+    //   st.curUrl2 = decodeURIComponent(st.curUrl2);
+    console.log(st.curUrl1)
     },
     // new/best 상품 출력 함수
     chgList(st,pm) {

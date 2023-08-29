@@ -6,7 +6,7 @@
       <div class="cont">
         <section class="prod_container">
           <div class="new_inner">
-            <h2>{{ $route.query.cat1.toUpperCase() }}</h2>
+            <h2>{{ $route.params.text.toUpperCase() }}</h2>
             <div class="new_items">
               <div class="prod_tab">
                 <ul>
@@ -17,8 +17,8 @@
               </div>
               <div class="prod_cont">
                 <ul>
-                  <template v-for="(v, i) in prdData[$store.state.curUrl0]">
-                    <li v-for="x in v" :key="x.name" v-if="$store.state.setcat === i || $store.state.setcat === 'all'">
+                  <template v-for="(v) in prdData[$store.state.curUrl0]">
+                    <li v-for="x in v" :key="x.name">
                       <div class="prodbx">
                         <a href="#">
                           <div class="prod_img">
