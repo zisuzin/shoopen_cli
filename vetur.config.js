@@ -1,5 +1,5 @@
 module.exports = {
     settings: {
-        'vetur.ignoreProjectWarning': true,
+        // 'vetur.ignoreProjectWarning': true,
     },
 };

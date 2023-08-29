@@ -23,7 +23,7 @@
                           <div class="prodbx">
                             <a href="#">
                               <div class="prod_img">
-                                <img :src="'./images/goods/' + x.img + '.jpg'" alt="x.name" />
+                                <img :src="'../images/goods/' + x.img + '.jpg'" alt="x.name" />
                               </div>
                             </a>
                             <div title="찜하기" class="product_like" v-on:click="addWish(x, 1)">
@@ -117,7 +117,6 @@ export default {
       const extractVal = routePath.split('/')[2];
 
       ary2.each(function (idx, ele) {
-        console.log($(ele).text())
         if ($(ele).text() === extractVal.toUpperCase()) {
           // 트리거 셋팅
           $(this).parent().trigger("click").addClass("on").siblings().removeClass("on");
