@@ -536,6 +536,23 @@ export default {
             // 상품 길이값 업데이트!
             this.pdLength();
         },
+        // 상품리스트 오버시 이미지src 변경
+        handleMouseOver(event) {
+            const tgImg = $(event.currentTarget).find("div > a > .prod-detail-img > img");
+            const tgSrc = tgImg.attr("src");
+            // 이미지src에 '_on' 없는 경우만 변경하기
+            if (tgSrc.indexOf("_on") === -1) {
+                const newSrc = tgSrc.split(".jpg")[0] + "_on.jpg";
+                tgImg.attr("src", newSrc);
+            }
+        },
+        // 상품리스트 리브시 기존 이미지로 변경
+        handleMouseLeave(event) {
+            const tgImg = $(event.currentTarget).find("div > a > .prod-detail-img > img");
+            const tgSrc = tgImg.attr("src");
+            const prevSrc = tgSrc.split("_on.jpg")[0] + ".jpg";
+            tgImg.attr("src", prevSrc);
+        },
         // 상품 갯수 카운트 함수
         pdLength() {
             this.$nextTick(() => {
