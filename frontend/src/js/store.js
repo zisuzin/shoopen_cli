@@ -1,14 +1,11 @@
 // 서브페이지 뷰엑스 스토어 셋팅- store.js
-import Vue from 'vue';
-import Vuex from 'vuex';
+import { createStore } from 'vuex';
 // 더미 데이터들
 import womenData from "./gdsData/womenData.js";
 import menData from "./gdsData/menData.js";
 import kidsData from "./gdsData/kidsData.js";
 
-Vue.use(Vuex);
-
-const store = new Vuex.Store({
+const store = createStore({
   // (1) 데이터 셋팅구역:
   state: {
     // gnb 데이터셋업
@@ -190,7 +187,6 @@ const store = new Vuex.Store({
   mutations: {
     // new/best 상품 출력 함수
     chgList(st,pm) {
-      // pm은 all, women, men, kids!
       store.state.setcat = pm;
     },
   }, ////// mutastions 구역 /////

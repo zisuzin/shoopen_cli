@@ -235,10 +235,6 @@
     </main>
 </template>
 
-<script
-    type="text/javascript"
-    src="//dapi.kakao.com/v2/maps/sdk.js?appkey=967c1df5ef6ef37cb1facf79cca53e7b"
-></script>
 <script>
 import mapSearch from '../js/map.js';
 // 스와이퍼 불러오기
@@ -313,7 +309,7 @@ export default {
                 );
 
                 // 마커를 생성합니다
-                var marker = new kakao.maps.Marker({
+                new kakao.maps.Marker({
                     map: map, // 마커를 표시할 지도
                     position: positions[i].latlng, // 마커를 표시할 위치
                     title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
