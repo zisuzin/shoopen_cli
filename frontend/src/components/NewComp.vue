@@ -1,3 +1,4 @@
+<!-- 메인페이지 new 섹션 템플릿 -->
 <template>
   <section class="main_new">
     <div class="mntit_bx">

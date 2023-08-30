@@ -1,3 +1,4 @@
+<!-- women,men,kids gnb 클릭시 출력되는 네비게이션 템플릿  -->
 <template>
   <div class="subbx">
     <div class="all">

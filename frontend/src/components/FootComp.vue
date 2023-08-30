@@ -1,5 +1,5 @@
+<!-- 하단 푸터 템플릿 -->
 <template>
-  <!-- pc용 푸터 -->
   <div id="dt">
     <div class="f_bx1">
       <div class="f_menu">

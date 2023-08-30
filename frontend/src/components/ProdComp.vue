@@ -1,3 +1,4 @@
+<!-- new/best gnb 클릭시 전용 템플릿!! -->
 <template>
   <div>
     <!-- 메인영역 -->

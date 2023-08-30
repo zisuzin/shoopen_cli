@@ -1,3 +1,4 @@
+<!-- 메인페이지 media 섹션 템플릿 -->
 <template>
   <li class="swiper-slide">
     <a href="#">

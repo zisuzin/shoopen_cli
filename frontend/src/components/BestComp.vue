@@ -1,3 +1,4 @@
+<!-- 메인페이지 best 섹션 템플릿 -->
 <template>
   <section class="main_best">
     <div class="mbtit_bx">
