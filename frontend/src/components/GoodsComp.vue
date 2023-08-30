@@ -12,8 +12,12 @@
                         <div class="prd_top">
                             <!-- 타이틀 -->
                             <div class="cate_main_tit">
-                                <h3>{{ this.$route.params.cat1.toUpperCase() }}</h3>
-                                <span>{{ this.$route.params.cat2.toUpperCase() }}</span>
+                                <h3>
+                                    {{ this.$route.params.cat1.toUpperCase() }}
+                                </h3>
+                                <span>{{
+                                    this.$route.params.cat2.toUpperCase()
+                                }}</span>
                                 <!-- lnb 데이터 -->
                                 <div class="catmenu">
                                     <a href="#" v-on:click="setCatnum('전체')"
@@ -75,38 +79,16 @@
                             <div class="prdwrap">
                                 <!-- 상품리스트 -->
                                 <ul class="ui-col4">
-                                    <template v-for="v in $store.state.imgpath">
-                                        <template
-                                            v-if="
-                                                $store.state.curUrl2 === i ||
-                                                $store.state.curUrl2 === '전체'
-                                            "
-                                        >
-                                            <li
-                                                v-for="a in v"
-                                                :key="a.name"
-                                                @click.prevent="getData(a)"
+                                    <template v-for="(v,i) in $store.state.imgpath">
+                                        <template v-if="this.$route.params.cat3 === i || this.$route.params.cat3 === '전체'">
+                                            <li v-for="a in v" :key="a.name" @click.prevent="getData(a)"
                                                 v-on:mouseover="handleMouseOver"
-                                                v-on:mouseleave="
-                                                    handleMouseLeave
-                                                "
-                                            >
+                                                v-on:mouseleave="handleMouseLeave">
                                                 <div class="ui-prod-bx">
                                                     <a href="#">
                                                         <div
-                                                            class="prod-detail-img"
-                                                        >
-                                                            <img
-                                                                :src="
-                                                                    './images/goods/' +
-                                                                    $store.state
-                                                                        .curUrl0 +
-                                                                    '/' +
-                                                                    a.img +
-                                                                    '.jpg'
-                                                                "
-                                                                :alt="a.name"
-                                                            />
+                                                            class="prod-detail-img">
+                                                            <img :src="'/images/goods/' + this.$route.params.cat1 + '/' + a.img + '.jpg'" :alt="a.name"/>
                                                         </div>
                                                     </a>
                                                     <div
@@ -195,7 +177,7 @@
                                             <img
                                                 :src="
                                                     './images/goods/' +
-                                                    $store.state.curUrl0 +
+                                                    this.$route.params.cat1 +
                                                     '/' +
                                                     $store.state.dtimg +
                                                     '.jpg'
@@ -207,9 +189,9 @@
                                             <img
                                                 :src="
                                                     './images/goods/' +
-                                                    $store.state.curUrl0 +
+                                                    this.$route.params.cat1 +
                                                     '/' +
-                                                    $store.state.curUrl1 +
+                                                    this.$route.params.cat2 +
                                                     '/' +
                                                     $store.state.dtsumimg2 +
                                                     '.jpg'
@@ -221,9 +203,9 @@
                                             <img
                                                 :src="
                                                     './images/goods/' +
-                                                    $store.state.curUrl0 +
+                                                    this.$route.params.cat1 +
                                                     '/' +
-                                                    $store.state.curUrl1 +
+                                                    this.$route.params.cat2 +
                                                     '/' +
                                                     $store.state.dtsumimg3 +
                                                     '.jpg'
@@ -242,7 +224,7 @@
                                             <img
                                                 :src="
                                                     './images/goods/' +
-                                                    $store.state.curUrl0 +
+                                                    this.$route.params.cat1 +
                                                     '/' +
                                                     $store.state.dtimg +
                                                     '.jpg'
@@ -254,9 +236,9 @@
                                             <img
                                                 :src="
                                                     './images/goods/' +
-                                                    $store.state.curUrl0 +
+                                                    this.$route.params.cat1 +
                                                     '/' +
-                                                    $store.state.curUrl1 +
+                                                    this.$route.params.cat2 +
                                                     '/' +
                                                     $store.state.dtsumimg2 +
                                                     '.jpg'
@@ -268,9 +250,9 @@
                                             <img
                                                 :src="
                                                     './images/goods/' +
-                                                    $store.state.curUrl0 +
+                                                    this.$route.params.cat1 +
                                                     '/' +
-                                                    $store.state.curUrl1 +
+                                                    this.$route.params.cat2 +
                                                     '/' +
                                                     $store.state.dtsumimg3 +
                                                     '.jpg'
@@ -503,11 +485,13 @@
 import kidsData from '../js/gdsData/kidsData';
 import menData from '../js/gdsData/menData';
 import womenData from '../js/gdsData/womenData';
+import crossMixin from '@/js/common';
 import store from '@/js/store';
 import $ from 'jquery';
 
 export default {
     name: 'GoodsComp',
+    mixins: [crossMixin],
     data() {
         return {
             // 외부 더미 데이터들
@@ -515,8 +499,10 @@ export default {
             showDt: false,
         };
     },
-    watch: {
-        '$store.state.curUrl1': 'initSetSubSrc',
+    created() {
+        this.initSetSubSrc();
+        // 소분류 메뉴출력을 위한 변수
+        store.state.imgpath = store.state.gnb[this.$route.params.cat1].items[this.$route.params.cat2];
     },
     methods: {
         getData(pm) {
@@ -537,27 +523,83 @@ export default {
             // 디테일박스 열기
             this.showDt = true;
         },
+        // lnb클릭시 v-if 조건값 설정하는 메서드
+        setCatnum(num) {
+            store.state.catnum = num;
+            this.$route.params.cat3 = num;
+
+            // 이벤트 버블링 막기
+            $('.product_like').click(function (e) {
+                e.stopPropagation();
+            });
+
+            // 상품 길이값 업데이트!
+            this.pdLength();
+        },
+        // 상품 갯수 카운트 함수
+        pdLength() {
+            this.$nextTick(() => {
+                const length = $(".ui-col4 > li").length;
+                store.state.pdlength = length;
+            });
+        },
         // 서브페이지 최상위 경로 설정해주는 함수
         initSetSubSrc() {
             // 중분류 데이터값에 따라 lnb 데이터 변경!
-            let catval = this.$route.query;
-            console.log(catval);
+            let catval = this.$route.params.cat2;
             // 각 카테고리별 lnb 대분류 경로 설정
             switch (catval) {
                 case 'shoes':
                     store.state.setlnb =
-                        store.state.gnb[store.state.curUrl0].dpt1;
+                        store.state.gnb[this.$route.params.cat1].dpt1;
                     break;
                 case 'bag':
                     store.state.setlnb =
-                        store.state.gnb[store.state.curUrl0].dpt2;
+                        store.state.gnb[this.$route.params.cat1].dpt2;
                     break;
                 case 'ac':
                     store.state.setlnb =
-                        store.state.gnb[store.state.curUrl0].dpt3;
+                        store.state.gnb[this.$route.params.cat1].dpt3;
                     break;
             }
         },
+    },
+    mounted() {
+        // 서브페이지 초기데이터 셋팅
+        function initCatnum() {
+            // lnb 텍스트 저장 변수
+            // const ary = $('.catmenu > a > span');
+
+            // 각 변수에 셋팅하기
+            // ary.each(function (idx, ele) {
+            //     // url 경로 일치할 경우 클릭이벤트 강제발생 / 클래스 on넣기/빼기
+            //     if ($(ele).text() === this.$route.params.cat2) {
+            //         // 트리거 셋팅
+            //         $(this)
+            //             .parent()
+            //             .trigger('click')
+            //             .addClass('on')
+            //             .siblings()
+            //             .removeClass('on');
+            //     }
+            // });
+        } ////////////// initCatnum 함수 ////////////////
+
+        // lnb 메뉴 클릭시 클래스 on 추가/제거
+        $('.catmenu > a').click(function (e) {
+            e.preventDefault();
+            $(this).addClass('on').siblings().removeClass('on');
+            let menuTxt = $(this).text();
+            console.log(menuTxt)
+
+            // !!! URL 강제 변경하기
+            // 변경이유 : SPA 변경시 전달변수 내용일치 -> 새로고침시 현재변경로딩!
+            history.pushState(
+                null,null,`/goods/${this.$route.params.cat1}/${this.$route.params.cat2}/${menuTxt}`);
+        }); ////////// click ///////////
+
+        // 최초호출!
+        initCatnum();
     },
 };
 </script>

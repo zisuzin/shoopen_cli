@@ -84,9 +84,6 @@ export default {
             store.state.setdpt3 = store.state.gnb[parm].dpt3;
         },
     },
-    created() {
-        store.commit('getLink');
-    },
     mounted() {
         // gnb 클릭시 li에 클래스 on
         $('.catbx > .tgGnb').click(function (e) {
