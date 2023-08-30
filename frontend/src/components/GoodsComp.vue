@@ -540,7 +540,6 @@ export default {
         pdLength() {
             this.$nextTick(() => {
                 const length = $(".ui-col4 > li").length;
-                console.log(length)
                 store.state.pdlength = length;
             });
         },
