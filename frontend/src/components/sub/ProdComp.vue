@@ -1,6 +1,5 @@
 <!-- new/best gnb 클릭시 전용 템플릿!! -->
 <template>
-  <div>
     <!-- 메인영역 -->
     <main id="cont">
       <!-- 속박스 -->
@@ -70,7 +69,6 @@
         <p class="f_copyright">COPYRIGHT © WONDERPLACE ALL RIGHTS RESERVED.</p>
       </div>
     </footer>
-  </div>
 </template>
 
 <script>

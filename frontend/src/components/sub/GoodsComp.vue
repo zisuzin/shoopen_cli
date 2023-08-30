@@ -478,6 +478,15 @@
             </div>
         </div>
     </main>
+    <!-- 하단영역 -->
+    <footer id="info">
+      <!-- 속박스 -->
+      <div class="info">
+        <!-- 푸터영역 -->
+        <FootComp />
+        <p class="f_copyright">COPYRIGHT © WONDERPLACE ALL RIGHTS RESERVED.</p>
+      </div>
+    </footer>
 </template>
 
 <script>
@@ -485,6 +494,7 @@
 import kidsData from '../../js/gdsData/kidsData.js';
 import menData from '../../js/gdsData/menData.js';
 import womenData from '../../js/gdsData/womenData.js';
+import FootComp from '../common/FootComp.vue';
 import crossMixin from '@/js/common.js';
 import store from '@/js/store.js';
 import $ from 'jquery';
@@ -492,6 +502,9 @@ import $ from 'jquery';
 export default {
     name: 'GoodsComp',
     mixins: [crossMixin],
+    components: {
+        FootComp,
+    },
     data() {
         return {
             // 외부 더미 데이터들

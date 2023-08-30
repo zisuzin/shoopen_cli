@@ -1,5 +1,5 @@
 <template>
-<ul class="side">
+    <ul class="side">
         <!-- 3. 사이드영역 -->
         <li><a href="#" class="ico_mypage" @click="loginFn()"></a></li>
         <li><a href="#" class="ico_cart"></a></li>
