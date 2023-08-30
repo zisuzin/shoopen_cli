@@ -75,17 +75,17 @@
 
 <script>
 // 공통기능 함수
-import crossMixin from "../js/common.js";
+import crossMixin from "../../js/common.js";
 // 하단컴포넌트
-import FootComp from "./FootComp.vue";
+import FootComp from "../common/FootComp.vue";
 // 상품정보데이터
-import prdData from "../js/gdsData/newbestData.js";
+import prdData from "../../js/gdsData/newbestData.js";
 // 제이쿼리 불러오기
 import $ from "jquery";
 // 스토어 불러오기
-import store from "../js/store.js"; // eslint-disable-line no-unused-vars
+import store from "../../js/store.js"; // eslint-disable-line no-unused-vars
 // 서브페이지 CSS
-import "../css/sub.css";
+import "../../css/sub.css";
 
 export default {
   name: "ProdComp",

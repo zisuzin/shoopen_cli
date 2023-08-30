@@ -6,7 +6,7 @@
       <div class="media_thumb">
         <img v-bind:src="tumbimg" alt="대표썸네일" />
         <span class="mlogo">
-          <img src="../../public/images/logo/logo_y.jpg" alt="sns계정명" />
+          <img src="/public/images/logo/logo_y.jpg" alt="sns계정명" />
           shoopen_official
         </span>
       </div>
@@ -38,7 +38,7 @@
 
 <script>
 // 공통기능 함수
-import crossMixin from "../js/common.js";
+import crossMixin from "../../js/common.js";
 // 스와이퍼 불러오기
 import Swiper from "swiper";
 import "swiper/swiper-bundle.css";

@@ -38,9 +38,11 @@
                                     기획전
                                 </a>
                             </li>
-                            <SubComp />
+                            <NavComp />
                         </ul>
                     </div>
+                    <!-- 3. 사이드 영역-->
+                    <SideComp/>
                 </nav>
             </div>
         </header>
@@ -55,14 +57,16 @@ import $ from 'jquery';
 // 스오터 불러오기
 import store from '../src/js/store.js';
 // 자식 컴포넌트
-import SubComp from './components/SubComp.vue';
+import NavComp from './components/common/NavComp.vue';
+import SideComp from './components/common/SideComp.vue';
 // 공통 CSS
 import '../src/css/common.css';
 
 export default {
     name: 'LayoutComp',
     components: {
-        SubComp,
+        NavComp,
+        SideComp,
     },
     methods: {
         // v-on 클릭시 gnb sub-comp 데이터 변경 발생

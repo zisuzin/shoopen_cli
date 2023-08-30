@@ -53,10 +53,10 @@
 
 <script>
 // 공통기능함수
-import crossMixin from "../js/common.js";
+import crossMixin from "../../js/common.js";
 // 제이쿼리 불러오기
 import $ from "jquery";
-import { m_bestData } from "../js/gdsData/mainData.js";
+import { m_bestData } from "../../js/gdsData/mainData.js";
 
 export default {
   name: "BestComp",

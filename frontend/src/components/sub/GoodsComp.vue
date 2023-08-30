@@ -482,11 +482,11 @@
 
 <script>
 // 더미데이터들
-import kidsData from '../js/gdsData/kidsData';
-import menData from '../js/gdsData/menData';
-import womenData from '../js/gdsData/womenData';
-import crossMixin from '@/js/common';
-import store from '@/js/store';
+import kidsData from '../../js/gdsData/kidsData.js';
+import menData from '../../js/gdsData/menData.js';
+import womenData from '../../js/gdsData/womenData.js';
+import crossMixin from '@/js/common.js';
+import store from '@/js/store.js';
 import $ from 'jquery';
 
 export default {

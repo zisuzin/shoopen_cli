@@ -4,9 +4,9 @@ import { createRouter, createWebHistory } from 'vue-router';
 import store from './js/store.js';
 // 컴포넌트
 import App from '@/App.vue';
-import MainComp from './components/MainComp.vue';
-import ProdComp from './components/ProdComp.vue';
-import GoodsComp from "./components/GoodsComp.vue"
+import MainComp from './components/main/MainComp.vue';
+import ProdComp from './components/sub/ProdComp.vue';
+import GoodsComp from "./components/sub/GoodsComp.vue";
 
 // router 등록
 const routes = [

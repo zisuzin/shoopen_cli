@@ -52,11 +52,11 @@
 
 <script>
 // 공통기능 함수
-import crossMixin from "../js/common.js";
+import crossMixin from "../../js/common.js";
 // 제이쿼리 불러오기
 import $ from "jquery";
 // 상품정보데이터
-import { m_newData } from "../js/gdsData/mainData.js";
+import { m_newData } from "../../js/gdsData/mainData.js";
 
 export default {
   name: "NewComp",

@@ -72,7 +72,7 @@
 
 <script>
 export default {
-    name: 'SubComp',
+    name: 'NavComp',
     methods: {
         // gnb클릭시 링크시스템
         linksys(cat1, cat2, cat3) {

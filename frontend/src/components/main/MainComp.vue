@@ -9,43 +9,43 @@
                     <ul class="swiper-wrapper">
                         <li class="swiper-slide">
                             <img
-                                src="../../public/images/main/front/pc_1.jpg"
+                                src="/public/images/main/front/pc_1.jpg"
                                 alt="배너이미지1"
                             />
                         </li>
                         <li class="swiper-slide">
                             <img
-                                src="../../public/images/main/front/pc_2.jpg"
+                                src="/public/images/main/front/pc_2.jpg"
                                 alt="배너이미지2"
                             />
                         </li>
                         <li class="swiper-slide">
                             <img
-                                src="../../public/images/main/front/pc_3.jpg"
+                                src="/public/images/main/front/pc_3.jpg"
                                 alt="배너이미지3"
                             />
                         </li>
                         <li class="swiper-slide">
                             <img
-                                src="../../public/images/main/front/pc_4.jpg"
+                                src="/public/images/main/front/pc_4.jpg"
                                 alt="배너이미지4"
                             />
                         </li>
                         <li class="swiper-slide">
                             <img
-                                src="../../public/images/main/front/pc_5.jpg"
+                                src="/public/images/main/front/pc_5.jpg"
                                 alt="배너이미지5"
                             />
                         </li>
                         <li class="swiper-slide">
                             <img
-                                src="../../public/images/main/front/pc_6.jpg"
+                                src="/public/images/main/front/pc_6.jpg"
                                 alt="배너이미지6"
                             />
                         </li>
                         <li class="swiper-slide">
                             <img
-                                src="../../public/images/main/front/pc_7.jpg"
+                                src="/public/images/main/front/pc_7.jpg"
                                 alt="배너이미지7"
                             />
                         </li>
@@ -73,7 +73,7 @@
                         <figure>
                             <div class="special-img">
                                 <img
-                                    src="../../public/images/main/special/ban1.jpg"
+                                    src="/public/images/main/special/ban1.jpg"
                                     alt="트렌드 샌들"
                                 />
                             </div>
@@ -89,7 +89,7 @@
                         <figure>
                             <div class="special-img">
                                 <img
-                                    src="../../public/images/main/special/ban2.jpg"
+                                    src="/public/images/main/special/ban2.jpg"
                                     alt="피크닉"
                                 />
                             </div>
@@ -105,7 +105,7 @@
                         <figure>
                             <div class="special-img">
                                 <img
-                                    src="../../public/images/main/special/ban3.jpg"
+                                    src="/public/images/main/special/ban3.jpg"
                                     alt="장마"
                                 />
                             </div>
@@ -121,7 +121,7 @@
                         <figure>
                             <div class="special-img">
                                 <img
-                                    src="../../public/images/main/special/ban4.jpg"
+                                    src="/public/images/main/special/ban4.jpg"
                                     alt="OOTD"
                                 />
                             </div>
@@ -237,19 +237,19 @@
 </template>
 
 <script>
-import mapSearch from '../js/map.js';
+import mapSearch from '../../js/map.js';
 // 스와이퍼 불러오기
 import Swiper from 'swiper';
 import 'swiper/swiper-bundle.css';
 // 더미데이터
-import { mData } from '../js/gdsData/mainData.js';
+import { mData } from '../../js/gdsData/mainData.js';
 // 자식컴포넌트
-import BestComp from './BestComp.vue';
-import MedComp from './MedComp.vue';
-import NewComp from './NewComp.vue';
-import FootComp from './FootComp.vue';
+import BestComp from '../main/BestComp.vue';
+import MedComp from '../main/MedComp.vue';
+import NewComp from '../main/NewComp.vue';
+import FootComp from '../common/FootComp.vue';
 // 메인 CSS
-import '../css/main.css';
+import '../../css/main.css';
 
 export default {
     name: 'MainComp',
