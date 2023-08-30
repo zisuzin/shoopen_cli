@@ -600,10 +600,10 @@ export default {
             // lnb 텍스트 저장 변수
             // const ary = $('.catmenu > a > span');
 
-            // 각 변수에 셋팅하기
+            // // 각 변수에 셋팅하기
             // ary.each(function (idx, ele) {
             //     // url 경로 일치할 경우 클릭이벤트 강제발생 / 클래스 on넣기/빼기
-            //     if ($(ele).text() === this.$route.params.cat2) {
+            //     if ($(ele).text() === this.$route.params.cat3) {
             //         // 트리거 셋팅
             //         $(this)
             //             .parent()
