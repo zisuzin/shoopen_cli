@@ -8,7 +8,4 @@ module.exports = {
         parser: '@babel/eslint-parser',
         requireConfigFile: false,
     },
-    rules: {
-        "vue/no-use-v-if-with-v-for": "off"
-    }
 };

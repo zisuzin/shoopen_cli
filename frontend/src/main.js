@@ -6,11 +6,13 @@ import store from './js/store.js';
 import App from '@/App.vue';
 import MainComp from './components/MainComp.vue';
 import ProdComp from './components/ProdComp.vue';
+import GoodsComp from "./components/GoodsComp.vue"
 
 // router 등록
 const routes = [
     { path: '/', component: MainComp },
     { path: '/product/all/:id', component: ProdComp },
+    { path: '/goods/:cat1/:cat2/:cat3', component: GoodsComp },
 ];
 
 const router = createRouter({
