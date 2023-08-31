@@ -82,9 +82,9 @@
                                     <template v-for="(v,i) in $store.state.imgpath">
                                         <template v-if="this.$route.params.cat3 === i || this.$route.params.cat3 === '전체'">
                                             <li v-for="a in v" :key="a.name" @click.prevent="getData(a)"
-                                                v-on:mouseover="handleMouseOver"
-                                                v-on:mouseleave="handleMouseLeave">
-                                                <div class="ui-prod-bx">
+                                            v-on:mouseover="handleMouseOver"
+                                            v-on:mouseleave="handleMouseLeave">
+                                            <div class="ui-prod-bx">
                                                     <a href="#">
                                                         <div
                                                             class="prod-detail-img">

@@ -11,7 +11,7 @@
                         <div class="logo">
                             <router-link :to="{ path: '/' }">
                                 <img
-                                    src="../public/images/logo/logo.png"
+                                    src="/images/logo/logo.png"
                                     alt="메인로고"/>
                             </router-link>
                         </div>

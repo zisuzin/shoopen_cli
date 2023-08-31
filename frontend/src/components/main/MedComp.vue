@@ -6,7 +6,7 @@
       <div class="media_thumb">
         <img v-bind:src="tumbimg" alt="대표썸네일" />
         <span class="mlogo">
-          <img src="/public/images/logo/logo_y.jpg" alt="sns계정명" />
+          <img src="/images/logo/logo_y.jpg" alt="sns계정명" />
           shoopen_official
         </span>
       </div>

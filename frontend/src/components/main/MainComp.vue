@@ -9,43 +9,43 @@
                     <ul class="swiper-wrapper">
                         <li class="swiper-slide">
                             <img
-                                src="/public/images/main/front/pc_1.jpg"
+                                src="/images/main/front/pc_1.jpg"
                                 alt="배너이미지1"
                             />
                         </li>
                         <li class="swiper-slide">
                             <img
-                                src="/public/images/main/front/pc_2.jpg"
+                                src="/images/main/front/pc_2.jpg"
                                 alt="배너이미지2"
                             />
                         </li>
                         <li class="swiper-slide">
                             <img
-                                src="/public/images/main/front/pc_3.jpg"
+                                src="/images/main/front/pc_3.jpg"
                                 alt="배너이미지3"
                             />
                         </li>
                         <li class="swiper-slide">
                             <img
-                                src="/public/images/main/front/pc_4.jpg"
+                                src="/images/main/front/pc_4.jpg"
                                 alt="배너이미지4"
                             />
                         </li>
                         <li class="swiper-slide">
                             <img
-                                src="/public/images/main/front/pc_5.jpg"
+                                src="/images/main/front/pc_5.jpg"
                                 alt="배너이미지5"
                             />
                         </li>
                         <li class="swiper-slide">
                             <img
-                                src="/public/images/main/front/pc_6.jpg"
+                                src="/images/main/front/pc_6.jpg"
                                 alt="배너이미지6"
                             />
                         </li>
                         <li class="swiper-slide">
                             <img
-                                src="/public/images/main/front/pc_7.jpg"
+                                src="/images/main/front/pc_7.jpg"
                                 alt="배너이미지7"
                             />
                         </li>
@@ -73,7 +73,7 @@
                         <figure>
                             <div class="special-img">
                                 <img
-                                    src="/public/images/main/special/ban1.jpg"
+                                    src="/images/main/special/ban1.jpg"
                                     alt="트렌드 샌들"
                                 />
                             </div>
@@ -89,7 +89,7 @@
                         <figure>
                             <div class="special-img">
                                 <img
-                                    src="/public/images/main/special/ban2.jpg"
+                                    src="/images/main/special/ban2.jpg"
                                     alt="피크닉"
                                 />
                             </div>
@@ -105,7 +105,7 @@
                         <figure>
                             <div class="special-img">
                                 <img
-                                    src="/public/images/main/special/ban3.jpg"
+                                    src="/images/main/special/ban3.jpg"
                                     alt="장마"
                                 />
                             </div>
@@ -121,7 +121,7 @@
                         <figure>
                             <div class="special-img">
                                 <img
-                                    src="/public/images/main/special/ban4.jpg"
+                                    src="/images/main/special/ban4.jpg"
                                     alt="OOTD"
                                 />
                             </div>
