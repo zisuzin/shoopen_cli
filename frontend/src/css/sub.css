@@ -572,16 +572,13 @@ main {
 .prod_cont {
     margin-top: 30px;
 }
-.btnwrap {
-    margin-top: 50px;
-}
 .more_btn {
     position: relative;
     left: 50%;
     transform: translateX(-50%);
     min-width: 200px;
     height: 60px;
-    line-height: 58px;
+    line-height: 60px;
     font-size: 16px;
     letter-spacing: -.8px;
     background-color: #111;

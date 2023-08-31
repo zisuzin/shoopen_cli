@@ -10,9 +10,7 @@
                         <!-- 1. 로고영역 -->
                         <div class="logo">
                             <router-link :to="{ path: '/' }">
-                                <img
-                                    src="/images/logo/logo.png"
-                                    alt="메인로고"/>
+                                <img src="/images/logo/logo.png" alt="메인로고"/>
                             </router-link>
                         </div>
                         <!-- 2. 카테고리영역 -->
