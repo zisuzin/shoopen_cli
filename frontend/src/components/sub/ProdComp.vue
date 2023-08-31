@@ -121,15 +121,19 @@ export default {
     // 서브페이지 초기데이터 셋팅
     function initCatnum() {
       // lnb 텍스트 저장 변수
+      const ary = $(".catbx > .on");
       const ary2 = $(".prod_tab li > a");
       ary2.each(function (idx, ele) {
         if ($(ele).text() === store.state.curUrl0.toUpperCase()) {
-            console.log("현재cat1:", store.state.curUrl0.toUpperCase())
-            console.log("ele들 텍스트:", $(ele).text())
           // 트리거 셋팅
           $(this).parent().trigger("click").addClass("on").siblings().removeClass("on");
         }
       });
+      ary.click(function() {
+       const btn0 = document.querySelector(".prod_tab li")
+       // 트리거 셋팅
+       btn0.click();
+      })
     } ////////////// initCatnum 함수 ////////////////
 
     // 최초호출!

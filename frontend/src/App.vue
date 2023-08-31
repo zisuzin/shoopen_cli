@@ -17,12 +17,12 @@
                         </div>
                         <!-- 2. 카테고리영역 -->
                         <ul class="catbx">
-                            <li>
+                            <li class="on">
                                 <router-link :to="{ path: '/product/all/new' }">
                                     NEW
                                 </router-link>
                             </li>
-                            <li>
+                            <li class="on">
                                 <router-link :to="{ path: '/product/all/best' }">
                                     BEST
                                 </router-link>

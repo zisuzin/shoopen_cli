@@ -2,16 +2,8 @@
 <template>
     <div class="subbx">
         <div class="all">
-            <a
-                href="#"
-                v-text="$store.state.setsubtit1"
-                v-on:click.prevent="linkData($store.state.lnbsrc, 'new')"
-            ></a>
-            <a
-                href="#"
-                v-text="$store.state.setsubtit2"
-                v-on:click.prevent="linkData($store.state.lnbsrc, 'best')"
-            ></a>
+            <a href="#" v-text="$store.state.setsubtit1" v-on:click.prevent="linkData($store.state.lnbsrc, 'new')"></a>
+            <a href="#" v-text="$store.state.setsubtit2" v-on:click.prevent="linkData($store.state.lnbsrc, 'best')"></a>
         </div>
         <dl class="sub">
             <dt class="all">
