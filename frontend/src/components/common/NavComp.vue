@@ -79,11 +79,11 @@ export default {
             const path = `/goods/${cat1}/${cat2}/${cat3}`;
             location.href = path;
         },
-        // // // new, best 클릭 전용 링크시스템!! (위랑 헷갈리지 말기!)
-        // linkData(pm1, pm2) {
-        //     console.log(pm1);
-        //     this.$router.push(`/goods?cat=${pm1}&${pm2}`).catch(() => {});
-        // },
+        // new, best 클릭 전용 링크시스템!! (위랑 헷갈리지 말기!)
+        linkData(pm1, pm2) {
+            const path2 = `/product/${pm1}/${pm2}`;
+            location.href = path2;
+        },
     },
 };
 </script>

@@ -5,9 +5,9 @@
       <!-- 속박스 -->
       <div class="cont">
         <section class="prod_container">
-          <div class="new_inner">
+          <div class="prod_inner">
             <h2>{{ $route.params.id.toUpperCase() }}</h2>
-            <div class="new_items">
+            <div class="prod_items">
               <div class="prod_tab">
                 <ul>
                   <li v-for="(v, i) in catTit" :key="i" @click.prevent="$store.commit('chgList', v)">
@@ -19,41 +19,46 @@
                 <ul>
                   <template v-for="(v,i) in prdData[$route.params.id]">
                     <template v-if="$store.state.setcat === i || $store.state.setcat === 'all'">
-                        <li v-for="x in v" :key="x.name">
-                          <div class="prodbx">
-                            <a href="#">
-                              <div class="prod_img">
-                                <img :src="'/images/goods/'+x.img+'.jpg'" alt="x.name" />
-                              </div>
-                            </a>
-                            <div title="찜하기" class="product_like" v-on:click="addWish(x, 1)">
-                              <button type="button" class="fa-solid fa-heart"></button>
-                            </div>
-                          </div>
-                          <div class="prod-detail">
-                            <div class="prod_txt">
-                              <strong class="brand">슈펜</strong>
-                              <p>{{ x.name }}</p>
-                            </div>
-                            <div class="pricebx">
-                              <span class="original-price">
-                                <em>{{ setComma(x.oprice) }}</em>
-                                <span v-if="x.oprice">원</span>
-                              </span>
-                              <br />
-                              <span class="discount-price">
-                                <em>{{ setComma(x.dprice) }}</em>
-                                <span>원</span>
-                              </span>
-                              <span class="percent-price" v-if="x.oprice && x.dprice">
-                                <em>{{ setDiscount(x.oprice, x.dprice) }}</em>
-                              </span>
-                            </div>
-                          </div>
+                        <li v-for="(x,y) in v" :key="x.name">
+                            <template v-if="y>=0 && y<12+$store.state.mnum">
+                                <div class="prodbx">
+                                    <a href="#">
+                                        <div class="prod_img">
+                                        <img :src="'/images/goods/'+x.img+'.jpg'" alt="x.name" />
+                                        </div>
+                                    </a>
+                                    <div title="찜하기" class="product_like" v-on:click="addWish(x, 1)">
+                                        <button type="button" class="fa-solid fa-heart"></button>
+                                    </div>
+                                    </div>
+                                    <div class="prod-detail">
+                                    <div class="prod_txt">
+                                        <strong class="brand">슈펜</strong>
+                                        <p>{{ x.name }}</p>
+                                    </div>
+                                    <div class="pricebx">
+                                        <span class="original-price">
+                                        <em>{{ setComma(x.oprice) }}</em>
+                                        <span v-if="x.oprice">원</span>
+                                        </span>
+                                        <br />
+                                        <span class="discount-price">
+                                        <em>{{ setComma(x.dprice) }}</em>
+                                        <span>원</span>
+                                        </span>
+                                        <span class="percent-price" v-if="x.oprice && x.dprice">
+                                        <em>{{ setDiscount(x.oprice, x.dprice) }}</em>
+                                        </span>
+                                    </div>
+                                </div>
+                            </template>
                         </li>
                     </template>
                   </template>
                 </ul>
+              </div>
+              <div class="btnwrap" v-if="$store.state.mbtn">
+                <button type="button" class="more_btn" @click="$store.commit('updateList',12)">View More</button>
               </div>
             </div>
           </div>
@@ -97,6 +102,11 @@ export default {
       catTit: ["all", "women", "men", "kids"],
     };
   },
+  created() {
+    // 파라미터 셋팅용 변수
+    store.state.curUrl0 = this.$route.params.type;
+    store.state.curUrl1 = this.$route.params.id;
+  },
   computed: {
     store() {
       return this.$store;
@@ -112,11 +122,10 @@ export default {
     function initCatnum() {
       // lnb 텍스트 저장 변수
       const ary2 = $(".prod_tab li > a");
-      const routePath = '/product/all/:id';
-      const extractVal = routePath.split('/')[2];
-
       ary2.each(function (idx, ele) {
-        if ($(ele).text() === extractVal.toUpperCase()) {
+        if ($(ele).text() === store.state.curUrl0.toUpperCase()) {
+            console.log("현재cat1:", store.state.curUrl0.toUpperCase())
+            console.log("ele들 텍스트:", $(ele).text())
           // 트리거 셋팅
           $(this).parent().trigger("click").addClass("on").siblings().removeClass("on");
         }

@@ -11,7 +11,7 @@ import GoodsComp from "./components/sub/GoodsComp.vue";
 // router 등록
 const routes = [
     { path: '/', component: MainComp },
-    { path: '/product/all/:id', component: ProdComp },
+    { path: '/product/:type/:id', component: ProdComp },
     { path: '/goods/:cat1/:cat2/:cat3', component: GoodsComp },
 ];
 

@@ -320,6 +320,7 @@ main {
     top: -8px;
     width: 100%;
     height: 20px;
+    appearance: none;
     -webkit-appearance: none;
     cursor: pointer;
     pointer-events: none;
@@ -498,7 +499,6 @@ main {
     height: 12px;
     margin-top: 10px;
 }
-
 .star > span {
     color: #949494;
     font-size: 12px;
@@ -507,16 +507,13 @@ main {
     position: absolute;
 }
 
-/* new 상품페이지 */
-.new_container {
-    margin: 50px 0;
-}
+/* new/best 상품페이지 */
 .prod_container {
     max-width: 1800px;
     display: flex;
     justify-content: center;
 }
-.new_inner {
+.prod_inner {
     padding: 50px 0;
     width: 80%;
 }
@@ -528,7 +525,7 @@ main {
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
 }
-.new_inner > h2 {
+.prod_inner > h2 {
     text-align: center;
     font-size: 50px;
     font-weight: 800;
@@ -574,4 +571,20 @@ main {
 }
 .prod_cont {
     margin-top: 30px;
+}
+.btnwrap {
+    margin-top: 50px;
+}
+.more_btn {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 200px;
+    height: 60px;
+    line-height: 58px;
+    font-size: 16px;
+    letter-spacing: -.8px;
+    background-color: #111;
+    color: #fff;
+    cursor: pointer;
 }

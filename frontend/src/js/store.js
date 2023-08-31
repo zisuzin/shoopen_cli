@@ -290,6 +290,7 @@ const store = createStore({
         curUrl0: '',
         curUrl1: '',
         curUrl2: '',
+
         // 서브페이지 출력 변수
         imgpath: {},
         setcat: '',
@@ -300,6 +301,11 @@ const store = createStore({
 
         // 카테고리 옵션 변수
         pdlength: '',
+
+        // 더보기버튼 상태변수
+        mbtn: true,
+        // 더보기배수 변수
+        mnum: 0,
 
         // 상세페이지 기본
         dtname: '',
@@ -335,6 +341,12 @@ const store = createStore({
         // new/best 상품 출력 함수
         chgList(st, pm) {
             store.state.setcat = pm;
+        },
+        // MORE 버튼 클릭시 이미지 증가 함수
+        updateList(dt,pm){
+            dt.mnum += pm;
+            if(dt.mnum>=30)
+                dt.mbtn = false;
         },
     }, ////// mutastions 구역 /////
 }); ///////////// 뷰엑스 인스턴스 /////////////
