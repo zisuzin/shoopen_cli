@@ -79,16 +79,40 @@
                             <div class="prdwrap">
                                 <!-- 상품리스트 -->
                                 <ul class="ui-col4">
-                                    <template v-for="(v,i) in $store.state.imgpath">
-                                        <template v-if="this.$route.params.cat3 === i || this.$route.params.cat3 === '전체'">
-                                            <li v-for="a in v" :key="a.name" @click.prevent="getData(a)"
-                                            v-on:mouseover="handleMouseOver"
-                                            v-on:mouseleave="handleMouseLeave">
-                                            <div class="ui-prod-bx">
+                                    <template
+                                        v-for="(v, i) in $store.state.imgpath"
+                                    >
+                                        <template
+                                            v-if="
+                                                $store.state.curUrl2 === i ||
+                                                $store.state.curUrl2 === '전체'
+                                            "
+                                        >
+                                            <li
+                                                v-for="a in v"
+                                                :key="a.name"
+                                                @click.prevent="getData(a)"
+                                                v-on:mouseover="handleMouseOver"
+                                                v-on:mouseleave="
+                                                    handleMouseLeave
+                                                "
+                                            >
+                                                <div class="ui-prod-bx">
                                                     <a href="#">
                                                         <div
-                                                            class="prod-detail-img">
-                                                            <img :src="'/images/goods/' + this.$route.params.cat1 + '/' + a.img + '.jpg'" :alt="a.name"/>
+                                                            class="prod-detail-img"
+                                                        >
+                                                            <img
+                                                                :src="
+                                                                    '/images/goods/' +
+                                                                    $store.state
+                                                                        .curUrl0 +
+                                                                    '/' +
+                                                                    a.img +
+                                                                    '.jpg'
+                                                                "
+                                                                :alt="a.name"
+                                                            />
                                                         </div>
                                                     </a>
                                                     <div
@@ -480,12 +504,14 @@
     </main>
     <!-- 하단영역 -->
     <footer id="info">
-      <!-- 속박스 -->
-      <div class="info">
-        <!-- 푸터영역 -->
-        <FootComp />
-        <p class="f_copyright">COPYRIGHT © WONDERPLACE ALL RIGHTS RESERVED.</p>
-      </div>
+        <!-- 속박스 -->
+        <div class="info">
+            <!-- 푸터영역 -->
+            <FootComp />
+            <p class="f_copyright">
+                COPYRIGHT © WONDERPLACE ALL RIGHTS RESERVED.
+            </p>
+        </div>
     </footer>
 </template>
 
@@ -513,9 +539,14 @@ export default {
         };
     },
     created() {
-        this.initSetSubSrc();
         // 소분류 메뉴출력을 위한 변수
         store.state.imgpath = store.state.gnb[this.$route.params.cat1].items[this.$route.params.cat2];
+        store.state.curUrl0 = this.$route.params.cat1;
+        store.state.curUrl1 = this.$route.params.cat2;
+        store.state.curUrl2 = this.$route.params.cat3;
+
+        // 함수호출!
+        this.initSetSubSrc();
     },
     methods: {
         getData(pm) {
@@ -539,7 +570,7 @@ export default {
         // lnb클릭시 v-if 조건값 설정하는 메서드
         setCatnum(num) {
             store.state.catnum = num;
-            this.$route.params.cat3 = num;
+            store.state.curUrl2 = num;
 
             // 이벤트 버블링 막기
             $('.product_like').click(function (e) {
@@ -551,25 +582,29 @@ export default {
         },
         // 상품리스트 오버시 이미지src 변경
         handleMouseOver(event) {
-            const tgImg = $(event.currentTarget).find("div > a > .prod-detail-img > img");
-            const tgSrc = tgImg.attr("src");
+            const tgImg = $(event.currentTarget).find(
+                'div > a > .prod-detail-img > img',
+            );
+            const tgSrc = tgImg.attr('src');
             // 이미지src에 '_on' 없는 경우만 변경하기
-            if (tgSrc.indexOf("_on") === -1) {
-                const newSrc = tgSrc.split(".jpg")[0] + "_on.jpg";
-                tgImg.attr("src", newSrc);
+            if (tgSrc.indexOf('_on') === -1) {
+                const newSrc = tgSrc.split('.jpg')[0] + '_on.jpg';
+                tgImg.attr('src', newSrc);
             }
         },
         // 상품리스트 리브시 기존 이미지로 변경
         handleMouseLeave(event) {
-            const tgImg = $(event.currentTarget).find("div > a > .prod-detail-img > img");
-            const tgSrc = tgImg.attr("src");
-            const prevSrc = tgSrc.split("_on.jpg")[0] + ".jpg";
-            tgImg.attr("src", prevSrc);
+            const tgImg = $(event.currentTarget).find(
+                'div > a > .prod-detail-img > img',
+            );
+            const tgSrc = tgImg.attr('src');
+            const prevSrc = tgSrc.split('_on.jpg')[0] + '.jpg';
+            tgImg.attr('src', prevSrc);
         },
         // 상품 갯수 카운트 함수
         pdLength() {
             this.$nextTick(() => {
-                const length = $(".ui-col4 > li").length;
+                const length = $('.ui-col4 > li').length;
                 store.state.pdlength = length;
             });
         },
@@ -593,44 +628,44 @@ export default {
                     break;
             }
         },
-    },
-    mounted() {
-        // 서브페이지 초기데이터 셋팅
-        function initCatnum() {
+        initCatnum() {
             // lnb 텍스트 저장 변수
-            // const ary = $('.catmenu > a > span');
+            const ary = $('.catmenu > a > span');
 
             // // 각 변수에 셋팅하기
-            // ary.each(function (idx, ele) {
-            //     // url 경로 일치할 경우 클릭이벤트 강제발생 / 클래스 on넣기/빼기
-            //     if ($(ele).text() === this.$route.params.cat3) {
-            //         // 트리거 셋팅
-            //         $(this)
-            //             .parent()
-            //             .trigger('click')
-            //             .addClass('on')
-            //             .siblings()
-            //             .removeClass('on');
-            //     }
-            // });
-        } ////////////// initCatnum 함수 ////////////////
-
+            ary.each(function (idx, ele) {
+                // url 경로 일치할 경우 클릭이벤트 강제발생 / 클래스 on넣기/빼기
+                if ($(ele).text() === store.state.curUrl2) {
+                    // 트리거 셋팅
+                    $(this)
+                        .parent()
+                        .trigger('click')
+                        .addClass('on')
+                        .siblings()
+                        .removeClass('on');
+                }
+            });
+        },
+    },
+    mounted() {
         // lnb 메뉴 클릭시 클래스 on 추가/제거
         $('.catmenu > a').click(function (e) {
             e.preventDefault();
             $(this).addClass('on').siblings().removeClass('on');
             let menuTxt = $(this).text();
-            console.log(menuTxt)
 
             // !!! URL 강제 변경하기
             // 변경이유 : SPA 변경시 전달변수 내용일치 -> 새로고침시 현재변경로딩!
             history.pushState(
-                null,null,`/goods/${this.$route.params.cat1}/${this.$route.params.cat2}/${menuTxt}`);
+                null,
+                null,
+                `/goods/${store.state.curUrl0}/${store.state.curUrl1}/${menuTxt}`,
+            );
         }); ////////// click ///////////
 
         // 최초호출!
         this.pdLength();
-        initCatnum();
+        this.initCatnum();
     },
 };
 </script>

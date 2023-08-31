@@ -3,7 +3,7 @@ import { createStore } from 'vuex';
 // 더미 데이터들
 import womenData from './gdsData/womenData.js';
 import menData from './gdsData/menData.js';
-import kidsData from './gdsData/womenData.js';
+import kidsData from './gdsData/kidsData.js';
 
 const store = createStore({
     // (1) 데이터 셋팅구역:
@@ -287,7 +287,6 @@ const store = createStore({
         setdpt3: '',
 
         // 현재 url 변수
-        curUrl: '',
         curUrl0: '',
         curUrl1: '',
         curUrl2: '',
