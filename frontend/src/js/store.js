@@ -349,9 +349,6 @@ const store = createStore({
                 dt.mbtn = false;
         },
     }, ////// mutastions 구역 /////
-    modules: {
-        namespaced: true, // 네임스페이스 활성화
-    }
 }); ///////////// 뷰엑스 인스턴스 /////////////
 
 export default store;
