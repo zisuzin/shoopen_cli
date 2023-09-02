@@ -118,8 +118,8 @@
                                     <swiper-slide>
                                         <img :src="'/images/goods/' + this.$route.params.cat1 + '/' + this.$route.params.cat2 + '/' + $store.state.dtsumimg3 + '.jpg'" alt="썸네일 상세이미지2"/>
                                     </swiper-slide>
-                                    <div class="swiper-button-next swbtn"></div>
-                                    <div class="swiper-button-prev swbtn"></div>
+                                    <div class="swiper-button-next toRbtn"></div>
+                                    <div class="swiper-button-prev toLbtn"></div>
                                 </swiper>
                                 <!-- 썸네일 리스트 -->
                                 <swiper class="swiper mySwiper2">
@@ -266,8 +266,12 @@ import store from '@/js/store.js';
 import $ from 'jquery';
 // 디테일페이지 CSS
 import "../../css/detail.css";
+// 스와이퍼 불러오기
 import swiperFn from "../../js/swiper.js";
 import { Swiper, SwiperSlide } from 'swiper/vue';
+import SwiperCore, { Navigation } from 'swiper';
+
+SwiperCore.use([Navigation]);
 
 export default {
     name: 'GoodsComp',

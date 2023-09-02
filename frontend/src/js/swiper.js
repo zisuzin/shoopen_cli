@@ -1,6 +1,8 @@
 // 스와이퍼 불러오기
-import Swiper from "swiper";
-import 'swiper/swiper-bundle.css';
+import Swiper, { Navigation } from "swiper/swiper.esm"
+import 'swiper/swiper-bundle.min.css';
+
+Swiper.use([Navigation])
 
 // 스와이퍼 함수
 function swiperFn() {
@@ -13,18 +15,16 @@ function swiperFn() {
         watchSlidesProgress: true,
     });
     
-    const swiper = new Swiper(".mySwiper1", { 
+    new Swiper(".mySwiper1", { 
         loop: true,
         navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
+            nextEl: ".toRbtn",
+            prevEl: ".toLbtn",
         },
         thumbs: {
             swiper: swiper2,
         },
     });
-
-    return swiper;
 } ////// swiperFn 함수 ///////
 
 export default swiperFn;
