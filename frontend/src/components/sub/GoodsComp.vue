@@ -305,7 +305,6 @@ export default {
     },
     methods: {
         getData(pm) {
-            console.log(pm)
             // [ 스토어 전역변수에 업데이트! ]
             // 기본정보 데이터
             store.state.dtname = pm['name'];
@@ -383,11 +382,12 @@ export default {
                     break;
             }
         },
+        // 경로 일치 lnb on 넣기 함수
         initCatnum() {
             // lnb 텍스트 저장 변수
             const ary = $('.catmenu > a > span');
 
-            // // 각 변수에 셋팅하기
+            // 각 변수에 셋팅하기
             ary.each(function (idx, ele) {
                 // url 경로 일치할 경우 클릭이벤트 강제발생 / 클래스 on넣기/빼기
                 if ($(ele).text() === store.state.curUrl2) {
@@ -396,51 +396,79 @@ export default {
                 }
             });
         },
+        // 더하기함수
+        plusBtn() {
+            let num = $(".opt_num input").val();
+            num++;
+            // 업데이트
+            $(".opt_num input").val(num);
+            store.state.result = num;
+        },
+        // 빼기함수
+        minusBtn() {
+            let num = $(".opt_num input").val();
+            num--;
+            if (num === 0) return;
+            // 업데이트
+            $(".opt_num input").val(num);
+            store.state.result = num;
+        },
         // 카테고리 보이기 메서드
-    openCat() {
-        const opt1 = $(".option_color");
-        const opt2 = $(".option_size");
-  
-        // 클래스 유무로 컬러옵션 보이기/숨김
-        opt1.toggleClass("on");
-        opt1.is(".on") ? opt1.siblings().css("display", "block") : opt1.siblings().css("display", "none");
-  
-        opt1.siblings().find("li").click(function () {
-            $(this).addClass("on").siblings().removeClass("on");
-            const tgcolor = $(this).text();
-            // li에 클래스 on 되면 부모박스 클래스 제거, 옵션창 닫음, 안내문구 텍스트 변경
-            if ($(this).is(".on")) {
-              $(".coloropt").css("display", "none") && opt1.removeClass("on") && $(".option_color > span").text(tgcolor);
-            }
-  
-            // .coloropt li 클릭후 opt2 클릭시
-            opt2.click(function () {
-              opt2.toggleClass("on");
-              opt2.is(".on") ? opt2.siblings().css("display", "block") : opt2.siblings().css("display", "none");
-              opt2.siblings().find("li").click(function () {
-                  $(this).addClass("on").siblings().removeClass("on");
-                  const tgsize = $(this).text();
-  
-                  if ($(this).is(".on")) {
-                    $(".sizeopt").css("display", "none") &&
-                      opt2.removeClass("on") &&
-                      $(".option_color > span").text("색상 옵션을 선택해주세요.") &&
-                      // 최종 결제 옵션/금액 박스 보이기
-                      $(".dtfinal_bx").css("display", "block") &&
-                      $(".dttot_bx").css("display", "block");
-                    // 선택한 색상/사이즈값 스토어 보내기
-                    store.state.picksize = tgsize;
-                    store.state.pickcolor = tgcolor;
-                  }
-  
-                  $(".opt_del").click(function () {
-                    $(".dtfinal_bx").css("display", "none");
-                    $(".dttot_bx").css("display", "none");
-                  });
-                }); // opt2 옵션리스트 li click
-            }); // op2t click
-          }); // opt1 li click
-      },
+        openCat() {
+            const opt1 = $(".option_color");
+            const opt2 = $(".option_size");
+    
+            // 클래스 유무로 컬러옵션 보이기/숨김
+            opt1.toggleClass("on");
+            opt1.is(".on") ? opt1.siblings().css("display", "block") : opt1.siblings().css("display", "none");
+    
+            opt1.siblings().find("li").click(function () {
+                $(this).addClass("on").siblings().removeClass("on");
+                const tgcolor = $(this).text();
+                // li에 클래스 on 되면 부모박스 클래스 제거, 옵션창 닫음, 안내문구 텍스트 변경
+                if ($(this).is(".on")) {
+                $(".coloropt").css("display", "none") && opt1.removeClass("on") && $(".option_color > span").text(tgcolor);
+                }
+    
+                // .coloropt li 클릭후 opt2 클릭시
+                opt2.click(function () {
+                opt2.toggleClass("on");
+                opt2.is(".on") ? opt2.siblings().css("display", "block") : opt2.siblings().css("display", "none");
+                opt2.siblings().find("li").click(function () {
+                    $(this).addClass("on").siblings().removeClass("on");
+                    const tgsize = $(this).text();
+    
+                    if ($(this).is(".on")) {
+                        $(".sizeopt").css("display", "none") &&
+                        opt2.removeClass("on") &&
+                        $(".option_color > span").text("색상 옵션을 선택해주세요.") &&
+                        // 최종 결제 옵션/금액 박스 보이기
+                        $(".dtfinal_bx").css("display", "block") &&
+                        $(".dttot_bx").css("display", "block");
+                        // 선택한 색상/사이즈값 스토어 보내기
+                        store.state.picksize = tgsize;
+                        store.state.pickcolor = tgcolor;
+                    }
+    
+                    $(".opt_del").click(function () {
+                        $(".dtfinal_bx").css("display", "none");
+                        $(".dttot_bx").css("display", "none");
+                    });
+                    }); // opt2 옵션리스트 li click
+                }); // op2t click
+            }); // opt1 li click
+        },
+        // 디테일페이지 닫기 메서드
+        closeDetail() {
+            // 상품 디테일박스 & 상품 옵션 박스 & 최종 결제가 박스 닫힘
+            $(".dtfinal_bx").css("display", "none");
+            $(".dttot_bx").css("display", "none");
+            // 색상 선택후 바로 닫기버튼 클릭시 텍스트 초기화
+            $(".option_color > span").text("색상 옵션을 선택해 주세요.");
+
+            // 디테일박스 닫기
+            this.showDt = false;
+        },
     },
     mounted() {
         // lnb 메뉴 클릭시 클래스 on 추가/제거
