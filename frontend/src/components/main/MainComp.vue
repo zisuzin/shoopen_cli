@@ -135,7 +135,7 @@
             </section>
             <!-- 4. 미디어섹션(컴포넌트)-->
             <section class="main_media">
-                <div class="mSwiper3 mySwiper media_wrap">
+                <div class="mSwiper3 mySwiper">
                     <h3>MEDIA</h3>
                     <ul class="swiper-wrapper">
                         <MedComp
@@ -351,7 +351,7 @@ export default {
                     prevEl: '.swiper-button-prev',
                 },
                 autoplay: {
-                    delay: 5000,
+                    delay: 3000,
                     disableOnInteraction: false,
                 },
             });

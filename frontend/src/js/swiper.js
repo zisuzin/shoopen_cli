@@ -1,13 +1,11 @@
 // 스와이퍼 불러오기
-import Swiper, { Navigation } from "swiper/swiper.esm"
-import 'swiper/swiper-bundle.min.css';
-
-Swiper.use([Navigation])
+import Swiper from 'swiper';
+import 'swiper/swiper-bundle.css';
 
 // 스와이퍼 함수
 function swiperFn() {
     // 상품 상세페이지 스와이퍼 배너
-    const swiper2 = new Swiper(".mySwiper2", {
+    const swiper2 = new Swiper(".pSwiper1", {
         loop: true,
         spaceBetween: 10,
         slidesPerView: 3,
@@ -15,8 +13,9 @@ function swiperFn() {
         watchSlidesProgress: true,
     });
     
-    new Swiper(".mySwiper1", { 
+    new Swiper(".pSwiper0", { 
         loop: true,
+        slidesPerView: 1,
         navigation: {
             nextEl: ".toRbtn",
             prevEl: ".toLbtn",

@@ -108,31 +108,35 @@
                             <!-- 이미지 배너 박스 -->
                             <div class="detail_img">
                                 <!-- 슬라이드 이미지 -->
-                                <swiper class="swiper mySwiper1">
-                                    <swiper-slide>
-                                        <img :src="'/images/goods/' + this.$route.params.cat1 + '/' +$store.state.dtimg + '.jpg'" alt="썸네일 대표이미지"/>
-                                    </swiper-slide>
-                                    <swiper-slide>
-                                        <img :src="'/images/goods/' + this.$route.params.cat1 + '/' + this.$route.params.cat2 + '/' + $store.state.dtsumimg2 + '.jpg'" alt="썸네일 상세이미지1"/>
-                                    </swiper-slide>
-                                    <swiper-slide>
-                                        <img :src="'/images/goods/' + this.$route.params.cat1 + '/' + this.$route.params.cat2 + '/' + $store.state.dtsumimg3 + '.jpg'" alt="썸네일 상세이미지2"/>
-                                    </swiper-slide>
+                                <div class="pSwiper0 mySwiper">
+                                    <ul class="swiper-wrapper">
+                                        <li class="swiper-slide">
+                                            <img :src="'/images/goods/' + this.$route.params.cat1 + '/' +$store.state.dtimg + '.jpg'" alt="썸네일 대표이미지"/>
+                                        </li>
+                                        <li class="swiper-slide">
+                                            <img :src="'/images/goods/' + this.$route.params.cat1 + '/' + this.$route.params.cat2 + '/' + $store.state.dtsumimg2 + '.jpg'" alt="썸네일 상세이미지1"/>
+                                        </li>
+                                        <li class="swiper-slide">
+                                            <img :src="'/images/goods/' + this.$route.params.cat1 + '/' + this.$route.params.cat2 + '/' + $store.state.dtsumimg3 + '.jpg'" alt="썸네일 상세이미지2"/>
+                                        </li>
+                                    </ul>
                                     <div class="swiper-button-next toRbtn"></div>
                                     <div class="swiper-button-prev toLbtn"></div>
-                                </swiper>
+                                </div>
                                 <!-- 썸네일 리스트 -->
-                                <swiper class="swiper mySwiper2">
-                                    <swiper-slide>
-                                        <img :src="'/images/goods/' + this.$route.params.cat1 + '/' + $store.state.dtimg + '.jpg'" alt="썸네일 상세이미지1"/>
-                                    </swiper-slide>
-                                    <swiper-slide>
-                                        <img :src="'/images/goods/' + this.$route.params.cat1 + '/' + this.$route.params.cat2 + '/' + $store.state.dtsumimg2 + '.jpg'" alt="썸네일 상세이미지2"/>
-                                    </swiper-slide>
-                                    <swiper-slide>
-                                        <img :src="'/images/goods/' +this.$route.params.cat1 +'/' +this.$route.params.cat2 +'/' +$store.state.dtsumimg3 +'.jpg'" alt="썸네일 상세이미지3"/>
-                                    </swiper-slide>
-                                </swiper>
+                                <div class="pSwiper1 mySwiper">
+                                    <ul class="swiper-wrapper">
+                                        <li class="swiper-slide">
+                                            <img :src="'/images/goods/' + this.$route.params.cat1 + '/' + $store.state.dtimg + '.jpg'" alt="썸네일 상세이미지1"/>
+                                        </li>
+                                        <li class="swiper-slide">
+                                            <img :src="'/images/goods/' + this.$route.params.cat1 + '/' + this.$route.params.cat2 + '/' + $store.state.dtsumimg2 + '.jpg'" alt="썸네일 상세이미지2"/>
+                                        </li>
+                                        <li class="swiper-slide">
+                                            <img :src="'/images/goods/' +this.$route.params.cat1 +'/' +this.$route.params.cat2 +'/' +$store.state.dtsumimg3 +'.jpg'" alt="썸네일 상세이미지3"/>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                             <!-- 구매 인터페이스 영역 -->
                             <div class="detail_buy">
@@ -268,18 +272,12 @@ import $ from 'jquery';
 import "../../css/detail.css";
 // 스와이퍼 불러오기
 import swiperFn from "../../js/swiper.js";
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import SwiperCore, { Navigation } from 'swiper';
-
-SwiperCore.use([Navigation]);
 
 export default {
     name: 'GoodsComp',
     mixins: [crossMixin],
     components: {
         FootComp,
-        Swiper,
-        SwiperSlide,
     },
     data() {
         return {
