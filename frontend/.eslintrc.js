@@ -9,6 +9,9 @@ module.exports = {
         requireConfigFile: false,
     },
     rules: {
-        'vue/no-use-v-if-with-v-for': 'off'
+        'vue/no-use-v-if-with-v-for': 'off',
+    },
+    "globals": {
+        "swiper": false
     }
 };

@@ -111,13 +111,13 @@
                                 <div class="swiper mySwiper">
                                     <ul class="swiper-wrapper">
                                         <li class="swiper-slide">
-                                            <img :src="'./images/goods/' + this.$route.params.cat1 + '/' +$store.state.dtimg + '.jpg'" alt="썸네일 대표이미지"/>
+                                            <img :src="'/images/goods/' + this.$route.params.cat1 + '/' +$store.state.dtimg + '.jpg'" alt="썸네일 대표이미지"/>
                                         </li>
                                         <li class="swiper-slide">
-                                            <img :src="'./images/goods/' + this.$route.params.cat1 + '/' + this.$route.params.cat2 + '/' + $store.state.dtsumimg2 + '.jpg'" alt="썸네일 상세이미지1"/>
+                                            <img :src="'/images/goods/' + this.$route.params.cat1 + '/' + this.$route.params.cat2 + '/' + $store.state.dtsumimg2 + '.jpg'" alt="썸네일 상세이미지1"/>
                                         </li>
                                         <li class="swiper-slide">
-                                            <img :src="'./images/goods/' + this.$route.params.cat1 + '/' + this.$route.params.cat2 + '/' + $store.state.dtsumimg3 + '.jpg'" alt="썸네일 상세이미지2"/>
+                                            <img :src="'/images/goods/' + this.$route.params.cat1 + '/' + this.$route.params.cat2 + '/' + $store.state.dtsumimg3 + '.jpg'" alt="썸네일 상세이미지2"/>
                                         </li>
                                     </ul>
                                     <div class="swiper-button-next swbtn"></div>
@@ -127,13 +127,13 @@
                                 <div class="swiper mySwiper2">
                                     <ul class="swiper-wrapper">
                                         <li class="swiper-slide">
-                                            <img :src="'./images/goods/' + this.$route.params.cat1 + '/' + $store.state.dtimg + '.jpg'" alt="썸네일 상세이미지1"/>
+                                            <img :src="'/images/goods/' + this.$route.params.cat1 + '/' + $store.state.dtimg + '.jpg'" alt="썸네일 상세이미지1"/>
                                         </li>
                                         <li class="swiper-slide">
-                                            <img :src="'./images/goods/' + this.$route.params.cat1 + '/' + this.$route.params.cat2 + '/' + $store.state.dtsumimg2 + '.jpg'" alt="썸네일 상세이미지2"/>
+                                            <img :src="'/images/goods/' + this.$route.params.cat1 + '/' + this.$route.params.cat2 + '/' + $store.state.dtsumimg2 + '.jpg'" alt="썸네일 상세이미지2"/>
                                         </li>
                                         <li class="swiper-slide">
-                                            <img :src="'./images/goods/' +this.$route.params.cat1 +'/' +this.$route.params.cat2 +'/' +$store.state.dtsumimg3 +'.jpg'" alt="썸네일 상세이미지3"/>
+                                            <img :src="'/images/goods/' +this.$route.params.cat1 +'/' +this.$route.params.cat2 +'/' +$store.state.dtsumimg3 +'.jpg'" alt="썸네일 상세이미지3"/>
                                         </li>
                                     </ul>
                                 </div>
@@ -261,10 +261,6 @@
 </template>
 
 <script>
-// 더미데이터들
-import kidsData from '../../js/gdsData/kidsData.js';
-import menData from '../../js/gdsData/menData.js';
-import womenData from '../../js/gdsData/womenData.js';
 import FootComp from '../common/FootComp.vue';
 // 공통기능함수
 import crossMixin from '@/js/common.js';
@@ -272,6 +268,9 @@ import crossMixin from '@/js/common.js';
 import store from '@/js/store.js';
 // 제이쿼리 불러오기
 import $ from 'jquery';
+// 디테일페이지 CSS
+import "../../css/detail.css";
+import swiperFn from "../../js/swiper.js";
 
 export default {
     name: 'GoodsComp',
@@ -281,10 +280,18 @@ export default {
     },
     data() {
         return {
-            // 외부 더미 데이터들
-            tgData: [womenData, menData, kidsData],
             showDt: false,
         };
+    },
+    computed: {
+        // 상세페이지 조건부 렌더링
+        compStyle() {
+            return {
+                visibility: this.showDt ? 'visible' : 'hidden',
+                opacity: this.showDt ? 1 : 0,
+                transition: this.showDt ? '0.3s ease' : '0s ease', 
+            };
+        },
     },
     created() {
         // 소분류 메뉴출력을 위한 변수
@@ -298,6 +305,7 @@ export default {
     },
     methods: {
         getData(pm) {
+            console.log(pm)
             // [ 스토어 전역변수에 업데이트! ]
             // 기본정보 데이터
             store.state.dtname = pm['name'];
@@ -310,10 +318,9 @@ export default {
             store.state.dtsumimg2 = pm['sumimg2'];
             store.state.dtsumimg3 = pm['sumimg3'];
 
-            console.log($('.swiper-slide'));
-
             // 디테일박스 열기
             this.showDt = true;
+            swiperFn();
         },
         // lnb클릭시 v-if 조건값 설정하는 메서드
         setCatnum(num) {
@@ -389,6 +396,51 @@ export default {
                 }
             });
         },
+        // 카테고리 보이기 메서드
+    openCat() {
+        const opt1 = $(".option_color");
+        const opt2 = $(".option_size");
+  
+        // 클래스 유무로 컬러옵션 보이기/숨김
+        opt1.toggleClass("on");
+        opt1.is(".on") ? opt1.siblings().css("display", "block") : opt1.siblings().css("display", "none");
+  
+        opt1.siblings().find("li").click(function () {
+            $(this).addClass("on").siblings().removeClass("on");
+            const tgcolor = $(this).text();
+            // li에 클래스 on 되면 부모박스 클래스 제거, 옵션창 닫음, 안내문구 텍스트 변경
+            if ($(this).is(".on")) {
+              $(".coloropt").css("display", "none") && opt1.removeClass("on") && $(".option_color > span").text(tgcolor);
+            }
+  
+            // .coloropt li 클릭후 opt2 클릭시
+            opt2.click(function () {
+              opt2.toggleClass("on");
+              opt2.is(".on") ? opt2.siblings().css("display", "block") : opt2.siblings().css("display", "none");
+              opt2.siblings().find("li").click(function () {
+                  $(this).addClass("on").siblings().removeClass("on");
+                  const tgsize = $(this).text();
+  
+                  if ($(this).is(".on")) {
+                    $(".sizeopt").css("display", "none") &&
+                      opt2.removeClass("on") &&
+                      $(".option_color > span").text("색상 옵션을 선택해주세요.") &&
+                      // 최종 결제 옵션/금액 박스 보이기
+                      $(".dtfinal_bx").css("display", "block") &&
+                      $(".dttot_bx").css("display", "block");
+                    // 선택한 색상/사이즈값 스토어 보내기
+                    store.state.picksize = tgsize;
+                    store.state.pickcolor = tgcolor;
+                  }
+  
+                  $(".opt_del").click(function () {
+                    $(".dtfinal_bx").css("display", "none");
+                    $(".dttot_bx").css("display", "none");
+                  });
+                }); // opt2 옵션리스트 li click
+            }); // op2t click
+          }); // opt1 li click
+      },
     },
     mounted() {
         // lnb 메뉴 클릭시 클래스 on 추가/제거
