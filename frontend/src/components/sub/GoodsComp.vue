@@ -266,8 +266,11 @@ import kidsData from '../../js/gdsData/kidsData.js';
 import menData from '../../js/gdsData/menData.js';
 import womenData from '../../js/gdsData/womenData.js';
 import FootComp from '../common/FootComp.vue';
+// 공통기능함수
 import crossMixin from '@/js/common.js';
+// 스토어 불러오기
 import store from '@/js/store.js';
+// 제이쿼리 불러오기
 import $ from 'jquery';
 
 export default {

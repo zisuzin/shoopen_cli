@@ -572,6 +572,9 @@ main {
 .prod_cont {
     margin-top: 30px;
 }
+.btnwrap {
+    margin-top: 30px;
+}
 .more_btn {
     position: relative;
     left: 50%;

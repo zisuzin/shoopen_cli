@@ -56,6 +56,7 @@
 import crossMixin from "../../js/common.js";
 // 제이쿼리 불러오기
 import $ from "jquery";
+// 더미데이터
 import { m_bestData } from "../../js/gdsData/mainData.js";
 
 export default {

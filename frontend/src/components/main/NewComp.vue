@@ -51,11 +51,11 @@
 </template>
 
 <script>
-// 공통기능 함수
+// 공통기능함수
 import crossMixin from "../../js/common.js";
 // 제이쿼리 불러오기
 import $ from "jquery";
-// 상품정보데이터
+// 더미데이터
 import { m_newData } from "../../js/gdsData/mainData.js";
 
 export default {
@@ -63,7 +63,6 @@ export default {
   mixins: [crossMixin],
   data() {
     return {
-      // 외부 더미데이터
       m_newData: m_newData,
       notelnb2: ["WOMEN", "MEN", "KIDS"],
     };

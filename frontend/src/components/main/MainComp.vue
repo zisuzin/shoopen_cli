@@ -237,6 +237,7 @@
 </template>
 
 <script>
+// 지도 관련 함수
 import mapSearch from '../../js/map.js';
 // 스와이퍼 불러오기
 import Swiper from 'swiper';
@@ -261,7 +262,6 @@ export default {
     },
     data() {
         return {
-            // 메인 미디어섹션 데이터
             mData: mData,
         };
     },

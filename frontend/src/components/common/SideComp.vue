@@ -11,6 +11,7 @@
 </template>
 
 <script>
+// 제이쿼리 불러오기
 import $ from "jquery";
 
 export default {

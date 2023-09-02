@@ -55,7 +55,7 @@
                   </template>
                 </ul>
               </div>
-              <div class="btnwrap" v-if="$store.state.mbtn">
+              <div class="btnwrap" v-if="$store.state.mbtn && $store.state.setcat === 'all'">
                 <button type="button" class="more_btn" @click="$store.commit('updateList',12)">View More</button>
               </div>
             </div>
@@ -75,7 +75,7 @@
 </template>
 
 <script>
-// 공통기능 함수
+// 공통기능함수
 import crossMixin from "../../js/common.js";
 // 하단컴포넌트
 import FootComp from "../common/FootComp.vue";

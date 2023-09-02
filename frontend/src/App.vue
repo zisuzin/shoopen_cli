@@ -52,7 +52,7 @@
 <script>
 // 제이쿼리 불러오기
 import $ from 'jquery';
-// 스오터 불러오기
+// 스토어 불러오기
 import store from '../src/js/store.js';
 // 자식 컴포넌트
 import NavComp from './components/common/NavComp.vue';
