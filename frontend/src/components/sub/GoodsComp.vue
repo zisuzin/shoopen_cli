@@ -318,6 +318,8 @@ export default {
 
             // 디테일박스 열기
             this.showDt = true;
+
+            // 스와이퍼 함수 호출
             swiperFn();
         },
         // lnb클릭시 v-if 조건값 설정하는 메서드
