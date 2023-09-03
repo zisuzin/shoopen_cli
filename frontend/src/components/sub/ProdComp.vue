@@ -20,7 +20,7 @@
                         <ul>
                             <template v-for="(v,i) in prdData[$route.params.id]">
                                 <template v-for="x in v">
-                                    <li :key="x.idx" @click="$store.commit('setDet', x)" v-if="$store.state.setcat === i || $store.state.setcat === 'all' && x.idx>=0 && x.idx<12+$store.state.mnum">
+                                    <li :key="x.idx" @click.prevent="getData(x)" v-if="$store.state.setcat === i || $store.state.setcat === 'all' && x.idx>=0 && x.idx<12+$store.state.mnum">
                                         <div class="prodbx">
                                             <div class="prod_img">
                                                 <img :src="'/images/goods/'+x.img+'.jpg'" alt="x.name" />
@@ -54,6 +54,8 @@
                             </template>
                         </ul>
                     </div>
+                    <!-- 여기부터 디테일페이지! -->
+                    <DetailComp v-if="showDt" :style="compStyle" @close-detail="closeDetail"/>
                     <!-- new 페이지 더보기 버튼 -->
                     <div class="btnwrap" v-if="$store.state.mbtn && $store.state.setcat === 'all'">
                         <button type="button" class="more_btn" @click="$store.commit('updateList', 12)">View More</button>
@@ -80,6 +82,7 @@
 import crossMixin from "../../js/common.js";
 // 하단컴포넌트
 import FootComp from "../common/FootComp.vue";
+import DetailComp from "./DetailComp.vue";
 // 상품정보데이터
 import prdData from "../../js/gdsData/newbestData.js";
 // 제이쿼리 불러오기
@@ -93,11 +96,13 @@ export default {
   name: "ProdComp",
   components: {
     FootComp,
+    DetailComp,
   },
   mixins: [crossMixin],
   data() {
     return {
       prdData: prdData,
+      showDt: false,
       catTit: ["all", "women", "men", "kids"],
     };
   },
@@ -109,6 +114,33 @@ export default {
   computed: {
     store() {
       return this.$store;
+    },
+    // 상세페이지 조건부 렌더링
+    compStyle() {
+        return {
+            visibility: this.showDt ? 'visible' : 'hidden',
+            opacity: this.showDt ? 1 : 0,
+            transition: this.showDt ? '0.3s ease' : '0s ease', 
+        };
+    },
+  },
+  methods: {
+    getData(pm) {
+        console.log(pm)
+        // [ 스토어 전역변수에 업데이트! ]
+        // 기본정보 데이터
+        store.state.dtname = pm['name'];
+        store.state.dtimg = pm['img'];
+        store.state.dtoprice = pm['oprice'];
+        store.state.dtdprice = pm['dprice'];
+        store.state.dtcolor = pm['color'];
+        store.state.dtsize = pm['size'];
+        // 썸네일 데이터
+        store.state.dtsumimg2 = pm['sumimg2'];
+        store.state.dtsumimg3 = pm['sumimg3'];
+
+        // 디테일박스 열기
+        this.showDt = true;
     },
   },
   mounted() {

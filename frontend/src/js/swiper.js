@@ -4,13 +4,9 @@ import 'swiper/swiper-bundle.css';
 
 // 스와이퍼 함수
 function swiperFn() {
-    console.log("swiper.js 파일의 스와이퍼다!!!")
-    // 상품 상세페이지 스와이퍼 배너
     const swiper2 = new Swiper(".mySwiper2", {
-        loop: true,
         spaceBetween: 10,
         slidesPerView: 3,
-        slidesPerGroup: 3,
         freeMode: true,
         watchSlidesProgress: true,
     });
@@ -25,7 +21,6 @@ function swiperFn() {
             swiper: swiper2,
         },
     });
-
 } ////// swiperFn 함수 ///////
 
 export default swiperFn;
