@@ -7,44 +7,13 @@
                     <!-- 슬라이드 이미지 -->
                     <swiper class="swiper mySwiper1">
                         <swiper-slide>
-                            <img
-                                :src="
-                                    '/images/goods/' +
-                                    this.$route.params.cat1 +
-                                    '/' +
-                                    $store.state.dtimg +
-                                    '.jpg'
-                                "
-                                alt="썸네일 대표이미지"
-                            />
+                            <img :src="'/images/goods/' + $store.state.dtimg + '.jpg'" alt="썸네일 대표이미지"/>
                         </swiper-slide>
                         <swiper-slide>
-                            <img
-                                :src="
-                                    '/images/goods/' +
-                                    this.$route.params.cat1 +
-                                    '/' +
-                                    this.$route.params.cat2 +
-                                    '/' +
-                                    $store.state.dtsumimg2 +
-                                    '.jpg'
-                                "
-                                alt="썸네일 상세이미지1"
-                            />
+                            <img :src="'/images/goods/' + $store.state.dtsumimg2 + '.jpg'" alt="썸네일 상세이미지1"/>
                         </swiper-slide>
                         <swiper-slide>
-                            <img
-                                :src="
-                                    '/images/goods/' +
-                                    this.$route.params.cat1 +
-                                    '/' +
-                                    this.$route.params.cat2 +
-                                    '/' +
-                                    $store.state.dtsumimg3 +
-                                    '.jpg'
-                                "
-                                alt="썸네일 상세이미지2"
-                            />
+                            <img :src="'/images/goods/' + $store.state.dtsumimg3 + '.jpg'" alt="썸네일 상세이미지2"/>
                         </swiper-slide>
                         <div class="swiper-button-next swbtn toRbtn"></div>
                         <div class="swiper-button-prev swbtn toLbtn"></div>
@@ -52,44 +21,13 @@
                     <!-- 썸네일 리스트 -->
                     <swiper class="swiper mySwiper2">
                         <swiper-slide>
-                            <img
-                                :src="
-                                    '/images/goods/' +
-                                    this.$route.params.cat1 +
-                                    '/' +
-                                    $store.state.dtimg +
-                                    '.jpg'
-                                "
-                                alt="썸네일 상세이미지1"
-                            />
+                            <img :src="'/images/goods/' + $store.state.dtimg + '.jpg'" alt="썸네일 상세이미지1"/>
                         </swiper-slide>
                         <swiper-slide>
-                            <img
-                                :src="
-                                    '/images/goods/' +
-                                    this.$route.params.cat1 +
-                                    '/' +
-                                    this.$route.params.cat2 +
-                                    '/' +
-                                    $store.state.dtsumimg2 +
-                                    '.jpg'
-                                "
-                                alt="썸네일 상세이미지2"
-                            />
+                            <img :src="'/images/goods/' + $store.state.dtsumimg2 + '.jpg'" alt="썸네일 상세이미지2"/>
                         </swiper-slide>
                         <swiper-slide>
-                            <img
-                                :src="
-                                    '/images/goods/' +
-                                    this.$route.params.cat1 +
-                                    '/' +
-                                    this.$route.params.cat2 +
-                                    '/' +
-                                    $store.state.dtsumimg3 +
-                                    '.jpg'
-                                "
-                                alt="썸네일 상세이미지3"
-                            />
+                            <img :src="'/images/goods/' + $store.state.dtsumimg3 + '.jpg'" alt="썸네일 상세이미지3"/>
                         </swiper-slide>
                     </swiper>
                 </div>
@@ -101,27 +39,15 @@
                             <dd class="price_wrap">
                                 <div class="price">
                                     <div class="txt-def">
-                                        <em
-                                            >{{
-                                                setComma($store.state.dtoprice)
-                                            }}
-                                            <span v-if="$store.state.dtoprice"
-                                                >원</span
-                                            >
+                                        <em>{{ setComma($store.state.dtoprice) }}
+                                            <span v-if="$store.state.dtoprice">원</span>
                                         </em>
                                     </div>
                                     <div class="txt-dsc">
-                                        <em>{{
-                                            setComma($store.state.dtdprice)
-                                        }}</em>
+                                        <em>{{ setComma($store.state.dtdprice) }}</em>
                                         <span>원</span>
                                         <span class="txt-percent">
-                                            <em>{{
-                                                setDiscount(
-                                                    $store.state.dtoprice,
-                                                    $store.state.dtdprice,
-                                                )
-                                            }}</em>
+                                            <em>{{ setDiscount($store.state.dtoprice, $store.state.dtdprice) }}</em>
                                         </span>
                                     </div>
                                 </div>
@@ -136,22 +62,12 @@
                                     <li class="color">
                                         <em>색상</em>
                                         <div class="copt">
-                                            <div
-                                                class="option_inner option_color"
-                                                @click="openCat()"
-                                            >
-                                                <span
-                                                    >색상 옵션을
-                                                    선택해주세요.</span
-                                                >
+                                            <div class="option_inner option_color" @click="openCat()">
+                                                <span>색상 옵션을 선택해주세요.</span>
                                             </div>
                                             <div class="option_list coloropt">
                                                 <ul>
-                                                    <li
-                                                        v-for="(a, b) in $store
-                                                            .state.dtcolor"
-                                                        :key="b"
-                                                    >
+                                                    <li v-for="(a, b) in $store.state.dtcolor" :key="b">
                                                         <span>{{ a }}</span>
                                                     </li>
                                                 </ul>
@@ -161,21 +77,12 @@
                                     <li class="size">
                                         <em>사이즈</em>
                                         <div class="copt">
-                                            <div
-                                                class="option_inner option_size"
-                                            >
-                                                <span
-                                                    >사이즈 옵션을
-                                                    선택해주세요.</span
-                                                >
+                                            <div class="option_inner option_size">
+                                                <span>사이즈 옵션을 선택해주세요.</span>
                                             </div>
                                             <div class="option_list sizeopt">
                                                 <ul>
-                                                    <li
-                                                        v-for="(a, b) in $store
-                                                            .state.dtsize"
-                                                        :key="b"
-                                                    >
+                                                    <li v-for="(a, b) in $store.state.dtsize" :key="b">
                                                         <span>{{ a }}</span>
                                                     </li>
                                                 </ul>
@@ -189,42 +96,17 @@
                                 <ul>
                                     <li>
                                         <div class="opt_name">
-                                            {{
-                                                '[택배배송] ' +
-                                                $store.state.pickcolor +
-                                                '/' +
-                                                $store.state.picksize
-                                            }}
+                                            {{ '[택배배송] ' + $store.state.pickcolor + '/' + $store.state.picksize }}
                                         </div>
                                         <div class="opt_num">
-                                            <a
-                                                href="#"
-                                                role="button"
-                                                class="minus"
-                                                v-on:click="minusBtn()"
-                                                >수량감소</a
-                                            >
-                                            <a
-                                                href="#"
-                                                role="button"
-                                                class="plus"
-                                                v-on:click="plusBtn()"
-                                                >수량증가</a
-                                            >
+                                            <a href="#" role="button" class="minus" v-on:click="minusBtn()" >수량감소</a>
+                                            <a href="#" role="button" class="plus" v-on:click="plusBtn()" >수량증가</a>
                                             <label>
-                                                <input
-                                                    type="number"
-                                                    class="num"
-                                                    title="수량"
-                                                    value="1"
-                                                />
+                                                <input type="number" class="num" title="수량" value="1"/>
                                             </label>
                                         </div>
                                         <div class="opt_price">
-                                            <strong>{{
-                                                setComma($store.state.dtdprice)
-                                            }}</strong
-                                            >원
+                                            <strong>{{ setComma($store.state.dtdprice) }}</strong>원
                                         </div>
                                         <span class="opt_del">
                                             <i class="fa-solid fa-xmark"></i>
@@ -235,12 +117,7 @@
                             <div class="dttot_bx">
                                 <span class="tot_txt">총 합계</span>
                                 <span class="tot_price">
-                                    <strong>{{
-                                        setComma(
-                                            Number($store.state.dtdprice) *
-                                                $store.state.result,
-                                        )
-                                    }}</strong>
+                                    <strong>{{ setComma(Number($store.state.dtdprice) * $store.state.result) }}</strong>
                                     원
                                 </span>
                             </div>
@@ -248,10 +125,7 @@
                                 <a href="#">CART</a>
                                 <a href="#">BUY</a>
                             </div>
-                            <div
-                                class="dtbtn clbtn"
-                                @click.prevent="closeDetail"
-                            >
+                            <div class="dtbtn clbtn" @click.prevent="closeDetail">
                                 <a href="#">
                                     CLOSE
                                     <i class="fa-solid fa-xmark"></i>

@@ -126,7 +126,7 @@ export default {
   },
   methods: {
     getData(pm) {
-        console.log(pm)
+        console.log(pm['img'])
         // [ 스토어 전역변수에 업데이트! ]
         // 기본정보 데이터
         store.state.dtname = pm['name'];
