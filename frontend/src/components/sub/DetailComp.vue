@@ -201,14 +201,14 @@
                                                 href="#"
                                                 role="button"
                                                 class="minus"
-                                                v-on:click.prevent="minusBtn()"
+                                                v-on:click="minusBtn()"
                                                 >수량감소</a
                                             >
                                             <a
                                                 href="#"
                                                 role="button"
                                                 class="plus"
-                                                v-on:click.prevent="plusBtn()"
+                                                v-on:click="plusBtn()"
                                                 >수량증가</a
                                             >
                                             <label>
@@ -279,6 +279,7 @@ import crossMixin from '@/js/common.js';
 export default {
     name: 'DetailComp',
     mixins: [crossMixin],
+    props: ['detData'],
     components: {
         Swiper,
         SwiperSlide,
@@ -345,6 +346,17 @@ export default {
             // 업데이트
             $(".opt_num input").val(num);
             store.state.result = num;
+        },
+        // 디테일페이지 닫기 메서드
+        closeDetail() {
+            // 상품 디테일박스 & 상품 옵션 박스 & 최종 결제가 박스 닫힘
+            $(".dtfinal_bx").css("display", "none");
+            $(".dttot_bx").css("display", "none");
+            // 색상 선택후 바로 닫기버튼 클릭시 텍스트 초기화
+            $(".option_color > span").text("색상 옵션을 선택해 주세요.");
+
+            // 디테일박스 닫기
+            this.detData = false;
         },
     },
     mounted() {

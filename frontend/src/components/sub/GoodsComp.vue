@@ -103,7 +103,7 @@
                         </div>
                     </div>
                     <!-- 여기부터 디테일페이지! -->
-                    <DetailComp v-if="showDt" :style="compStyle"/>
+                    <DetailComp v-if="showDt" :style="compStyle" :detData="showDt"/>
                 </div>
             </div>
         </main>
@@ -257,17 +257,6 @@ export default {
                     $(this).parent().trigger('click').addClass('on').siblings().removeClass('on');
                 }
             });
-        },
-        // 디테일페이지 닫기 메서드
-        closeDetail() {
-            // 상품 디테일박스 & 상품 옵션 박스 & 최종 결제가 박스 닫힘
-            $(".dtfinal_bx").css("display", "none");
-            $(".dttot_bx").css("display", "none");
-            // 색상 선택후 바로 닫기버튼 클릭시 텍스트 초기화
-            $(".option_color > span").text("색상 옵션을 선택해 주세요.");
-
-            // 디테일박스 닫기
-            this.showDt = false;
         },
     },
     mounted() {
