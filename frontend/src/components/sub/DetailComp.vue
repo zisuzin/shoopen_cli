@@ -279,10 +279,14 @@ import crossMixin from '@/js/common.js';
 export default {
     name: 'DetailComp',
     mixins: [crossMixin],
-    props: ['detData'],
     components: {
         Swiper,
         SwiperSlide,
+    },
+    data() {
+        return {
+            setData: this.detData,
+        }
     },
     methods: {
         // 카테고리 보이기 메서드
@@ -356,7 +360,7 @@ export default {
             $(".option_color > span").text("색상 옵션을 선택해 주세요.");
 
             // 디테일박스 닫기
-            this.detData = false;
+            this.$emit('close-detail');
         },
     },
     mounted() {

@@ -103,7 +103,7 @@
                         </div>
                     </div>
                     <!-- 여기부터 디테일페이지! -->
-                    <DetailComp v-if="showDt" :style="compStyle" :detData="showDt"/>
+                    <DetailComp v-if="showDt" :style="compStyle" @close-detail="closeDetail"/>
                 </div>
             </div>
         </main>
@@ -182,6 +182,9 @@ export default {
 
             // 디테일박스 열기
             this.showDt = true;
+        },
+        closeDetail() {
+            this.showDt = false;
         },
         // lnb클릭시 v-if 조건값 설정하는 메서드
         setCatnum(num) {
