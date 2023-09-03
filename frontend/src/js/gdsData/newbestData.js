@@ -11,6 +11,8 @@ const prdData = {
                 oprice: "",
                 dprice: "3900",
                 review: "42", 
+                color: ["White", "Black", "Purple", "Green"],
+                size: ["240"],
             },
             {   idx: 1,
                 name: "[경량EVA] 더블스트랩 리커버리 슬리퍼",
