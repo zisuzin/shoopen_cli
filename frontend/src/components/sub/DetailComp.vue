@@ -149,6 +149,8 @@ import store from '@/js/store.js';
 import $ from 'jquery';
 // 공통기능함수
 import crossMixin from '@/js/common.js';
+// 디테일페이지 CSS
+import "../../css/detail.css";
 
 export default {
     name: 'DetailComp',
@@ -239,7 +241,6 @@ export default {
     },
     mounted() {
         swiperFn();
-        console.log("디테일 !!")
     }
 };
 </script>

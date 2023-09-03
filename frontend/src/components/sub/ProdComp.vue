@@ -126,7 +126,6 @@ export default {
   },
   methods: {
     getData(pm) {
-        console.log(pm['img'])
         // [ 스토어 전역변수에 업데이트! ]
         // 기본정보 데이터
         store.state.dtname = pm['name'];
@@ -141,6 +140,9 @@ export default {
 
         // 디테일박스 열기
         this.showDt = true;
+    },
+    closeDetail() {
+        this.showDt = false;
     },
   },
   mounted() {
@@ -165,9 +167,6 @@ export default {
        // 트리거 셋팅
        btn0.click();
       })
-
-      let getItem = localStorage.getItem("detsrc");
-      console.log(getItem)
     } ////////////// initCatnum 함수 ////////////////
 
 

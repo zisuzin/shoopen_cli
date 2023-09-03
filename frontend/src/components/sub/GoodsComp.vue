@@ -131,8 +131,6 @@ import crossMixin from '@/js/common.js';
 import store from '@/js/store.js';
 // 제이쿼리 불러오기
 import $ from 'jquery';
-// 디테일페이지 CSS
-import "../../css/detail.css";
 
 export default {
     name: 'GoodsComp',
