@@ -11,7 +11,4 @@ module.exports = {
     rules: {
         'vue/no-use-v-if-with-v-for': 'off',
     },
-    "globals": {
-        "swiper": false
-    }
 };

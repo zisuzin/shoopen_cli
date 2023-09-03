@@ -336,6 +336,7 @@ export default {
 
         // 메인 배너 함수
         function bannerSwiper() {
+            console.log("MainComp의 스와이퍼다!!!")
             // 스와이퍼 커스텀
             new Swiper('.mSwiper', {
                 slidesPerView: 1,
