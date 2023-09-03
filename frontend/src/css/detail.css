@@ -64,7 +64,6 @@
 
 .mySwiper2 .swiper-slide {
     opacity: 0.4;
-    width: calc(100%/3) !important;
 }
 
 .mySwiper2 .swiper-slide-thumb-active {

@@ -10,6 +10,7 @@ function swiperFn() {
         loop: true,
         spaceBetween: 10,
         slidesPerView: 3,
+        slidesPerGroup: 3,
         freeMode: true,
         watchSlidesProgress: true,
     });
