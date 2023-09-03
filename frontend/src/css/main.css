@@ -148,6 +148,7 @@ main {
 .mnList .newItem {
   width: 25%;
   height: 100%;
+  cursor: pointer;
 }
 
 .mbList .bestItem img,
@@ -159,8 +160,12 @@ main {
 
 .best-img {
   position: relative;
+  width: auto;
+  aspect-ratio: 1/1.3;
 }
-
+.best-txt {
+    margin-top: 10px;
+}
 /* 순위박스 */
 .ranking_flag {
   position: absolute;
@@ -198,11 +203,14 @@ main {
 .percent-price {
   float: right;
 }
-
-.best-txt > p {
-  font-size: 14px;
+.btxt1 {
+    font-size: 14px;
 }
-
+.best-txt p {
+  padding: 4px 0 5px;
+  letter-spacing: -1.5px;
+  font-family: var(--shoopen-font-prodtxt);
+}
 .best-txt > strong {
   font-size: 13px;
 }

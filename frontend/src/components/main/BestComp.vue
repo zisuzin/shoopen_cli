@@ -18,7 +18,6 @@
       <ul>
         <li class="bestItem" v-for="(a, b) in m_bestData['bestItem' + $store.state.setNumber]" :key="b">
           <!-- 이미지 -->
-          <a href="#">
             <div class="best-img">
               <img v-bind:src="a.img" alt="a.name" />
               <span class="ranking_flag">{{ b + 1 }}</span>
@@ -44,7 +43,6 @@
                 </span>
               </div>
             </div>
-          </a>
         </li>
       </ul>
     </div>
@@ -72,11 +70,11 @@ export default {
   mounted() {
     // 첫번째 dd에 강제 클릭
     $(".mbtit2 > dd:first").addClass("on").siblings().removeClass("on").trigger("click");
-    // 첫번째 dd 클릭시 데이터만 우선 보이기
     const index = $(".mbtit2 > dd:first").index();
     this.setNum(index);
+
     // 클릭한 dd에만 on 넣기
-    $(".mbtit2 > dd").click(function () {
+    $(".mbtit2 > dd").click(function() {
       $(this).addClass("on").siblings().removeClass("on");
     });
   },

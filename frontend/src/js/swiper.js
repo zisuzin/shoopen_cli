@@ -1,9 +1,6 @@
 // 스와이퍼 불러오기
 import Swiper from 'swiper/bundle';
 import 'swiper/swiper-bundle.css';
-import SwiperCore, { FreeMode, Navigation, Thumbs } from "swiper";
-// install Swiper modules
-SwiperCore.use([FreeMode, Navigation, Thumbs]);
 
 // 스와이퍼 함수
 function swiperFn() {
@@ -20,8 +17,8 @@ function swiperFn() {
     new Swiper(".mySwiper1", { 
         loop: true,
         navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
+            nextEl: ".toRbtn",
+            prevEl: ".toLbtn",
         },
         thumbs: {
             swiper: swiper2,

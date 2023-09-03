@@ -20,13 +20,11 @@
                         <ul>
                             <template v-for="(v,i) in prdData[$route.params.id]">
                                 <template v-for="x in v">
-                                    <li :key="x.idx" v-if="$store.state.setcat === i || $store.state.setcat === 'all' && x.idx>=0 && x.idx<12+$store.state.mnum">
+                                    <li :key="x.idx" @click="$store.commit('setDet', x)" v-if="$store.state.setcat === i || $store.state.setcat === 'all' && x.idx>=0 && x.idx<12+$store.state.mnum">
                                         <div class="prodbx">
-                                            <a href="#">
-                                                <div class="prod_img">
-                                                    <img :src="'/images/goods/'+x.img+'.jpg'" alt="x.name" />
-                                                </div>
-                                            </a>
+                                            <div class="prod_img">
+                                                <img :src="'/images/goods/'+x.img+'.jpg'" alt="x.name" />
+                                            </div>
                                             <div title="찜하기" class="product_like" v-on:click="addWish(x, 1)">
                                                 <button type="button" class="fa-solid fa-heart"></button>
                                             </div>
@@ -135,7 +133,11 @@ export default {
        // 트리거 셋팅
        btn0.click();
       })
+
+      let getItem = localStorage.getItem("detsrc");
+      console.log(getItem)
     } ////////////// initCatnum 함수 ////////////////
+
 
     // 최초호출!
     initCatnum();

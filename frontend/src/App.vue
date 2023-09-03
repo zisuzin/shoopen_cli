@@ -100,6 +100,12 @@ export default {
             $('.top').removeClass('on');
             $('.catbx > .tgGnb').removeClass('on');
         }); ///////// mouseleave //////////
+
+        
+        // GNB 상품 클릭시 디테일페이지 트리거
+        // function Promise() {
+            
+        // }
     },
 };
 </script>

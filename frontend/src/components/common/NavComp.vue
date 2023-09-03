@@ -70,6 +70,9 @@ export default {
         linksys(cat1, cat2, cat3) {
             const path = `/goods/${cat1}/${cat2}/${cat3}`;
             location.href = path;
+
+            // 로컬스토리지 업데이트하기(새로고침 방지)
+            // localStorage.setItem("detsrc", JSON.stringify(cat3));
         },
         // new, best 클릭 전용 링크시스템!! (위랑 헷갈리지 말기!)
         linkData(pm1, pm2) {
