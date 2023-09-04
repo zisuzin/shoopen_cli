@@ -293,6 +293,47 @@
     }
 }
 
+/* 최종 결제 옵션수량 */
+.opt_num {
+    position: relative;
+    width: 83px;
+    height: 100%;
+    font-size: 0;
+    border: 1px solid #999;
+  
+    /* 옵션수량 증감버튼 */
+    .minus {
+      position: absolute;
+      left: 0;
+      width: 21px;
+      height: 21px;
+      border-right: 1px solid #999;
+      background: url(../../public/images/icon/ico_detail_all.png) no-repeat -227px -20px;
+    }
+  
+    .plus {
+      position: absolute;
+      right: 0;
+      width: 21px;
+      height: 21px;
+      border-left: 1px solid #999;
+      background: url(../../public/images/icon/ico_detail_all.png) no-repeat -245px -20px;;
+    }
+  
+    .num {
+      width: 100%;
+      height: 21px;
+      text-align: center;
+      border: 0;
+      font-size: 12px;
+    }
+}
+
+.opt_num input[type="number"]::-webkit-outer-spin-button,
+.opt_num input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
 /* 최종 결제 가격 */
 .dttot_bx {
     padding: 20px 0;
@@ -330,10 +371,11 @@
 /* 닫기버튼 */
 .clbtn > a {
     width: 100%;
+}
 
-    .fa-solid {
-        margin: 5px;
-        font-size: 14px;
-        vertical-align: middle;
-    }
+/* 상품목록 삭제 버튼 아이콘 */
+.fa-solid {
+    margin: 5px;
+    font-size: 14px;
+    vertical-align: middle;
 }
