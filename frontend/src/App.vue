@@ -58,7 +58,7 @@ import store from '../src/js/store.js';
 import NavComp from './components/common/NavComp.vue';
 import SideComp from './components/common/SideComp.vue';
 // 공통 CSS
-import '../src/css/common.css';
+import '../src/scss/common.scss';
 
 export default {
     name: 'LayoutComp',

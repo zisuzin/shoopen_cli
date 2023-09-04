@@ -92,7 +92,7 @@
 .buyarea > dl > dt {
     font-family: var(--shoopen-font-eng);
     font-weight: 500;
-    font-size: min(6vw,2.4rem);
+    font-size: 2.4rem;
 }
 
 /* 기본가 */
@@ -101,7 +101,7 @@
 }
 
 .txt-def > em {
-    font-size: min(6vw,2.0rem);
+    font-size: 2rem;
     font-family: var(--shoopen-font-eng);
     text-decoration: line-through;
     color: #999;
@@ -109,19 +109,19 @@
 }
 
 .txt-def > em > span {
-    font-size: min(6vw,2.0rem);
+    font-size: 2rem;
     font-family: var(--shoopen-font-eng);
 }
 
 /* 할인가 */
 .txt-dsc > em {
-    font-size: min(6vw,2.4rem);
+    font-size: 2.4rem;
     font-family: var(--shoopen-font-eng);
     font-weight: 700;
 }
 
 .txt-dsc > span {
-    font-size: min(6vw,2.6rem);
+    font-size: 2.6rem;
     font-family: var(--shoopen-font-eng);
     font-weight: 500;
 }
@@ -170,7 +170,7 @@
 .buy_option em {
     width: 120px;
     display: table-cell;
-    font-size: min(6vw, 1.4rem);
+    font-size: 1.4rem;
     font-family: var(--shoopen-font-eng);
     font-weight: 600;
     color: #555;
@@ -210,7 +210,7 @@
 
 .option_inner > span {
     color: #666;
-    font-size: min(6vw, 1.3rem);
+    font-size: 1.3rem;
 }
 
 .option_list > ul {
@@ -235,7 +235,7 @@
 }
 
 .option_list li > span {
-    font-size: min(6vw, 1.3rem);
+    font-size: 1.3rem;
 }
 
 /* 사이즈 옵션 */
@@ -272,7 +272,7 @@
 /* 최종 결제 옵션명 */
 .dtfinal_bx li > .opt_name {
     width: 252px;
-    font-size: min(5vw, 1.3rem);
+    font-size: 1.3rem;
 }
 
 /* 최종 결제 옵션별 가격 */
@@ -280,7 +280,7 @@
     width: 120px;
     text-align: right;
     padding-right: 20px;
-    font-size: min(5vw, 1.4rem);
+    font-size: 1.4rem;
 }
 
 /* 최종 결제 상품박스 닫기버튼 */
@@ -293,7 +293,7 @@
 .dttot_bx {
     padding: 20px 0;
     text-align: right;
-    font-size: min(5vw, 1.8rem);
+    font-size: 1.8rem;
     display: none;
 }
 

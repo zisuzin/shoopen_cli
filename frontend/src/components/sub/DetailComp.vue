@@ -150,7 +150,7 @@ import $ from 'jquery';
 // 공통기능함수
 import crossMixin from '@/js/common.js';
 // 디테일페이지 CSS
-import "../../css/detail.css";
+import "../../scss/detail.scss";
 
 export default {
     name: 'DetailComp',

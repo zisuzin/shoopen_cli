@@ -90,7 +90,7 @@ import $ from "jquery";
 // 스토어 불러오기
 import store from "../../js/store.js"; // eslint-disable-line no-unused-vars
 // 서브페이지 CSS
-import "../../css/sub.css";
+import "../../scss/sub.scss";
 
 export default {
   name: "ProdComp",

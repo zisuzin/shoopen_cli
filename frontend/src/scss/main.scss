@@ -52,7 +52,7 @@ main {
 .swiper-pagination-progressbar.swiper-pagination-vertical.swiper-pagination-progressbar-opposite,
 .swiper-vertical > .swiper-pagination-progressbar.swiper-pagination-progressbar-opposite {
   position: relative;
-  width: min(50vw, 305px);
+  width: 305px;
   height: 4px;
   top: auto;
   bottom: -60px;
@@ -63,7 +63,7 @@ main {
 }
 
 .swiper-pagination2.swiper-pagination-fraction.swiper-pagination-horizontal > span {
-  font-size: min(3vw, 14px);
+  font-size: 14px;
 }
 
 /* 페이지네이션 */

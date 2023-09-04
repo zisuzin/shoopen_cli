@@ -252,7 +252,7 @@ import MedComp from '../main/MedComp.vue';
 import NewComp from '../main/NewComp.vue';
 import FootComp from '../common/FootComp.vue';
 // 메인 CSS
-import '../../css/main.css';
+import '../../scss/main.scss';
 
 export default {
     name: 'MainComp',
