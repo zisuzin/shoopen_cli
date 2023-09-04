@@ -3,8 +3,8 @@
 /* 메인모듈 CSS - main.css */
 
 /* 공통 css 셋팅 */
-@import url(./reset.css);
-@import url(./core.css);
+@import url(./reset.scss);
+@import url(./core.scss);
 
 :root {
   /* 브랜드색상 변수 */
@@ -26,21 +26,21 @@
   position: fixed;
   z-index: 999;
   width: 100%;
-}
 
-nav {
-  /* 플렉스박스 */
-  display: flex;
-  justify-content: space-between;
-  padding: 0 30px;
-  height: 80px;
-  white-space: nowrap;
-  background-color: var(--shoopen-color-main);
-  transition: 0.3s ease;
-  overflow: hidden;
-  z-index: 999;
-  position: relative;
-  border-bottom: 1px solid #ccc;
+  nav {
+    /* 플렉스박스 */
+    display: flex;
+    justify-content: space-between;
+    padding: 0 30px;
+    height: 80px;
+    white-space: nowrap;
+    background-color: var(--shoopen-color-main);
+    transition: 0.3s ease;
+    overflow: hidden;
+    z-index: 999;
+    position: relative;
+    border-bottom: 1px solid #ccc;
+  }
 }
 
 /* 클래스 on */
@@ -48,47 +48,32 @@ nav {
   /* 높이변경 */
   height: 420px;
   transition: 0.3s ease-out;
-}
 
-/* .top 하단 보더 생김 */
-.top.on nav::after {
-  content: "";
-  position: absolute;
-  display: block;
-  top: 80px;
-  width: 100%;
-  border-bottom: 1px solid #ccc;
-  transition: 0.4s ease-out;
+  /* .top 하단 보더 생김 */
+  &::after {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 80px;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    transition: 0.4s ease-out;
+  }
 }
 
 /* 로고/카테고리 플렉스박스 */
 .gnb {
   display: flex;
   line-height: 80px;
-}
 
-/* 1. 로고영역 */
-.logo {
-  transition: 0.4s ease;
-}
+  /* 1. 로고영역 */
+  .logo {
+    transition: 0.4s ease;
 
-.logo a {
-  display: block;
-}
-
-.logo img {
-  vertical-align: middle;
-}
-
-/* 드래그방지 커버 */
-.top::after {
-  position: absolute;
-  content: "";
-  display: none;
-  width: 100vw;
-  height: 100vh;
-  opacity: 0;
-  background-color: #000;
+    img {
+      vertical-align: middle;
+    }
+  }
 }
 
 /* 클래스 on */
