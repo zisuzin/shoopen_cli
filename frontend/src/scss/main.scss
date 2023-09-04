@@ -2,6 +2,14 @@
 
 /* 메인페이지 CSS - main.css */
 
+/* 믹스인 */
+@mixin imgbx {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 /*************** 메인영역 ***************/
 main {
   padding-top: 80px;
@@ -14,10 +22,7 @@ main {
         height: 80vh;
 
         .swiper-slide img, .swiper-slide a {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            @include imgbx;
         }
     }
   }
@@ -265,70 +270,77 @@ main {
 
 /************** section3 **************/
 .mSwiper3> ul {
-  display: flex;
-  gap: 0 2px;
-}
-
-.mSwiper3> h3,
-.storetit > h2 {
-  font-size: 30px;
-  padding-bottom: 30px;
-  font-weight: 600;
-  font-family: var(--shoopen-font-eng);
-}
-
-/* 상품1,2 박스 */
-.prod1bx, .prod2bx {
-  display: flex;
-  align-items: center;
-}
-
-.media_depth {
-  border-bottom: 1px solid #1b1b1b;
-  padding: 8px 0;
-  margin-right: 20px;
-
+    display: flex;
+    gap: 0 2px;
+  }
+  
+  .mSwiper3> h3,
+  .storetit > h2 {
+    font-size: 30px;
+    padding-bottom: 30px;
+    font-weight: 600;
+    font-family: var(--shoopen-font-eng);
+  }
+  
+  .prod1bx, .prod2bx {
+    display: flex;
+    align-items: center;
+  }
+  
   .left_img {
     margin-right: 10px;
     width: 80px;
     height: 90px;
-  }
 
+    img {
+        @include imgbx;
+    }
+  }
+  
+  .media_depth {
+    border-bottom: 1px solid #1b1b1b;
+    padding: 8px 0;
+    margin-right: 20px;
+  }
+  
   .prod2bx {
     margin-top: 3px;
   }
-}
+  
+  .right_txt > p {
+    font-size: 13px;
+    font-weight: 300;
+  }
+  
+  .right_txt > em {
+    font-size: 13px;
+    font-weight: 500;
+  }
+  
+  .media_thumb {
+    position: relative;
 
-/* 상품 상세정보 박스(이름, 가격) */
-.right_txt {
-    p {
-        font-size: 13px;
-        font-weight: 300;
+    img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
-
-    em {
-        font-size: 13px;
-        font-weight: 500;
-    }
-}
-
-/* 썸네일박스 */
-.media_thumb {
-  position: relative;
-}
-
-.mlogo {
-  position: absolute;
-  top: 0;
-  left: 0;
-  line-height: 50px;
-  font-weight: 700;
-  color: #fff;
-  font-size: 12.5px;
-  font-family: var(--shoopen-font-eng);
-  padding: 8px;
-
-  img {
+  }
+  
+  .mlogo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    line-height: 50px;
+    font-weight: 700;
+    color: #fff;
+    font-size: 12.5px;
+    font-family: var(--shoopen-font-eng);
+    padding: 8px;
+  }
+  
+  .mlogo img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -336,8 +348,6 @@ main {
     display: inline-block;
     margin-right: 5px;
   }
-}
-
 
 /************** section5 **************/
 .map_search_wrap {
