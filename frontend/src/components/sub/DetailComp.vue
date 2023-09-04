@@ -15,8 +15,8 @@
                         <swiper-slide>
                             <img :src="'/images/goods/' + $store.state.dtsumimg3 + '.jpg'" alt="썸네일 상세이미지2"/>
                         </swiper-slide>
-                        <div class="swiper-button-next swbtn toRbtn"></div>
-                        <div class="swiper-button-prev swbtn toLbtn"></div>
+                        <div class="swiper-button-next toRbtn"></div>
+                        <div class="swiper-button-prev toLbtn"></div>
                     </swiper>
                     <!-- 썸네일 리스트 -->
                     <swiper class="swiper mySwiper2">

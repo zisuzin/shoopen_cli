@@ -1,11 +1,12 @@
 @charset "utf-8";
 
-/* 메인모듈 CSS - main.css */
+/* 메인모듈 CSS - main.scss */
 
-/* 공통 css 셋팅 */
+/* 공통 scss 셋팅 */
 @import url(./reset.scss);
 @import url(./core.scss);
 
+/* 공통 변수 */
 :root {
   /* 브랜드색상 변수 */
   --shoopen-color-main: #fff;
