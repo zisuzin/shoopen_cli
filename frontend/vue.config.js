@@ -1,4 +1,15 @@
-const { defineConfig } = require('@vue/cli-service')
-module.exports = defineConfig({
-  transpileDependencies: true
-})
+// Vue CLI 프로젝트의 vue.config.js 파일에 다음 내용 추가
+module.exports = {
+    devServer: {
+        proxy: {
+            '/api': {
+                target: 'http://localhost', // API 서버의 주소
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/api': '/store/db.php', // 실제 API 엔드포인트
+                    ws: false,
+                },
+            },
+        },
+    },
+};

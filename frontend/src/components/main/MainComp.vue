@@ -240,7 +240,7 @@
 
 <script>
 // 지도 관련 함수
-import mapSearch from '../../js/map.js';
+import {mapSearch, mapApi} from '../../js/map.js';
 // 스와이퍼 불러오기
 import Swiper from 'swiper';
 import 'swiper/swiper-bundle.css';
@@ -320,6 +320,10 @@ export default {
                 });
             }
         },
+    },
+    created() {
+        mapApi().then(response => console.log(response.data)) 
+        .catch(error => console.log(error));
     },
     mounted() {
         // 카카오맵 API 로드후 메서드 호출!
