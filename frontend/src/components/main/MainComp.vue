@@ -240,10 +240,12 @@
 
 <script>
 // 지도 관련 함수
-import {mapSearch, mapApi} from '../../js/map.js';
+import mapSearch from '../../js/map.js';
 // 스와이퍼 불러오기
 import Swiper from 'swiper';
 import 'swiper/swiper-bundle.css';
+// 엑시오스 불러오기
+import axios from "axios";
 // 더미데이터
 import { mData } from '../../js/gdsData/mainData.js';
 // 자식컴포넌트
@@ -322,7 +324,7 @@ export default {
         },
     },
     created() {
-        mapApi().then(response => console.log(response.data)) 
+        axios.get('/api').then(res => console.log(res.data)) 
         .catch(error => console.log(error));
     },
     mounted() {

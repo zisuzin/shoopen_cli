@@ -2,13 +2,6 @@
 import $ from "jquery";
 // 매장데이터 가져오기
 import {mapData} from "./gdsData/mainData.js";
-// 엑시오스 불러오기
-import axios from "axios";
-
-// API GET방식으로 받아오는 통신 전용 함수
-function mapApi() {
-    return axios.get('/api');
-}
 
 // 매장 검색 함수
 function mapSearch() {
@@ -129,4 +122,4 @@ function mapSearch() {
     }); ////// click ///////
 } ////// mapSearch 함수 ///////
 
-export {mapSearch, mapApi};
+export default mapSearch;

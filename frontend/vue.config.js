@@ -1,4 +1,3 @@
-// Vue CLI 프로젝트의 vue.config.js 파일에 다음 내용 추가
 module.exports = {
     devServer: {
         proxy: {
