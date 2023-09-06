@@ -1,58 +1,9 @@
-<!-- 메인페이지 new 섹션 템플릿 -->
-<template>
-  <section class="main_new">
-    <div class="mntit_bx">
-      <dl class="mbtit1">
-        <dt class="main_tit">New Arrival</dt>
-        <dd class="morebtn">
-          <a href="#">전체보기</a>
-        </dd>
-      </dl>
-      <dl class="mntit2">
-        <dd v-for="(n, i) in notelnb2" :key="i">
-          <a href="#" @click.prevent="setNum(i)">{{ n }}</a>
-        </dd>
-      </dl>
-    </div>
-    <div class="mnList">
-      <ul>
-        <li class="newItem" v-for="(a, b) in m_newData['newItem' + $store.state.setNumber]" :key="b">
-          <!-- 이미지 -->
-          <a href="#">
-            <div class="new-img">
-              <img v-bind:src="a.img" alt="a.name" />
-            </div>
-            <!-- 설명 -->
-            <div class="new-txt">
-              <div class="ntxt1">
-                <strong class="brand">슈펜</strong>
-                <p>{{ a.name }}</p>
-              </div>
-              <div class="ntxt2">
-                <span class="original-price">
-                  <em>{{ setComma(a.oprice) }}</em>
-                  <span v-if="a.oprice">원</span>
-                </span>
-                <br />
-                <span class="discount-price">
-                  <em>{{ setComma(a.dprice) }}</em>
-                  <span>원</span>
-                </span>
-                <span class="percent-price" v-if="a.oprice && a.dprice">
-                  <em>{{ (((a.oprice - a.dprice) / a.oprice) * 100).toFixed(0) }}%</em>
-                </span>
-              </div>
-            </div>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </section>
-</template>
-
+<!-- 메인페이지 new 섹션 컴포넌트 -->
 <script>
 // 공통기능함수
 import crossMixin from "../../js/common.js";
+// 공통 템플릿 데이터
+import mainData from "./MainComp.vue";
 // 제이쿼리 불러오기
 import $ from "jquery";
 // 더미데이터
@@ -60,6 +11,7 @@ import { m_newData } from "../../js/gdsData/mainData.js";
 
 export default {
   name: "NewComp",
+  template: mainData.newarea,
   mixins: [crossMixin],
   data() {
     return {

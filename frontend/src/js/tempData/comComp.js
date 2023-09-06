@@ -65,7 +65,7 @@ const comData = {
     `,
     
     /* 2. 로그인 템플릿 */
-    userComp: `
+    loginComp: `
         <aside class="user_comp">
             <div class="login_wrap">
                 <div class="login_bx">
