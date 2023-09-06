@@ -1,57 +1,9 @@
 <!-- 메인페이지 best 섹션 템플릿 -->
-<template>
-  <section class="main_best">
-    <div class="mbtit_bx">
-      <dl class="mbtit1">
-        <dt class="main_tit">BEST PICK</dt>
-        <dd class="morebtn">
-          <a href="#">전체보기</a>
-        </dd>
-      </dl>
-      <dl class="mbtit2">
-        <dd v-for="(v, i) in notelnb" :key="i">
-          <a href="#" @click.prevent="setNum(i)">{{ v }}</a>
-        </dd>
-      </dl>
-    </div>
-    <div class="mbList">
-      <ul>
-        <li class="bestItem" v-for="(a, b) in m_bestData['bestItem' + $store.state.setNumber]" :key="b">
-          <!-- 이미지 -->
-            <div class="best-img">
-              <img v-bind:src="a.img" alt="a.name" />
-              <span class="ranking_flag">{{ b + 1 }}</span>
-            </div>
-            <!-- 설명 -->
-            <div class="best-txt">
-              <div class="btxt1">
-                <strong class="brand">슈펜</strong>
-                <p>{{ a.name }}</p>
-              </div>
-              <div class="btxt2">
-                <span class="original-price">
-                  <em>{{ setComma(a.oprice) }}</em>
-                  <span v-if="a.oprice">원</span>
-                </span>
-                <br />
-                <span class="discount-price">
-                  <em>{{ setComma(a.dprice) }}</em>
-                  <span>원</span>
-                </span>
-                <span class="percent-price" v-if="a.oprice && a.dprice">
-                  <em>{{ (((a.oprice - a.dprice) / a.oprice) * 100).toFixed(0) }}%</em>
-                </span>
-              </div>
-            </div>
-        </li>
-      </ul>
-    </div>
-  </section>
-</template>
-
 <script>
 // 공통기능함수
 import crossMixin from "../../js/common.js";
+// 공통 템플릿 데이터
+import mainData from "../../js/tempData/mainComp.js";
 // 제이쿼리 불러오기
 import $ from "jquery";
 // 더미데이터
@@ -60,6 +12,7 @@ import { m_bestData } from "../../js/gdsData/mainData.js";
 export default {
   name: "BestComp",
   mixins: [crossMixin],
+  template: mainData.bestarea,
   data() {
     return {
       // 외부 더미 데이터

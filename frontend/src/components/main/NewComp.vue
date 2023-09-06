@@ -3,7 +3,7 @@
 // 공통기능함수
 import crossMixin from "../../js/common.js";
 // 공통 템플릿 데이터
-import mainData from "./MainComp.vue";
+import mainData from "../../js/tempData/mainComp.js";
 // 제이쿼리 불러오기
 import $ from "jquery";
 // 더미데이터
