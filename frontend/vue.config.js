@@ -6,7 +6,6 @@ module.exports = {
                 changeOrigin: true,
                 pathRewrite: {
                     '^/api': '/store/db.php', // 실제 API 엔드포인트
-                    ws: false,
                 },
             },
         },
