@@ -117,32 +117,32 @@ const comData = {
             <h2>Sign Up</h2>
             <form action="index.html" method="post" id="signup-form">
                 <label class="signup-inputbx">
-                    <input type="text" id="signid" name="signid" required placeholder="아이디"/>
+                    <input type="text" id="signid" name="signid" v-model="signid" required placeholder="아이디"/>
                     <span class="msg"></span>
                 </label>
                 <label class="signup-inputbx">
-                    <input type="password" id="signpw" name="signpw" required placeholder="비밀번호"/>
+                    <input type="password" id="signpw" name="signpw" v-model="signpw" required placeholder="비밀번호"/>
                     <span class="msg"></span>
                 </label>
                 <label class="signup-inputbx">
-                    <input type="text" name="signname" id="signname" maxlength="20" placeholder="이름" />
+                    <input type="text" name="signname" id="signname" v-model="signname" maxlength="20" placeholder="이름" />
                     <span class="msg"></span>
                 </label>
                 <div class="gen-inputbx">
                     <div class="gen">
                         <label for="gen1">남성</label>
-                        <input type="radio" name="gen" id="gen1" />
+                        <input type="radio" name="gen" id="gen1" v-model="gender"/>
                     </div>
                     <div class="gen">
                         <label for="gen2">여성</label>
-                        <input type="radio" name="gen" id="gen2" checked />
+                        <input type="radio" name="gen" id="gen2" v-model="gender"/>
                     </div>
                 </div>
                 <label class="signup-inputbx emlbx">
                     <div class="firsteml">
-                        <input type="text" id="email1" name="email1" placeholder="이메일앞주소" />
+                        <input type="text" id="email1" name="email1" v-model="email1" placeholder="이메일앞주소" />
                         <span class="gol">@</span>
-                        <select name="seleml" id="seleml">
+                        <select name="seleml" id="seleml" v-model="seleml">
                             <option value="init">이메일 선택</option>
                             <option value="naver.com">naver.com</option>
                             <option value="daum.net">daum.net</option>
@@ -155,7 +155,7 @@ const comData = {
                 </label>
                 <label class="signup-inputbx agreebx">
                     <div class="check_circle">
-                        <input type="checkbox" id="agree_all">
+                        <input type="checkbox" id="agree_all" v-model="agree_all">
                         <label for="agree_all">
                             <em class="option point">[필수]</em>
                             <span class="text">인증 약관 전체동의</span>
