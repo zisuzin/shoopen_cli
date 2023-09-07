@@ -1,4 +1,4 @@
-import { createApp } from 'vue';
+import { createApp } from "vue/dist/vue.esm-bundler";
 import { createRouter, createWebHistory } from 'vue-router';
 import store from './js/store.js';
 import App from '@/App.vue';
