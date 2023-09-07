@@ -42,6 +42,7 @@
                     <!-- 3. 사이드 영역-->
                     <SideComp/>
                 </nav>
+                <LoginComp/>
             </div>
         </header>
         <!-- 라우팅된 컴포넌트 출력 -->
@@ -57,6 +58,7 @@ import store from '../src/js/store.js';
 // 자식 컴포넌트
 import NavComp from './components/common/NavComp.vue';
 import SideComp from './components/common/SideComp.vue';
+import LoginComp from './components/common/LoginComp.vue';
 // 공통 CSS
 import '../src/scss/common.scss';
 
@@ -65,6 +67,7 @@ export default {
     components: {
         NavComp,
         SideComp,
+        LoginComp,
     },
     methods: {
         // v-on 클릭시 gnb sub-comp 데이터 변경 발생

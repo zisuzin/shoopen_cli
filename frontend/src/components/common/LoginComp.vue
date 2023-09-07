@@ -1,12 +1,16 @@
 <script>
 // 공통기능함수
 import comData from '@/js/tempData/comComp.js';
+import SignupComp from './SignupComp.vue';
 // 제이쿼리 불러오기
 import $ from "jquery";
 
 export default {
     name: 'LoginComp',
     template: comData.loginComp,
+    components: {
+        SignupComp,
+    },
     methods: {
     // 회원가입창 보이기 메서드
     signupFn() {

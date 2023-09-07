@@ -92,12 +92,12 @@ const comData = {
                         <ul class="login_sns">
                             <li>
                                 <a href="#">
-                                    <img src="./images/icon/icon_sns_kakaotalk.svg" alt="카카오톡 로그인"/>
+                                    <img src="/images/icon/icon_sns_kakaotalk.svg" alt="카카오톡 로그인"/>
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <img src="./images/icon/icon_sns_naver.png" alt="네이버 로그인"/>
+                                    <img src="/images/icon/icon_sns_naver.png" alt="네이버 로그인"/>
                                 </a>
                             </li>
                         </ul>
@@ -106,7 +106,7 @@ const comData = {
                     </form>
                 </div>
             </div>
-            <signup-comp ref="signup"></signup-comp>
+            <SignupComp ref="signup"/>
         </aside>
     `,
 
