@@ -14,6 +14,10 @@ export default {
             let pass;
             // this 저장 변수
             let self = this;
+            // 이메일 앞주소
+            const eml1 = $("#email1");
+            // 이메일 선택박스
+            const seleml = $("#seleml");
 
             $(`input[type=text],input[type=password]`).blur(function () {
                 // 1. 요소 공백제거
@@ -73,10 +77,29 @@ export default {
                         $(this).siblings(".msg").empty();
                     }
                 }
+                /***************************************************** 
+                    5. 이메일 유효성 검사하기
+                    - 검사기준: 이메일 형식에 맞는지 여부검사
+                *****************************************************/
+               else if (cid === "email1") {
+                    // 1. 이메일 주소 만들기 : 앞주소@뒷주소
+                    let comp = eml1.val() + "@" + seleml.val();
+                    // 2. 이메일 검사함수 호출
+                    self.resEml(comp);
+                }
+                // 모두 통과일 경우 메시지 지움
+                else {
+                    $(this).siblings(".msg").empty()
+                    && $(this).parent().siblings(".msg").empty();
+                }
                 return pass;
-            });
+            }); ////////////// blur ////////////////////////
         }, //////////// searchForm 함수 /////////////////
-        // 정규식 검사 메서드
+
+        /****************************************************** 
+            함수명 : vReg (validation with Regular Expression)
+            기능 : 값에 맞는 형식을 검사하여 리턴함
+        ******************************************************/
         vReg(val, cid) { // val - 검사값, cid - 처리구분 아이디
             // 정규식 변수
             let reg;
@@ -99,7 +122,35 @@ export default {
 
             // 정규식.test(검사할값) : 결과 true/false
             return reg.test(val);
-        } //////////// vReg 함수 /////////////////
+        }, //////////// vReg 함수 /////////////////
+
+        /**************************************** 
+            함수명 : resEml (result Email)
+            기능 : 이메일 검사결과 처리
+        ****************************************/
+        resEml(val) { // val - 완성된 이메일 주소
+            // this 저장 변수
+            let self = this;
+            // 이메일 앞주소
+            const eml1 = $("#email1");
+            // 검사용변수
+            let pass;
+
+            console.log("이메일주소:", val);
+            console.log("검사결과:", self.vReg(val, "email1"));
+
+            // 이메일 정규식검사에 따른 메시지 보이기
+            if (!self.vReg(val, "email1")) {
+                eml1.parent().siblings(".msg").text("맞지않는 이메일 형식입니다.")
+
+                // 불통과!
+                pass = false;
+            }
+            else {
+                eml1.parent().siblings(".msg").empty();
+            }
+            return pass;
+        }, //////////// resEml 함수 /////////////////
     },
 };
 </script>
