@@ -7,11 +7,15 @@ import $ from 'jquery';
 export default {
     name: 'SignupComp',
     template: comData.signupComp,
+    data() {
+        return {
+            // 검사용 변수
+            pass: true
+        };
+    },
     methods: {
         // 폼 검사 메서드
         searchForm() {
-            // 검사용변수
-            let pass;
             // this 저장 변수
             let self = this;
             // 이메일 앞주소
@@ -36,7 +40,7 @@ export default {
                     && $(this).parent().siblings('.msg').text('필수 입력 바랍니다.');
 
                     // 불통과
-                    pass = false;
+                    self.pass = false;
                 }
                 /***************************************************** 
                     3. 아이디일 경우 유효성 검사
@@ -49,7 +53,7 @@ export default {
                         $(this).siblings('.msg').text(("영문자로 시작하는 6~20글자 영문자/숫자"));
 
                         // 불통과!
-                        pass = false;
+                        self.pass = false;
                     }
                     else {
                         // 통과시
@@ -70,7 +74,7 @@ export default {
                         $(this).siblings(".msg").text("특수문자,문자,숫자포함 형태의 5~15자리");
 
                         // 불통과!
-                        pass = false;
+                        self.pass = false;
                     }
                     else {
                         // 메시지 지우기
@@ -92,7 +96,6 @@ export default {
                     $(this).siblings(".msg").empty()
                     && $(this).parent().siblings(".msg").empty();
                 }
-                return pass;
             }); ////////////// blur ////////////////////////
         }, //////////// searchForm 함수 /////////////////
 
@@ -133,24 +136,70 @@ export default {
             let self = this;
             // 이메일 앞주소
             const eml1 = $("#email1");
-            // 검사용변수
-            let pass;
 
             console.log("이메일주소:", val);
-            console.log("검사결과:", self.vReg(val, "email1"));
+            console.log("이메일 검사결과:", self.vReg(val, "email1"));
 
             // 이메일 정규식검사에 따른 메시지 보이기
             if (!self.vReg(val, "email1")) {
                 eml1.parent().siblings(".msg").text("맞지않는 이메일 형식입니다.")
 
                 // 불통과!
-                pass = false;
+                self.pass = false;
             }
             else {
                 eml1.parent().siblings(".msg").empty();
             }
-            return pass;
         }, //////////// resEml 함수 /////////////////
+
+        /******************************************** 
+            함수명 : formSubmit
+            기능 : 폼 제출시 결과여부 따라 페이지 랜딩
+        ********************************************/
+        formSubmit(e) {
+            // this 저장 변수
+            let self = this;
+            // 1. 기본이동막기
+            e.preventDefault();
+
+            // 2. pass 통과여부 변수에 true 할당!
+            // 처음에 true로 시작하여 검사 중간에 한번이라도
+            // false가 할당되면 결과는 false!!
+            self.pass = true;
+
+            // 2. 입력창 blur이벤트 강제발생하기
+            $(`input[type=text],input[type=password]`).trigger("blur");
+
+            // 3. 최종통과 여부 판별
+            console.log("통과여부:", self.pass);
+
+            // 4. 검사결과에 따라 메시지 보이기
+            if(self.pass){ // 통과시
+                alert("회원가입을 축하드립니다! 짝짝짝!!!");
+            }   
+        }, //////////// formSubmit 함수 /////////////////
+
+        /******************************************** 
+            함수명 : chgEml
+            기능 : 이메일 옵션 선택에 따른 결과처리
+        ********************************************/
+        chgEml(e) {
+            // 1. 선택박스 변경된 값 읽어오기
+            const cv = $(e.currentTarget).val();
+            let self = this;
+
+            // 2. 선택옵션별 분기문 
+            if (cv === "init") {
+                // 1. 메시지출력
+                $(".firsteml").siblings(".msg").text("이메일 옵션을 선택해주세요.");
+            }
+            else {
+                // 이메일 주소일 경우
+                // 2. 이메일 전체 주소 조합하기
+                let comp = $("#email1").val() + "@" + cv;
+                self.resEml(comp);
+            }
+        }
     },
 };
 </script>

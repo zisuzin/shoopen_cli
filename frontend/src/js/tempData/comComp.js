@@ -142,7 +142,7 @@ const comData = {
                     <div class="firsteml">
                         <input type="text" id="email1" name="email1" placeholder="이메일앞주소" />
                         <span class="gol">@</span>
-                        <select name="seleml" id="seleml">
+                        <select name="seleml" id="seleml" @change="chgEml">
                             <option value="init">이메일 선택</option>
                             <option value="naver.com">naver.com</option>
                             <option value="daum.net">daum.net</option>
@@ -304,7 +304,7 @@ const comData = {
                             <i class="fa-solid fa-xmark"></i>
                         </a>
                     </div>
-                    <input class="signup_btn2" id="final_signup" name="final_signup" type="submit" value="가입하기"/>
+                    <input class="signup_btn2" id="final_signup" name="final_signup" type="submit" value="가입하기" @click="formSubmit"/>
                     <label for="final_signup"></label>
                 </div>
             </form>
