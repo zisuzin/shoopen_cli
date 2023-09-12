@@ -72,10 +72,10 @@ const comData = {
                     <h2>Log In</h2>
                     <form action="index.html" method="post" id="login-form">
                         <label class="login-inputbx">
-                            <input type="text" id="userid" required placeholder="아이디" />
+                            <input type="text" id="userid" placeholder="아이디" />
                         </label>
                         <label class="login-inputbx">
-                            <input type="text" id="userpw" required placeholder="비밀번호" />
+                            <input type="text" id="userpw" placeholder="비밀번호" />
                         </label>
                         <div class="login_addbx">
                             <span class="login_saveid">
@@ -117,11 +117,11 @@ const comData = {
             <h2>Sign Up</h2>
             <form action="http://localhost/member/register.php" method="post" id="signup-form">
                 <label class="signup-inputbx">
-                    <input type="text" id="signid" name="signid" required placeholder="아이디"/>
+                    <input type="text" id="signid" name="signid" placeholder="아이디"/>
                     <span class="msg"></span>
                 </label>
                 <label class="signup-inputbx">
-                    <input type="password" id="signpw" name="signpw" required placeholder="비밀번호"/>
+                    <input type="password" id="signpw" name="signpw" placeholder="비밀번호"/>
                     <span class="msg"></span>
                 </label>
                 <label class="signup-inputbx">
