@@ -61,6 +61,10 @@ export default {
                         // 만약 아이디가 이미 있으면 "이미 사용중이거나 탈퇴한 아이디입니다."
                         // 없으면 메시지 지움
                         $(this).siblings(".msg").empty();
+
+                        // 통과!
+                        self.pass = true;
+                        console.log(self.pass)
                     }
                 }
                 /***************************************************** 
@@ -79,6 +83,10 @@ export default {
                     else {
                         // 메시지 지우기
                         $(this).siblings(".msg").empty();
+
+                        // 통과!
+                        self.pass = true;
+                        console.log(self.pass)
                     }
                 }
                 /***************************************************** 
@@ -149,6 +157,10 @@ export default {
             }
             else {
                 eml1.parent().siblings(".msg").empty();
+                
+                // 통과!
+                self.pass = true;
+                console.log(self.pass)
             }
         }, //////////// resEml 함수 /////////////////
 
@@ -161,7 +173,7 @@ export default {
             let self = this;
             // 1. 기본이동막기
             e.preventDefault();
-
+            
             // 2. pass 통과여부 변수에 true 할당!
             // 처음에 true로 시작하여 검사 중간에 한번이라도
             // false가 할당되면 결과는 false!!
