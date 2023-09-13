@@ -157,10 +157,11 @@ const comData = {
                     <div class="check_circle">
                         <input type="checkbox" id="agree_all">
                         <label for="agree_all">
-                            <em class="option point">[필수]</em>
+                            <em class="option point"> [필수] </em>
                             <span class="text">인증 약관 전체동의</span>
                         </label>
                     </div>
+                    <span class="msg"></span>
                     <button type="button" class="btn_expand"></button>
                     <!-- !!!! 슈펜 이용약관 동의 !!!! -->
                     <div class="termsbx">

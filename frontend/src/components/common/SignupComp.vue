@@ -10,18 +10,19 @@ export default {
     data() {
         return {
             // 검사용 변수
-            pass: true
+            pass: true,
+            userName: '',
         };
     },
     methods: {
         // 폼 검사 메서드
         searchForm() {
-            // this 저장 변수
-            let self = this;
             // 이메일 앞주소
             const eml1 = $("#email1");
             // 이메일 선택박스
             const seleml = $("#seleml");
+            // this 저장 변수
+            let self = this;
 
             $(`input[type=text],input[type=password]`).blur(function () {
                 // 1. 요소 공백제거
@@ -40,7 +41,7 @@ export default {
                     && $(this).parent().siblings('.msg').text('필수 입력 바랍니다.');
 
                     // 불통과
-                    self.pass = false;
+                    this.pass = false;
                 }
                 /***************************************************** 
                     3. 아이디일 경우 유효성 검사
@@ -61,9 +62,6 @@ export default {
                         // 만약 아이디가 이미 있으면 "이미 사용중이거나 탈퇴한 아이디입니다."
                         // 없으면 메시지 지움
                         $(this).siblings(".msg").empty();
-
-                        // // 통과!
-                        self.pass = true;
                     }
                 }
                 /***************************************************** 
@@ -82,9 +80,6 @@ export default {
                     else {
                         // 메시지 지우기
                         $(this).siblings(".msg").empty();
-
-                        // // 통과!
-                        self.pass = true;
                     }
                 }
                 /***************************************************** 
@@ -101,7 +96,7 @@ export default {
                 else {
                     $(this).siblings(".msg").empty()
                     && $(this).parent().siblings(".msg").empty();
-                    console.log("통과여부:", self.pass);
+                    console.log("통과여부:", this.pass);
                 }
             }); ////////////// blur ////////////////////////
         }, //////////// searchForm 함수 /////////////////
@@ -124,6 +119,10 @@ export default {
                     reg = /^.*(?=^.{5,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
                     // 특수문자,문자,숫자포함 형태의 5~15자리
                     break;
+                case "signname": // 이름
+                    reg = /^[a-zA-Z가-힣\s]+$/;
+                    // 한글, 영문 대/소문자, 공백 허용
+                    break;
                 case "email1": // 이메일
                     reg = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
                     // 이메일 형식에 맞는지 검사하는 정규식
@@ -139,26 +138,21 @@ export default {
             기능 : 이메일 검사결과 처리
         ****************************************/
         resEml(val) { // val - 완성된 이메일 주소
-            // this 저장 변수
-            let self = this;
             // 이메일 앞주소
             const eml1 = $("#email1");
 
             console.log("이메일주소:", val);
-            console.log("이메일 검사결과:", self.vReg(val, "email1"));
+            console.log("이메일 검사결과:", this.vReg(val, "email1"));
 
             // 이메일 정규식검사에 따른 메시지 보이기
-            if (!self.vReg(val, "email1")) {
+            if (!this.vReg(val, "email1")) {
                 eml1.parent().siblings(".msg").text("맞지않는 이메일 형식입니다.")
 
                 // 불통과!
-                self.pass = false;
+                this.pass = false;
             }
             else {
                 eml1.parent().siblings(".msg").empty();
-                
-                // 통과!
-                self.pass = true;
             }
         }, //////////// resEml 함수 /////////////////
 
@@ -166,27 +160,25 @@ export default {
             함수명 : formSubmit
             기능 : 폼 제출시 결과여부 따라 페이지 랜딩
         ********************************************/
-        async formSubmit(e) {
-            // this 저장 변수
-            let self = this;
+        formSubmit(e) {
             // 1. 기본이동막기
             e.preventDefault();
             
-            // 2. pass 통과여부 변수에 true 할당!
+            // 3. pass 통과여부 변수에 true 할당!
             // 처음에 true로 시작하여 검사 중간에 한번이라도
             // false가 할당되면 결과는 false!!
-            self.pass = true;
+            this.pass = true;
 
             // 2. 입력창 blur이벤트 강제발생하기
             $(`input[type=text],input[type=password]`).trigger("blur");
 
-            // 3. 최종통과 여부 판별
-            console.log("통과여부:", self.pass);
+            // 4. 최종통과 여부 판별
+            console.log("최종 통과여부:", this.pass);
 
-            // 4. 검사결과에 따라 메시지 보이기
-            if(self.pass){ // 통과시
-                alert("회원가입을 축하드립니다! 짝짝짝!!!");
-            }   
+            // 5. 검사결과에 따라 메시지 보이기
+            if(this.pass){ // 통과시
+                alert(`${this.userName}님 회원가입을 축하드립니다!`);
+            }
         }, //////////// formSubmit 함수 /////////////////
 
         /******************************************** 
@@ -196,7 +188,6 @@ export default {
         chgEml(e) {
             // 1. 선택박스 변경된 값 읽어오기
             const cv = $(e.currentTarget).val();
-            let self = this;
 
             // 2. 선택옵션별 분기문 
             if (cv === "init") {
@@ -207,9 +198,26 @@ export default {
                 // 이메일 주소일 경우
                 // 2. 이메일 전체 주소 조합하기
                 let comp = $("#email1").val() + "@" + cv;
-                self.resEml(comp);
+                this.resEml(comp);
             }
         }
     },
+    mounted() {
+        $("#agree_all").click(function() {
+            // 필수항목에 체크 안된 경우
+            if(!$(this).prop("checked")) {
+                $(this).parent().siblings(".msg").text("필수항목에 체크하셔야 합니다.")
+
+                // 불통과!
+                this.pass = false;
+            }
+            else {
+                $(this).parent().siblings(".msg").empty();
+                
+                // 통과!
+                this.pass = true;
+            }
+        })
+    }
 };
 </script>
