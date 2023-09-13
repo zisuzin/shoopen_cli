@@ -62,9 +62,8 @@ export default {
                         // 없으면 메시지 지움
                         $(this).siblings(".msg").empty();
 
-                        // 통과!
+                        // // 통과!
                         self.pass = true;
-                        console.log(self.pass)
                     }
                 }
                 /***************************************************** 
@@ -84,9 +83,8 @@ export default {
                         // 메시지 지우기
                         $(this).siblings(".msg").empty();
 
-                        // 통과!
+                        // // 통과!
                         self.pass = true;
-                        console.log(self.pass)
                     }
                 }
                 /***************************************************** 
@@ -103,6 +101,7 @@ export default {
                 else {
                     $(this).siblings(".msg").empty()
                     && $(this).parent().siblings(".msg").empty();
+                    console.log("통과여부:", self.pass);
                 }
             }); ////////////// blur ////////////////////////
         }, //////////// searchForm 함수 /////////////////
@@ -160,7 +159,6 @@ export default {
                 
                 // 통과!
                 self.pass = true;
-                console.log(self.pass)
             }
         }, //////////// resEml 함수 /////////////////
 
@@ -168,7 +166,7 @@ export default {
             함수명 : formSubmit
             기능 : 폼 제출시 결과여부 따라 페이지 랜딩
         ********************************************/
-        formSubmit(e) {
+        async formSubmit(e) {
             // this 저장 변수
             let self = this;
             // 1. 기본이동막기
