@@ -4,6 +4,8 @@ import { createStore } from 'vuex';
 import womenData from './gdsData/womenData.js';
 import menData from './gdsData/menData.js';
 import kidsData from './gdsData/kidsData.js';
+// 제이쿼리 불러오기
+import $ from "jquery";
 
 const store = createStore({
     // (1) 데이터 셋팅구역:
@@ -341,21 +343,58 @@ const store = createStore({
         allPass: [],
     }, ////// state 구역 /////
 
-    // (2) 데이터 변경 메서드구역:
     mutations: {
         // new/best 상품 출력 함수
         chgList(st, pm) {
             store.state.setcat = pm;
         },
         // MORE 버튼 클릭시 이미지 증가 함수
-        updateList(dt,pm){
+        updateList(dt, pm) {
             dt.mnum += pm;
-            if(dt.mnum>=30)
+            if (dt.mnum >= 30)
                 dt.mbtn = false;
         },
         setDet(st, pm) {
-            console.log(pm);
-            // 상품정보 저장 데이터
+            // 로컬스토리지 저장 데이터
+            localStorage.setItem("detsrc", pm.name);
+
+            location.href = `/product/all/best`;
+
+            // .bestItem 클릭시 디테일페이지 트리거로 발생
+            let getItem = localStorage.getItem("detsrc");
+            console.log(Boolean(getItem));
+
+            function promise() {
+                return new Promise((success, fail) => {
+                    // 조건 불충족
+                    if (Boolean(getItem) == false) {
+                        fail();
+                    }
+
+                    // 조건 충족
+                    setTimeout(() => {
+                        success(); // 성공시 await로 전달
+                    }, 500);
+                });
+            }
+            async function setDetail() {
+                try {
+                    await promise(Boolean(getItem) == true); // 조건 충족시 아래 실행
+                    console.log("await 디테일페이지로");
+
+                    let txt = getItem;
+                    let tgbox = $('.btxt1 p:contains(' + txt + ')');
+                    console.log(tgbox);
+
+                    // 트리거 발생
+                    $(tgbox).trigger("click");
+                }
+                catch(error) {
+                    console.log("디테일페이지 아님")
+                }
+            }
+            // 최초호출
+            setDetail();
         }
     }, ////// mutastions 구역 /////
 }); ///////////// 뷰엑스 인스턴스 /////////////
