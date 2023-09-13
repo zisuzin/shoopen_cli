@@ -1,4 +1,5 @@
 module.exports = {
+    publicPath: '/shoopen',
     devServer: {
         proxy: {
             '/api': {
