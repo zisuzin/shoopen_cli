@@ -353,14 +353,10 @@ const store = createStore({
             if(dt.mnum>=30)
                 dt.mbtn = false;
         },
-        // setDet(st, pm) {
-        //     // 상품정보 저장 데이터
-        //     // let saveData = [];
-        //     // localStorage.setItem("detsrc", saveData);
-        //     // saveData.push(pm.name);
-        //     // saveData.push(pm.img);
-        //     // localStorage.setItem("detsrc", pm);
-        // }
+        setDet(st, pm) {
+            console.log(pm);
+            // 상품정보 저장 데이터
+        }
     }, ////// mutastions 구역 /////
 }); ///////////// 뷰엑스 인스턴스 /////////////
 
