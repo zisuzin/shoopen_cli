@@ -354,14 +354,11 @@ const store = createStore({
             if (dt.mnum >= 30)
                 dt.mbtn = false;
         },
-        setDet(st, pm) {
-            // 로컬스토리지 저장 데이터
-            localStorage.setItem("detsrc", pm.name);
-
-            location.href = `/product/all/best`;
-
+    }, ////// mutastions 구역 /////
+    actions: {
+        setDet() {
             // .bestItem 클릭시 디테일페이지 트리거로 발생
-            let getItem = localStorage.getItem("detsrc");
+            let getItem = JSON.parse(localStorage.getItem("detsrc"));
             console.log(Boolean(getItem));
 
             function promise() {
@@ -396,7 +393,7 @@ const store = createStore({
             // 최초호출
             setDetail();
         }
-    }, ////// mutastions 구역 /////
+    }
 }); ///////////// 뷰엑스 인스턴스 /////////////
 
 export default store;

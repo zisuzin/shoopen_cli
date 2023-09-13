@@ -88,7 +88,7 @@ import prdData from "../../js/gdsData/newbestData.js";
 // 제이쿼리 불러오기
 import $ from "jquery";
 // 스토어 불러오기
-import store from "../../js/store.js"; // eslint-disable-line no-unused-vars
+import store from "../../js/store.js"; 
 // 서브페이지 CSS
 import "../../scss/sub.scss";
 

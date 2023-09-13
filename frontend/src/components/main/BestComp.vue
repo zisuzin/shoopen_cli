@@ -8,6 +8,8 @@ import mainData from "../../js/tempData/mainComp.js";
 import $ from "jquery";
 // 더미데이터
 import { m_bestData } from "../../js/gdsData/mainData.js";
+// 스토어 불러오기
+import store from "../../js/store.js";
 
 export default {
   name: "BestComp",
@@ -19,6 +21,17 @@ export default {
       m_bestData: m_bestData,
       notelnb: ["#1만원대 특가 신발", "#버킷햇", "#썸머 슈즈"],
     };
+  },
+  methods: {
+    moveDet(pm) {
+        // 로컬스토리지에 데이터 저장
+        localStorage.setItem("detsrc", JSON.stringify(pm.name));
+        setTimeout(() => {
+            store.state.dispatch("setDet");
+        }, 10);
+        // // 페이지 이동
+        location.href = "product/all/best";
+    }
   },
   mounted() {
     // 첫번째 dd에 강제 클릭

@@ -17,7 +17,7 @@ const mainData = {
         </div>
         <div class="mbList">
             <ul>
-                <li class="bestItem" v-for="(a,b) in m_bestData['bestItem'+$store.state.setNumber]" :key="b" @click.prevent="$store.commit('setDet', a)">
+                <li class="bestItem" v-for="(a,b) in m_bestData['bestItem'+$store.state.setNumber]" :key="b" @click.prevent="moveDet(a)">
                     <!-- 이미지 -->
                     <a href="#">
                         <div class="best-img">
