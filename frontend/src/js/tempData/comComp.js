@@ -125,7 +125,7 @@ const comData = {
                     <span class="msg"></span>
                 </label>
                 <label class="signup-inputbx">
-                    <input type="text" name="signname" id="signname" maxlength="20" placeholder="이름" />
+                    <input type="text" name="signname" id="signname" maxlength="20" placeholder="이름"/>
                     <span class="msg"></span>
                 </label>
                 <div class="gen-inputbx">
@@ -140,7 +140,7 @@ const comData = {
                 </div>
                 <label class="signup-inputbx emlbx">
                     <div class="firsteml">
-                        <input type="text" id="email1" name="email1" placeholder="이메일앞주소" />
+                        <input type="text" id="email1" name="email1" placeholder="이메일앞주소"/>
                         <span class="gol">@</span>
                         <select name="seleml" id="seleml" @change="chgEml">
                             <option value="init">이메일 선택</option>

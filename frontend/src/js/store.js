@@ -334,6 +334,11 @@ const store = createStore({
 
         // 메인페이지 배열데이터 접근용 변수
         setNumber: '',
+
+        // 회원가입폼 유효성검사용 변수
+        setpass: true,
+        // 유효성검사 결과 저장용 변수
+        allPass: [],
     }, ////// state 구역 /////
 
     // (2) 데이터 변경 메서드구역:

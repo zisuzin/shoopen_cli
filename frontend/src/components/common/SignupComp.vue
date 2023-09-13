@@ -1,5 +1,6 @@
 <script>
 // 공통기능함수
+import store from '@/js/store';
 import comData from '@/js/tempData/comComp.js';
 // 제이쿼리 불러오기
 import $ from 'jquery';
@@ -9,8 +10,6 @@ export default {
     template: comData.signupComp,
     data() {
         return {
-            // 검사용 변수
-            pass: true,
             userName: '',
         };
     },
@@ -21,8 +20,8 @@ export default {
             const eml1 = $("#email1");
             // 이메일 선택박스
             const seleml = $("#seleml");
-            // this 저장 변수
-            let self = this;
+            // this 저장용 변수
+            let vm = this;
 
             $(`input[type=text],input[type=password]`).blur(function () {
                 // 1. 요소 공백제거
@@ -41,20 +40,20 @@ export default {
                     && $(this).parent().siblings('.msg').text('필수 입력 바랍니다.');
 
                     // 불통과
-                    this.pass = false;
+                    store.state.setpass = false;
                 }
                 /***************************************************** 
                     3. 아이디일 경우 유효성 검사
                     - 검사기준: 영문자로 시작하는 6~20글자 영문자/숫자
                 *****************************************************/
                 else if (cid === "signid") {
-                    console.log("아이디 검사결과:", self.vReg(cv, cid));
-                    if (!self.vReg(cv, cid)) {
+                    console.log("아이디 검사결과:", vm.vReg(cv, cid));
+                    if (!vm.vReg(cv, cid)) {
                         // 불통과일때 메시지 
                         $(this).siblings('.msg').text(("영문자로 시작하는 6~20글자 영문자/숫자"));
 
                         // 불통과!
-                        self.pass = false;
+                        store.state.setpass = false;
                     }
                     else {
                         // 통과시
@@ -62,6 +61,9 @@ export default {
                         // 만약 아이디가 이미 있으면 "이미 사용중이거나 탈퇴한 아이디입니다."
                         // 없으면 메시지 지움
                         $(this).siblings(".msg").empty();
+
+                        // 통과!
+                        store.state.setpass = true;
                     }
                 }
                 /***************************************************** 
@@ -69,17 +71,20 @@ export default {
                     - 검사기준: 특수문자,문자,숫자포함 형태의 5~15자리
                 *****************************************************/
                 else if (cid === "signpw") {
-                    console.log("비밀번호 검사결과:", self.vReg(cv, cid));
-                    if(!self.vReg(cv, cid)) {
+                    console.log("비밀번호 검사결과:", vm.vReg(cv, cid));
+                    if(!vm.vReg(cv, cid)) {
                         // 불통과일때 메시지 
                         $(this).siblings(".msg").text("특수문자,문자,숫자포함 형태의 5~15자리");
 
                         // 불통과!
-                        self.pass = false;
+                        store.state.setpass = false;
                     }
                     else {
                         // 메시지 지우기
                         $(this).siblings(".msg").empty();
+
+                        // 통과!
+                        store.state.setpass = true;
                     }
                 }
                 /***************************************************** 
@@ -90,13 +95,12 @@ export default {
                     // 1. 이메일 주소 만들기 : 앞주소@뒷주소
                     let comp = eml1.val() + "@" + seleml.val();
                     // 2. 이메일 검사함수 호출
-                    self.resEml(comp);
+                    vm.resEml(comp);
                 }
                 // 모두 통과일 경우 메시지 지움
                 else {
                     $(this).siblings(".msg").empty()
                     && $(this).parent().siblings(".msg").empty();
-                    console.log("통과여부:", this.pass);
                 }
             }); ////////////// blur ////////////////////////
         }, //////////// searchForm 함수 /////////////////
@@ -149,10 +153,13 @@ export default {
                 eml1.parent().siblings(".msg").text("맞지않는 이메일 형식입니다.")
 
                 // 불통과!
-                this.pass = false;
+                store.state.setpass = false;
             }
             else {
                 eml1.parent().siblings(".msg").empty();
+
+                // 통과!
+                store.state.setpass = true;
             }
         }, //////////// resEml 함수 /////////////////
 
@@ -164,19 +171,19 @@ export default {
             // 1. 기본이동막기
             e.preventDefault();
             
-            // 3. pass 통과여부 변수에 true 할당!
+            // 2. pass 통과여부 변수에 true 할당!
             // 처음에 true로 시작하여 검사 중간에 한번이라도
             // false가 할당되면 결과는 false!!
-            this.pass = true;
+            store.state.setpass = true;
 
-            // 2. 입력창 blur이벤트 강제발생하기
+            // 3. 입력창 blur이벤트 강제발생하기
             $(`input[type=text],input[type=password]`).trigger("blur");
-
+            
             // 4. 최종통과 여부 판별
-            console.log("최종 통과여부:", this.pass);
-
+            console.log("최종 통과여부:", store.state.setpass);
+            
             // 5. 검사결과에 따라 메시지 보이기
-            if(this.pass){ // 통과시
+            if(store.state.setpass){ // 통과시
                 alert(`${this.userName}님 회원가입을 축하드립니다!`);
             }
         }, //////////// formSubmit 함수 /////////////////
