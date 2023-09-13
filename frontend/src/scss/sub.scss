@@ -461,16 +461,15 @@ main {
 /* 상품디테일 박스 */
 .original-price > em {
     text-decoration: line-through;
-    font-style: normal;
     color: #999;
-    font-size: 1.5rem;
-    font-family: var(--shoopen-font-prodtxt);
+    font-size: 16px;
+    font-family: var(--shoopen-font-eng);
 }
 
 .discount-price > em {
-    font-style: normal;
-    font-size: 2.2rem;
-    font-family: var(--shoopen-font-prodtxt);
+    font-size: 20px;
+    font-weight: 500;
+    font-family: var(--shoopen-font-eng);
 }
 
 .discount-price > span {
