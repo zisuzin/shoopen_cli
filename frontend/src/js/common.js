@@ -1,7 +1,7 @@
 // 스토어 불러오기
 import store from './store';
 // 제이쿼리 불러오기
-import $ from "jquery";
+import $ from 'jquery';
 
 /************* 공통기능 함수 *************/
 const crossMixin = {
@@ -52,11 +52,13 @@ const crossMixin = {
             }
             //////////////////////////////////////////////////
 
-            console.log('담긴 위시 아이템:', pm);
             let num = cnt; // 기본수량 - 1
+            // 로컬스에 담을 데이터
             let imgData = pm['wsimg'] || pm['img'];
             let nameData = pm['name'];
             let priceData = pm['dprice'];
+
+            console.log('담긴 위시 아이템:', pm);
 
             let arr = [imgData, nameData, priceData];
             let arr2 = num;
@@ -66,11 +68,11 @@ const crossMixin = {
             console.log('중복여부검사:', isB);
 
             if (isB == true) {
-                // console.log("중복");
+                console.log('중복');
                 alert('이미 선택하신 상품입니다.');
                 return;
             } else if (isB == false) {
-                // console.log("추가")
+                console.log('추가');
 
                 // 배열 추가
                 wishData.push(arr);
