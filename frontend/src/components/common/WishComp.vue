@@ -11,6 +11,9 @@ export default {
     template: comData.wishComp,
     mixins: [crossMixin],
     methods: {
+        wishClose() {
+            $('.wish_comp').removeClass('show');
+        },
         // 더하기 함수
         minusBtn() {
             let tg = event.currentTarget;
