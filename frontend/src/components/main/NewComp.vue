@@ -22,8 +22,8 @@ export default {
   methods: {
     moveDet(pm) {
         // 로컬스토리지에 데이터 저장
-        localStorage.setItem("detnm", JSON.stringify(pm.name));
-        localStorage.setItem("detimg", JSON.stringify(pm.img));
+        localStorage.setItem("detnm", pm.name);
+        localStorage.setItem("detimg", pm.img);
 
         // 페이지 이동
         this.$router.push({ path: "/product/all/new"}).then(() => {

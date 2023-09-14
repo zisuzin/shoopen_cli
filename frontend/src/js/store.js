@@ -359,8 +359,8 @@ const store = createStore({
     actions: {
         setDet() {
             // 메인페이지 상품 클릭시 디테일페이지 트리거로 발생
-            let getItem = JSON.parse(localStorage.getItem("detnm"));
-            let getItem2 = JSON.parse(localStorage.getItem("detimg"));
+            let getItem = localStorage.getItem("detnm");
+            let getItem2 = localStorage.getItem("detimg");
             console.log(Boolean(getItem));
             
             // 상품 카테고리탭 트리거용 변수

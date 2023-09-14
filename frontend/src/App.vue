@@ -42,7 +42,10 @@
                     <!-- 3. 사이드 영역-->
                     <SideComp/>
                 </nav>
+                <!-- 3-1. 로그인/가입 컴포넌트 -->
                 <LoginComp/>
+                <!-- 3-2. 위시리스트 컴포넌트 -->
+                <WishComp/>
             </div>
         </header>
         <!-- 라우팅된 컴포넌트 출력 -->
@@ -59,6 +62,7 @@ import store from '../src/js/store.js';
 import NavComp from './components/common/NavComp.vue';
 import SideComp from './components/common/SideComp.vue';
 import LoginComp from './components/common/LoginComp.vue';
+import WishComp from './components/common/WishComp.vue';
 // 공통 CSS
 import '../src/scss/common.scss';
 
@@ -68,6 +72,7 @@ export default {
         NavComp,
         SideComp,
         LoginComp,
+        WishComp,
     },
     methods: {
         // v-on 클릭시 gnb sub-comp 데이터 변경 발생

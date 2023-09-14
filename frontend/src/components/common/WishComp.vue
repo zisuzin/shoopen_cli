@@ -8,5 +8,5 @@ export default {
     name: 'WishComp',
     template: comData.wishComp,
     mixins: [crossMixin],
-}
+};
 </script>

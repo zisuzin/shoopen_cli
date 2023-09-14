@@ -21,7 +21,7 @@ const comData = {
                     <tbody>
                         <tr v-for="(v,i) in $store.state.wish" :key="i">
                             <td class="ws_img">
-                                <img :src="'./images/goods/'+v[0]+'.jpg'" alt="찜한 이미지" />
+                                <img :src="'/images/goods/'+v[0]+'.jpg'" alt="찜한 이미지" />
                             </td>
                             <!-- 상세 정보 -->
                             <td class="ws_info">
