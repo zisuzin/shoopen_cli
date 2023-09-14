@@ -20,26 +20,6 @@ const crossMixin = {
       const discount = ((oprice - dprice) / oprice) * 100;
       return Math.floor(discount) + "%";
     },
-    // url 읽어와서 카테고리마다 고유넘버 적용시키고 결과값으로 보내기
-    dataNum() {
-      let result = "";
-      let cat = store.state.curUrl0;
-
-      // 분기시키기
-      switch (cat) {
-        case (cat = "women"):
-          result = "0";
-          break;
-        case (cat = "men"):
-          result = "1";
-          break;
-        case (cat = "kids"):
-          result = "2";
-          break;
-      }
-      // 분기한 결과값 뱉어내기!
-      return result;
-    },
     // 카트 추가 메서드
     // addWish(pm, cnt) {
     //   console.log("담긴 위시 아이템:", pm);

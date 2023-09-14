@@ -1,11 +1,11 @@
 // 메인 section2 best data
 const m_bestData = {
     bestItem0: [
-        {   name: "베이직 메리제인 플랫 1.0",
-            img: "./images/goods/women/shoes/flat/item_5_on.jpg",
-            oprice: "19900",
-            dprice: "14880",
-            review: "129",
+        {   name: "베이직 스트랩 샌들 1.5",
+            img: "./images/goods/women/best/item_7.jpg",
+            oprice: "29900",
+            dprice: "19900",
+            review: "29",
         },
         {   name: "[경량EVA] 논슬립 베이직 리커버리 쪼리",
             img: "./images/goods/men/shoes/slippers/item_4_on.jpg",

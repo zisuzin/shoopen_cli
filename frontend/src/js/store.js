@@ -380,14 +380,19 @@ const store = createStore({
                     console.log("await 디테일페이지로");
 
                     let txt = getItem;
-                    let tgbox = $('.btxt1 p:contains(' + txt + ')');
+                    let tgbox = $('.prod_txt p:contains(' + txt + ')');
+
+                    // tgbox 길이가 0이면 예외 처리
+                    if(tgbox.length == 0) {
+                        throw new Error("디테일페이지 아님");
+                    }
                     console.log(tgbox);
 
                     // 트리거 발생
                     $(tgbox).trigger("click");
                 }
                 catch(error) {
-                    console.log("디테일페이지 아님")
+                    console.log(error.message);
                 }
             }
             // 최초호출

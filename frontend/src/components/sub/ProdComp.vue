@@ -142,7 +142,10 @@ export default {
         this.showDt = true;
     },
     closeDetail() {
+        // 디테일페이지 닫기
         this.showDt = false;
+        // 로컬스토리지에서 데이터 삭제
+        localStorage.removeItem("detsrc");
     },
   },
   mounted() {
