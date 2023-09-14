@@ -19,6 +19,19 @@ export default {
       notelnb2: ["WOMEN", "MEN", "KIDS"],
     };
   },
+  methods: {
+    moveDet(pm) {
+        // 로컬스토리지에 데이터 저장
+        localStorage.setItem("detnm", JSON.stringify(pm.name));
+        localStorage.setItem("detimg", JSON.stringify(pm.img));
+
+        // 페이지 이동
+        this.$router.push({ path: "/product/all/new"}).then(() => {
+            // 페이지 이동후 store 함수 실행!
+            this.$store.dispatch("setDet");
+        });
+    }
+  },
   mounted() {
     // 첫번째 dd에 강제 클릭
     $(".mntit2 > dd:first").addClass("on").siblings().removeClass("on").trigger("click");

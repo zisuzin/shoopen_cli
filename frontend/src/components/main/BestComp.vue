@@ -23,12 +23,12 @@ export default {
   methods: {
     moveDet(pm) {
         // 로컬스토리지에 데이터 저장
-        localStorage.setItem("detsrc", JSON.stringify(pm.name));
+        localStorage.setItem("detnm", JSON.stringify(pm.name));
 
         // 페이지 이동
         this.$router.push({ path: "/product/all/best"}).then(() => {
             // 페이지 이동후 store 함수 실행!
-            this.$store.dispatch("setDet");
+            this.$store.dispatch("setDet", pm);
         });
     }
   },

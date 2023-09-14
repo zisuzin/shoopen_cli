@@ -68,7 +68,7 @@ const mainData = {
         </div>
         <div class="mnList">
             <ul>
-                <li class="newItem" v-for="(a,b) in m_newData['newItem'+$store.state.setNumber]" :key="b">
+                <li class="newItem" v-for="(a,b) in m_newData['newItem'+$store.state.setNumber]" :key="b" @click="moveDet(a)">
                     <!-- 이미지 -->
                     <a href="#">
                         <div class="new-img">

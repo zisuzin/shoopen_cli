@@ -358,9 +358,27 @@ const store = createStore({
     }, ////// mutastions 구역 /////
     actions: {
         setDet() {
-            // .bestItem 클릭시 디테일페이지 트리거로 발생
-            let getItem = JSON.parse(localStorage.getItem("detsrc"));
+            // 메인페이지 상품 클릭시 디테일페이지 트리거로 발생
+            let getItem = JSON.parse(localStorage.getItem("detnm"));
+            let getItem2 = JSON.parse(localStorage.getItem("detimg"));
             console.log(Boolean(getItem));
+            
+            // 상품 카테고리탭 트리거용 변수
+            const tglnb = $(".prod_tab li");
+
+            // new 페이지로 랜딩된 경우
+            // women, men, kids 각 타겟 관련 페이지로 이동!
+            if(location.href.includes("/all/new")) {
+                if(getItem2.includes("kids")) {
+                    $(tglnb).eq(3).trigger("click");
+                }
+                else if (getItem2.includes("women")) {
+                    $(tglnb).eq(1).trigger("click");
+                }
+                else if (getItem2.includes("men")) {
+                    $(tglnb).eq(2).trigger("click");
+                }
+            } ////////// if //////////
 
             function promise() {
                 return new Promise((success, fail) => {
