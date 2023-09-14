@@ -54,7 +54,9 @@
                             </dd>
                             <dd class="box_grade">
                                 <div class="star">
-                                    <span>{{ '(' + $store.state.dtreview + ')'}}</span>
+                                    <span v-if="$store.state.dtreview">
+                                        {{ '(' + $store.state.dtreview + ')'}}
+                                    </span>
                                 </div>
                             </dd>
                             <dd class="buy_option">

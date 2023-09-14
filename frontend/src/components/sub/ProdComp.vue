@@ -36,16 +36,16 @@
                                             </div>
                                             <div class="pricebx">
                                                 <span class="original-price">
-                                                <em>{{ setComma(x.oprice) }}</em>
-                                                <span v-if="x.oprice">원</span>
+                                                    <em>{{ setComma(x.oprice) }}</em>
+                                                    <span v-if="x.oprice">원</span>
                                                 </span>
                                                 <br />
                                                 <span class="discount-price">
-                                                <em>{{ setComma(x.dprice) }}</em>
-                                                <span>원</span>
+                                                    <em>{{ setComma(x.dprice) }}</em>
+                                                    <span>원</span>
                                                 </span>
                                                 <span class="percent-price" v-if="x.oprice && x.dprice">
-                                                <em>{{ setDiscount(x.oprice, x.dprice) }}</em>
+                                                    <em>{{ setDiscount(x.oprice, x.dprice) }}</em>
                                                 </span>
                                             </div>
                                         </div>

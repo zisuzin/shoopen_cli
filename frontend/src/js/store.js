@@ -383,11 +383,12 @@ const store = createStore({
                     let txt = getItem;
                     let tgbox = $('.prod_txt p:contains(' + txt + ')');
 
+                    console.log(tgbox);
+                    
                     // tgbox 길이가 0이면 예외 처리
                     if(tgbox.length == 0) {
                         throw new Error("디테일페이지 아님");
                     }
-                    console.log(tgbox);
 
                     // 트리거 발생
                     $(tgbox).trigger("click");

@@ -17,7 +17,7 @@ export default {
     return {
       // 외부 더미 데이터
       m_bestData: m_bestData,
-      notelnb: ["#1만원대 특가 신발", "#버킷햇", "#썸머 슈즈"],
+      notelnb: ["#1만원대 특가 신발", "#보부상 가방", "#썸머 슈즈"],
     };
   },
   methods: {
