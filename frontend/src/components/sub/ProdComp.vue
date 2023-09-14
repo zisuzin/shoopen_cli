@@ -134,6 +134,7 @@ export default {
         store.state.dtdprice = pm['dprice'];
         store.state.dtcolor = pm['color'];
         store.state.dtsize = pm['size'];
+        store.state.dtreview = pm['review'];
         // 썸네일 데이터
         store.state.dtsumimg2 = pm['sumimg2'];
         store.state.dtsumimg3 = pm['sumimg3'];

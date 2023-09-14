@@ -54,7 +54,7 @@
                             </dd>
                             <dd class="box_grade">
                                 <div class="star">
-                                    <span>(29)</span>
+                                    <span>{{ '(' + $store.state.dtreview + ')'}}</span>
                                 </div>
                             </dd>
                             <dd class="buy_option">

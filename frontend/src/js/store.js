@@ -316,6 +316,7 @@ const store = createStore({
         dtdprice: '',
         dtcolor: '',
         dtsize: '',
+        dtreview: '',
         pickcolor: '',
         picksize: '',
         dtsumimg2: '',
