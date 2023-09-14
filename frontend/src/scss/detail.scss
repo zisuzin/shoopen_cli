@@ -62,21 +62,26 @@
     padding: 10px 0 0;
     overflow: hidden;
 
-    .swiper-slide {
-        opacity: 0.4;
-        width: calc(100%/3) !important;
+    .swiper-wrapper {
+        transform: translate3d(0, 0, 0) !important;
 
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            cursor: pointer;
+        .swiper-slide {
+            opacity: 0.4;
+            width: calc(100%/3) !important;
+    
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                cursor: pointer;
+            }
+        }
+    
+        .swiper-slide-thumb-active {
+            opacity: 1;
         }
     }
 
-    .swiper-slide-thumb-active {
-        opacity: 1;
-    }
 }
 
 /* 네비게이션 버튼 */
