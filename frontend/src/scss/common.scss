@@ -341,11 +341,18 @@
         font-size: 1.2rem;
     }
 
-    .ws_price > em {
-        font-size: 2rem;
-        font-family: var(--shoopen-font-eng);
-        font-weight: 500;
-    }
+    .ws_price {
+        em {
+            font-size: 2rem;
+            font-family: var(--shoopen-font-eng);
+            font-weight: 500;
+        }
+
+        span {
+            margin-left: 1px;
+            font-size: 14px;
+        }
+    } 
 }
 
 /* 위시리스트 탭 */
