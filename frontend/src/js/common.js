@@ -35,7 +35,7 @@ const crossMixin = {
             const saveNum = localStorage.getItem('ws_num');
 
             if (saveWish) {
-                // 카트에 상품이 있을 경우
+                // 로컬스에 상품이 있을 경우
                 const parseWish = JSON.parse(saveWish);
                 const parseNum = JSON.parse(saveNum);
 
@@ -51,16 +51,14 @@ const crossMixin = {
             }
             //////////////////////////////////////////////////
 
-            let num = cnt; // 기본수량 - 1
+            console.log('담긴 위시 아이템:', pm);
             // 로컬스에 담을 데이터
-            let imgData = pm['wsimg'] || pm['img'];
+            let imgData = pm['img'];
             let nameData = pm['name'];
             let priceData = pm['dprice'];
 
-            console.log('담긴 위시 아이템:', pm);
-
             let arr = [imgData, nameData, priceData];
-            let arr2 = num;
+            let arr2 = cnt; // 기본수량 - 1
             let getItem = localStorage.getItem('ws_item');
             // 중복데이터 선별 변수 (true/false)
             let isB = getItem.includes(arr[1]);
