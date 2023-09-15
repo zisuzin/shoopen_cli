@@ -59,11 +59,28 @@ export default {
         },
     },
     mounted() {
-        // 좋아요 버튼 클릭시 버튼 디자인 변경!
-        $('.product_like').click(function (e) {
-            e.preventDefault();
-            $(this).toggleClass('on');
-        });
+        /************* 로컬스토리지 위시리스트 셋팅 *************/
+        // 위시리스트 배열 새로고침 초기화 방지
+        const saveWish = localStorage.getItem('ws_item');
+        const saveNum = localStorage.getItem('ws_num');
+
+        if (saveWish) {
+            // 로컬스에 상품이 있을 경우
+            const parseWish = JSON.parse(saveWish);
+            const parseNum = JSON.parse(saveNum);
+
+            store.state.wish = parseWish;
+            this.wishData = parseWish;
+
+            store.state.wishNum = parseNum;
+            this.opnum = parseNum;
+            store.state.callout = this.opnum.length;
+        } else {
+            // 없을 경우 최초 초기 셋팅
+            localStorage.setItem('ws_item', JSON.stringify(this.wishData));
+            localStorage.setItem('ws_num', JSON.stringify(this.opnum));
+        }
+        //////////////////////////////////////////////////
     },
 };
 </script>

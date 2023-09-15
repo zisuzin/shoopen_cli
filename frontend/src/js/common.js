@@ -32,28 +32,6 @@ const crossMixin = {
         },
         // 카트 추가 메서드
         addWish(pm, cnt) {
-            /************* 로컬스토리지 위시리스트 셋팅 *************/
-            // 위시리스트 배열 새로고침 초기화 방지
-            const saveWish = localStorage.getItem('ws_item');
-            const saveNum = localStorage.getItem('ws_num');
-
-            if (saveWish) {
-                // 로컬스에 상품이 있을 경우
-                const parseWish = JSON.parse(saveWish);
-                const parseNum = JSON.parse(saveNum);
-
-                store.state.wish = parseWish;
-                this.wishData = parseWish;
-
-                store.state.wishNum = parseNum;
-                this.opnum = parseNum;
-            } else {
-                // 없을 경우 최초 초기 셋팅
-                localStorage.setItem('ws_item', JSON.stringify(this.wishData));
-                localStorage.setItem('ws_num', JSON.stringify(this.opnum));
-            }
-            //////////////////////////////////////////////////
-
             console.log('담긴 위시 아이템:', pm);
             // 로컬스에 담을 데이터
             let imgData = pm['img'];
