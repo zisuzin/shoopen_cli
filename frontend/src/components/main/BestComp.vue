@@ -28,7 +28,7 @@ export default {
         // 페이지 이동
         this.$router.push({ path: "/product/all/best"}).then(() => {
             // 페이지 이동후 store 함수 실행!
-            this.$store.dispatch("setDet", pm);
+            this.$store.dispatch("setDet");
         });
     }
   },

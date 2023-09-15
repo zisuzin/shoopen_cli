@@ -85,5 +85,12 @@ export default {
             $(tg).siblings().eq(1).find('input').val(num);
         },
     },
+    mounted() {
+        // 좋아요 버튼 클릭시 버튼 디자인 변경!
+        $('.product_like').click(function (e) {
+            e.preventDefault();
+            $(this).toggleClass('on');
+        });
+    },
 };
 </script>
