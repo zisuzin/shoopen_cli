@@ -23,7 +23,6 @@ if (saveWish) {
     const parseNum = JSON.parse(saveNum);
 
     store.state.wish = parseWish;
-    // console.log("로컬스 저장데이터",store.state.wish)
     wishData = parseWish;
 
     store.state.wishNum = parseNum;

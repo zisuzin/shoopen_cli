@@ -83,7 +83,6 @@ const crossMixin = {
                 store.state.wishNum = opnum;
                 store.state.callout = opnum.length;
             }
-
             // 값이 들어오면 콜아웃 나타남
             $('.callout').css({ display: 'inline-block' });
         },
