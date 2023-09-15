@@ -5,6 +5,13 @@ import $ from 'jquery';
 
 /************* 공통기능 함수 *************/
 const crossMixin = {
+    data() {
+        return {
+            // 위시리스트 배열 데이터
+            wishData: [],
+            opnum: [],
+        }
+    },
     methods: {
         // 세자리 콤마찍기 함수
         setComma(val) {
@@ -26,10 +33,6 @@ const crossMixin = {
         // 카트 추가 메서드
         addWish(pm, cnt) {
             /************* 로컬스토리지 위시리스트 셋팅 *************/
-            // 위시리스트 배열 데이터
-            let wishData = [];
-            let opnum = [];
-
             // 위시리스트 배열 새로고침 초기화 방지
             const saveWish = localStorage.getItem('ws_item');
             const saveNum = localStorage.getItem('ws_num');
@@ -40,14 +43,14 @@ const crossMixin = {
                 const parseNum = JSON.parse(saveNum);
 
                 store.state.wish = parseWish;
-                wishData = parseWish;
+                this.wishData = parseWish;
 
                 store.state.wishNum = parseNum;
-                opnum = parseNum;
+                this.opnum = parseNum;
             } else {
                 // 없을 경우 최초 초기 셋팅
-                localStorage.setItem('ws_item', JSON.stringify(wishData));
-                localStorage.setItem('ws_num', JSON.stringify(opnum));
+                localStorage.setItem('ws_item', JSON.stringify(this.wishData));
+                localStorage.setItem('ws_num', JSON.stringify(this.opnum));
             }
             //////////////////////////////////////////////////
 
@@ -72,17 +75,18 @@ const crossMixin = {
                 console.log('추가');
 
                 // 배열 추가
-                wishData.push(arr);
-                opnum.push(arr2);
+                this.wishData.push(arr);
+                this.opnum.push(arr2);
 
                 // 로컬스토리지 업데이트
-                localStorage.setItem('ws_item', JSON.stringify(wishData));
-                localStorage.setItem('ws_num', JSON.stringify(opnum));
+                localStorage.setItem('ws_item', JSON.stringify(this.wishData));
+                localStorage.setItem('ws_num', JSON.stringify(this.opnum));
                 // state 업데이트
-                store.state.wish = wishData;
-                store.state.wishNum = opnum;
-                store.state.callout = opnum.length;
+                store.state.wish = this.wishData;
+                store.state.wishNum = this.opnum;
+                store.state.callout = this.opnum.length;
             }
+
             // 값이 들어오면 콜아웃 나타남
             $('.callout').css({ display: 'inline-block' });
         },
