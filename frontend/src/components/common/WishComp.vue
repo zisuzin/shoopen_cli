@@ -40,8 +40,5 @@ export default {
             $(tg).siblings().eq(1).find('input').val(num);
         },
     },
-    mounted() {
-        
-    },
 };
 </script>
