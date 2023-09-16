@@ -246,8 +246,12 @@ main {
         display: flex;
 
         .msList {
-            img {
-                height: 100%;
+            figure {
+                height: 100vh;
+
+                .special-img, img {
+                    height: 100%;
+                }
             }
 
             figcaption {
