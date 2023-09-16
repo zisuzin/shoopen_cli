@@ -2,7 +2,6 @@
     <ul class="side">
         <!-- 3. 사이드영역 -->
         <li><a href="#" class="ico_mypage" @click.prevent="loginFn()"></a></li>
-        <li><a href="#" class="ico_cart" @click.prevent></a></li>
         <li class="wishbtn" @click.prevent="wishFn()">
             <a href="#" class="ico_wish"></a>
             <div class="callout">{{$store.state.callout}}</div>
