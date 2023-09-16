@@ -242,8 +242,9 @@ main {
     }
 
     /* 컨텐츠 박스 */
-    .msWrap {
+    .msWrap_inner {
         display: flex;
+        position: sticky;
 
         .msList {
             figure {

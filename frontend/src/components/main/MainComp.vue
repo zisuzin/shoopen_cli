@@ -69,68 +69,70 @@
                             <a href="#">전체보기</a>
                         </div>
                     </div>
-                    <div class="msWrap">
-                        <div class="msList">
-                            <figure>
-                                <div class="special-img">
-                                    <img
-                                        src="/images/main/special/ban1.jpg"
-                                        alt="트렌드 샌들"
-                                    />
-                                </div>
-                            </figure>
-                            <figcaption>
-                                <h4 class="special-tit">TREND SANDAL</h4>
-                                <p class="special-desc">
-                                    더운 여름엔 시원한 아이템
-                                </p>
-                            </figcaption>
-                        </div>
-                        <div class="msList">
-                            <figure>
-                                <div class="special-img">
-                                    <img
-                                        src="/images/main/special/ban2.jpg"
-                                        alt="피크닉"
-                                    />
-                                </div>
-                            </figure>
-                            <figcaption>
-                                <h4 class="special-tit">SUMMER PICNIC</h4>
-                                <p class="special-desc">
-                                    청량함 가득한 싱그러운 일상
-                                </p>
-                            </figcaption>
-                        </div>
-                        <div class="msList">
-                            <figure>
-                                <div class="special-img">
-                                    <img
-                                        src="/images/main/special/ban3.jpg"
-                                        alt="장마"
-                                    />
-                                </div>
-                            </figure>
-                            <figcaption>
-                                <h4 class="special-tit">IT'S RAINY DAY</h4>
-                                <p class="special-desc">
-                                    올 여름 가장 완벽한 장마 준비
-                                </p>
-                            </figcaption>
-                        </div>
-                        <div class="msList">
-                            <figure>
-                                <div class="special-img">
-                                    <img
-                                        src="/images/main/special/ban4.jpg"
-                                        alt="OOTD"
-                                    />
-                                </div>
-                            </figure>
-                            <figcaption>
-                                <h4 class="special-tit">SUPPORTERS 아임슈페너</h4>
-                                <p class="special-desc">아임슈페너들의 OOTD</p>
-                            </figcaption>
+                    <div class="msWrap_box">
+                        <div class="msWrap_inner">
+                            <div class="msList">
+                                <figure>
+                                    <div class="special-img">
+                                        <img
+                                            src="/images/main/special/ban1.jpg"
+                                            alt="트렌드 샌들"
+                                        />
+                                    </div>
+                                </figure>
+                                <figcaption>
+                                    <h4 class="special-tit">TREND SANDAL</h4>
+                                    <p class="special-desc">
+                                        더운 여름엔 시원한 아이템
+                                    </p>
+                                </figcaption>
+                            </div>
+                            <div class="msList">
+                                <figure>
+                                    <div class="special-img">
+                                        <img
+                                            src="/images/main/special/ban2.jpg"
+                                            alt="피크닉"
+                                        />
+                                    </div>
+                                </figure>
+                                <figcaption>
+                                    <h4 class="special-tit">SUMMER PICNIC</h4>
+                                    <p class="special-desc">
+                                        청량함 가득한 싱그러운 일상
+                                    </p>
+                                </figcaption>
+                            </div>
+                            <div class="msList">
+                                <figure>
+                                    <div class="special-img">
+                                        <img
+                                            src="/images/main/special/ban3.jpg"
+                                            alt="장마"
+                                        />
+                                    </div>
+                                </figure>
+                                <figcaption>
+                                    <h4 class="special-tit">IT'S RAINY DAY</h4>
+                                    <p class="special-desc">
+                                        올 여름 가장 완벽한 장마 준비
+                                    </p>
+                                </figcaption>
+                            </div>
+                            <div class="msList">
+                                <figure>
+                                    <div class="special-img">
+                                        <img
+                                            src="/images/main/special/ban4.jpg"
+                                            alt="OOTD"
+                                        />
+                                    </div>
+                                </figure>
+                                <figcaption>
+                                    <h4 class="special-tit">SUPPORTERS 아임슈페너</h4>
+                                    <p class="special-desc">아임슈페너들의 OOTD</p>
+                                </figcaption>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -364,6 +366,48 @@ export default {
                 },
             });
         } // bannerSwiper
+
+        // 타겟선정
+        const tgBox = document.querySelector(".msWrap_box");
+        const stkBox = document.querySelector(".msWrap_inner");
+        const body = document.querySelector("body");
+        
+        // 오버플로우 히든 해제
+        body.setAttribute('style', 'overflow: visible');
+        // 박스 전체 높이값 최초 설정
+        let setHeight = stkBox.clientWidth;
+        tgBox.setAttribute('style', 'height:' + setHeight + 'px' );
+        
+        const retVal = x => x.getBoundingClientRect().top;
+        
+        /************************************** 
+            함수명 : moveSec
+            기능 : 가로방향 이동하기
+        **************************************/
+        function moveSec() {
+            let tgPos = retVal(tgBox);
+            // console.log(tgPos)
+
+            // 이미지이동값 = 윈도우높이 * 스크롤이동값 / 페이지전체길이
+            // docH : boxOffsetH = scrollY : percentNum
+            // percentNum = boxOffsetH * scrollY / docH;
+            
+            // 백분율화
+            let percentNum = tgPos * 100 / 4089;
+            // -20%~20% 사이로 만들기
+            let resultNum = (-(percentNum) / 100 * 40 ) -20;
+
+            if (tgPos <=0 && tgPos >= -4089) {
+                console.log(resultNum);
+            }
+            else if (tgPos > 0) {
+                console.log("시작점!");
+            }
+
+
+        }
+
+        window.addEventListener("scroll", moveSec);
 
         // 쵤초호출!
         bannerSwiper();
