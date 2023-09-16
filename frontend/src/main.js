@@ -13,8 +13,11 @@ const routes = [
 ];
 
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHistory(), // 해시태그 방지
     routes,
+    scrollBehavior(){
+        return { top: 0 } // 스크롤 위치 상단 이동
+    },
 });
 
 const app = createApp(App);

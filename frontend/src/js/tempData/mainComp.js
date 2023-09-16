@@ -6,7 +6,7 @@ const mainData = {
             <dl class="mbtit1">
                 <dt class="main_tit">BEST PICK</dt>
                 <dd class="morebtn">
-                    <a href="#">전체보기</a>
+                    <RouterLink to="/product/all/best">전체보기</RouterLink>
                 </dd>
             </dl>
             <dl class="mbtit2">
@@ -57,7 +57,7 @@ const mainData = {
             <dl class="mbtit1">
                 <dt class="main_tit">New Arrival</dt>
                 <dd class="morebtn">
-                    <a href="#">전체보기</a>
+                    <RouterLink to="/product/all/new">전체보기</RouterLink>
                 </dd>
             </dl>
             <dl class="mntit2">

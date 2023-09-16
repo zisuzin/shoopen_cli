@@ -375,8 +375,8 @@ export default {
         // 오버플로우 히든 해제
         body.setAttribute('style', 'overflow: visible');
         // 박스 전체 높이값 최초 설정
-        let setHeight = stkBox.clientWidth;
-        tgBox.setAttribute('style', 'height:' + setHeight + 'px' );
+        let setHeight = stkBox.clientWidth*4;
+        tgBox.setAttribute('style', 'height:' + setHeight + 'px; width: fit-content');
         
         const retVal = x => x.getBoundingClientRect().top;
         
@@ -393,12 +393,14 @@ export default {
             // percentNum = boxOffsetH * scrollY / docH;
             
             // 백분율화
-            let percentNum = tgPos * 100 / 4089;
+            let percentNum = tgPos * 100 / 3070;
             // -20%~20% 사이로 만들기
             let resultNum = (-(percentNum) / 100 * 40 ) -20;
 
-            if (tgPos <=0 && tgPos >= -4089) {
+            if (tgPos <=0 && tgPos >= -3070) {
                 console.log(resultNum);
+                stkBox.style.top = "66px";
+                stkBox.style.transform = `translate3d(${tgPos}px, 0, 0)`;
             }
             else if (tgPos > 0) {
                 console.log("시작점!");
