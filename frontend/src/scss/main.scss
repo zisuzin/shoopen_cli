@@ -231,6 +231,7 @@ main {
 /************** section2 **************/
 .main_special {
     background-color: #f8f8f8;
+    height: calc(100vh + 3000px);
 
     /* 타이틀박스 */
     .mstit {
@@ -242,38 +243,48 @@ main {
     }
 
     /* 컨텐츠 박스 */
-    .msWrap_inner {
-        display: flex;
+    .msWrap_box {
         position: sticky;
+        top: 0;
+        left: 0;
+        height: 100vh;
 
-        .msList {
-            cursor: pointer;
-
-            figure {
-                height: 100vh;
-
-                .special-img, img {
-                    height: 100%;
+        .msWrap_inner {
+            position: relative;
+            display: flex;
+            width: calc(100vw + 3000px);
+            height: 100%;
+    
+            .msList {
+                cursor: pointer;
+                flex: 1;
+    
+                figure {
+                    height: 100vh;
+    
+                    .special-img, img {
+                        height: 100%;
+                    }
                 }
-            }
-
-            figcaption {
-                padding-top: 21px;
-                font-weight: 700;
-                font-size: 26px;
-
-                /* 기획전 타이틀 */
-                .special-tit {
-                    color: #888;
-                    font-size: 18px;
-                    font-family: var(--shoopen-font-sub);
+    
+                figcaption {
+                    padding-top: 21px;
                     font-weight: 700;
-                }
-
-                /* 기획전 설명 */
-                .special-desc {
-                    font-family: var(--shoopen-font-sub);
-                    margin-top: 5px;
+                    font-size: 26px;
+    
+                    /* 기획전 타이틀 */
+                    .special-tit {
+                        color: #888;
+                        font-size: 18px;
+                        font-family: var(--shoopen-font-sub);
+                        font-weight: 700;
+                    }
+    
+                    /* 기획전 설명 */
+                    .special-desc {
+                        font-family: var(--shoopen-font-sub);
+                        margin-top: 5px;
+                    }
                 }
             }
         }
