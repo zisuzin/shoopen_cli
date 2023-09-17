@@ -336,18 +336,24 @@ export default {
             기능 : 가로방향 이동하기
         **************************************/
         function moveSec() {
+            // 1. 타겟박스의 바운딩위치값 찍기
             let tgPos = retVal(tgBox);
-            console.log(tgPos)
             // 오버플로우 히든 해제
             body.setAttribute('style', 'overflow: visible');
-            
-            if (tgPos <= 0 && tgPos >= -2920) {
+
+            // 2. 가로이동박스(mvbx)의 left값 변경하기
+            // 타겟박스의 바운딩값을 left값으로 넣어준다!
+            // 이유: 바운딩수치 === left값수치 === -3000px
+            // -> 최대이동값이 마이너스로 한계값이 일치함!
+            // 대상: mvbx
+            // 적용구간설정: 0 이하 -3000px 이상
+            if (tgPos <= 0 && tgPos >= -3000) {
                 mvBox.style.left = tgPos + "px";
             }
+            // 위쪽(0초과)일때 처음위치 재설정하기
             else if (tgPos > 0) {
                 mvBox.style.left = "0";
             }
-
         }
 
         window.addEventListener("scroll", moveSec);
