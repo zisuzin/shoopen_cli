@@ -12,23 +12,23 @@ button,mark,aside,figure,figcaption {
 }
 
 /* 가로스크롤 생김 방지!(특히 모바일) */
-body{
+body, html {
     overflow-x: hidden;
 }
 
 /* ul,ol 블릿/숫자없앰 */
-ul,ol{
+ul,ol {
     list-style: none;
 }
 
 /* a요소 - 글자색, 밑줄없앰 */
-a{
+a {
     color: #000;
     text-decoration: none;
 }
 
 /* 이미지 관련 */
-img{
+img {
     border: none;
     /* 이미지 링크시 기본보더 없앰
     - 서버 배포시에 나올 수 있음! */
@@ -48,7 +48,7 @@ img{
 }
 
 /* heading 요소 글자크기 리셋(root에 일치) */
-h1,h2,h3,h4,h5{
+h1,h2,h3,h4,h5 {
     font-size: 100%;
     font-weight: normal;
     /* html의 기본글자 크기(16px)와 일치

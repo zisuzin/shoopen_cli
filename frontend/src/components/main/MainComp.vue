@@ -9,46 +9,25 @@
                     <div class="mSwiper mySwiper">
                         <ul class="swiper-wrapper">
                             <li class="swiper-slide">
-                                <img
-                                    src="/images/main/front/pc_1.jpg"
-                                    alt="배너이미지1"
-                                />
+                                <img src="/images/main/front/pc_1.jpg" alt="배너이미지1"/>
                             </li>
                             <li class="swiper-slide">
-                                <img
-                                    src="/images/main/front/pc_2.jpg"
-                                    alt="배너이미지2"
-                                />
+                                <img src="/images/main/front/pc_2.jpg" alt="배너이미지2"/>
                             </li>
                             <li class="swiper-slide">
-                                <img
-                                    src="/images/main/front/pc_3.jpg"
-                                    alt="배너이미지3"
-                                />
+                                <img src="/images/main/front/pc_3.jpg" alt="배너이미지3"/>
                             </li>
                             <li class="swiper-slide">
-                                <img
-                                    src="/images/main/front/pc_4.jpg"
-                                    alt="배너이미지4"
-                                />
+                                <img src="/images/main/front/pc_4.jpg" alt="배너이미지4"/>
                             </li>
                             <li class="swiper-slide">
-                                <img
-                                    src="/images/main/front/pc_5.jpg"
-                                    alt="배너이미지5"
-                                />
+                                <img src="/images/main/front/pc_5.jpg" alt="배너이미지5"/>
                             </li>
                             <li class="swiper-slide">
-                                <img
-                                    src="/images/main/front/pc_6.jpg"
-                                    alt="배너이미지6"
-                                />
+                                <img src="/images/main/front/pc_6.jpg" alt="배너이미지6"/>
                             </li>
                             <li class="swiper-slide">
-                                <img
-                                    src="/images/main/front/pc_7.jpg"
-                                    alt="배너이미지7"
-                                />
+                                <img src="/images/main/front/pc_7.jpg" alt="배너이미지7"/>
                             </li>
                         </ul>
                         <div class="swiper-button-next"></div>
@@ -74,10 +53,7 @@
                             <div class="msList">
                                 <figure>
                                     <div class="special-img">
-                                        <img
-                                            src="/images/main/special/ban1.jpg"
-                                            alt="트렌드 샌들"
-                                        />
+                                        <img src="/images/main/special/ban1.jpg" alt="트렌드 샌들"/>
                                     </div>
                                 </figure>
                                 <figcaption>
@@ -90,10 +66,7 @@
                             <div class="msList">
                                 <figure>
                                     <div class="special-img">
-                                        <img
-                                            src="/images/main/special/ban2.jpg"
-                                            alt="피크닉"
-                                        />
+                                        <img src="/images/main/special/ban2.jpg" alt="피크닉"/>
                                     </div>
                                 </figure>
                                 <figcaption>
@@ -106,10 +79,7 @@
                             <div class="msList">
                                 <figure>
                                     <div class="special-img">
-                                        <img
-                                            src="/images/main/special/ban3.jpg"
-                                            alt="장마"
-                                        />
+                                        <img src="/images/main/special/ban3.jpg" alt="장마"/>
                                     </div>
                                 </figure>
                                 <figcaption>
@@ -141,13 +111,7 @@
                     <div class="mSwiper3 mySwiper">
                         <h3>MEDIA</h3>
                         <ul class="swiper-wrapper">
-                            <MedComp
-                                v-for="(v, i) in mData"
-                                :key="i"
-                                :matchmedia="v"
-                                :dpt1val="v.depth1"
-                                :dpt2val="v.depth2"
-                            />
+                            <MedComp v-for="(v, i) in mData" :key="i" :matchmedia="v" :dpt1val="v.depth1" :dpt2val="v.depth2"/>
                         </ul>
                     </div>
                 </section>
@@ -183,16 +147,9 @@
                                     </div>
                                     <div class="txt_cont">
                                         <label>
-                                            <input
-                                                type="text"
-                                                id="store_search"
-                                                name="store_search"
-                                                placeholder="지점명을 입력하세요."
-                                            />
+                                            <input type="text" id="store_search" name="store_search" placeholder="지점명을 입력하세요."/>
                                         </label>
-                                        <i
-                                            class="fa-regular fa-magnifying-glass"
-                                        ></i>
+                                        <i class="fa-regular fa-magnifying-glass"></i>
                                     </div>
                                 </div>
                             </div>
@@ -386,18 +343,18 @@ export default {
         **************************************/
         function moveSec() {
             let tgPos = retVal(tgBox);
-            // console.log(tgPos)
 
             // 이미지이동값 = 윈도우높이 * 스크롤이동값 / 페이지전체길이
             // docH : boxOffsetH = scrollY : percentNum
             // percentNum = boxOffsetH * scrollY / docH;
+            console.log("오프셋높이:", document.body.offsetHeight)
             
             // 백분율화
-            let percentNum = tgPos * 100 / 3070;
+            let percentNum = tgPos * 100 / 8669;
             // -20%~20% 사이로 만들기
             let resultNum = (-(percentNum) / 100 * 40 ) -20;
 
-            if (tgPos <=0 && tgPos >= -3070) {
+            if (tgPos <=0 && tgPos >= -8669) {
                 console.log(resultNum);
                 stkBox.style.top = "66px";
                 stkBox.style.transform = `translate3d(${tgPos}px, 0, 0)`;
@@ -405,8 +362,6 @@ export default {
             else if (tgPos > 0) {
                 console.log("시작점!");
             }
-
-
         }
 
         window.addEventListener("scroll", moveSec);
