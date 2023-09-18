@@ -308,15 +308,15 @@ main {
 .prod2bx {
     display: flex;
     align-items: center;
-
+    
     .right_txt {
         margin-left: 10px;
     }
 }
 
 .left_img {
-    width: 72px;
     height: 90px;
+    aspect-ratio: 0.8/1;
 
     img {
         @include imgbx;
