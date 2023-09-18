@@ -2,8 +2,9 @@
 import Swiper from 'swiper/bundle';
 import 'swiper/swiper-bundle.css';
 
+// 서브 - 디테일페이지
 // 스와이퍼 함수
-function swiperFn() {
+function dtSwiper() {
     const swiper2 = new Swiper('.mySwiper2', {
         spaceBetween: 10,
         slidesPerView: 3,
@@ -22,4 +23,4 @@ function swiperFn() {
     });
 } ////// swiperFn 함수 ///////
 
-export default swiperFn;
+export default dtSwiper;

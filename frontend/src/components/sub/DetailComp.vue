@@ -143,7 +143,7 @@
 
 <script>
 // 스와이퍼 불러오기
-import swiperFn from "../../js/swiper.js";
+import dtSwiper from "../../js/swiper.js";
 import { Swiper, SwiperSlide } from 'swiper/vue';
 // 스토어 불러오기
 import store from '@/js/store.js';
@@ -242,7 +242,7 @@ export default {
         },
     },
     mounted() {
-        swiperFn();
+        dtSwiper();
     }
 };
 </script>
