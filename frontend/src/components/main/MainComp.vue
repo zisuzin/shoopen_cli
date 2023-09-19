@@ -357,6 +357,7 @@ export default {
         }
 
         window.addEventListener("scroll", moveSec);
+        console.log("jenkins 테스트중")
 
         // 쵤초호출!
         bannerSwiper();
