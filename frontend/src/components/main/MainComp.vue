@@ -357,7 +357,7 @@ export default {
         }
 
         window.addEventListener("scroll", moveSec);
-        console.log("jenkins 테스트중6")
+        console.log("오 Jenkins 연결됐다!")
 
         // 쵤초호출!
         bannerSwiper();
