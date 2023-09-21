@@ -323,25 +323,18 @@ export default {
             });
 
             const updataImg = () => {
-                const slides = document.querySelectorAll('.mSwiper li');
+                const slimg = document.querySelectorAll('.mSwiper img');
+                console.log(slimg)
 
-                // // 1320px 이하 미디어쿼리 기준점 변수
+                // 1320px 이하 미디어쿼리 기준점 변수
                 const isMobile = window.innerWidth <= 1320;
 
-                if (isMobile) {
-                    slides.forEach((ele, idx) => {
-                        const slimg = ele.querySelector("img");
-                        slimg.src = `/images/main/front/mo_${idx % 7 + 1}.jpg`;
-                        console.log(slimg.src)
-                    });
-                }
-                else {
-                    slides.forEach((ele, idx) => {
-                        const slimg = ele.querySelector("img");
-                        slimg.src = `/images/main/front/pc_${idx % 7 + 1}.jpg`;
-                        console.log(slimg.src)
-                    });
-                }
+             slimg.forEach((ele, idx) => {
+                    // 기준점 변경에 따른 이미지 src 업데이트
+                    // loop: true 옵션 때문에 idx 범위는 1~9! -> idx % 7 + 1 해서 1~7만 선정
+                    isMobile ? ele.src = `/images/main/front/mo_${idx % 7 + 1}.jpg` :
+                    ele.src = `/images/main/front/pc_${idx % 7 + 1}.jpg`;
+                });
             }
 
             updataImg();
