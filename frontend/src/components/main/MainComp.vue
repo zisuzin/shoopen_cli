@@ -295,8 +295,7 @@ export default {
             const script = document.createElement('script');
             /* global kakao */
             script.onload = () => kakao.maps.load(this.storeMap);
-            script.src =
-                'http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=967c1df5ef6ef37cb1facf79cca53e7b';
+            script.src = 'http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=967c1df5ef6ef37cb1facf79cca53e7b';
             document.head.appendChild(script);
             mapSearch();
         }
@@ -304,7 +303,7 @@ export default {
         // 메인 배너 함수
         function bannerSwiper() {
             // 스와이퍼 커스텀
-            new Swiper('.mSwiper', {
+            const swiper = new Swiper('.mSwiper', {
                 slidesPerView: 1,
                 slidesPerGroup: 1,
                 loop: true,
@@ -322,6 +321,24 @@ export default {
                     disableOnInteraction: false,
                 },
             });
+
+            const updataImg = () => {
+                const banImg = ["mo_1.jpg", "mo_2.jpg", "mo_3.jpg", "mo_4.jpg", "mo_5.jpg", "mo_6.jpg", "mo_7.jpg"]
+                const imgEle = document.querySelectorAll('.mSwiper img');
+
+                // 1320px 이하 미디어쿼리 기준점 변수
+                const isMobile = window.innerWidth <= 1320;
+
+                for(let i = 0; i < banImg.length; i++) {
+                    const img = imgEle[i];
+                    let newSrc = isMobile ? `/images/main/front/${banImg[i]}` : `/images/main/front/pc_${i+1}.jpg`; 
+                    img.src = newSrc;
+                }
+            }
+
+            updataImg();
+            swiper.on("resize", updataImg);
+
         } // bannerSwiper
 
         // 타겟선정
