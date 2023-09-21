@@ -323,16 +323,24 @@ export default {
             });
 
             const updataImg = () => {
-                const banImg = ["mo_1.jpg", "mo_2.jpg", "mo_3.jpg", "mo_4.jpg", "mo_5.jpg", "mo_6.jpg", "mo_7.jpg"]
-                const imgEle = document.querySelectorAll('.mSwiper img');
+                const slides = document.querySelectorAll('.mSwiper li');
 
-                // 1320px 이하 미디어쿼리 기준점 변수
+                // // 1320px 이하 미디어쿼리 기준점 변수
                 const isMobile = window.innerWidth <= 1320;
 
-                for(let i = 0; i < banImg.length; i++) {
-                    const img = imgEle[i];
-                    let newSrc = isMobile ? `/images/main/front/${banImg[i]}` : `/images/main/front/pc_${i+1}.jpg`; 
-                    img.src = newSrc;
+                if (isMobile) {
+                    slides.forEach((ele, idx) => {
+                        const slimg = ele.querySelector("img");
+                        slimg.src = `/images/main/front/mo_${idx % 7 + 1}.jpg`;
+                        console.log(slimg.src)
+                    });
+                }
+                else {
+                    slides.forEach((ele, idx) => {
+                        const slimg = ele.querySelector("img");
+                        slimg.src = `/images/main/front/pc_${idx % 7 + 1}.jpg`;
+                        console.log(slimg.src)
+                    });
                 }
             }
 
