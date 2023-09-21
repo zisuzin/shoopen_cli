@@ -324,7 +324,6 @@ export default {
 
             const updataImg = () => {
                 const slimg = document.querySelectorAll('.mSwiper img');
-                console.log(slimg)
 
                 // 1320px 이하 미디어쿼리 기준점 변수
                 const isMobile = window.innerWidth <= 1320;
