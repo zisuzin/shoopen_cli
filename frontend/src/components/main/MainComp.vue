@@ -388,4 +388,10 @@ export default {
             height: auto !important;
         } 
     }
+
+    @media screen and (max-width: 880px) {
+        .catbx {
+            display: none;
+        }
+    }
 </style>
