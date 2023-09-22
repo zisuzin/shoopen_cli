@@ -5,6 +5,7 @@
 /* 공통 scss 셋팅 */
 @import url(./reset.scss);
 @import url(./core.scss);
+@import url(./media.scss);
 
 /* 공통 변수 */
 :root {
@@ -64,6 +65,12 @@
         z-index: 999;
         position: relative;
         border-bottom: 1px solid #ccc;
+
+        .mo_menu {
+            /* MO 햄버거 메뉴 */
+            display: none;
+            cursor: pointer;
+        }
     }
 }
 

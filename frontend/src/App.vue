@@ -6,6 +6,10 @@
             <div class="top fxbx">
                 <!-- GNB -->
                 <nav>
+                    <!-- MO 햄버거 메뉴 -->
+                    <div class="mo_menu">
+                        <img src="/images/icon/ico_ctg_black.png" alt="모바일메뉴">
+                    </div>
                     <div class="gnb">
                         <!-- 1. 로고영역 -->
                         <div class="logo">
