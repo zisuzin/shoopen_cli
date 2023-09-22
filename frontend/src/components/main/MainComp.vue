@@ -380,3 +380,12 @@ export default {
     },
 };
 </script>
+
+<style scoped>
+    /* 메인 미디어쿼리 SCSS */
+    @media screen and (max-width: 1320px) {
+        .mSwiper {
+            height: auto !important;
+        } 
+    }
+</style>
