@@ -15,9 +15,9 @@ const mainData = {
                 </dd>
             </dl>
         </div>
-        <div class="mbList">
-            <ul>
-                <li class="bestItem" v-for="(a,b) in m_bestData['bestItem'+$store.state.setNumber]" :key="b" @click="moveDet(a)">
+        <div class="mbList_bx btSwiper mySwiper">
+            <ul class="swiper-wrapper">
+                <li class="bestItem swiper-slide" v-for="(a,b) in m_bestData['bestItem'+$store.state.setNumber]" :key="b" @click="moveDet(a)">
                     <!-- 이미지 -->
                     <a href="#">
                         <div class="best-img">
@@ -66,7 +66,7 @@ const mainData = {
                 </dd>
             </dl>
         </div>
-        <div class="mnList">
+        <div class="mnList_bx">
             <ul>
                 <li class="newItem" v-for="(a,b) in m_newData['newItem'+$store.state.setNumber]" :key="b" @click="moveDet(a)">
                     <!-- 이미지 -->

@@ -23,4 +23,38 @@ function dtSwiper() {
     });
 } ////// swiperFn 함수 ///////
 
-export default dtSwiper;
+let setSwiper;
+
+function btSwiper() {
+    console.log("bt스와이퍼 작동중!")
+    if (setSwiper) {
+        // 이미 Swiper 인스턴스가 있으면 파괴하고 다시 생성
+        setSwiper.destroy();
+    }
+    
+    setSwiper = new Swiper('.btSwiper', {
+        spaceBetween: 20,
+        slidesPerView: 4,
+        resistanceRatio: 0, // 드래그시 저항 막기
+        breakpoints: {
+            // when window width is >= 900px
+            900: {
+                slidesPerView: 4,
+            },
+            // when window width is >= 700px
+            700: {
+                slidesPerView: 3,
+            },
+            // when window width is >= 600px
+            600: {
+                slidesPerView: 2,
+            },
+            // when window width is >= 300px
+            300: {
+                slidesPerView: 1,
+            }
+        }
+    });
+}
+
+export {dtSwiper, btSwiper};

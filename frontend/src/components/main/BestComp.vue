@@ -6,6 +6,8 @@ import crossMixin from "../../js/common.js";
 import mainData from "../../js/tempData/mainComp.js";
 // 제이쿼리 불러오기
 import $ from "jquery";
+// 스와이퍼 불러오기
+import { btSwiper } from "../../js/swiper.js";
 // 더미데이터
 import { m_bestData } from "../../js/gdsData/mainData.js";
 
@@ -42,6 +44,15 @@ export default {
     $(".mbtit2 > dd").click(function() {
       $(this).addClass("on").siblings().removeClass("on");
     });
+
+    // DOM 로드 & 리사이즈시 호출!
+    window.addEventListener('load', btSwiper);
+    window.addEventListener('resize', btSwiper);
+  },
+  // 컴포넌트 소멸 전 실행   
+  beforeUnmount() {
+    window.removeEventListener('load', btSwiper);
+    window.removeEventListener('resize', btSwiper);
   },
 };
 </script>
