@@ -23,16 +23,10 @@ function dtSwiper() {
     });
 } ////// swiperFn 함수 ///////
 
-let setSwiper;
+// let setSwiper;
 
 function btSwiper() {
-    console.log("bt스와이퍼 작동중!")
-    if (setSwiper) {
-        // 이미 Swiper 인스턴스가 있으면 파괴하고 다시 생성
-        setSwiper.destroy();
-    }
-    
-    setSwiper = new Swiper('.btSwiper', {
+    new Swiper('.btSwiper', {
         spaceBetween: 20,
         slidesPerView: 4,
         resistanceRatio: 0, // 드래그시 저항 막기

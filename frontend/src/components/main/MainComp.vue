@@ -388,4 +388,11 @@ export default {
             height: auto !important;
         } 
     }
+
+    @media screen and (max-width: 900px) {
+        .mbtit_bx {
+            display: flex;
+            flex-direction: column;
+        }
+    }
 </style>

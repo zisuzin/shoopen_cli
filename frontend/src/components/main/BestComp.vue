@@ -45,6 +45,8 @@ export default {
       $(this).addClass("on").siblings().removeClass("on");
     });
 
+    // 스와이퍼 호출
+    btSwiper();
     // DOM 로드 & 리사이즈시 호출!
     window.addEventListener('load', btSwiper);
     window.addEventListener('resize', btSwiper);
