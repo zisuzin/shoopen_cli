@@ -104,7 +104,7 @@ main {
 
 /* 전체보기 버튼 */
 .morebtn > a {
-    font-size: 18px;
+    font-size: calc(min(18px, 2.3vw));
     color: #767676;
     background: url(../../public/images/icon/arrow_s_r.png) center right
         no-repeat;
@@ -148,7 +148,7 @@ main {
 
     a {
         color: #999;
-        font-size: 18px;
+        font-size: calc(min(18px, 2.3vw));
         cursor: pointer;
         user-select: none;
         font-weight: 700;

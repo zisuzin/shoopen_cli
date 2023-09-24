@@ -50,8 +50,9 @@ body * {
 }
 
 /* 텍스트요소 기본셋업 */
-em, dt {
+em, dt, a, p, strong {
     word-break: keep-all;
+    white-space: nowrap;
     letter-spacing: -0.025em;
     color: #000;
     font-style: normal;

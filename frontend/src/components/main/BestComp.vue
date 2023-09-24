@@ -32,8 +32,8 @@ export default {
             // 페이지 이동후 store 함수 실행!
             this.$store.dispatch("setDet");
         });
-    }
-  },
+    },
+  }, //////////// methods ////////////
   mounted() {
     // 첫번째 dd에 강제 클릭
     $(".mbtit2 > dd:first").addClass("on").siblings().removeClass("on").trigger("click");
@@ -50,11 +50,20 @@ export default {
     // DOM 로드 & 리사이즈시 호출!
     window.addEventListener('load', btSwiper);
     window.addEventListener('resize', btSwiper);
-  },
+  }, //////////// mounted ////////////
+
   // 컴포넌트 소멸 전 실행   
   beforeUnmount() {
     window.removeEventListener('load', btSwiper);
     window.removeEventListener('resize', btSwiper);
-  },
+  }, //////////// beforeUnmount ////////////
 };
 </script>
+
+<style scoped>
+    @media screen and (max-width: 600px) {
+        .mbtit2 > dd a {
+            font-size: min(1.5rem, 4vw);
+        }
+    }
+</style>

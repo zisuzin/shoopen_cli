@@ -5,17 +5,12 @@
     .catbx {
         display: none !important;
     }
-    .gnb {
-        position: relative;
-        left: 50%;
-        transform: translateX(-50%);
-    }
     .mo_menu {
         /* 햄버거 메뉴 보임 */
         display: block !important;
         width: 46px;
         height: 40px;
-        position: absolute;
+        position: relative;
         top: 50%;
         transform: translateY(-50%);
 
