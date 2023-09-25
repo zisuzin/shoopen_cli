@@ -45,7 +45,7 @@ function PrdSwiper() {
             },
             // when window width is >= 300px
             100: {
-                slidesPerView: 1,
+                slidesPerView: 1.5,
             }
         }
     });

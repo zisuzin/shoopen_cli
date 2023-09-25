@@ -72,5 +72,8 @@ export default {
         .morebtn > a {
             font-size: min(1.5rem, 4vw);
         }
+        .mbList_bx {
+            overflow: visible !important;
+        }
     }
 </style>
