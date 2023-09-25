@@ -3,22 +3,24 @@
   <div id="dt">
     <div class="f_bx1">
       <div class="f_menu">
-        <ul>
-          <li>
-            <a href="#">회사소개</a>
-          </li>
-          <li>
-            <a href="#">공지사항</a>
-          </li>
-          <li>
-            <a href="#">이용약관</a>
-          </li>
-          <li>
-            <a href="#">개인정보처리방침</a>
-          </li>
-          <li>
-            <a href="#">제휴/입점문의</a>
-          </li>
+        <ul class="f_depth1">
+            <li>
+                <a href="#">회사소개</a>
+            </li>
+            <li>
+                <a href="#">공지사항</a>
+            </li>
+            <li>
+                <a href="#">이용약관</a>
+            </li>
+        </ul>
+        <ul class="f_depth2">
+            <li>
+                <a href="#">개인정보처리방침</a>
+            </li>
+            <li>
+                <a href="#">제휴/입점문의</a>
+            </li>
         </ul>
       </div>
       <div class="f_info">
@@ -37,7 +39,7 @@
         </ul>
       </div>
     </div>
-    <div class="f_box2">
+    <div class="f_bx2">
       <div class="f_top">
         <div class="f_tel">
           <i></i>

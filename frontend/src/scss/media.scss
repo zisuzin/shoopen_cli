@@ -1,6 +1,20 @@
 @charset "utf-8";
 
 /* 공통 미디어쿼리 SCSS - media.scss */
+@media screen and (max-width: 1230px) {
+    footer .info #dt {
+        flex-direction: column;
+    }
+    footer .info #dt .f_bx1 {
+        width: 100% !important;
+    }
+    .f_menu li {
+        padding: 0 15px !important;
+    }
+    .f_menu li:nth-child(1) {
+        padding-left: 0 !important;
+    }
+}
 @media screen and (max-width: 880px) {
     .catbx {
         display: none !important;

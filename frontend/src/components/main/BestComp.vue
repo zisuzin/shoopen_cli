@@ -47,7 +47,10 @@ export default {
     });
 
     // 스와이퍼 호출
-    PrdSwiper();
+    this.$nextTick(() => {
+        PrdSwiper();
+    });
+    
     // DOM 로드 & 리사이즈시 호출!
     window.addEventListener('load', PrdSwiper);
     window.addEventListener('resize', PrdSwiper);
