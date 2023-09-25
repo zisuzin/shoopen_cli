@@ -100,17 +100,18 @@ main {
     font-weight: 600;
     word-spacing: 8px;
     font-size: calc(min(30px, 7vw));
+    white-space: nowrap;
 }
 
 /* 전체보기 버튼 */
 .morebtn > a {
     font-size: calc(min(18px, 2.3vw));
     color: #767676;
-    background: url(../../public/images/icon/arrow_s_r.png) center right
-        no-repeat;
+    background: url(../../public/images/icon/arrow_s_r.png) center right no-repeat;
     background-size: 8px auto;
     padding-right: 20px;
     font-weight: 500;
+    white-space: nowrap;
 }
 
 .mbtit1 {
@@ -152,6 +153,7 @@ main {
         cursor: pointer;
         user-select: none;
         font-weight: 700;
+        white-space: nowrap;
     }
 }
 

@@ -67,6 +67,10 @@ input {
     border: none;
 }
 
+select {
+    outline: none;
+}
+
 * {
     box-sizing: border-box;
 }

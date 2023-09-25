@@ -1,0 +1,35 @@
+@charset "utf-8";
+
+/* 서브 미디어쿼리 SCSS - sub_media.scss */
+@media screen and (max-width: 900px) {
+    // 상품리스트
+    .prod_cont > ul,
+    .ui-col4 {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .prd-cat-option > ul {
+        display: none !important;
+    }
+    .mo_sorting {
+        display: block !important;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    // 상품리스트
+    .prod_cont > ul,
+    .ui-col4 {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    .cate_main_tit {
+        display: flex;
+        flex-direction: column;
+
+        .catmenu::before {
+            display: none !important;
+        }
+    }
+}

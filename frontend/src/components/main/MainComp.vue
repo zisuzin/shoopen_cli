@@ -395,4 +395,10 @@ export default {
             flex-direction: column;
         }
     }
+
+    @media screen and (max-width: 600px) {
+        .morebtn > a {
+            font-size: min(1.5rem, 4vw) !important;
+        }
+    }
 </style>

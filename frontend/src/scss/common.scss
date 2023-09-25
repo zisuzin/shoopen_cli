@@ -5,7 +5,7 @@
 /* 공통 scss 셋팅 */
 @import url(./reset.scss);
 @import url(./core.scss);
-@import url(./media.scss);
+@import url(./mediaQuery/com_media.scss);
 
 /* 공통 변수 */
 :root {

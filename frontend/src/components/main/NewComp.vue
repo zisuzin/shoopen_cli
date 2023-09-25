@@ -70,5 +70,8 @@ export default {
         .morebtn > a {
             font-size: min(1.5rem, 4vw);
         }
+        .mnList_bx {
+            overflow: visible !important;
+        }
     }
 </style>

@@ -13,10 +13,12 @@
                             <div class="prd_top">
                                 <!-- 타이틀 -->
                                 <div class="cate_main_tit">
-                                    <h3>{{ this.$route.params.cat1.toUpperCase() }}</h3>
-                                    <span>{{ this.$route.params.cat2.toUpperCase() }}</span>
+                                    <div class="tit_depth1">
+                                        <h3>{{ this.$route.params.cat1.toUpperCase() }}</h3>
+                                        <span>{{ this.$route.params.cat2.toUpperCase() }}</span>
+                                    </div>
                                     <!-- lnb 데이터 -->
-                                    <div class="catmenu">
+                                    <div class="catmenu tit_depth2">
                                         <a href="#" v-on:click="setCatnum('전체')">
                                             <span>전체</span>
                                         </a>
@@ -28,6 +30,15 @@
                             </div>
                             <!-- 상품옵션 선택박스 -->
                             <div class="prd-cat-option">
+                                <!-- MO 상품정렬 탭 -->
+                                <label class="mo_sorting">
+                                    <select id="sort_btn">
+                                        <option value="new_order">신상품순</option>
+                                        <option value="low_order">낮은가격순</option>
+                                        <option value="high_order">높은가격순</option>
+                                        <option value="review_order">상품평순</option>
+                                    </select>
+                                </label>
                                 <!-- 상품정렬 탭 -->
                                 <ul class="option-left">
                                     <li class="filter_option" v-on:click="sortList('catnum')">
@@ -129,6 +140,8 @@ import crossMixin from '@/js/common.js';
 import store from '@/js/store.js';
 // 제이쿼리 불러오기
 import $ from 'jquery';
+// 서브페이지 CSS
+import "../../scss/sub.scss";
 
 export default {
     name: 'GoodsComp',

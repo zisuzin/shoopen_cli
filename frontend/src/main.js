@@ -5,7 +5,6 @@ import App from '@/App.vue';
 import MainComp from './components/main/MainComp.vue';
 import ProdComp from './components/sub/ProdComp.vue';
 import GoodsComp from "./components/sub/GoodsComp.vue";
-// import FitText from 'vue-fit-text/index.js';
 
 const routes = [
     { path: '/', component: MainComp },
