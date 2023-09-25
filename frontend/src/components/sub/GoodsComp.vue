@@ -54,51 +54,49 @@
                                 </div>
                             </div>
                             <!-- 상품리스트 박스 -->
-                            <div class="prdbx">
-                                <div class="prdwrap">
-                                    <!-- 상품리스트 -->
-                                    <ul class="ui-col4">
-                                        <template v-for="(v, i) in $store.state.imgpath">
-                                            <template v-if="$store.state.curUrl2 === i || $store.state.curUrl2 === '전체'">
-                                                <li v-for="a in v" :key="a.name" @click.prevent="getData(a)" v-on:mouseover="handleMouseOver" v-on:mouseleave="handleMouseLeave">
-                                                    <div class="ui-prod-bx">
-                                                        <a href="#">
-                                                            <div class="prod-detail-img">
-                                                                <img :src="'/images/goods/'+ a.img + '.jpg'" :alt="a.name"/>
-                                                            </div>
-                                                        </a>
-                                                        <div title="찜하기" class="product_like" v-on:click="addWish(a, 1)">
-                                                            <button type="button" class="fa-solid fa-heart"></button>
+                            <div class="prdwrap">
+                                <!-- 상품리스트 -->
+                                <ul class="ui-col4">
+                                    <template v-for="(v, i) in $store.state.imgpath">
+                                        <template v-if="$store.state.curUrl2 === i || $store.state.curUrl2 === '전체'">
+                                            <li v-for="a in v" :key="a.name" @click.prevent="getData(a)" v-on:mouseover="handleMouseOver" v-on:mouseleave="handleMouseLeave">
+                                                <div class="ui-prod-bx">
+                                                    <a href="#">
+                                                        <div class="prod-detail-img">
+                                                            <img :src="'/images/goods/'+ a.img + '.jpg'" :alt="a.name"/>
+                                                        </div>
+                                                    </a>
+                                                    <div title="찜하기" class="product_like" v-on:click="addWish(a, 1)">
+                                                        <button type="button" class="fa-solid fa-heart"></button>
+                                                    </div>
+                                                </div>
+                                                <div class="item-detail">
+                                                    <div class="prod_txt">
+                                                        <strong class="brand">슈펜</strong>
+                                                        <p>{{ a.name }}</p>
+                                                    </div>
+                                                    <span class="original-price">
+                                                        <em>{{ setComma(a.oprice) }}</em>
+                                                        <span v-if="a.oprice">원</span>
+                                                    </span>
+                                                    <br />
+                                                    <span class="discount-price">
+                                                        <em>{{ setComma(a.dprice) }}</em>
+                                                        <span>원</span>
+                                                    </span>
+                                                    <span class="percent-price" v-if="a.oprice && a.dprice">
+                                                        <em>{{ setDiscount(a.oprice,a.dprice) }}</em>
+                                                    </span>
+                                                    <div class="box_grade">
+                                                        <div class="star">
+                                                            <span v-if="a.review">{{ '(' + a.review + ')' }}</span>
                                                         </div>
                                                     </div>
-                                                    <div class="item-detail">
-                                                        <div class="prod_txt">
-                                                            <strong class="brand">슈펜</strong>
-                                                            <p>{{ a.name }}</p>
-                                                        </div>
-                                                        <span class="original-price">
-                                                            <em>{{ setComma(a.oprice) }}</em>
-                                                            <span v-if="a.oprice">원</span>
-                                                        </span>
-                                                        <br />
-                                                        <span class="discount-price">
-                                                            <em>{{ setComma(a.dprice) }}</em>
-                                                            <span>원</span>
-                                                        </span>
-                                                        <span class="percent-price" v-if="a.oprice && a.dprice">
-                                                            <em>{{ setDiscount(a.oprice,a.dprice) }}</em>
-                                                        </span>
-                                                        <div class="box_grade">
-                                                            <div class="star">
-                                                                <span v-if="a.review">{{ '(' + a.review + ')' }}</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </template>
+                                                </div>
+                                            </li>
                                         </template>
-                                    </ul>
-                                </div>
+                                    </template>
+                                </ul>
                             </div>
                         </div>
                     </div>

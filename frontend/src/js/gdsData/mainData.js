@@ -90,7 +90,7 @@ const mData = [
     {
         thumbImg: "ban2.jpg",
         depth1: ["ban2.jpg","스윗버튼 메리제인","26900"],
-        depth2: ["ban2.jpg","스퀘어 미디엄 숄더백 HPABGDA904","27900"],
+        depth2: ["ban2.jpg","스퀘어 미디엄 숄더백","27900"],
     },
     {
         thumbImg: "ban3.jpg",

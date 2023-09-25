@@ -294,17 +294,16 @@ main {
 }
 
 /************** section3 **************/
-.mSwiper3 > ul {
-    display: flex;
-    gap: 0 2px;
-}
-
 .mSwiper3 > h3,
 .storetit > h2 {
     font-size: 30px;
     padding-bottom: 30px;
     font-weight: 600;
     font-family: var(--shoopen-font-eng);
+}
+
+.mSwiper3 > ul {
+    gap: 15px;
 }
 
 .prod1bx,
@@ -314,6 +313,7 @@ main {
     
     .right_txt {
         margin-left: 10px;
+        overflow: hidden;
     }
 }
 
@@ -339,6 +339,10 @@ main {
 .right_txt > p {
     font-size: 13px;
     font-weight: 300;
+    // 텍스트 말줄임
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .right_txt > em {
@@ -367,15 +371,15 @@ main {
     font-size: 12.5px;
     font-family: var(--shoopen-font-eng);
     padding: 8px;
-}
 
-.mlogo img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
-    display: inline-block;
-    margin-right: 5px;
+    img {
+        width: calc(min(50px, 5vw));
+        height: calc(min(50px, 5vw));
+        border-radius: 50%;
+        object-fit: cover;
+        display: inline-block;
+        margin-right: 5px;
+    }
 }
 
 /************** section5 **************/
