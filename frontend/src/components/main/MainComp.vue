@@ -109,7 +109,7 @@
                 <!-- 4. 미디어섹션(컴포넌트)-->
                 <section class="main_media">
                     <div class="mSwiper3 mySwiper">
-                        <h3>MEDIA</h3>
+                        <h3>Media</h3>
                         <ul class="swiper-wrapper">
                             <MedComp v-for="(v, i) in mData" :key="i" :matchmedia="v" :dpt1val="v.depth1" :dpt2val="v.depth2"/>
                         </ul>

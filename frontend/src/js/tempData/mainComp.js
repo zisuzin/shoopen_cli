@@ -4,7 +4,7 @@ const mainData = {
     <section class="main_best">
         <div class="mbtit_bx">
             <dl class="mbtit1">
-                <dt class="main_tit">BEST PICK</dt>
+                <dt class="main_tit">Best Pick</dt>
                 <dd class="morebtn">
                     <RouterLink to="/product/all/best">전체보기</RouterLink>
                 </dd>
@@ -66,9 +66,9 @@ const mainData = {
                 </dd>
             </dl>
         </div>
-        <div class="mnList_bx">
-            <ul>
-                <li class="newItem" v-for="(a,b) in m_newData['newItem'+$store.state.setNumber]" :key="b" @click="moveDet(a)">
+        <div class="mnList_bx nwSwiper mySwiper">
+            <ul class="swiper-wrapper">
+                <li class="newItem swiper-slide" v-for="(a,b) in m_newData['newItem'+$store.state.setNumber]" :key="b" @click="moveDet(a)">
                     <!-- 이미지 -->
                     <a href="#">
                         <div class="new-img">

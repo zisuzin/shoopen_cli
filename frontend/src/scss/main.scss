@@ -92,7 +92,6 @@ main {
     display: flex;
     justify-content: space-between;
     padding-bottom: 30px;
-    flex-direction: column;
 }
 
 .main_tit {
@@ -137,7 +136,7 @@ main {
 
 .mbtit2,
 .mntit2 {
-    gap: 0 22px;
+    gap: 0 20px;
     display: flex;
     align-items: center;
 

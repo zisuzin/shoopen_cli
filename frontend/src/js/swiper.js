@@ -23,10 +23,10 @@ function dtSwiper() {
     });
 } ////// swiperFn 함수 ///////
 
-// let setSwiper;
-
-function btSwiper() {
-    new Swiper('.btSwiper', {
+// 메인 - Best Pick, New Arrival 섹션
+// 스와이퍼 함수
+function PrdSwiper() {
+    new Swiper('.btSwiper, .nwSwiper', {
         spaceBetween: 20,
         slidesPerView: 4,
         resistanceRatio: 0, // 드래그시 저항 막기
@@ -44,11 +44,11 @@ function btSwiper() {
                 slidesPerView: 2,
             },
             // when window width is >= 300px
-            300: {
+            100: {
                 slidesPerView: 1,
             }
         }
     });
 }
 
-export {dtSwiper, btSwiper};
+export {dtSwiper, PrdSwiper};

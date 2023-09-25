@@ -6,8 +6,9 @@ import crossMixin from "../../js/common.js";
 import mainData from "../../js/tempData/mainComp.js";
 // 제이쿼리 불러오기
 import $ from "jquery";
+import 'jquery-ui-dist/jquery-ui';
 // 스와이퍼 불러오기
-import { btSwiper } from "../../js/swiper.js";
+import { PrdSwiper } from "../../js/swiper.js";
 // 더미데이터
 import { m_bestData } from "../../js/gdsData/mainData.js";
 
@@ -46,23 +47,29 @@ export default {
     });
 
     // 스와이퍼 호출
-    btSwiper();
+    PrdSwiper();
     // DOM 로드 & 리사이즈시 호출!
-    window.addEventListener('load', btSwiper);
-    window.addEventListener('resize', btSwiper);
+    window.addEventListener('load', PrdSwiper);
+    window.addEventListener('resize', PrdSwiper);
   }, //////////// mounted ////////////
 
   // 컴포넌트 소멸 전 실행   
   beforeUnmount() {
-    window.removeEventListener('load', btSwiper);
-    window.removeEventListener('resize', btSwiper);
+    window.removeEventListener('load', PrdSwiper);
+    window.removeEventListener('resize', PrdSwiper);
   }, //////////// beforeUnmount ////////////
 };
 </script>
 
 <style scoped>
+    @media screen and (max-width: 900px) {
+        .mbtit_bx {
+            flex-direction: column;
+        }
+    }
     @media screen and (max-width: 600px) {
-        .mbtit2 > dd a {
+        .mbtit2 > dd a,
+        .morebtn > a {
             font-size: min(1.5rem, 4vw);
         }
     }

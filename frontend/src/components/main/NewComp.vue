@@ -6,6 +6,8 @@ import crossMixin from "../../js/common.js";
 import mainData from "../../js/tempData/mainComp.js";
 // 제이쿼리 불러오기
 import $ from "jquery";
+// 스와이퍼 불러오기
+import { PrdSwiper } from "../../js/swiper.js";
 // 더미데이터
 import { m_newData } from "../../js/gdsData/mainData.js";
 
@@ -42,6 +44,31 @@ export default {
     $(".mntit2 > dd").click(function () {
       $(this).addClass("on").siblings().removeClass("on");
     });
+
+    // 스와이퍼 호출
+    PrdSwiper();
+    // DOM 로드 & 리사이즈시 호출!
+    window.addEventListener('load', PrdSwiper);
+    window.addEventListener('resize', PrdSwiper);
   },
+  // 컴포넌트 소멸 전 실행   
+  beforeUnmount() {
+    window.removeEventListener('load', PrdSwiper);
+    window.removeEventListener('resize', PrdSwiper);
+  }, //////////// beforeUnmount ////////////
 };
 </script>
+
+<style scoped>
+    @media screen and (max-width: 900px) {
+        .mntit_bx {
+            flex-direction: column;
+        }
+    }
+    @media screen and (max-width: 600px) {
+        .mntit2 > dd a,
+        .morebtn > a {
+            font-size: min(1.5rem, 4vw);
+        }
+    }
+</style>
