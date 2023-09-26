@@ -35,11 +35,6 @@
                                 v-for="(v, i) in $store.state.gnb" :key="i">
                                 <a href="#" v-on:click="chgData(i)">{{ i.toUpperCase() }}</a>
                             </li>
-                            <li>
-                                <a href="#" v-on:click.prevent="linkData('all', '기획전')">
-                                    기획전
-                                </a>
-                            </li>
                             <NavComp />
                         </ul>
                     </div>

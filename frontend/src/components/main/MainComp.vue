@@ -44,9 +44,6 @@
                 <section class="main_special">
                     <div class="mstit">
                         <h3 class="main_tit">Magazine</h3>
-                        <div class="morebtn">
-                            <a href="#">전체보기</a>
-                        </div>
                     </div>
                     <div class="msWrap_box">
                         <ul class="msWrap_inner">

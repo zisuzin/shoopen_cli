@@ -235,7 +235,6 @@ main {
 
 /************** section2 **************/
 .main_special {
-    background-color: #f8f8f8;
     height: calc(100vh + 3000px);
 
     /* 타이틀박스 */
@@ -272,9 +271,12 @@ main {
                 }
     
                 figcaption {
-                    padding-top: 21px;
+                    padding: 10px 0;
+                    height: 83px;
+                    line-height: 25px;
                     font-weight: 700;
                     font-size: 26px;
+                    background-color: #f8f8f8;
     
                     /* 기획전 타이틀 */
                     .special-tit {
@@ -306,6 +308,10 @@ main {
 
 .mSwiper3 > ul {
     gap: 15px;
+
+    li {
+        min-width: 317.5px !important;
+    }
 }
 
 .prod1bx,
@@ -375,8 +381,8 @@ main {
     padding: 8px;
 
     img {
-        width: calc(min(50px, 5vw));
-        height: calc(min(50px, 5vw));
+        width: 50px;
+        height: 50px;
         border-radius: 50%;
         object-fit: cover;
         display: inline-block;
