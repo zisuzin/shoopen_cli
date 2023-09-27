@@ -384,9 +384,17 @@ export default {
         }); ////////// click ///////////
 
         // 필터 버튼 클릭시 상품카테고리 선택박스 보이기
-        $(".prd_filter_bx > button").click(function () {
-            $(".filter_layer").css("display", "block");
+        document.querySelector(".prd_filter_bx > button").click(function() {
+            console.log("클릭 !")
+            document.querySelector(".filter_layer").style("display", "block");
         }); ///////// click ////////////
+
+        // document.querySelector("")
+
+        // $(".prd_filter_bx > button").click(function () {
+        //     console.log("클릭 !")
+        //     $(".filter_layer").css("display", "block");
+        // }); 
 
         // 상품카테고리 닫기버튼 클릭시 선택박스 닫힘
         $(".filter_layer > button").click(function () {
