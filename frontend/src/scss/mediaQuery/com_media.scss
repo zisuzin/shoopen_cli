@@ -14,8 +14,9 @@
     }
     .detail_buy {
         position: relative;
-        transform: translateY(40%);
+        transform: translateY(38%);
         margin-left: 0 !important;
+        padding-bottom: 40px;
     }
     .mySwiper1 {
         height: 100% !important;
@@ -23,17 +24,13 @@
     .buy_option li {
         display: block !important;
     }
-    .copt {
-        width: 100% !important;
-        margin-top: 10px;
-    }
 }
 @media screen and (max-width: 660px) {
     .dtsec1 .detail_img {
         width: calc(min(630px, 100vw)) !important;
     }
-    .dt-comp .detailbx {
-        padding: 20px !important;
+    .copt {
+        width: 100% !important;
     }
 }
 
