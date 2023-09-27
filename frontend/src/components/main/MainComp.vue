@@ -409,6 +409,12 @@ export default {
         }
     }
 
+    @media screen and (max-width: 800px) {
+        .md_wrap ul li {
+            width: 300px !important;
+        }
+    }
+    
     @media screen and (max-width: 600px) {
         .morebtn > a {
             font-size: min(1.5rem, 4vw) !important;

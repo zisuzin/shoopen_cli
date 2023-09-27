@@ -316,10 +316,10 @@ main {
         display: flex;
 
         li {
-            width: 344px;
+            width: 340px;
             height: 544px;
             margin: 0 8px;
-            box-sizing: border-box;
+            background-color: #fff;
             display: flex;
         }
     }
@@ -340,8 +340,8 @@ main {
 }
 
 @keyframes rollingleft2 {
-    0% {transform: translateX(0)}
-    100% {transform: translateX(-200%)}
+    0% { transform: translateX(0) }
+    100% { transform: translateX(-200%) }
 }
 
 .prod1bx,

@@ -1,6 +1,22 @@
 @charset "utf-8";
 
 /* 공통 미디어쿼리 SCSS - media.scss */
+// 디테일페이지
+@media screen and (max-width: 1280px) {
+    .dt-comp .detailbx .dtsec1 {
+        flex-direction: column;
+    }
+    .toRbtn, .toLbtn {
+        transform: translateY(150%);
+    }
+    .detail_buy .buyarea {
+        padding-top: 30px;
+    }
+    .dtsec1 .detail_img {
+        width: calc(min(630px, 100vw)) !important;
+    }
+}
+// 푸터영역
 @media screen and (max-width: 1230px) {
     footer .info #dt {
         flex-direction: column;
@@ -15,6 +31,7 @@
         padding-left: 0 !important;
     }
 }
+// 상단영역 - nav
 @media screen and (max-width: 880px) {
     .catbx {
         display: none !important;
@@ -37,6 +54,7 @@
         padding: 0 10px !important;
     }
 }
+// 상단영역 - gnb
 @media screen and (max-width: 500px) {
     .gnb .logo {
         width: 80px;
