@@ -17,10 +17,20 @@
     }
     .detail_buy {
         position: relative;
-        transform: translateY(43%);
+        transform: translateY(40%);
     }
     .mySwiper1 {
         height: 100% !important;
+    }
+    .buy_option li {
+        display: block !important;
+    }
+    .dtbtn {
+        width: 500px !important;
+    }
+    .copt {
+        width: 100% !important;
+        margin-top: 10px;
     }
 }
 @media screen and (max-width: 660px) {
