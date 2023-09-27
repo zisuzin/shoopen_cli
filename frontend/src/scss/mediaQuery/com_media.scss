@@ -25,9 +25,6 @@
     .buy_option li {
         display: block !important;
     }
-    .dtbtn {
-        width: 500px !important;
-    }
     .copt {
         width: 100% !important;
         margin-top: 10px;
@@ -36,6 +33,9 @@
 @media screen and (max-width: 660px) {
     .dtsec1 .detail_img {
         width: calc(min(630px, 100vw)) !important;
+    }
+    .detail_buy .buyarea {
+        width: calc(min(500px, 100vw)) !important;
     }
 }
 

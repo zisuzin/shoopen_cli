@@ -100,7 +100,7 @@
         dl > dt {
         font-family: var(--shoopen-font-eng);
         font-weight: 500;
-        font-size: 2.4rem;
+        font-size: calc(min(24px, 5.3vw));
        }
     
     }
@@ -111,14 +111,14 @@
     margin: 12px 0 0;
 
     em {
-        font-size: 2rem;
+        font-size: calc(min(20px, 4.7vw));
         font-family: var(--shoopen-font-eng);
         text-decoration: line-through;
         color: #999;
         word-spacing: -3px;
 
         span {
-            font-size: 2rem;
+            font-size: calc(min(20px, 4.7vw));
             font-family: var(--shoopen-font-eng);
         }
     }
@@ -127,13 +127,13 @@
 /* 할인가 */
 .txt-dsc {
     em {
-        font-size: 2.4rem;
+        font-size: calc(min(24px, 5.2vw));
         font-family: var(--shoopen-font-eng);
         font-weight: 700;
     }
 
     span {
-        font-size: 2.6rem;
+        font-size: calc(min(26px, 5.2vw));
         font-family: var(--shoopen-font-eng);
         font-weight: 500;
     }
@@ -160,7 +160,7 @@
         em {
             width: 120px;
             display: table-cell;
-            font-size: 1.4rem;
+            font-size: calc(min(14px, 3.8vw));
             font-family: var(--shoopen-font-eng);
             font-weight: 600;
             color: #555;
@@ -209,7 +209,7 @@
 
         span {
             color: #666;
-            font-size: 1.3rem;
+            font-size: calc(min(13px, 3.5vw));
         }
     }
 }
@@ -250,14 +250,6 @@
     padding-top: 15px;
     padding-bottom: 15px;
     border-bottom: 1px solid #e3e3e3;
-}
-
-/* 상품상세 버튼 공통 */
-.dtbtn {
-    display: flex;
-    width: 100%;
-    margin-top: 10px;
-    border: 1px solid #ccc;
 }
 
 /* 최총 결제 상품 박스 */
@@ -355,19 +347,27 @@
 }
 
 /* 구매 관련 버튼(카트,구매) */
-.dtbtn > a {
-    width: 50%;
-    height: 45px;
-    line-height: 45px;    
-    text-align: center;
-    font-size: 15px;
-    font-family: var(--shoopen-font-eng);
-    font-weight: 500;
+/* 상품상세 버튼 공통 */
+.dtbtn {
+    display: flex;
+    width: 100%;
+    margin-top: 10px;
+    border: 1px solid #ccc;
 
-    /* 구매 버튼 */
-    &:nth-child(2) {
-        background: #000;
-        color: #fff;
+    a {
+        width: 50%;
+        height: 45px;
+        line-height: 45px;    
+        text-align: center;
+        font-size: calc(min(15px, 3.5vw));
+        font-family: var(--shoopen-font-eng);
+        font-weight: 500;
+    
+        /* 구매 버튼 */
+        &:nth-child(2) {
+            background: #000;
+            color: #fff;
+        }
     }
 }
 
