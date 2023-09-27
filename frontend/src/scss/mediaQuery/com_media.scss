@@ -18,6 +18,7 @@
     .detail_buy {
         position: relative;
         transform: translateY(40%);
+        margin-left: 0 !important;
     }
     .mySwiper1 {
         height: 100% !important;
@@ -34,8 +35,8 @@
     .dtsec1 .detail_img {
         width: calc(min(630px, 100vw)) !important;
     }
-    .detail_buy .buyarea {
-        width: calc(min(500px, 100vw)) !important;
+    .dt-comp .detailbx {
+        padding: 20px !important;
     }
 }
 

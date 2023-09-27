@@ -10,6 +10,7 @@
     bottom: 0;
     background-color: #fff;
     z-index: 999;
+    overflow-x: hidden;
     /* 처음엔 숨김 */
     visibility: hidden;
     opacity: 0;
@@ -95,7 +96,7 @@
 
     /* 구매 옵션박스 */
     .buyarea {
-        width: 500px;
+        width: 100%;
 
         dl > dt {
         font-family: var(--shoopen-font-eng);
