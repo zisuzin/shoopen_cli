@@ -1,6 +1,6 @@
 <!-- 메인페이지 media 섹션 템플릿 -->
 <template>
-  <li class="swiper-slide" ref="marqueeCont">
+  <li>
     <a href="#">
       <!-- 썸네일 출력 영역 -->
       <div class="media_thumb">
@@ -39,9 +39,6 @@
 <script>
 // 공통기능 함수
 import crossMixin from "../../js/common.js";
-// 스와이퍼 불러오기
-import Swiper from "swiper";
-import "swiper/swiper-bundle.css";
 
 export default {
   name: "MedComp",
@@ -56,36 +53,7 @@ export default {
       dpt2img: `./images/main/media/depth2/${this.dpt2val[0]}`,
       dpt2name: this.dpt2val[1],
       dpt2price: this.dpt2val[2],
-      marqueeSpeed: 1,
     };
-  },
-  methods: {
-    MarqueeAni() {
-        const marqueeCont = this.$refs.marqueeCont;
-        const contWidth = marqueeCont.offsetWidth;
-        let curPositon = 0;
-
-        const moveMarquee = () => {
-            curPositon -= this.marqueeSpeed;
-            marqueeCont.style.transform = `translateX(${curPositon}px)`;
-
-            if (curPositon < -contWidth) {
-                curPositon = contWidth;
-            }
-
-            requestAnimationFrame(moveMarquee);
-
-        };
-        // 애니메이션 시작!
-        moveMarquee();
-    }
-  },
-  mounted() {
-    new Swiper(".mSwiper3", {
-      slidesPerView: 4,
-      slidesPerGroup: 1,
-    });
-    this.MarqueeAni();
   },
 };
 </script>

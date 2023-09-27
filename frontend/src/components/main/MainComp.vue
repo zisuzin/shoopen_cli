@@ -105,11 +105,13 @@
                 </section>
                 <!-- 4. 미디어섹션(컴포넌트)-->
                 <section class="main_media">
-                    <div class="mSwiper3 mySwiper">
-                        <h3>Media</h3>
-                        <ul class="swiper-wrapper">
-                            <MedComp v-for="(v, i) in mData" :key="i" :matchmedia="v" :dpt1val="v.depth1" :dpt2val="v.depth2"/>
-                        </ul>
+                    <h3>Media</h3>
+                    <div class="md_wrap">
+                        <div class="md_list">
+                            <ul>
+                                <MedComp v-for="(v, i) in mData" :key="i" :matchmedia="v" :dpt1val="v.depth1" :dpt2val="v.depth2"/>
+                            </ul>
+                        </div>
                     </div>
                 </section>
                 <!-- 5. 신상섹션(컴포넌트)-->
@@ -226,6 +228,19 @@ export default {
         };
     },
     methods: {
+        rollBan() {
+            // 롤링 배너 복제본 생성 
+            let roller = document.querySelector('.md_list');
+            roller.id = 'roller1'; // 아이디 부여
+            
+            // 노드 복제 (기본값은 false, 자식 노드까지 원하면 true)
+            let clone = roller.cloneNode(true);
+            clone.id = 'roller2';
+            document.querySelector('.md_wrap').appendChild(clone); // .md_wrap 하위 자식으로 넣기
+
+            document.querySelector('#roller1').style.left = '0px';
+            document.querySelector('#roller2').style.left = document.querySelector('.md_list > ul').offsetWidth + 'px';
+        },
         storeMap() {
             var mapContainer = document.getElementById('map'), // 지도를 표시할 div
                 mapOption = {
@@ -374,6 +389,7 @@ export default {
 
         // 쵤초호출!
         bannerSwiper();
+        this.rollBan();
     },
 };
 </script>

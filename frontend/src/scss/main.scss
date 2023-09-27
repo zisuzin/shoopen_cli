@@ -236,6 +236,7 @@ main {
 /************** section2 **************/
 .main_special {
     height: calc(100vh + 3000px);
+    margin-bottom: 50px;
 
     /* 타이틀박스 */
     .mstit {
@@ -298,7 +299,7 @@ main {
 }
 
 /************** section3 **************/
-.mSwiper3 > h3,
+.main_media > h3,
 .storetit > h2 {
     font-size: 30px;
     padding-bottom: 30px;
@@ -306,12 +307,44 @@ main {
     font-family: var(--shoopen-font-eng);
 }
 
-.mSwiper3 > ul {
+.md_wrap {
+    overflow: hidden;
+    display: flex;
     gap: 15px;
+    
+    ul {
+        gap: 15px;
+        display: flex;
 
-    li {
-        min-width: 317.5px !important;
+        li {
+            width: 344px;
+            height: 544px;
+            min-width: 317.5px !important;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
     }
+    // 롤링배너 애니메이션
+    #roller1 {
+        animation: rollingleft1 90s linear infinite;
+    }
+    #roller2 {
+        animation: rollingleft2 90s linear infinite;
+    }
+}
+
+@keyframes rollingleft1 {
+    0% { transform: translateX(0)}
+	50% { transform: translateX(-100%)}
+	50.01% { transform: translateX(100%)}
+	100% { transform: translateX(0)}
+}
+
+@keyframes rollingleft2 {
+    0% {transform: translateX(0)}
+    100% {transform: translateX(-200%)}
 }
 
 .prod1bx,
