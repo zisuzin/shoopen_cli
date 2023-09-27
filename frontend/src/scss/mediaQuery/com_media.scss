@@ -12,10 +12,23 @@
     .detail_buy .buyarea {
         padding-top: 30px;
     }
+    .dt-comp {
+        overflow-y: scroll;
+    }
+    .detail_buy {
+        position: relative;
+        transform: translateY(43%);
+    }
+    .mySwiper1 {
+        height: 100% !important;
+    }
+}
+@media screen and (max-width: 660px) {
     .dtsec1 .detail_img {
         width: calc(min(630px, 100vw)) !important;
     }
 }
+
 // 푸터영역
 @media screen and (max-width: 1230px) {
     footer .info #dt {
@@ -31,6 +44,7 @@
         padding-left: 0 !important;
     }
 }
+
 // 상단영역 - nav
 @media screen and (max-width: 880px) {
     .catbx {
