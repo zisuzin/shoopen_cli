@@ -310,20 +310,17 @@ main {
 .md_wrap {
     overflow: hidden;
     display: flex;
-    gap: 15px;
+    gap: -4px;
     
     ul {
-        gap: 15px;
         display: flex;
 
         li {
             width: 344px;
             height: 544px;
-            min-width: 317.5px !important;
+            margin: 0 8px;
             box-sizing: border-box;
             display: flex;
-            align-items: center;
-            flex-shrink: 0;
         }
     }
     // 롤링배너 애니메이션
