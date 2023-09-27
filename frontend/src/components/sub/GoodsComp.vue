@@ -62,6 +62,74 @@
                                             items
                                         </p>
                                     </div>
+                                    <!-- 상품필터 검색박스 -->
+                                    <div class="prd_filter_bx" v-if="$store.state.curUrl2 !== '전체'">
+                                        <button type="button">
+                                            <span>필터</span>
+                                        </button>
+                                        <div class="filter_layer">
+                                            <div class="filter_search">
+                                                <table>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>사이즈</th> 
+                                                            <td>
+                                                                <ul class="filter_size">
+                                                                    <li v-for="(v,i) in $store.state.gnb[$store.state.curUrl0][$store.state.curUrl1][$store.state.curUrl2].size" :key="i">
+                                                                        <span class="chkbx">
+                                                                            <input type="checkbox" id="depth_1" name="depth_1"/>
+                                                                            <span></span>
+                                                                        </span>
+                                                                        <label for="depth_1">{{v}}</label>
+                                                                    </li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>색상</th>
+                                                            <td>
+                                                                <ul class="filter_color">
+                                                                    <li v-for="(v,i) in $store.state.gnb[$store.state.curUrl0][$store.state.curUrl1][$store.state.curUrl2].color" :key="i">
+                                                                        <div>
+                                                                            <button type="button" :style="{ backgroundColor: v.split('^')[0] }"></button>
+                                                                            <span>{{v.split('^')[1]}}</span>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>가격</th>
+                                                            <td>
+                                                                <div class="filter_price">
+                                                                    <div class="slider">
+                                                                        <div class="progress"></div>
+                                                                        <div class="range_input">
+                                                                            <input type="range" min="0" max="100" value="0" step="20" class="ui_slider_start" name="slider_start"/>
+                                                                            <input type="range" min="0" max="100" value="100" step="20" class="ui_slider_end" name="slider_end"/>
+                                                                        </div>
+                                                                        </div>
+                                                                    <div id="filter_price_view">
+                                                                        <input class="input_min" name="price_min" type="number" value="0"/>
+                                                                        만원 ~
+                                                                        <input class="input_max" name="price_max" type="number" value="100"/>
+                                                                        만원
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="btn_wrap">
+                                                <a href="#" class="btn_style01">초기화</a>
+                                                <a href="#" class="btn_style02">검색</a>
+                                            </div>
+                                            <button type="button" class="close_btn" title="필터 닫기">
+                                                <span>필터</span>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <!-- 상품리스트 박스 -->
@@ -210,9 +278,7 @@ export default {
         },
         // 상품리스트 오버시 이미지src 변경
         handleMouseOver(event) {
-            const tgImg = $(event.currentTarget).find(
-                'div > a > .prod-detail-img > img',
-            );
+            const tgImg = $(event.currentTarget).find('div > a > .prod-detail-img > img');
             const tgSrc = tgImg.attr('src');
             // 이미지src에 '_on' 없는 경우만 변경하기
             if (tgSrc.indexOf('_on') === -1) {
@@ -270,6 +336,40 @@ export default {
                 }
             });
         },
+        // 가격필터링 메서드
+        moveSl() {
+            const tgsl = document.querySelectorAll(".range_input > input");
+            const priceInput = document.querySelectorAll("#filter_price_view > input");
+            const progress = document.querySelector(".slider > .progress");
+
+            let priceGap = 10;
+
+            tgsl.forEach((ele) => {
+                // 슬라이드 조작시 이벤트 발생
+                ele.addEventListener("input", (e) => {
+                let minVal = parseInt(tgsl[0].value);
+                let maxVal = parseInt(tgsl[1].value);
+                console.log(minVal, maxVal);
+
+                if (maxVal - minVal < priceGap) {
+                    if (e.target.className === "input_min") {
+                    tgsl[0].value = maxVal - priceGap;
+                    } ////// if //////
+                    else {
+                    tgsl[1].value = minVal + priceGap;
+                    } ////// else //////
+                } ////// if //////
+                else {
+                    // 이동된 값 만큼 가격으로 출력!
+                    priceInput[0].value = minVal;
+                    priceInput[1].value = maxVal;
+                    // 프로그레스바 너비 변경
+                    progress.style.left = (minVal / tgsl[0].max) * 100 + "%";
+                    progress.style.right = 100 - (maxVal / tgsl[1].max) * 100 + "%";
+                } ////// else //////
+                }); //////// input //////////
+            }); ////// forEach ///////
+        }, /////// moveSl ///////
     },
     mounted() {
         // lnb 메뉴 클릭시 클래스 on 추가/제거
@@ -283,9 +383,25 @@ export default {
             history.pushState(null,null,`/goods/${store.state.curUrl0}/${store.state.curUrl1}/${menuTxt}`);
         }); ////////// click ///////////
 
+        // 필터 버튼 클릭시 상품카테고리 선택박스 보이기
+        $(".prd_filter_bx > button").click(function () {
+            $(".filter_layer").css("display", "block");
+        }); ///////// click ////////////
+
+        // 상품카테고리 닫기버튼 클릭시 선택박스 닫힘
+        $(".filter_layer > button").click(function () {
+            $(this).parent().css("display", "none");
+        }); ///////// click ////////////
+
+        // 색상 선택 버튼 클릭시 클래스 on
+        $(".filter_color > li").click(function () {
+            $(this).toggleClass("on");
+        }); ///////// click ////////////
+
         // 최초호출!
         this.pdLength();
         this.initCatnum();
+        this.moveSl();
     },
 };
 </script>

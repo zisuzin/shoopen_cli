@@ -104,7 +104,7 @@
                                             <a href="#" role="button" class="minus" v-on:click="minusBtn()" >수량감소</a>
                                             <a href="#" role="button" class="plus" v-on:click="plusBtn()" >수량증가</a>
                                             <label>
-                                                <input type="number" class="num" title="수량" value="1"/>
+                                                <input type="number" class="num" name="num" title="수량" value="1"/>
                                             </label>
                                         </div>
                                         <div class="opt_price">
