@@ -228,6 +228,10 @@ export default {
         };
     },
     methods: {
+        /************************************** 
+            함수명 : rollBan
+            기능 : 왼쪽방향 무한 롤링 슬라이드
+        **************************************/
         rollBan() {
             // 롤링 배너 복제본 생성 
             let roller = document.querySelector('.md_list');
@@ -241,6 +245,10 @@ export default {
             document.querySelector('#roller1').style.left = '0px';
             document.querySelector('#roller2').style.left = document.querySelector('.md_list > ul').offsetWidth + 'px';
         },
+        /************************************** 
+            함수명 : storeMap
+            기능 : 매장위치 좌표 지도에 표시
+        **************************************/
         storeMap() {
             var mapContainer = document.getElementById('map'), // 지도를 표시할 div
                 mapOption = {
@@ -414,7 +422,7 @@ export default {
             width: 300px !important;
         }
     }
-    
+
     @media screen and (max-width: 600px) {
         .morebtn > a {
             font-size: min(1.5rem, 4vw) !important;
