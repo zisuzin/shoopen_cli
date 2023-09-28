@@ -33,13 +33,13 @@
                                 <!-- MO 상품정렬 탭 -->
                                 <div class="mo_sorting">
                                     <ul id="sort_btn">
-                                        <li>
+                                        <li @click.prevent="sortFn('new_prd')">
                                             <a href="#">신상품순</a>
                                         </li>
-                                        <li>
+                                        <li @click.prevent="sortFn('low_price')">
                                             <a href="#">낮은가격순</a>
                                         </li>
-                                        <li>
+                                        <li @click.prevent="sortFn('high_price')">
                                             <a href="#">높은가격순</a>
                                         </li>
                                         <li @click.prevent="sortFn('review')">

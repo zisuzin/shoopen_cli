@@ -7,9 +7,6 @@
     .ui-col4 {
         grid-template-columns: repeat(3, 1fr) !important;
     }
-}
-
-@media screen and (max-width: 700px) {
     .prd-cat-option > ul {
         display: none !important;
     }
