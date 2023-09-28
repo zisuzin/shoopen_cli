@@ -289,6 +289,7 @@ export default {
             try {
                 const arr = store.state.gnb[store.state.curUrl0].items[store.state.curUrl1][store.state.curUrl2];
     
+                // lnb '전체' 클릭시 에러 핸들링
                 if(store.state.curUrl2 === '전체') {
                     throw new Error('curUrl2 카테고리 바인딩 없음')
                 }
@@ -317,7 +318,6 @@ export default {
             catch(error) {
                 console.log(error)
                 const allObj = store.state.gnb[store.state.curUrl0].items[store.state.curUrl1]
-                console.log("pm값은?\n",pm)
 
                 for(let x in allObj) {
                     const allCat = allObj[x];
@@ -345,7 +345,6 @@ export default {
                             break;
                     }
                 }
-                
             }
         },
         // 상품리스트 오버시 이미지src 변경
