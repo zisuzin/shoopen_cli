@@ -448,7 +448,7 @@ export default {
 
             // 선택한 항목을 pickOpt함수에 파라미터로 전달 
             optList.forEach(ele => ele.addEventListener('click', function() {
-                pickOpt(ele)
+                pickOpt(ele);
             }));
 
             // optBtn 클릭 상태에 따라 옵션박스 보임/숨김처리
