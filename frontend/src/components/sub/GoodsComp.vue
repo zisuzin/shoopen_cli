@@ -285,28 +285,67 @@ export default {
             this.pdLength();
         },
         // 상품 정렬 함수 
-        sortFn(pm) {
-            const arr = store.state.gnb[store.state.curUrl0].items[store.state.curUrl1][store.state.curUrl2];
+        async sortFn(pm) {
+            try {
+                const arr = store.state.gnb[store.state.curUrl0].items[store.state.curUrl1][store.state.curUrl2];
+    
+                if(store.state.curUrl2 === '전체') {
+                    throw new Error('curUrl2 카테고리 바인딩 없음')
+                }
+    
+                if (pm === 'review') {
+                    arr.sort(function(a,b){
+                        return b.review - a.review
+                    })
+                }
+                else if (pm === 'high_price') {
+                    arr.sort(function(a,b){
+                        return b.dprice - a.dprice
+                    })
+                }
+                else if (pm === 'low_price') {
+                    arr.sort(function(a,b){
+                        return a.dprice - b.dprice
+                    })
+                }
+                else if (pm === 'new_prd') {
+                    arr.sort(function(a,b){
+                        return b.idx - a.idx
+                    })
+                }
+            }
+            catch(error) {
+                console.log(error)
+                const allObj = store.state.gnb[store.state.curUrl0].items[store.state.curUrl1]
+                console.log("pm값은?\n",pm)
 
-            if (pm === 'review') {
-                arr.sort(function(a,b){
-                    return b.review - a.review
-                })
-            }
-            else if (pm === 'high_price') {
-                arr.sort(function(a,b){
-                    return b.dprice - a.dprice
-                })
-            }
-            else if (pm === 'low_price') {
-                arr.sort(function(a,b){
-                    return a.dprice - b.dprice
-                })
-            }
-            else if (pm === 'new_prd') {
-                arr.sort(function(a,b){
-                    return b.idx - a.idx
-                })
+                for(let x in allObj) {
+                    const allCat = allObj[x];
+
+                    switch (pm) {
+                        case 'review':
+                            allCat.sort(function(a,b){
+                                return b.review - a.review
+                            });  
+                            break;
+                        case 'high_price':
+                            allCat.sort(function(a,b){
+                                return b.dprice - a.dprice
+                            })
+                            break;
+                        case 'low_price':
+                            allCat.sort(function(a,b){
+                                return a.dprice - b.dprice
+                            })
+                            break;
+                        case 'new_prd':
+                            allCat.sort(function(a,b){
+                                return b.idx - a.idx
+                            })
+                            break;
+                    }
+                }
+                
             }
         },
         // 상품리스트 오버시 이미지src 변경
