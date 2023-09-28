@@ -31,26 +31,34 @@
                             <!-- 상품옵션 선택박스 -->
                             <div class="prd-cat-option">
                                 <!-- MO 상품정렬 탭 -->
-                                <label class="mo_sorting">
-                                    <select id="sort_btn">
-                                        <option value="new_order">신상품순</option>
-                                        <option value="low_order">낮은가격순</option>
-                                        <option value="high_order">높은가격순</option>
-                                        <option value="review_order">상품평순</option>
-                                    </select>
-                                </label>
+                                <div class="mo_sorting">
+                                    <ul id="sort_btn">
+                                        <li>
+                                            <a href="#">신상품순</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">낮은가격순</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">높은가격순</a>
+                                        </li>
+                                        <li @click.prevent="sortFn('review')">
+                                            <a href="#">상품평순</a>
+                                        </li>
+                                    </ul>
+                                </div>
                                 <!-- 상품정렬 탭 -->
                                 <ul class="option-left">
-                                    <li class="filter_option" v-on:click="sortList('catnum')">
+                                    <li class="filter_option" @click.prevent="sortFn('new_prd')">
                                         <a href="#">신상품순</a>
                                     </li>
-                                    <li class="filter_option" v-on:click="sortList('dprice')">
+                                    <li class="filter_option" @click.prevent="sortFn('low_price')">
                                         <a href="#">낮은가격순</a>
                                     </li>
-                                    <li class="filter_option" v-on:click="sortList('dprice')">
+                                    <li class="filter_option" @click.prevent="sortFn('high_price')">
                                         <a href="#">높은가격순</a>
                                     </li>
-                                    <li class="filter_option" v-on:click="sortList('review')">
+                                    <li class="filter_option" @click.prevent="sortFn('review')">
                                         <a href="#">상품평순</a>
                                     </li>
                                 </ul>
@@ -276,6 +284,31 @@ export default {
             // 상품 길이값 업데이트!
             this.pdLength();
         },
+        // 상품 정렬 함수 
+        sortFn(pm) {
+            const arr = store.state.gnb[store.state.curUrl0].items[store.state.curUrl1][store.state.curUrl2];
+
+            if (pm === 'review') {
+                arr.sort(function(a,b){
+                    return b.review - a.review
+                })
+            }
+            else if (pm === 'high_price') {
+                arr.sort(function(a,b){
+                    return b.dprice - a.dprice
+                })
+            }
+            else if (pm === 'low_price') {
+                arr.sort(function(a,b){
+                    return a.dprice - b.dprice
+                })
+            }
+            else if (pm === 'new_prd') {
+                arr.sort(function(a,b){
+                    return b.idx - a.idx
+                })
+            }
+        },
         // 상품리스트 오버시 이미지src 변경
         handleMouseOver(event) {
             const tgImg = $(event.currentTarget).find('div > a > .prod-detail-img > img');
@@ -347,25 +380,25 @@ export default {
             tgsl.forEach((ele) => {
                 // 슬라이드 조작시 이벤트 발생
                 ele.addEventListener("input", (e) => {
-                let minVal = parseInt(tgsl[0].value);
-                let maxVal = parseInt(tgsl[1].value);
+                    let minVal = parseInt(tgsl[0].value);
+                    let maxVal = parseInt(tgsl[1].value);
 
-                if (maxVal - minVal < priceGap) {
-                    if (e.target.className === "input_min") {
-                    tgsl[0].value = maxVal - priceGap;
+                    if (maxVal - minVal < priceGap) {
+                        if (e.target.className === "input_min") {
+                            tgsl[0].value = maxVal - priceGap;
+                        } ////// if //////
+                        else {
+                            tgsl[1].value = minVal + priceGap;
+                        } ////// else //////
                     } ////// if //////
                     else {
-                    tgsl[1].value = minVal + priceGap;
+                        // 이동된 값 만큼 가격으로 출력!
+                        priceInput[0].value = minVal;
+                        priceInput[1].value = maxVal;
+                        // 프로그레스바 너비 변경
+                        progress.style.left = (minVal / tgsl[0].max) * 100 + "%";
+                        progress.style.right = 100 - (maxVal / tgsl[1].max) * 100 + "%";
                     } ////// else //////
-                } ////// if //////
-                else {
-                    // 이동된 값 만큼 가격으로 출력!
-                    priceInput[0].value = minVal;
-                    priceInput[1].value = maxVal;
-                    // 프로그레스바 너비 변경
-                    progress.style.left = (minVal / tgsl[0].max) * 100 + "%";
-                    progress.style.right = 100 - (maxVal / tgsl[1].max) * 100 + "%";
-                } ////// else //////
                 }); //////// input //////////
             }); ////// forEach ///////
         }, /////// moveSl ///////
