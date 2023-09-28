@@ -1,7 +1,10 @@
+// 라우터 & 인스턴스 셋업용 모듈
 import { createApp } from "vue/dist/vue.esm-bundler";
 import { createRouter, createWebHistory } from 'vue-router';
-import store from './js/store.js';
 import App from '@/App.vue';
+// store 불러오기
+import store from './js/store.js';
+// 라우팅 컴포넌트
 import MainComp from './components/main/MainComp.vue';
 import ProdComp from './components/sub/ProdComp.vue';
 import GoodsComp from "./components/sub/GoodsComp.vue";

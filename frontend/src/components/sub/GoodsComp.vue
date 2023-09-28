@@ -32,19 +32,12 @@
                             <div class="prd-cat-option">
                                 <!-- MO 상품정렬 탭 -->
                                 <div class="mo_sorting">
+                                    <button type="button">필터</button>
                                     <ul id="sort_btn">
-                                        <li @click.prevent="sortFn('new_prd')">
-                                            <a href="#">신상품순</a>
-                                        </li>
-                                        <li @click.prevent="sortFn('low_price')">
-                                            <a href="#">낮은가격순</a>
-                                        </li>
-                                        <li @click.prevent="sortFn('high_price')">
-                                            <a href="#">높은가격순</a>
-                                        </li>
-                                        <li @click.prevent="sortFn('review')">
-                                            <a href="#">상품평순</a>
-                                        </li>
+                                        <li @click.prevent="sortFn('new_prd')">신상품순</li>
+                                        <li @click.prevent="sortFn('low_price')">낮은가격순</li>
+                                        <li @click.prevent="sortFn('high_price')">높은가격순</li>
+                                        <li @click.prevent="sortFn('review')">상품평순</li>
                                     </ul>
                                 </div>
                                 <!-- 상품정렬 탭 -->
@@ -439,7 +432,36 @@ export default {
                     } ////// else //////
                 }); //////// input //////////
             }); ////// forEach ///////
-        }, /////// moveSl ///////
+        }, 
+        // MO 필터옵션 선택항목값으로 변경 함수
+        setOpt() {
+            const optBtn = document.querySelector('.mo_sorting > button');
+            const optList = document.querySelectorAll('#sort_btn > li');
+            const sortBtn = document.querySelector('#sort_btn');
+
+            // optBtn 텍스트를 선택항목으로 변경
+            const pickOpt = function(item) {
+                optBtn.innerText = item.innerText;
+                optBtn.parentNode.classList.remove('active');
+                sortBtn.style.display = 'none';
+            }
+
+            // 선택한 항목을 pickOpt함수에 파라미터로 전달 
+            optList.forEach(ele => ele.addEventListener('click', function() {
+                pickOpt(ele)
+            }));
+
+            // optBtn 클릭 상태에 따라 옵션박스 보임/숨김처리
+            optBtn.addEventListener('click', function() {
+                if (optBtn.parentNode.classList.contains('active')) {
+                    optBtn.parentNode.classList.remove('active');
+                    sortBtn.style.display = 'none';
+                } else {
+                    optBtn.parentNode.classList.add('active');
+                    sortBtn.style.display = 'block';
+                }
+            });
+        }
     },
     mounted() {
         // lnb 메뉴 클릭시 클래스 on 추가/제거
@@ -472,6 +494,7 @@ export default {
         this.pdLength();
         this.initCatnum();
         this.moveSl();
+        this.setOpt();
     },
 };
 </script>

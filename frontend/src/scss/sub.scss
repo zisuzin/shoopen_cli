@@ -89,6 +89,39 @@ main {
 
     .mo_sorting {
         display: none;
+        position: relative;
+        width: 110px;
+        height: 35px;
+        border-radius: 2px;
+        border: 1px solid #000;
+        cursor: pointer;
+        background: url(/public/images/icon/ico_arrow_set.png) no-repeat;
+        background-position: 86px 15px;
+        
+        // MO 전용 상품 필터메뉴
+        button {
+            display: flex;
+            align-items: center;
+            width: inherit;
+            height: inherit;
+            padding-left: 15px;
+        }
+
+        #sort_btn {
+            position: absolute;
+            top: 40px;
+            width: 100%;
+            z-index: 1;
+            background-color: #fff;
+            border: 1px solid #000;
+            // 처음엔 숨김
+            display: none;
+
+            li {
+                padding: 5px 15px;
+                font-size: 13px;
+            }
+        }
     }
 
     /* 상품 정렬탭 */
