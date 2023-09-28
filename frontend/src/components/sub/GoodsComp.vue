@@ -385,7 +385,7 @@ export default {
         // 필터 버튼 클릭시 상품카테고리 선택박스 보이기
         $(".prd_filter_bx > button").click(function () {
             $(".filter_layer").css("display", "block");
-        }); 
+        }); ////////// click ///////////
 
         // 상품카테고리 닫기버튼 클릭시 선택박스 닫힘
         $(".filter_layer > button").click(function () {
