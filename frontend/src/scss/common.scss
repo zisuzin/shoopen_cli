@@ -293,7 +293,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    width: 320px;
+    width: calc(min(300px, 90vw));
     height: 100vh;
     padding: 10px;
     background-color: #fff;
@@ -426,7 +426,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    width: 500px;
+    width: calc(min(500px, 100vw));
     height: 100vh;
     padding: 30px 50px;
     background-color: #fff;
