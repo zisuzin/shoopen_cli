@@ -105,7 +105,7 @@ function mapSearch() {
     }
     hcode+= "</ul>";
     mapList.innerHTML = hcode;
-
+    
     $(".cont_inner li").click(function() {
         $(this).addClass("on").siblings().removeClass("on");
         // 클릭한 지점명
@@ -113,7 +113,6 @@ function mapSearch() {
         mapData.forEach(ele => {
             // 클릭한 지점명과 데이터명이 같은 경우 변경
             if (ele.mtit === clkTxt) {
-                $(".map_inner > iframe").attr("src", ele.msrc);
                 $(".info_tit_bx > h3").text(ele.mtit)
                 $(".info_tit_bx > p").first().text(ele.maddr)
                 $(".info_tit_bx > p").last().text(ele.mtel)
