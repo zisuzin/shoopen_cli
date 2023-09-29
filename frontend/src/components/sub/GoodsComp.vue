@@ -32,7 +32,7 @@
                             <div class="prd-cat-option">
                                 <!-- MO 상품정렬 탭 -->
                                 <div class="mo_sorting">
-                                    <button type="button">필터</button>
+                                    <button type="button">상품 정렬</button>
                                     <ul id="sort_btn">
                                         <li @click.prevent="sortFn('new_prd')">신상품순</li>
                                         <li @click.prevent="sortFn('low_price')">낮은가격순</li>

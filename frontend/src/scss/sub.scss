@@ -90,7 +90,7 @@ main {
     .mo_sorting {
         display: none;
         position: relative;
-        width: 110px;
+        width: calc(min(110px, 30vw));
         height: 35px;
         border-radius: 2px;
         border: 1px solid #000;
@@ -105,6 +105,7 @@ main {
             width: inherit;
             height: inherit;
             padding-left: 15px;
+            font-size: calc(min(13px, 3.4vw));
         }
 
         #sort_btn {
@@ -119,7 +120,7 @@ main {
 
             li {
                 padding: 5px 15px;
-                font-size: 13px;
+                font-size: calc(min(13px, 3.4vw));
             }
         }
     }
@@ -157,11 +158,11 @@ main {
             padding: 0 20px 0 10px;
     
             p {
-                font-size: 1.6rem;
+                font-size: calc(min(16px, 3.9vw));
             }
     
             strong {
-                font-size: 2.1rem;
+                font-size: calc(min(21px, 4.9vw));
             }
         }
     }
@@ -175,6 +176,7 @@ main {
         background: url(/public/images/icon/ico_filter.png) no-repeat 100% 50%;
         padding-right: 40px;
         position: relative;
+        font-size: calc(min(13px, 3.9vw));
     }
 
     &::before {
@@ -193,30 +195,30 @@ main {
     position: absolute;
     top: -13px;
     right: 0;
-    width: 710px;
+    width: calc(min(710px, 80vw));
     padding: 50px 40px 30px;
     background: #fff;
     border: 1px solid #000;
     z-index: 10;
     user-select: none;
     display: none;
+    overflow: hidden;
 
     .filter_search {
-        td {
-            padding: 15px 0;
-            border-bottom: 1px solid #ddd;  
-        }
+        table {
+            display: block;
 
-        th {
-            text-align: left;
-            font-size: 1.6rem;
-            border-bottom: 1px solid #ddd;
+            td {
+                padding: 15px 0;
+                border-bottom: 1px solid #ddd;  
+            }
+    
+            th {
+                text-align: left;
+                font-size: 1.6rem;
+                border-bottom: 1px solid #ddd;
+            }
         }
-    }
-
-    .btn_wrap {
-        text-align: center;
-        padding-top: 30px;
     }
     
     /* 상품 필터 박스 닫기버튼 */
@@ -285,21 +287,41 @@ main {
     justify-content: space-between;
     align-items: center;
     padding: 5px 0;
+
+    #filter_price_view {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: calc(min(214px, 60vw));
+        font-size: calc(min(14px, 3.4vw));
+
+        input {
+            width: calc(min(64px, 17vw));
+            height: 40px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
+    }
 }
 
 .filter_color {
     display: flex;
     flex-wrap: wrap;
-}
 
-.filter_color > li {
-    margin: 5px 0;
-    width: 105px;
-}
+    li {
+        margin: 5px 0;
+        width: 105px;
 
-.filter_color > li > div {
-    display: flex;
-    align-items: center;
+        div {
+            display: flex;
+            align-items: center;
+        }
+    }
 }
 
 .filter_color > li.on button::after {
@@ -311,30 +333,10 @@ main {
     transform: translate(-50%,-50%);
 }
 
-.filter_price > #filter_price_view {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 214px;
-    font-size: 1.4rem;
-}
-
-.filter_price > #filter_price_view > input {
-    width: 64px;
-    height: 40px;
-    text-align: center;
-    border: 1px solid #ddd;
-}
-
-.filter_price > #filter_price_view > input[type="number"]::-webkit-outer-spin-button,
-.filter_price > #filter_price_view > input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-}
-
 /* 상품 가격 슬라이더 */
 .slider {
     position: relative;
-    width: 238px;
+    width: calc(min(238px, 55vw));
     height: 4px;
     background: #ddd;
 }
@@ -372,10 +374,6 @@ main {
     background: url(../../public/images/icon/icon_range.png) no-repeat 0 0;
 }
 
-.filter_search > table {
-    width: 100%;
-}
-
 .filter_color button {
     position: relative;
     width: 30px;
@@ -390,25 +388,31 @@ main {
     font-size: 1.3rem;
 }
 
-/* 상품 필터 박스 하단 버튼 공통 */
-.btn_wrap > a {
-    display: inline-block;
-    width: 160px;
-    height: 40px;
-    line-height: 40px;
-    font-size: 1.3rem;
-    margin: 0 5px;
-}
+/* 상품 필터 박스 하단 버튼 */
+.btn_wrap {
+    text-align: center;
+    padding-top: 30px;
 
-/* 상품 필터 박스 버튼 - 하단 왼쪽 */
-.btn_wrap > .btn_style01 {
-    border: 1px solid #000;
-    background: #fff;
-}
-/* 상품 필터 박스 버튼 - 하단 오른쪽 */
-.btn_wrap > .btn_style02 {
-    background: #000;
-    color: #fff;
+    > a {
+        display: inline-block;
+        width: 50%;
+        height: 40px;
+        line-height: 40px;
+        font-size: 1.3rem;
+        vertical-align: bottom;
+    }
+
+    /* 상품 필터 박스 버튼 - 하단 왼쪽 */
+    .btn_style01 {
+        border: 1px solid #000;
+        background: #fff;
+    }
+
+    /* 상품 필터 박스 버튼 - 하단 오른쪽 */
+    .btn_style02 {
+        background: #000;
+        color: #fff;
+    }
 }
 
 /* 상품리스트 */
@@ -520,13 +524,13 @@ main {
 
 .percent-price {
     float: right;
-}
 
-.percent-price > em {
-    font-style: normal;
-    font-size: calc(min(22px, 5vw));
-    color: red;
-    font-family: var(--shoopen-font-prodtxt);
+    em {
+        font-style: normal;
+        font-size: calc(min(22px, 5vw));
+        color: red;
+        font-family: var(--shoopen-font-prodtxt);
+    }
 }
 
 .star {
@@ -535,13 +539,14 @@ main {
     width: 60px;
     height: 12px;
     margin-top: 10px;
-}
-.star > span {
-    color: #949494;
-    font-size: calc(min(12px, 3vw));
-    font-weight: 400;
-    margin-left: 65px;
-    position: absolute;
+
+    span {
+        color: #949494;
+        font-size: calc(min(12px, 3vw));
+        font-weight: 400;
+        margin-left: 65px;
+        position: absolute;
+    }
 }
 
 /* new/best 상품페이지 */
@@ -551,57 +556,68 @@ main {
     justify-content: center;
     background-color: #fff;
 }
+
 .prod_inner {
     padding: 50px 0;
     width: 80%;
+
+    h2 {
+        text-align: center;
+        font-size: calc(min(50px, 10vw));
+        font-weight: 800;
+        margin-bottom: 30px;
+        font-family: var(--shoopen-font-title);
+    }
 }
-.prod_tab > ul {
-    display: flex;
-}
+
 .prod_cont > ul {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
+
+    li {
+        cursor: pointer;
+    }
 }
-.prod_cont > ul > li {
-    cursor: pointer;
-}
-.prod_inner > h2 {
-    text-align: center;
-    font-size: calc(min(50px, 10vw));
-    font-weight: 800;
-    margin-bottom: 30px;
-    font-family: var(--shoopen-font-title);
-}
+
 /* 상품리스트 */
-.prod_tab > ul > li {
-    flex: 1;
-    height: 62px;
-    line-height: 62px;
-    text-align: center;
-    background: #FAFAFA;
-    border: 1px solid #E1E1E1;
-    border-bottom: 3px solid #000;
-    color: #505050;
-    cursor: pointer;
-    user-select: none;
+.prod_tab > ul {
+    display: flex;
+
+    li {
+        flex: 1;
+        height: 62px;
+        line-height: 62px;
+        text-align: center;
+        background: #FAFAFA;
+        border: 1px solid #E1E1E1;
+        border-bottom: 3px solid #000;
+        color: #505050;
+        cursor: pointer;
+        user-select: none;
+
+        a {
+            font-size: calc(min(16px, 3.5vw));
+        }
+    }
 }
-.prod_tab > ul > li > a {
-    font-size: calc(min(16px, 3.5vw));
-}
+
 .prodbx img {
     width: 100%;
     height: 100%;
 }
+
 /* 상품 정보 */
 .prod_txt {
     font-size: calc(min(14px, 3.2vw));
+
+    p {
+        padding: 4px 0 5px;
+        letter-spacing: -1.5px;
+        font-family: var(--shoopen-font-prodtxt);
+    }
 }
-.prod_txt p {
-    padding: 4px 0 5px;
-    letter-spacing: -1.5px;
-    font-family: var(--shoopen-font-prodtxt);
-}
+
 /* 클래스 on */
 .prod_tab li.on {
     background-color: #fff;
@@ -609,12 +625,15 @@ main {
     border-bottom: transparent;
     font-weight: 700;
 }
+
 .prod_cont {
     margin-top: 30px;
 }
+
 .btnwrap {
     margin-top: 30px;
 }
+
 .more_btn {
     position: relative;
     left: 50%;
