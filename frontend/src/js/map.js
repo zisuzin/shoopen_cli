@@ -8,8 +8,8 @@ function mapSearch() {
     $(".tabbx li").click(function() {
         // '지역검색' 클릭시 나타날 지역데이터
         const localData = ["서울", "부산", "인천"];
-        const local1 = ["뒤로가기", "강남구", "용산구", "금천구"];
-        const local2 = ["뒤로가기", "부산진구", "금정구", "사하구", "해운대구"];
+        const local1 = ["뒤로가기", "강북구", "송파구", "마포구", "강동구", "용산구", "영등포구"];
+        const local2 = ["뒤로가기", "부산진구", "금정구", "북구", "사하구", "해운대구"];
         const local3 = ["뒤로가기", "연수구", "남동구"];
 
         $(this).addClass("check").siblings().removeClass("check").css({backgroundColor: "#000", color: "#fff"});

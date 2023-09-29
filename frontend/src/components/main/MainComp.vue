@@ -225,6 +225,7 @@ export default {
     data() {
         return {
             mData: mData,
+            mapData: 'null',
         };
     },
     methods: {
@@ -250,33 +251,76 @@ export default {
             기능 : 매장위치 좌표 지도에 표시
         **************************************/
         storeMap() {
+            console.log(this.mapData)
             var mapContainer = document.getElementById('map'), // 지도를 표시할 div
                 mapOption = {
                     center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
                     level: 3, // 지도의 확대 레벨
                 };
 
-            var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+            var map = new kakao.maps.Map(mapContainer, mapOption); // 지도 생성
 
-            // 마커를 표시할 위치와 title 객체 배열입니다
-            var positions = [
-                {
-                    title: '카카오',
-                    latlng: new kakao.maps.LatLng(33.450705, 126.570677),
-                },
-                {
-                    title: '생태연못',
-                    latlng: new kakao.maps.LatLng(33.450936, 126.569477),
-                },
-                {
-                    title: '텃밭',
-                    latlng: new kakao.maps.LatLng(33.450879, 126.56994),
-                },
-                {
-                    title: '근린공원',
-                    latlng: new kakao.maps.LatLng(33.451393, 126.570738),
-                },
-            ];
+            // 마커를 표시할 위치와 title 객체 배열
+            var positions = {
+            "서울": [
+                    {
+                        title: '미아점',
+                        latlng: new kakao.maps.LatLng(37.626218, 127.013474)
+                    },
+                    {
+                        title: 'NC백화점 송파점',
+                        latlng: new kakao.maps.LatLng(37.477774, 127.125041)
+                    },
+                    {
+                        title: '홍대점',
+                        latlng: new kakao.maps.LatLng(37.556568, 126.922696)
+                    },
+                    {
+                        title: '2001아울렛 천호점',
+                        latlng: new kakao.maps.LatLng(37.541384, 127.125996)
+                    },
+                    {
+                        title: '아이파크몰 용산점',
+                        latlng: new kakao.maps.LatLng(37.529943, 126.964667)
+                    },
+                    {
+                        title: '타임스퀘어 영등포점',
+                        latlng: new kakao.maps.LatLng(126.964667, 126.905595)
+                    },
+                ],
+            "부산": [
+                    {
+                        title: 'NC백화점 부산대점',
+                        latlng: new kakao.maps.LatLng(35.232473, 129.084245)
+                    },
+                    {
+                        title: '뉴코아아울렛 덕천점',
+                        latlng: new kakao.maps.LatLng(35.211306, 129.007551)
+                    },
+                    {
+                        title: '부산 아트몰링점',
+                        latlng: new kakao.maps.LatLng(35.106692, 128.966336)
+                    },
+                    {
+                        title: 'NC백화점 서면점',
+                        latlng: new kakao.maps.LatLng(35.157141, 129.063072)
+                    },
+                    {
+                        title: 'NC백화점 해운대점',
+                        latlng: new kakao.maps.LatLng(35.170707, 129.177125)
+                    },
+                ],
+            "인천": [
+                    {
+                        title: '뉴코아아울렛 논현점',
+                        latlng: new kakao.maps.LatLng(37.400955, 126.726028)
+                    },
+                    {
+                        title: '스퀘어원 연수점',
+                        latlng: new kakao.maps.LatLng(37.406251, 126.683756)
+                    },
+                ],
+            };
 
             // 마커 이미지의 이미지 주소입니다
             var imageSrc =
@@ -303,7 +347,7 @@ export default {
         },
     },
     created() {
-        axios.get('/api').then(res => console.log(res.data)) 
+        axios.get('/api').then(res => this.mapData = res.data) 
         .catch(error => console.log(error));
     },
     mounted() {
