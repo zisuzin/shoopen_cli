@@ -194,11 +194,11 @@
 </template>
 
 <script>
-// 지도 관련 함수
-import mapSearch from '../../js/map.js';
 // 스와이퍼 불러오기
 import Swiper from 'swiper';
 import 'swiper/swiper-bundle.css';
+// 제이쿼리 불러오기
+import $ from "jquery";
 // 엑시오스 불러오기
 import axios from "axios";
 // 더미데이터
@@ -222,10 +222,31 @@ export default {
     data() {
         return {
             mData: mData,
-            mapData: 'null',
+            apiData: 'null',
         };
     },
     methods: {
+        fetchData() {
+            axios.get('/api').then(function(res) {
+                console.log("엑시오스 호출 !!", res.data);
+                const mapList = document.querySelector(".cont_inner");
+                let hcode = "<ul>";
+                    $(res.data).each(function(a,b){
+                        hcode+= `
+                        <li>
+                            <div class="cont_tit">
+                                <b>${b.name}</b>
+                            </div>
+                            <div class="cont_info">
+                                <p>${b.sido + b.gugun}</p>
+                            </div>
+                        </li>
+                        `
+                    })
+                hcode+= "</ul>";
+                mapList.innerHTML = hcode;
+            });
+        },
         /************************************** 
             함수명 : rollBan
             기능 : 왼쪽방향 무한 롤링 슬라이드
@@ -248,7 +269,6 @@ export default {
             기능 : 매장위치 좌표 지도에 표시
         **************************************/
         storeMap() {
-            console.log(this.mapData)
             var mapContainer = document.getElementById('map'), // 지도를 표시할 div
                 mapOption = {
                     center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
@@ -341,23 +361,25 @@ export default {
         },
     },
     created() {
-        axios.get('/api').then(res => this.mapData = res.data) 
-        .catch(error => console.log(error));
+        this.fetchData();
     },
     mounted() {
+        // 뷰인스턴스 저장 변수
+        // const vm = this;
+
         // 카카오맵 API 로드후 메서드 호출!
         if (window.kakao && window.kakao.maps) {
             this.storeMap();
-            mapSearch();
+            setMap();
         } else {
             const script = document.createElement('script');
             /* global kakao */
             script.onload = () => kakao.maps.load(this.storeMap);
             script.src = 'http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=967c1df5ef6ef37cb1facf79cca53e7b';
             document.head.appendChild(script);
-            mapSearch();
+            setMap();
         }
-
+        
         // 메인 배너 함수
         function bannerSwiper() {
             // 스와이퍼 커스텀
@@ -432,6 +454,121 @@ export default {
         }
 
         window.addEventListener("scroll", moveSec);
+        
+        function setMap() {
+            $(".tabbx li").click(function() {
+                // '지역검색' 클릭시 나타날 지역데이터
+                const localData = ["서울", "부산", "인천"];
+                const local1 = ["뒤로가기", "강북구", "송파구", "마포구", "강동구", "용산구", "영등포구"];
+                const local2 = ["뒤로가기", "부산진구", "금정구", "북구", "사하구", "해운대구"];
+                const local3 = ["뒤로가기", "연수구", "남동구"];
+
+                $(this).addClass("check").siblings().removeClass("check").css({backgroundColor: "#000", color: "#fff"});
+                if ($(this).is(".check")) {
+                    $(this).css({backgroundColor: "#fdd000", color: "#000"})
+                }
+                // 지역검색 li 클릭시
+                $(this).is($(".tabbx li").eq(1)) ?
+                $("#map_contents").css({display: "block", width: "100%", height: "calc(100% - 53px)", position: "absolute", background: "#fff", zIndex: "1"}) && renderLocal(localData): $("#map_contents").css("display", "none");
+
+                // 대분류 지역 데이터 출력 함수
+                function renderLocal(val) {
+                    const locals = $("#map_contents > .locals");
+                    locals.empty();
+
+                    val.forEach(x=> {
+                        locals.append(`<h3 class="loc_thumb">${x}</h3>`);
+                    });
+                    $(".loc_thumb").on("click", function(e) {
+                        clkTumb(e);
+                    });
+                } /////// renderLocal 함수 ////////
+
+                // 중분류 서울 데이터 출력 함수
+                function renderSeoul() {
+                    renderLocal(local1);
+                    // 뒤로가기 텍스트
+                    const backtxt = $(".loc_thumb").eq(0);
+                    backtxt.on("click", clkBack);
+                }
+
+                // 중분류 부산 데이터 출력 함수
+                function renderBusan() {
+                    renderLocal(local2);
+                    // 뒤로가기 텍스트
+                    const backtxt = $(".loc_thumb").eq(0);
+                    backtxt.on("click", clkBack);
+                }
+
+                // 중분류 인천 데이터 출력 함수
+                function renderIncheon() {
+                    renderLocal(local3);
+                    // 뒤로가기 텍스트
+                    const backtxt = $(".loc_thumb").eq(0);
+                    backtxt.on("click", clkBack);
+                }
+
+                // 뒤로가기 버튼 이벤트 핸들러
+                function clkBack() {
+                    renderLocal(localData);
+                    $(".loc_thumb").off("click");
+                    $(".loc_thumb").on("click", function(e) {
+                        clkTumb(e);
+                    });
+                }
+
+                // 중분류 지역 데이터 출력 함수
+                function clkTumb(e) {
+                    const locName = $(e.currentTarget).text();
+                    switch(locName) {
+                        case "서울": 
+                            renderSeoul();
+                            break;
+                        case "부산":
+                            renderBusan();
+                            break;
+                        case "인천": 
+                            renderIncheon();
+                            break;
+                    }
+                }
+            }); //////// click /////////
+
+            // 첫번째 li에 강제클릭
+            $(".tabbx li:first").trigger("click");
+
+            const mapList = document.querySelector(".cont_inner");
+            let hcode = "<ul>";
+            // vm.forEach(function(x) {
+            //     hcode+= `
+            //         <li>
+            //             <div class="cont_tit">
+            //                 <b>${vm[x].name}</b>
+            //             </div>
+            //             <div class="cont_info">
+            //                 // <p>${vm[x].maddr}</p>
+            //             </div>
+            //         </li>
+            //     `
+            // });
+            
+            hcode+= "</ul>";
+            mapList.innerHTML = hcode;
+
+            $(".cont_inner li").click(function() {
+                $(this).addClass("on").siblings().removeClass("on");
+                // 클릭한 지점명
+                // const clkTxt = $(this).find($(".cont_tit > b")).text();
+                // vm.forEach(ele => {
+                //     // 클릭한 지점명과 데이터명이 같은 경우 변경
+                //     if (ele.mtit === clkTxt) {
+                //         $(".info_tit_bx > h3").text(ele.mtit)
+                //         $(".info_tit_bx > p").first().text(ele.maddr)
+                //         $(".info_tit_bx > p").last().text(ele.mtel)
+                //     }
+                // });
+            }); ////// click ///////
+        }
 
         // 쵤초호출!
         bannerSwiper();
