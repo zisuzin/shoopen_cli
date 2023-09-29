@@ -238,7 +238,7 @@ export default {
                                 <b>${b.name}</b>
                             </div>
                             <div class="cont_info">
-                                <p>${b.sido + b.gugun}</p>
+                                <p>${b.det}</p>
                             </div>
                         </li>
                         `
