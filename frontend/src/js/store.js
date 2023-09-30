@@ -331,9 +331,6 @@ const store = createStore({
 
         // useState
         callout: 0,
-        // 전체 배열 변수
-        combineArr: '', // 사이즈
-        combineArr2: '', // 색상
 
         // 메인페이지 배열데이터 접근용 변수
         setNumber: '',
