@@ -557,61 +557,35 @@ main {
     }
 }
 
-/* 지점 상세정보 박스 */
-.map_info {
-    cursor: default;
-    position: absolute;
-    background: rgb(255, 255, 255);
-    border: 1px solid rgb(118, 129, 168);
-    width: 200px;
-    height: 212px;
-    top: 10%;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
-
-    span {
-        position: absolute;
-        width: 11px;
-        height: 9px;
-        background: url(https://t1.daumcdn.net/localimg/localimages/07/mapjsapi/2x/triangle.png)
-            0% 0% / 11px 9px no-repeat;
-        left: 94px;
-        top: 210px;
+.info_tit {
+    h2 {
+        font-size: 17px;
+        font-weight: 500;
     }
 
-    .map_info_inner {
-        padding: 20px;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-}
-
-.info_window_bx {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-
-    h3 {
-        font-size: 18px;
-    }
-
-    p {
+    .addr {
+        padding: 5px 0;
         font-size: 12px;
-        opacity: 0.7;
-        margin: 5px 0;
-        color: #555;
+        color: #777;
     }
-}
 
-.morebtn_bx {
-    text-align: center;
-    height: 35px;
-    line-height: 35px;
-    background: #fdd000;
+    .tel {
+        font-size: 12px;
+        color: #777;
+        margin-bottom: 25px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #ccc;
+    }
 
-    em {
-        font-size: 14px;
+    .morebtn_bx {
+        text-align: center;
+        height: 35px;
+        line-height: 35px;
+        background: #fdd000;
+    
+        em {
+            font-size: 14px;
+        }
     }
 }
 

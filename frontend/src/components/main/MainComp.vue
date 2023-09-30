@@ -160,20 +160,6 @@
                             <div class="map_inner">
                                 <div id="map"></div>
                             </div>
-                            <!-- 지점 좌표 위 안내툴팁 -->
-                            <div class="map_info">
-                                <div class="map_info_inner">
-                                    <div class="info_window_bx">
-                                        <h3 class="tit"></h3>
-                                        <p class="addr"></p>
-                                        <p class="tel"></p>
-                                    </div>
-                                    <div class="morebtn_bx">
-                                        <em>자세히 보기</em>
-                                    </div>
-                                </div>
-                                <span></span>
-                            </div>
                         </div>
                     </div>
                 </section>
@@ -201,8 +187,6 @@ import 'swiper/swiper-bundle.css';
 import $ from "jquery";
 // 엑시오스 불러오기
 import axios from "axios";
-// 스토어 불러오기
-import store from '@/js/store.js';
 // 더미데이터
 import { mData } from '../../js/gdsData/mainData.js';
 // 자식컴포넌트
@@ -236,8 +220,6 @@ export default {
 
                 let hcode = "<ul>";
                     $(res.data).each(function(a,b){
-                        store.state.setlat = b.lat
-                        store.state.setlng = b.lng
 
                         hcode+= `
                         <li>
@@ -270,7 +252,7 @@ export default {
                     // 클릭한 지점명과 데이터 일치시 storeMap 호출!
                     $(res.data).each(function(a,b){
                         if (b.name === clktxt){
-                            vm.storeMap(b.lat, b.lng)
+                            vm.storeMap(b.lat, b.lng, b.name, b.det, b.tel)
                         }
                     })
                 }); ////// click ///////
@@ -298,7 +280,7 @@ export default {
             함수명 : storeMap
             기능 : 변경된 위치 좌표로 카카오 지도 갱신
         **************************************/
-        storeMap(lat, lng) {
+        storeMap(lat, lng, name, addr, tel) {
             const mapContainer = document.getElementById('map'), // 지도를 표시할 div
                 mapOption = {
                     center: new kakao.maps.LatLng(lat, lng), // 지도의 중심좌표
@@ -307,88 +289,46 @@ export default {
                 };
 
             const map = new kakao.maps.Map(mapContainer, mapOption); // 지도 생성
+            const iwPosition = new kakao.maps.LatLng(lat, lng); //인포윈도우 표시 위치입니다
 
-            // 마커를 표시할 위치와 title 객체 배열
-            const positions = [
-                // 서울
-                {
-                    title: '미아점',
-                    latlng: new kakao.maps.LatLng(37.626218, 127.013474)
-                },
-                {
-                    title: 'NC백화점 송파점',
-                    latlng: new kakao.maps.LatLng(37.477774, 127.125041)
-                },
-                {
-                    title: '홍대점',
-                    latlng: new kakao.maps.LatLng(37.556568, 126.922696)
-                },
-                {
-                    title: '2001아울렛 천호점',
-                    latlng: new kakao.maps.LatLng(37.541384, 127.125996)
-                },
-                {
-                    title: '아이파크몰 용산점',
-                    latlng: new kakao.maps.LatLng(37.529943, 126.964667)
-                },
-                {
-                    title: '타임스퀘어 영등포점',
-                    latlng: new kakao.maps.LatLng(126.964667, 126.905595)
-                },
-                // 부산
-                {
-                    title: 'NC백화점 부산대점',
-                    latlng: new kakao.maps.LatLng(35.232473, 129.084245)
-                },
-                {
-                    title: '뉴코아아울렛 덕천점',
-                    latlng: new kakao.maps.LatLng(35.211306, 129.007551)
-                },
-                {
-                    title: '부산 아트몰링점',
-                    latlng: new kakao.maps.LatLng(35.106692, 128.966336)
-                },
-                {
-                    title: 'NC백화점 서면점',
-                    latlng: new kakao.maps.LatLng(35.157141, 129.063072)
-                },
-                {
-                    title: 'NC백화점 해운대점',
-                    latlng: new kakao.maps.LatLng(35.170707, 129.177125)
-                },
-                // 인천
-                {
-                    title: '뉴코아아울렛 논현점',
-                    latlng: new kakao.maps.LatLng(37.400955, 126.726028)
-                },
-                {
-                    title: '스퀘어원 연수점',
-                    latlng: new kakao.maps.LatLng(37.406251, 126.683756)
-                },
-            ];
-
-            // 마커 이미지의 이미지 주소입니다
+            // 마커 이미지 주소
             const imageSrc =
                 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png';
+                
+            // 마커 이미지 크기
+            const imageSize = new kakao.maps.Size(24, 35);
 
-            for (let i = 0; i < positions.length; i++) {
-                // 마커 이미지의 이미지 크기 입니다
-                const imageSize = new kakao.maps.Size(24, 35);
+            // 마커 이미지 생성
+            const markerImage = new kakao.maps.MarkerImage(
+                imageSrc,
+                imageSize,
+            );
 
-                // 마커 이미지를 생성합니다
-                const markerImage = new kakao.maps.MarkerImage(
-                    imageSrc,
-                    imageSize,
-                );
+            // 마커 생성
+            var marker = new kakao.maps.Marker({
+                map: map, // 마커를 표시할 지도
+                position: iwPosition, // 마커를 표시할 위치
+                image: markerImage, // 마커 이미지
+            });
 
-                // 마커를 생성합니다
-                new kakao.maps.Marker({
-                    map: map, // 마커를 표시할 지도
-                    position: positions[i].latlng, // 마커를 표시할 위치
-                    title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-                    image: markerImage, // 마커 이미지
-                });
-            }
+            // 마커가 지도 위에 표시되도록 설정
+            marker.setMap(map);
+
+            // 인포윈도우를 생성하고 지도에 표시
+            const infowindow = new kakao.maps.InfoWindow({
+                position : iwPosition, 
+                disableAutoPan: true,
+                content : `<div class="info_tit" style="width:185px; padding:15px;">
+                              <h2>${name}</h2>
+                              <p class="addr">${addr}</p>
+                              <p class="tel">${tel}</p>
+                              <div class="morebtn_bx">
+                                <em>자세히 보기</em>
+                              </div>
+                           </div>`, 
+            });
+
+            infowindow.open(map, marker); 
         },
     },
     created() {
@@ -397,7 +337,7 @@ export default {
     mounted() {
         // 카카오맵 API 로드후 메서드 호출!
         if (window.kakao && window.kakao.maps) {
-            setMap();
+            showMap();
         } else {
             const script = document.createElement('script');
             /* global kakao */
@@ -407,7 +347,7 @@ export default {
             });
             script.src = 'http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=967c1df5ef6ef37cb1facf79cca53e7b';
             document.head.appendChild(script);
-            setMap();
+            showMap();
         }
         
         // 메인 배너 함수
@@ -485,7 +425,7 @@ export default {
 
         window.addEventListener("scroll", moveSec);
         
-        function setMap() {
+        function showMap() {
             $(".tabbx li").click(function() {
                 // '지역검색' 클릭시 나타날 지역데이터
                 const localData = ["서울", "부산", "인천"];
@@ -499,7 +439,13 @@ export default {
                 }
                 // 지역검색 li 클릭시
                 $(this).is($(".tabbx li").eq(1)) ?
-                $("#map_contents").css({display: "block", width: "100%", height: "calc(100% - 53px)", position: "absolute", background: "#fff", zIndex: "1"}) && renderLocal(localData): $("#map_contents").css("display", "none");
+                $("#map_contents").css({
+                    display: "block",
+                    width: "100%",
+                    height: "calc(100% - 53px)",
+                    position: "absolute",
+                    background: "#fff", zIndex: "1"}) && renderLocal(localData)
+                    : $("#map_contents").css("display", "none");
 
                 // 대분류 지역 데이터 출력 함수
                 function renderLocal(val) {
