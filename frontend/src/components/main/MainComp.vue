@@ -163,10 +163,10 @@
                             <!-- 지점 좌표 위 안내툴팁 -->
                             <div class="map_info">
                                 <div class="map_info_inner">
-                                    <div class="info_tit_bx">
-                                        <h3>미아점</h3>
-                                        <p>서울특별시 강북구 도봉로 52 (미아동) 지하2층</p>
-                                        <p>02-6312-6281</p>
+                                    <div class="info_window_bx">
+                                        <h3 class="tit">미아점</h3>
+                                        <p class="addr">서울특별시 강북구 도봉로 52 (미아동) 지하2층</p>
+                                        <p class="tel">02-6312-6281</p>
                                     </div>
                                     <div class="morebtn_bx">
                                         <em>자세히 보기</em>
@@ -201,6 +201,8 @@ import 'swiper/swiper-bundle.css';
 import $ from "jquery";
 // 엑시오스 불러오기
 import axios from "axios";
+// 스토어 불러오기
+import store from '@/js/store.js';
 // 더미데이터
 import { mData } from '../../js/gdsData/mainData.js';
 // 자식컴포넌트
@@ -222,16 +224,18 @@ export default {
     data() {
         return {
             mData: mData,
-            apiData: 'null',
         };
     },
     methods: {
         fetchData() {
+            const vm = this; 
             axios.get('/api').then(function(res) {
-                console.log("엑시오스 호출 !!", res.data);
                 const mapList = document.querySelector(".cont_inner");
                 let hcode = "<ul>";
                     $(res.data).each(function(a,b){
+                        store.state.setlat = b.lat
+                        store.state.setlng = b.lng
+
                         hcode+= `
                         <li>
                             <div class="cont_tit">
@@ -245,6 +249,28 @@ export default {
                     })
                 hcode+= "</ul>";
                 mapList.innerHTML = hcode;
+
+                mapList.querySelector("li:first-child").click();
+                
+                // 클릭한 지점명으로 인포윈도우 변경
+                $(".cont_inner li").click(function() {
+                    $(this).addClass("on").siblings().removeClass("on");
+                    // 클릭한 지점명
+                    let clktxt = $(this).find($(".cont_tit > b")).text();
+
+                    $(res.data).each(function(a,b){
+                        if (b.name === clktxt){
+                            vm.storeMap(b.lat, b.lng)
+                            console.log(vm)
+                        }
+                    })
+                    // 클릭한 지점명
+                    // let clktxt = $(this).find($(".cont_tit > b")).text();
+                    // let clkaddr = $(this).find($(".cont_info > p")).text();
+    
+                    // $(".info_window_bx > .tit").text(clktxt)
+                    // $(".info_window_bx > .addr").text(clkaddr)
+                }); ////// click ///////
             });
         },
         /************************************** 
@@ -268,11 +294,13 @@ export default {
             함수명 : storeMap
             기능 : 매장위치 좌표 지도에 표시
         **************************************/
-        storeMap() {
+        storeMap(lat, lng) {
+            console.log(lat, lng)
             var mapContainer = document.getElementById('map'), // 지도를 표시할 div
                 mapOption = {
-                    center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+                    center: new kakao.maps.LatLng(lat, lng), // 지도의 중심좌표
                     level: 3, // 지도의 확대 레벨
+                    disableDoubleClickZoom: true, // 두번 클릭시 확대 기능 막기
                 };
 
             var map = new kakao.maps.Map(mapContainer, mapOption); // 지도 생성
@@ -364,9 +392,6 @@ export default {
         this.fetchData();
     },
     mounted() {
-        // 뷰인스턴스 저장 변수
-        // const vm = this;
-
         // 카카오맵 API 로드후 메서드 호출!
         if (window.kakao && window.kakao.maps) {
             this.storeMap();
@@ -536,38 +561,6 @@ export default {
 
             // 첫번째 li에 강제클릭
             $(".tabbx li:first").trigger("click");
-
-            const mapList = document.querySelector(".cont_inner");
-            let hcode = "<ul>";
-            // vm.forEach(function(x) {
-            //     hcode+= `
-            //         <li>
-            //             <div class="cont_tit">
-            //                 <b>${vm[x].name}</b>
-            //             </div>
-            //             <div class="cont_info">
-            //                 // <p>${vm[x].maddr}</p>
-            //             </div>
-            //         </li>
-            //     `
-            // });
-            
-            hcode+= "</ul>";
-            mapList.innerHTML = hcode;
-
-            $(".cont_inner li").click(function() {
-                $(this).addClass("on").siblings().removeClass("on");
-                // 클릭한 지점명
-                // const clkTxt = $(this).find($(".cont_tit > b")).text();
-                // vm.forEach(ele => {
-                //     // 클릭한 지점명과 데이터명이 같은 경우 변경
-                //     if (ele.mtit === clkTxt) {
-                //         $(".info_tit_bx > h3").text(ele.mtit)
-                //         $(".info_tit_bx > p").first().text(ele.maddr)
-                //         $(".info_tit_bx > p").last().text(ele.mtel)
-                //     }
-                // });
-            }); ////// click ///////
         }
 
         // 쵤초호출!

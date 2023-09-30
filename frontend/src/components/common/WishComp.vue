@@ -5,8 +5,6 @@ import crossMixin from '@/js/common.js';
 import comData from '@/js/tempData/comComp.js';
 // 제이쿼리 불러오기
 import $ from 'jquery';
-// 스토어 불러오기
-// import store from '@/js/store.js';
 
 export default {
     name: 'WishComp',
