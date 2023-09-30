@@ -164,9 +164,9 @@
                             <div class="map_info">
                                 <div class="map_info_inner">
                                     <div class="info_window_bx">
-                                        <h3 class="tit">미아점</h3>
-                                        <p class="addr">서울특별시 강북구 도봉로 52 (미아동) 지하2층</p>
-                                        <p class="tel">02-6312-6281</p>
+                                        <h3 class="tit"></h3>
+                                        <p class="addr"></p>
+                                        <p class="tel"></p>
                                     </div>
                                     <div class="morebtn_bx">
                                         <em>자세히 보기</em>
@@ -228,9 +228,12 @@ export default {
     },
     methods: {
         fetchData() {
+            // 뷰 인스턴스 저장용 변수
             const vm = this; 
+
             axios.get('/api').then(function(res) {
                 const mapList = document.querySelector(".cont_inner");
+
                 let hcode = "<ul>";
                     $(res.data).each(function(a,b){
                         store.state.setlat = b.lat
@@ -242,7 +245,8 @@ export default {
                                 <b>${b.name}</b>
                             </div>
                             <div class="cont_info">
-                                <p>${b.det}</p>
+                                <p class="desc">${b.det}</p>
+                                <p class="tel">${b.tel}</p>
                             </div>
                         </li>
                         `
@@ -250,27 +254,27 @@ export default {
                 hcode+= "</ul>";
                 mapList.innerHTML = hcode;
 
-                mapList.querySelector("li:first-child").click();
-                
-                // 클릭한 지점명으로 인포윈도우 변경
+                // 클릭한 li에 따라 지도 & 인포윈도 변경
                 $(".cont_inner li").click(function() {
                     $(this).addClass("on").siblings().removeClass("on");
-                    // 클릭한 지점명
+                    // 클릭한 지점명&주소
                     let clktxt = $(this).find($(".cont_tit > b")).text();
+                    let clkaddr = $(this).find($(".cont_info > .desc")).text();
+                    let clktel = $(this).find($(".cont_info > .tel")).text();
 
+                    // 클릭한 지점명으로 인포윈도우 변경
+                    $(".info_window_bx > .tit").text(clktxt);
+                    $(".info_window_bx > .addr").text(clkaddr);
+                    $(".info_window_bx > .tel").text(clktel);
+
+                    // 클릭한 지점명과 데이터 일치시 storeMap 호출!
                     $(res.data).each(function(a,b){
                         if (b.name === clktxt){
                             vm.storeMap(b.lat, b.lng)
-                            console.log(vm)
                         }
                     })
-                    // 클릭한 지점명
-                    // let clktxt = $(this).find($(".cont_tit > b")).text();
-                    // let clkaddr = $(this).find($(".cont_info > p")).text();
-    
-                    // $(".info_window_bx > .tit").text(clktxt)
-                    // $(".info_window_bx > .addr").text(clkaddr)
                 }); ////// click ///////
+
             });
         },
         /************************************** 
@@ -292,21 +296,20 @@ export default {
         },
         /************************************** 
             함수명 : storeMap
-            기능 : 매장위치 좌표 지도에 표시
+            기능 : 변경된 위치 좌표로 카카오 지도 갱신
         **************************************/
         storeMap(lat, lng) {
-            console.log(lat, lng)
-            var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+            const mapContainer = document.getElementById('map'), // 지도를 표시할 div
                 mapOption = {
                     center: new kakao.maps.LatLng(lat, lng), // 지도의 중심좌표
                     level: 3, // 지도의 확대 레벨
                     disableDoubleClickZoom: true, // 두번 클릭시 확대 기능 막기
                 };
 
-            var map = new kakao.maps.Map(mapContainer, mapOption); // 지도 생성
+            const map = new kakao.maps.Map(mapContainer, mapOption); // 지도 생성
 
             // 마커를 표시할 위치와 title 객체 배열
-            var positions = [
+            const positions = [
                 // 서울
                 {
                     title: '미아점',
@@ -365,15 +368,15 @@ export default {
             ];
 
             // 마커 이미지의 이미지 주소입니다
-            var imageSrc =
+            const imageSrc =
                 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png';
 
-            for (var i = 0; i < positions.length; i++) {
+            for (let i = 0; i < positions.length; i++) {
                 // 마커 이미지의 이미지 크기 입니다
-                var imageSize = new kakao.maps.Size(24, 35);
+                const imageSize = new kakao.maps.Size(24, 35);
 
                 // 마커 이미지를 생성합니다
-                var markerImage = new kakao.maps.MarkerImage(
+                const markerImage = new kakao.maps.MarkerImage(
                     imageSrc,
                     imageSize,
                 );
@@ -394,12 +397,14 @@ export default {
     mounted() {
         // 카카오맵 API 로드후 메서드 호출!
         if (window.kakao && window.kakao.maps) {
-            this.storeMap();
             setMap();
         } else {
             const script = document.createElement('script');
             /* global kakao */
-            script.onload = () => kakao.maps.load(this.storeMap);
+            script.onload = () => kakao.maps.load(function() {
+                // 로드되었을때 li 첫번째 트리거!
+                document.querySelector(".cont_inner li:first-child").click();
+            });
             script.src = 'http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=967c1df5ef6ef37cb1facf79cca53e7b';
             document.head.appendChild(script);
             setMap();
