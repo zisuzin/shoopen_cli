@@ -289,7 +289,7 @@ export default {
                 };
 
             const map = new kakao.maps.Map(mapContainer, mapOption); // 지도 생성
-            const iwPosition = new kakao.maps.LatLng(lat, lng); //인포윈도우 표시 위치입니다
+            const iwPosition = new kakao.maps.LatLng(lat, lng); //인포윈도우 표시 위치
 
             // 마커 이미지 주소
             const imageSrc =
