@@ -281,8 +281,8 @@ export default {
             기능 : 매장찾기 리스트 클릭시 지도 + 인포윈도우 변경
         ********************************************/
         storeMap(lat, lng, name, addr, tel) {
-            // 윈도우의 너비가 1150px 이하일 땐 실행막기
-            if (window.innerWidth <= 1150) {
+            // 윈도우의 너비가 1250px 이하일 땐 실행막기
+            if (window.innerWidth <= 1250) {
                 return;
             }
 
@@ -339,8 +339,8 @@ export default {
             infowindow.open(map, marker); // marker 없으면 그냥 지도 위에 표시 
         },
         searchMap(txt) {
-            // 윈도우의 너비가 1150px 이하일 땐 실행막기
-            if (window.innerWidth <= 1150) {
+            // 윈도우의 너비가 1250px 이하일 땐 실행막기
+            if (window.innerWidth <= 1250) {
                 return;
             }
             
@@ -694,7 +694,7 @@ export default {
         } 
     }
 
-    @media screen and (max-width: 1150px) {
+    @media screen and (max-width: 1250px) {
         .map_list {
             display: none;
         }
