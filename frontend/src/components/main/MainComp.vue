@@ -91,8 +91,7 @@
                                     <div class="special-img">
                                         <img
                                             src="/images/main/special/ban4.jpg"
-                                            alt="OOTD"
-                                        />
+                                            alt="OOTD"/>
                                     </div>
                                 </figure>
                                 <figcaption>
@@ -549,8 +548,6 @@ export default {
         
         const retVal = x => x.getBoundingClientRect().top;
 
-        console.log(mvBox.clientWidth)
-        
         /************************************** 
             함수명 : moveSec
             기능 : 가로방향 이동하기
@@ -558,7 +555,7 @@ export default {
         function moveSec() {
             // 1. 타겟박스의 바운딩위치값 찍기
             let tgPos = retVal(tgBox);
-            console.log("tgPos:",tgPos)
+            console.log(tgPos)
             // 오버플로우 히든 해제
             body.setAttribute('style', 'overflow: visible');
 
@@ -568,7 +565,7 @@ export default {
             // -> 최대이동값이 마이너스로 한계값이 일치함!
             // 대상: mvbx
             // 적용구간설정: 0 이하 -3000px 이상
-            if (tgPos <= 0 && tgPos >= -2973.375) {
+            if (tgPos <= -75 && tgPos >= -2973.375) {
                 mvBox.style.left = tgPos + "px";
             }
             // 위쪽(0초과)일때 처음위치 재설정하기
@@ -577,8 +574,34 @@ export default {
             }
         }
 
-        window.addEventListener("scroll", moveSec);
-        
+        window.addEventListener("resize", chgMove);
+
+        /************************************** 
+            함수명 : chgMove
+            기능 : PC/MO 판별 함수
+        **************************************/
+        function chgMove() {
+            // 윈도우 가로사이즈
+            let winW = window.innerWidth;
+
+            // 모바일버전
+            if (winW <= 800) {
+                // 초기화
+                mvBox.style.left = "0";
+                // 스크롤 기능 제거
+                window.removeEventListener("scroll", moveSec);
+            }
+            // PC 버전
+            else {
+                // 스크롤시 스티키 구간에서 가로방향 이동 구현
+                window.addEventListener("scroll", moveSec);
+            }
+        }
+
+        /************************************** 
+            함수명 : showMap
+            기능 : 지역매장데이터 나타나는 함수
+        **************************************/
         function showMap() {
             $(".tabbx li").click(function() {
                 // '지역검색' 클릭시 나타날 지역데이터
@@ -685,6 +708,7 @@ export default {
         // 쵤초호출!
         bannerSwiper();
         this.rollBan();
+        chgMove();
     },
 };
 </script>
@@ -705,9 +729,22 @@ export default {
             position: inherit !important;
             width: 100% !important;
             transform: inherit !important;
-            box-shadow: none !important;
             right: 0 !important;
             top: 0!important;
+        }
+        .contbx {
+            padding: 0 !important;
+        }
+        .contbx .cont_inner {
+            padding: 0 10px !important;
+        }
+        .main_best, .main_special, .main_media, .main_new, .main_store {
+            padding: 50px !important;
+        }
+        figure img {
+            aspect-ratio: inherit !important;
+            height: 100%;
+            object-fit: cover;
         }
     }
 
@@ -721,6 +758,22 @@ export default {
     @media screen and (max-width: 800px) {
         .md_wrap ul li {
             width: 300px !important;
+        }
+        .main_special .msWrap_box .msWrap_inner {
+            flex-direction: column;
+        }
+        .msList, .msWrap_inner {
+            width: 100% !important;
+        }
+        .main_special {
+            height: 100% !important;
+        }
+        .special-tit, .special-desc {
+            text-align: left !important;
+            margin-top: 0;
+        }
+        .msList figcaption {
+            margin-bottom: 20px;
         }
     }
 

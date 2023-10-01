@@ -13,8 +13,6 @@
 
 /*************** 메인영역 ***************/
 main {
-    padding-top: 80px;
-
     #main_banner {
         position: relative;
 
@@ -252,7 +250,7 @@ main {
         position: sticky;
         top: 0;
         left: 0;
-        height: 100vh;
+        height: fit-content;
 
         .msWrap_inner {
             position: relative;
@@ -264,15 +262,14 @@ main {
                 cursor: pointer;
                 width: 1110px;
                 height: fit-content;
-                background-color: #000;
     
                 figure {
+                    position: relative;
                     height: fit-content;
     
                     .special-img, img {
                         width: 100%;
-                        aspect-ratio: 1/0.6;
-                        object-fit: cover;
+                        aspect-ratio: 1/0.62;
                     }
                 }
     
@@ -286,27 +283,26 @@ main {
                     /* 기획전 타이틀 */
                     .special-tit {
                         color: #888;
-                        font-size: 18px;
+                        font-size: calc(min(18px, 3.6vw));
                         font-family: var(--shoopen-font-sub);
                         font-weight: 700;
+                        text-align: center;
                     }
     
                     /* 기획전 설명 */
                     .special-desc {
                         font-family: var(--shoopen-font-sub);
                         margin-top: 5px;
+                        text-align: center;
+                        font-size: calc(min(26px, 4vw));
                     }
-                }
-
-                // li 호버시 이미지 어두워짐
-                &:hover img {
-                    opacity: .5;
-                    transition: .4s ease;
                 }
             }
         }
     }
 }
+
+// 클래스 on
 
 /************** section3 **************/
 .main_media > h3,

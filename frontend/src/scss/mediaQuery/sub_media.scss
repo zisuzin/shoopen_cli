@@ -26,11 +26,17 @@
     .filter_price {
         flex-direction: column;
         align-items: normal !important;
-        gap: 15px;
+        gap: 15px !important;
         width: fit-content;
     }
     .filter_price #filter_price_view {
         width: 100% !important;
+    }
+    .filter_color li {
+        width: auto !important;
+    }
+    .filter_color {
+        gap: 15px;
     }
 }
 

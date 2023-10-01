@@ -93,7 +93,7 @@ main {
         width: calc(min(110px, 30vw));
         height: 35px;
         border-radius: 2px;
-        border: 1px solid #000;
+        border: 1px solid #c4c4c4;
         cursor: pointer;
         background: url(/public/images/icon/ico_arrow_set.png) no-repeat;
         background-position: 86px 15px;
@@ -114,7 +114,7 @@ main {
             width: 100%;
             z-index: 1;
             background-color: #fff;
-            border: 1px solid #000;
+            border: 1px solid #c4c4c4;
             // 처음엔 숨김
             display: none;
 
@@ -284,7 +284,7 @@ main {
 .filter_price {
     display: flex;
     position: relative;
-    justify-content: space-between;
+    gap: 50px;
     align-items: center;
     padding: 5px 0;
 
