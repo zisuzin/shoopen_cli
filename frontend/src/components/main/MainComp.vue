@@ -548,6 +548,8 @@ export default {
         const body = document.querySelector("body");
         
         const retVal = x => x.getBoundingClientRect().top;
+
+        console.log(mvBox.clientWidth)
         
         /************************************** 
             함수명 : moveSec
