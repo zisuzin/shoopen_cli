@@ -236,6 +236,7 @@ export default {
                 hcode+= "</ul>";
                 mapList.innerHTML = hcode;
 
+                // 매장찾기탭
                 // 클릭한 li에 따라 지도 & 인포윈도 변경
                 $(".cont_inner li").click(function() {
                     $(this).addClass("on").siblings().removeClass("on");
@@ -257,6 +258,14 @@ export default {
                     })
                 }); ////// click ///////
 
+                // 지역검색탭
+                // 여러 개 마커 + 인포윈도우 표시
+                $(".tabbx li").eq(1).click(function() {
+                    $(".locals > h3").click(function() {
+                        console.log($(this).text())
+                    });
+                })
+
             });
         },
         /************************************** 
@@ -276,20 +285,22 @@ export default {
             document.querySelector('#roller1').style.left = '0px';
             document.querySelector('#roller2').style.left = document.querySelector('.md_list > ul').offsetWidth + 'px';
         },
-        /************************************** 
+        /******************************************** 
             함수명 : storeMap
-            기능 : 변경된 위치 좌표로 카카오 지도 갱신
-        **************************************/
+            기능 : 매장찾기 리스트 클릭시 지도 + 인포윈도우 변경
+        ********************************************/
         storeMap(lat, lng, name, addr, tel) {
             const mapContainer = document.getElementById('map'), // 지도를 표시할 div
-                mapOption = {
-                    center: new kakao.maps.LatLng(lat, lng), // 지도의 중심좌표
-                    level: 3, // 지도의 확대 레벨
-                    disableDoubleClickZoom: true, // 두번 클릭시 확대 기능 막기
-                };
+            mapOption = {
+                center: new kakao.maps.LatLng(lat, lng), // 지도의 중심좌표
+                level: 3, // 지도의 확대 레벨
+                disableDoubleClickZoom: true, // 두번 클릭시 확대 기능 막기
+            };
 
-            const map = new kakao.maps.Map(mapContainer, mapOption); // 지도 생성
-            const iwPosition = new kakao.maps.LatLng(lat, lng); //인포윈도우 표시 위치
+            // 지도 생성
+            const map = new kakao.maps.Map(mapContainer, mapOption); 
+            //인포윈도우 표시 위치
+            const iwPosition = new kakao.maps.LatLng(lat, lng); 
 
             // 마커 이미지 주소
             const imageSrc =
@@ -328,8 +339,44 @@ export default {
                            </div>`, 
             });
 
-            infowindow.open(map, marker); 
+            // 마커 위에 인포윈도우 표시
+            infowindow.open(map, marker); // marker 없으면 그냥 지도 위에 표시 
         },
+        searchMap() {
+            // 마커 여러 개 표시
+            // 마커를 표시할 위치와 title 객체 배열
+            var positions = [
+                {
+                    title: '카카오', 
+                    latlng: new kakao.maps.LatLng(33.450705, 126.570677)
+                },
+                {
+                    title: '생태연못', 
+                    latlng: new kakao.maps.LatLng(33.450936, 126.569477)
+                },
+                {
+                    title: '텃밭', 
+                    latlng: new kakao.maps.LatLng(33.450879, 126.569940)
+                },
+                {
+                    title: '근린공원',
+                    latlng: new kakao.maps.LatLng(33.451393, 126.570738)
+                }
+            ];
+
+            $('.locals > h3').click(function() {
+                console.log("this")
+                for (var i = 0; i < positions.length; i ++) {
+                    // 마커를 생성합니다
+                    new kakao.maps.Marker({
+                        // map: map, // 마커를 표시할 지도
+                        position: positions[i].latlng, // 마커를 표시할 위치
+                        title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+                        // image : markerImage // 마커 이미지 
+                    });
+                }
+            });
+        }
     },
     created() {
         this.fetchData();
@@ -433,19 +480,31 @@ export default {
                 const local2 = ["뒤로가기", "부산진구", "금정구", "북구", "사하구", "해운대구"];
                 const local3 = ["뒤로가기", "연수구", "남동구"];
 
-                $(this).addClass("check").siblings().removeClass("check").css({backgroundColor: "#000", color: "#fff"});
+                // 매장검색 tab에 체크되면 css 변경
                 if ($(this).is(".check")) {
                     $(this).css({backgroundColor: "#fdd000", color: "#000"})
                 }
+                // 체크안된 tab은 기존 css 원복
+                $(this).addClass("check").siblings().removeClass("check").css({
+                    backgroundColor: "#000", color: "#fff"
+                });
+
                 // 지역검색 li 클릭시
-                $(this).is($(".tabbx li").eq(1)) ?
-                $("#map_contents").css({
-                    display: "block",
-                    width: "100%",
-                    height: "calc(100% - 53px)",
-                    position: "absolute",
-                    background: "#fff", zIndex: "1"}) && renderLocal(localData)
-                    : $("#map_contents").css("display", "none");
+                if ($(this).is($(".tabbx li").eq(1))) {
+                    $("#map_contents").css({
+                        display: "block",
+                        width: "100%",
+                        height: "calc(100% - 53px)",
+                        position: "absolute",
+                        background: "#fff",
+                        zIndex: "1"
+                    });
+                    // 지역데이터 렌더링 함수 호출
+                    renderLocal(localData);
+                }
+                else {
+                    $("#map_contents").css("display", "none");
+                }
 
                 // 대분류 지역 데이터 출력 함수
                 function renderLocal(val) {
@@ -453,7 +512,7 @@ export default {
                     locals.empty();
 
                     val.forEach(x=> {
-                        locals.append(`<h3 class="loc_thumb">${x}</h3>`);
+                        locals.append(`<h3 class="loc_thumb">${x}</h3>`)
                     });
                     $(".loc_thumb").on("click", function(e) {
                         clkTumb(e);
