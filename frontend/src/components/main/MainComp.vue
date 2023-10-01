@@ -558,6 +558,7 @@ export default {
         function moveSec() {
             // 1. 타겟박스의 바운딩위치값 찍기
             let tgPos = retVal(tgBox);
+            console.log("tgPos:",tgPos)
             // 오버플로우 히든 해제
             body.setAttribute('style', 'overflow: visible');
 
@@ -567,7 +568,7 @@ export default {
             // -> 최대이동값이 마이너스로 한계값이 일치함!
             // 대상: mvbx
             // 적용구간설정: 0 이하 -3000px 이상
-            if (tgPos <= 0 && tgPos >= -3000) {
+            if (tgPos <= 0 && tgPos >= -2973.375) {
                 mvBox.style.left = tgPos + "px";
             }
             // 위쪽(0초과)일때 처음위치 재설정하기

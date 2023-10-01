@@ -266,11 +266,12 @@ main {
                 height: fit-content;
     
                 figure {
-                    height: 100vh;
+                    height: fit-content;
     
                     .special-img, img {
                         width: 100%;
-                        height: 100%;
+                        aspect-ratio: 1/0.6;
+                        object-fit: cover;
                     }
                 }
     
