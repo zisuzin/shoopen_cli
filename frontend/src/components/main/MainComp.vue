@@ -434,28 +434,28 @@ export default {
                 ]
             };
 
-            // bounds 객체를 생성합니다
+            // bounds 객체 생성
             var bounds = new kakao.maps.LatLngBounds();
 
             for (var i = 0; i < positions[txt].length; i++) {
                 var markerPosition = positions[txt][i].latlng;
 
-                // 마커 이미지의 이미지 크기 입니다
+                // 마커 이미지 크기
                 var imageSize = new kakao.maps.Size(24, 35); 
                 
-                // 마커 이미지를 생성합니다    
+                // 마커 이미지 생성   
                 var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
                 
-                // 마커를 생성합니다
+                // 마커 생성
                 const marker = new kakao.maps.Marker({
-                    map: map, // 마커를 표시할 지도
-                    position: positions[txt][i].latlng, // 마커를 표시할 위치
+                    map: map, // 마커 표시 지도
+                    position: positions[txt][i].latlng, // 마커 표시 위치
                     image : markerImage // 마커 이미지 
                 });
-                // bounds 객체에 현재 마커의 위치를 추가합니다
+                // bounds 객체에 현재 마커의 위치를 추가
                 bounds.extend(markerPosition);
 
-                // 인포윈도우를 생성하고 지도에 표시합니다
+                // 인포윈도우를 생성하고 지도에 표시
                 const infowindow = new kakao.maps.InfoWindow({
                     position: markerPosition, 
                     disableAutoPan: true,
@@ -466,7 +466,7 @@ export default {
 
                 infowindow.open(map, marker);
             }
-            // 모든 마커를 포함하는 지도의 경계를 설정합니다
+            // 모든 마커를 포함하는 지도의 경계 설정
             map.setBounds(bounds);
         }
     },
