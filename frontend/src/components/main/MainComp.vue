@@ -281,6 +281,11 @@ export default {
             기능 : 매장찾기 리스트 클릭시 지도 + 인포윈도우 변경
         ********************************************/
         storeMap(lat, lng, name, addr, tel) {
+            // 윈도우의 너비가 1150px 이하일 땐 실행막기
+            if (window.innerWidth <= 1150) {
+                return;
+            }
+
             const mapContainer = document.getElementById('map'), // 지도를 표시할 div
             mapOption = {
                 center: new kakao.maps.LatLng(lat, lng), // 지도의 중심좌표
@@ -334,6 +339,11 @@ export default {
             infowindow.open(map, marker); // marker 없으면 그냥 지도 위에 표시 
         },
         searchMap(txt) {
+            // 윈도우의 너비가 1150px 이하일 땐 실행막기
+            if (window.innerWidth <= 1150) {
+                return;
+            }
+            
             var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
             mapOption = { 
                 center: new kakao.maps.LatLng(37.477774, 127.125041), // 지도의 중심좌표
@@ -682,6 +692,20 @@ export default {
         .mSwiper {
             height: auto !important;
         } 
+    }
+
+    @media screen and (max-width: 1150px) {
+        .map_list {
+            display: none;
+        }
+        .map_search_wrap .map_search {
+            position: inherit !important;
+            width: 100% !important;
+            transform: inherit !important;
+            box-shadow: none !important;
+            right: 0 !important;
+            top: 0!important;
+        }
     }
 
     @media screen and (max-width: 900px) {
