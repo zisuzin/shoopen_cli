@@ -257,15 +257,6 @@ export default {
                         }
                     })
                 }); ////// click ///////
-
-                // 지역검색탭
-                // 여러 개 마커 + 인포윈도우 표시
-                $(".tabbx li").eq(1).click(function() {
-                    $(".locals > h3").click(function() {
-                        console.log($(this).text())
-                    });
-                })
-
             });
         },
         /************************************** 
@@ -342,46 +333,149 @@ export default {
             // 마커 위에 인포윈도우 표시
             infowindow.open(map, marker); // marker 없으면 그냥 지도 위에 표시 
         },
-        searchMap() {
+        searchMap(txt) {
+            var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
+            mapOption = { 
+                center: new kakao.maps.LatLng(37.477774, 127.125041), // 지도의 중심좌표
+                level: 3 // 지도의 확대 레벨
+            };
+
+            var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+            
+            // // 마커 이미지의 이미지 주소입니다
+            var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+
             // 마커 여러 개 표시
             // 마커를 표시할 위치와 title 객체 배열
-            var positions = [
-                {
-                    title: '카카오', 
-                    latlng: new kakao.maps.LatLng(33.450705, 126.570677)
-                },
-                {
-                    title: '생태연못', 
-                    latlng: new kakao.maps.LatLng(33.450936, 126.569477)
-                },
-                {
-                    title: '텃밭', 
-                    latlng: new kakao.maps.LatLng(33.450879, 126.569940)
-                },
-                {
-                    title: '근린공원',
-                    latlng: new kakao.maps.LatLng(33.451393, 126.570738)
-                }
-            ];
+            var positions = {
+                "서울": [
+                    {
+                        title: '미아점', 
+                        desc: '서울특별시 강북구 도봉로 52 (미아동) 지하2층',
+                        latlng: new kakao.maps.LatLng(37.626218, 127.013474),
+                        tel: '02-6312-6281'
+                    },
+                    {
+                        title: 'NC백화점 송파점', 
+                        desc: '서울특별시 송파구 충민로 66 (문정동) NC백화점 송파점 패션관 1층',
+                        latlng: new kakao.maps.LatLng(37.477774, 127.125041),
+                        tel: '02-2157-5252'
+                    },
+                    {
+                        title: '홍대점', 
+                        desc: '서울특별시 마포구 양화로 153(동교동) 1층',
+                        latlng: new kakao.maps.LatLng(37.556568, 126.922696),
+                        tel: '02-338-5751'
+                    },
+                    {
+                        title: '2001아울렛 천호점',
+                        desc: '서울특별시 강동구 구천면로 189 (천호동, 동아코아아파트) 2001아울렛 천호점 1층',
+                        latlng: new kakao.maps.LatLng(37.541384, 127.125996),
+                        tel: '02-2224-6586'
+                    },
+                    {
+                        title: '아이파크몰 용산점', 
+                        desc: '서울특별시 용산구 한강대로23길 55 아이파크백화점 패션관 2층',
+                        latlng: new kakao.maps.LatLng(37.529943, 126.964667),
+                        tel: '02-2012-3780'
+                    },
+                    {
+                        title: '타임스퀘어 영등포점',
+                        desc: '서울특별시 영등포구 영중로 15 (영등포동4가) 타음스퀘어 영등포점 지하1층',
+                        latlng: new kakao.maps.LatLng(37.517318, 126.905595),
+                        tel: '02-2069-4105'
+                    },
+                ],
+                "부산": [
+                    {
+                        title: 'NC백화점 부산대점', 
+                        desc: '부산광역시 금정구 장전동 40 NC백화점 부산대점 1층',
+                        latlng: new kakao.maps.LatLng(35.232473, 129.084245),
+                        tel: '051-509-7035'
+                    },
+                    {
+                        title: '뉴코아아울렛 덕천점',
+                        desc: '부산광역시 북구 만덕대로 23 (덕천동) 뉴코아아울렛 덕천점 5층',
+                        latlng: new kakao.maps.LatLng(35.211306, 129.007551),
+                        tel: '051-366-2427'
+                    },
+                    {
+                        title: '부산 아트몰링점', 
+                        desc: '부산광역시 사하구 낙동남로 1413 (하단동) 6층',
+                        latlng: new kakao.maps.LatLng(35.106692, 128.966336),
+                        tel: '051-999-7399'
+                    },
+                    {
+                        title: 'NC백화점 서면점',
+                        desc: '부산광역시 부산진구 동천로 92 (전포동) NC백화점 서면점 1층',
+                        latlng: new kakao.maps.LatLng(35.157141, 129.063072),
+                        tel: '051-794-7052'
+                    },
+                    {
+                        title: 'NC백화점 해운대점',
+                        desc: '부산광역시 해운대구 좌동 1467-4 NC백화점 해운대점 1층',
+                        latlng: new kakao.maps.LatLng(35.170707, 129.177125),
+                        tel: '051-709-5572'
+                    },
+                ],
+                "인천": [
+                    {
+                        title: '뉴코아아울렛 논현점',
+                        desc: '인천광역시 남동구 청능대로 596 (논현동) 뉴코아아울렛 논현점 2층',
+                        latlng: new kakao.maps.LatLng(37.400955, 126.726028),
+                        tel: '032-454-8315'
+                    },
+                    {
+                        title: '스퀘어원 연수점',
+                        desc: '인천광역시 연수구 청능대로 210 스퀘어원몰 2층',
+                        latlng: new kakao.maps.LatLng(37.406251, 126.683756),
+                        tel: '032-456-4271'
+                    },
+                ]
+            };
 
-            $('.locals > h3').click(function() {
-                console.log("this")
-                for (var i = 0; i < positions.length; i ++) {
-                    // 마커를 생성합니다
-                    new kakao.maps.Marker({
-                        // map: map, // 마커를 표시할 지도
-                        position: positions[i].latlng, // 마커를 표시할 위치
-                        title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-                        // image : markerImage // 마커 이미지 
-                    });
-                }
-            });
+            // bounds 객체를 생성합니다
+            var bounds = new kakao.maps.LatLngBounds();
+
+            for (var i = 0; i < positions[txt].length; i++) {
+                var markerPosition = positions[txt][i].latlng;
+
+                // 마커 이미지의 이미지 크기 입니다
+                var imageSize = new kakao.maps.Size(24, 35); 
+                
+                // 마커 이미지를 생성합니다    
+                var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+                
+                // 마커를 생성합니다
+                const marker = new kakao.maps.Marker({
+                    map: map, // 마커를 표시할 지도
+                    position: positions[txt][i].latlng, // 마커를 표시할 위치
+                    image : markerImage // 마커 이미지 
+                });
+                // bounds 객체에 현재 마커의 위치를 추가합니다
+                bounds.extend(markerPosition);
+
+                // 인포윈도우를 생성하고 지도에 표시합니다
+                const infowindow = new kakao.maps.InfoWindow({
+                    position: markerPosition, 
+                    disableAutoPan: true,
+                    content: `<div class="info_locals" style="width:150px; padding:15px; text-align: center;">
+                                <h3>${positions[txt][i].title}</h3>
+                            </div>`, 
+                });
+
+                infowindow.open(map, marker);
+            }
+            // 모든 마커를 포함하는 지도의 경계를 설정합니다
+            map.setBounds(bounds);
         }
     },
     created() {
         this.fetchData();
     },
     mounted() {
+        // 뷰 인스턴스 저장용 변수
+        const vm = this;
         // 카카오맵 API 로드후 메서드 호출!
         if (window.kakao && window.kakao.maps) {
             showMap();
@@ -480,14 +574,13 @@ export default {
                 const local2 = ["뒤로가기", "부산진구", "금정구", "북구", "사하구", "해운대구"];
                 const local3 = ["뒤로가기", "연수구", "남동구"];
 
-                // 매장검색 tab에 체크되면 css 변경
+                // 체크안된 tab은 기존 css 원복
+                $(this).addClass("check").siblings().removeClass("check").css({backgroundColor: "#000", color: "#fff"});
+
+                // 매장검색 tab에 체크되면 css 변경 
                 if ($(this).is(".check")) {
                     $(this).css({backgroundColor: "#fdd000", color: "#000"})
                 }
-                // 체크안된 tab은 기존 css 원복
-                $(this).addClass("check").siblings().removeClass("check").css({
-                    backgroundColor: "#000", color: "#fff"
-                });
 
                 // 지역검색 li 클릭시
                 if ($(this).is($(".tabbx li").eq(1))) {
@@ -521,6 +614,7 @@ export default {
 
                 // 중분류 서울 데이터 출력 함수
                 function renderSeoul() {
+                    vm.searchMap("서울");
                     renderLocal(local1);
                     // 뒤로가기 텍스트
                     const backtxt = $(".loc_thumb").eq(0);
@@ -529,6 +623,7 @@ export default {
 
                 // 중분류 부산 데이터 출력 함수
                 function renderBusan() {
+                    vm.searchMap("부산");
                     renderLocal(local2);
                     // 뒤로가기 텍스트
                     const backtxt = $(".loc_thumb").eq(0);
@@ -537,6 +632,7 @@ export default {
 
                 // 중분류 인천 데이터 출력 함수
                 function renderIncheon() {
+                    vm.searchMap("인천");
                     renderLocal(local3);
                     // 뒤로가기 텍스트
                     const backtxt = $(".loc_thumb").eq(0);
