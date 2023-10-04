@@ -74,15 +74,58 @@
 }
 
 /* MO GNB 메뉴 */
-.flex-column {
+#accordionDepth1 {
     position: absolute;
-    top: 40px;
+    left: -10px;
+    height: 100vh;
+    width: calc(100vw - 15px);
+    font-size: 14px;
     background-color: #fff;
+    top: 50px;
+    display: none;
 
-    a {
-        color: #333;
-        font-weight: 600;
+    .accordion-button {
         font-size: 15px;
+        gap: 30px;
+        font-weight: 500;
+        height: 50px;
+        padding: 13px 13px 13px 20px;
+    }
+
+    .accordion-body {
+        padding: 13px 13px 13px 20px;
+        
+      li {
+        padding: 5px 0;
+        font-size: 15px;
+
+        &:nth-child(2) {
+            margin-bottom: 5px;
+        }
+      }  
+
+      .dpt3 > li {
+        font-size: 14px;
+      }
+    } 
+    .nbmenu_btn {
+        padding: 13px 0 13px 20px;
+        font-weight: 500;
+        font-size: 15px;
+        border-bottom: 1px solid #dee2e6; 
+
+        li {
+            height: 50px;
+            line-height: 50px;
+        }
+    }
+
+    .accordion-item {
+        border: none;
+
+        .dpt2 {
+            padding-left: 0;
+        }
     }
 }
 

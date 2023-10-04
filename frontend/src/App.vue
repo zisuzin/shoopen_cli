@@ -10,6 +10,10 @@
                     <div class="mo_menu">
                         <img src="/images/icon/ico_ctg_black.png" alt="모바일메뉴">
                         <div class="accordion" id="accordionDepth1">
+                            <ul class="nbmenu_btn">
+                                <li>NEW</li>
+                                <li>BEST</li>
+                            </ul>
                             <!-- depth1 / WOMEN -->
                             <div class="accordion-item wsCol">
                                 <h2 class="accordion-header">
@@ -25,13 +29,13 @@
                                         <div class="accordion" id="wsColTwo">
                                             <div class="accordion-item">
                                                 <h2 class="accordion-header">
-                                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#wsColThree" aria-expanded="false" aria-controls="wsColThree">
+                                                    <button class="accordion-button dpt2" type="button" data-bs-toggle="collapse" data-bs-target="#wsColThree" aria-expanded="false" aria-controls="wsColThree">
                                                         여성신발
                                                     </button>
                                                 </h2>
                                                 <!-- depth3 -->
-                                                <div id="wsColThree" class="accordion-collapse collapse" data-bs-parent="#wsColTwo">
-                                                    <ul class="accordion-body">
+                                                <div id="wsColThree" class="accordion-collapse collapse" data-bs-parent="#wsColOne">
+                                                    <ul class="accordion-body dpt3">
                                                         <li>플랫슈즈</li>
                                                         <li>샌들</li>
                                                     </ul>
@@ -42,13 +46,13 @@
                                         <div class="accordion" id="wsColTwo2">
                                             <div class="accordion-item">
                                                 <h2 class="accordion-header">
-                                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#wsColThree2" aria-expanded="false" aria-controls="wsColThree2">
+                                                    <button class="accordion-button dpt2" type="button" data-bs-toggle="collapse" data-bs-target="#wsColThree2" aria-expanded="false" aria-controls="wsColThree2">
                                                         여성가방
                                                     </button>
                                                 </h2>
                                                 <!-- depth3 -->
-                                                <div id="wsColThree2" class="accordion-collapse collapse" data-bs-parent="#wsColTwo2">
-                                                    <ul class="accordion-body">
+                                                <div id="wsColThree2" class="accordion-collapse collapse" data-bs-parent="#wsColOne">
+                                                    <ul class="accordion-body dpt3">
                                                         <li>백팩</li>
                                                         <li>미니백</li>
                                                     </ul>
@@ -59,13 +63,13 @@
                                         <div class="accordion" id="wsColTwo3">
                                             <div class="accordion-item">
                                                 <h2 class="accordion-header">
-                                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#wsColThree3" aria-expanded="false" aria-controls="wsColThree3">
+                                                    <button class="accordion-button dpt2" type="button" data-bs-toggle="collapse" data-bs-target="#wsColThree3" aria-expanded="false" aria-controls="wsColThree3">
                                                         여성잡화
                                                     </button>
                                                 </h2>
                                                 <!-- depth3 -->
-                                                <div id="wsColThree3" class="accordion-collapse collapse" data-bs-parent="#wsColTwo3">
-                                                    <ul class="accordion-body">
+                                                <div id="wsColThree3" class="accordion-collapse collapse" data-bs-parent="#wsColOne">
+                                                    <ul class="accordion-body dpt3">
                                                         <li>양말</li>
                                                         <li>모자</li>
                                                     </ul>
@@ -90,13 +94,13 @@
                                         <div class="accordion" id="msColTwo">
                                             <div class="accordion-item">
                                                 <h2 class="accordion-header">
-                                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#msColThree" aria-expanded="false" aria-controls="msColThree">
+                                                    <button class="accordion-button dpt2" type="button" data-bs-toggle="collapse" data-bs-target="#msColThree" aria-expanded="false" aria-controls="msColThree">
                                                         남성신발
                                                     </button>
                                                 </h2>
                                                 <!-- depth3 -->
-                                                <div id="msColThree" class="accordion-collapse collapse" data-bs-parent="#msColTwo">
-                                                    <ul class="accordion-body">
+                                                <div id="msColThree" class="accordion-collapse collapse" data-bs-parent="#msColOne">
+                                                    <ul class="accordion-body dpt3">
                                                         <li>스니커즈</li>
                                                         <li>슬리퍼</li>
                                                     </ul>
@@ -107,13 +111,13 @@
                                         <div class="accordion" id="msColTwo2">
                                             <div class="accordion-item">
                                                 <h2 class="accordion-header">
-                                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#msColThree2" aria-expanded="false" aria-controls="msColThree2">
+                                                    <button class="accordion-button dpt2" type="button" data-bs-toggle="collapse" data-bs-target="#msColThree2" aria-expanded="false" aria-controls="msColThree2">
                                                         남성가방
                                                     </button>
                                                 </h2>
                                                 <!-- depth3 -->
-                                                <div id="msColThree2" class="accordion-collapse collapse" data-bs-parent="#msColTwo2">
-                                                    <ul class="accordion-body">
+                                                <div id="msColThree2" class="accordion-collapse collapse" data-bs-parent="#msColOne">
+                                                    <ul class="accordion-body dpt3">
                                                         <li>맨즈백</li>
                                                         <li>크로스백</li>
                                                     </ul>
@@ -124,13 +128,13 @@
                                         <div class="accordion" id="msColTwo3">
                                             <div class="accordion-item">
                                                 <h2 class="accordion-header">
-                                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#msColThree3" aria-expanded="false" aria-controls="msColThree3">
+                                                    <button class="accordion-button dpt2" type="button" data-bs-toggle="collapse" data-bs-target="#msColThree3" aria-expanded="false" aria-controls="msColThree3">
                                                         남성잡화
                                                     </button>
                                                 </h2>
                                                 <!-- depth3 -->
-                                                <div id="msColThree3" class="accordion-collapse collapse" data-bs-parent="#msColTwo3">
-                                                    <ul class="accordion-body">
+                                                <div id="msColThree3" class="accordion-collapse collapse" data-bs-parent="#msColOne">
+                                                    <ul class="accordion-body dpt3">
                                                         <li>양말</li>
                                                         <li>모자</li>
                                                     </ul>
@@ -155,13 +159,13 @@
                                         <div class="accordion" id="ksColTwo">
                                             <div class="accordion-item">
                                                 <h2 class="accordion-header">
-                                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#ksColThree" aria-expanded="false" aria-controls="ksColThree">
+                                                    <button class="accordion-button dpt2" type="button" data-bs-toggle="collapse" data-bs-target="#ksColThree" aria-expanded="false" aria-controls="ksColThree">
                                                         아동신발
                                                     </button>
                                                 </h2>
                                                 <!-- depth3 -->
-                                                <div id="ksColThree" class="accordion-collapse collapse" data-bs-parent="#ksColTwo">
-                                                    <ul class="accordion-body">
+                                                <div id="ksColThree" class="accordion-collapse collapse" data-bs-parent="#ksColOne">
+                                                    <ul class="accordion-body dpt3">
                                                         <li>구두</li>
                                                         <li>샌들</li>
                                                     </ul>
@@ -172,13 +176,13 @@
                                         <div class="accordion" id="ksColTwo2">
                                             <div class="accordion-item">
                                                 <h2 class="accordion-header">
-                                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#ksColThree2" aria-expanded="false" aria-controls="ksColThree2">
+                                                    <button class="accordion-button dpt2" type="button" data-bs-toggle="collapse" data-bs-target="#ksColThree2" aria-expanded="false" aria-controls="ksColThree2">
                                                         아동가방
                                                     </button>
                                                 </h2>
                                                 <!-- depth3 -->
-                                                <div id="ksColThree2" class="accordion-collapse collapse" data-bs-parent="#ksColTwo2">
-                                                    <ul class="accordion-body">
+                                                <div id="ksColThree2" class="accordion-collapse collapse" data-bs-parent="#ksColOne">
+                                                    <ul class="accordion-body dpt3">
                                                         <li>슬리퍼가방</li>
                                                         <li>패션가방</li>
                                                     </ul>
@@ -189,13 +193,13 @@
                                         <div class="accordion" id="ksColTwo3">
                                             <div class="accordion-item">
                                                 <h2 class="accordion-header">
-                                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#ksColThree3" aria-expanded="false" aria-controls="ksColThree3">
+                                                    <button class="accordion-button dpt2" type="button" data-bs-toggle="collapse" data-bs-target="#ksColThree3" aria-expanded="false" aria-controls="ksColThree3">
                                                         아동잡화
                                                     </button>
                                                 </h2>
                                                 <!-- depth3 -->
-                                                <div id="ksColThree3" class="accordion-collapse collapse" data-bs-parent="#ksColTwo3">
-                                                    <ul class="accordion-body">
+                                                <div id="ksColThree3" class="accordion-collapse collapse" data-bs-parent="#ksColOne">
+                                                    <ul class="accordion-body dpt3">
                                                         <li>양말</li>
                                                         <li>모자</li>
                                                     </ul>
@@ -216,12 +220,12 @@
                         </div>
                         <!-- 2. 카테고리영역 -->
                         <ul class="catbx">
-                            <li class="on">
+                            <li>
                                 <router-link :to="{ path: '/product/all/new' }">
                                     NEW
                                 </router-link>
                             </li>
-                            <li class="on">
+                            <li>
                                 <router-link :to="{ path: '/product/all/best' }">
                                     BEST
                                 </router-link>
@@ -307,6 +311,20 @@ export default {
             $('.top').removeClass('on');
             $('.catbx > .tgGnb').removeClass('on');
         }); ///////// mouseleave //////////
+
+        // MO 햄버거 버튼 클릭시 .moMenu on 클래스 유무에 따라 메뉴 보임/숨김 
+        $('.mo_menu > img').click(function() {
+            const moMenu = $('#accordionDepth1');
+            moMenu.toggleClass("on");
+            if (moMenu.hasClass("on")) {
+                moMenu.css("display", "block");
+                $('.logo').css("display", "none");
+            }
+            else {
+                moMenu.css("display", "none");
+                $('.logo').css("display", "block");
+            }
+        });
     },
 };
 </script>
