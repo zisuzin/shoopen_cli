@@ -318,12 +318,14 @@ export default {
             e.preventDefault();
             $(this).addClass('on').siblings().removeClass('on');
             $('.top').addClass('on');
+            $('.subbx').css("display", "flex");
         }); ///////// click ////////////
 
         // 마우스아웃시 전체 클래스 빼기
         $('nav').mouseleave(function () {
             $('.top').removeClass('on');
             $('.catbx > .tgGnb').removeClass('on');
+            $('.subbx').css("display", "none");
         }); ///////// mouseleave //////////
 
         // MO 햄버거 버튼 클릭시 .moMenu on 클래스 유무에 따라 메뉴 보임/숨김 
