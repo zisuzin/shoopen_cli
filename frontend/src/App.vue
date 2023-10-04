@@ -17,7 +17,7 @@
                                         WOMEN
                                     </button>
                                 </h2>
-                                <div id="wsColOne" class="accordion-collapse collapse" data-bs-parent=".wsCol">
+                                <div id="wsColOne" class="accordion-collapse collapse" data-bs-parent="#accordionDepth1">
                                     <ul class="accordion-body">
                                         <li>신상</li>
                                         <li>베스트</li>
@@ -42,12 +42,12 @@
                                         <div class="accordion" id="wsColTwo2">
                                             <div class="accordion-item">
                                                 <h2 class="accordion-header">
-                                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#msColThree2" aria-expanded="false" aria-controls="msColThree2">
+                                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#wsColThree2" aria-expanded="false" aria-controls="wsColThree2">
                                                         여성가방
                                                     </button>
                                                 </h2>
                                                 <!-- depth3 -->
-                                                <div id="msColThree2" class="accordion-collapse collapse" data-bs-parent="#wsColTwo2">
+                                                <div id="wsColThree2" class="accordion-collapse collapse" data-bs-parent="#wsColTwo2">
                                                     <ul class="accordion-body">
                                                         <li>백팩</li>
                                                         <li>미니백</li>
@@ -82,7 +82,7 @@
                                         MEN
                                     </button>
                                 </h2>
-                                <div id="msColOne" class="accordion-collapse collapse" data-bs-parent=".msCol">
+                                <div id="msColOne" class="accordion-collapse collapse" data-bs-parent="#accordionDepth1">
                                     <ul class="accordion-body">
                                         <li>신상</li>
                                         <li>베스트</li>
@@ -147,7 +147,7 @@
                                         KIDS
                                     </button>
                                 </h2>
-                                <div id="ksColOne" class="accordion-collapse collapse" data-bs-parent=".ksCol">
+                                <div id="ksColOne" class="accordion-collapse collapse" data-bs-parent="#accordionDepth1">
                                     <ul class="accordion-body">
                                         <li>신상</li>
                                         <li>베스트</li>
