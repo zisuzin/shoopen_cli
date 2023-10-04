@@ -233,15 +233,15 @@
                         </div>
                         <!-- 2. 카테고리영역 -->
                         <ul class="catbx">
-                            <li>
-                                <router-link :to="{ path: '/product/all/new' }">
+                            <li v-on:click.prevent="linkData('all', 'new')">
+                                <a href="#">
                                     NEW
-                                </router-link>
+                                </a>
                             </li>
-                            <li>
-                                <router-link :to="{ path: '/product/all/best' }">
+                            <li v-on:click.prevent="linkData('all', 'best')">
+                                <a href="#">
                                     BEST
-                                </router-link>
+                                </a>
                             </li>
                             <!-- sub-comp 출력되는 gnb -->
                             <li class="tgGnb" v-for="(v, i) in $store.state.gnb" :key="i">
