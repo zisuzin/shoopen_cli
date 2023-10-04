@@ -73,6 +73,11 @@
         padding: 0 10px !important;
     }
 }
+@media screen and (min-width: 880px) {
+    .logo {
+        display: block !important;
+    }
+}
 // 상단영역 - gnb
 @media screen and (max-width: 500px) {
     .gnb .logo {

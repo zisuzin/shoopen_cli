@@ -313,18 +313,22 @@ export default {
         }); ///////// mouseleave //////////
 
         // MO 햄버거 버튼 클릭시 .moMenu on 클래스 유무에 따라 메뉴 보임/숨김 
-        $('.mo_menu > img').click(function() {
-            const moMenu = $('#accordionDepth1');
-            moMenu.toggleClass("on");
-            if (moMenu.hasClass("on")) {
-                moMenu.css("display", "block");
-                $('.logo').css("display", "none");
-            }
-            else {
-                moMenu.css("display", "none");
-                $('.logo').css("display", "block");
-            }
-        });
+        function chgMoVer() {
+            $('.mo_menu > img').click(function() {
+                const moMenu = $('#accordionDepth1');
+                moMenu.toggleClass("on");
+                if (moMenu.hasClass("on")) {
+                    moMenu.css("display", "block");
+                    $('.logo').css("display", "none");
+                }
+                else {
+                    moMenu.css("display", "none");
+                    $('.logo').css("display", "block");
+                }
+            });
+        }
+        // 최초호출!
+        chgMoVer();
     },
 };
 </script>
