@@ -648,3 +648,58 @@ main {
     cursor: pointer;
 }
 
+/* 게시판 */
+/* 이벤트 안내박스 */
+.event_info {
+    img {
+        width: 100%;
+    }
+}
+
+/* 수상자 안내박스 */
+.winner_info {
+    .winner_head {
+        text-align: center;
+
+        p {
+            font-weight: 500;
+            font-size: 24px;
+            margin: 20px auto;
+        }
+    }
+
+    .winner_cont {
+        display: flex;
+        justify-content: center;
+
+        .prize_bx {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 48px;
+            padding: 10px 30px;
+
+            p:first-child {
+                width: 42px;
+                height: 42px;
+                background: #ffed61;
+                padding: 10px;
+                margin: 0px 10px;
+                border-radius: 50%;
+                color: #000;
+                text-align: center;
+                
+                font-size: 13px;
+                font-weight: 600;
+            }
+
+            p:last-child {
+                font-size: 16px;
+                font-weight: 500;
+                padding: 10px 20px;
+                border-radius: 7px;
+                background: #ffed6159;
+            }
+        }
+    }
+}

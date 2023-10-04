@@ -116,6 +116,11 @@ const crossMixin = {
             const path2 = `/product/${pm1}/${pm2}`;
             location.href = path2;
         },
+        // 게시판 링크시스템
+        linkBoard() {
+            const path = `/board`;
+            location.href = path;
+        }
     },
 };
 

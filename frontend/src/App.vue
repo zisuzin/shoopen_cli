@@ -247,6 +247,11 @@
                             <li class="tgGnb" v-for="(v, i) in $store.state.gnb" :key="i">
                                 <a href="#" v-on:click="chgData(i)">{{ i.toUpperCase() }}</a>
                             </li>
+                            <li v-on:click.prevent="linkBoard">
+                                <a href="#">
+                                    REVIEW
+                                </a>
+                            </li>
                             <NavComp />
                         </ul>
                     </div>

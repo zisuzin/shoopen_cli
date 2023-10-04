@@ -8,11 +8,13 @@ import store from './js/store.js';
 import MainComp from './components/main/MainComp.vue';
 import ProdComp from './components/sub/ProdComp.vue';
 import GoodsComp from "./components/sub/GoodsComp.vue";
+import BoardComp from "./components/sub/BoardComp.vue";
 
 const routes = [
     { path: '/', component: MainComp },
     { path: '/product/:type/:id', component: ProdComp },
     { path: '/goods/:cat1/:cat2/:cat3', component: GoodsComp },
+    { path: '/board', component: BoardComp },
 ];
 
 const router = createRouter({
