@@ -11,8 +11,12 @@
                         <img src="/images/icon/ico_ctg_black.png" alt="모바일메뉴">
                         <div class="accordion" id="accordionDepth1">
                             <ul class="nbmenu_btn">
-                                <li>NEW</li>
-                                <li>BEST</li>
+                                <li v-on:click.prevent="linkData('all', 'new')">
+                                    NEW
+                                </li>
+                                <li v-on:click.prevent="linkData('all', 'best')">
+                                    BEST
+                                </li>
                             </ul>
                             <!-- depth1 / WOMEN -->
                             <div class="accordion-item wsCol">
@@ -23,8 +27,8 @@
                                 </h2>
                                 <div id="wsColOne" class="accordion-collapse collapse" data-bs-parent="#accordionDepth1">
                                     <ul class="accordion-body">
-                                        <li>신상</li>
-                                        <li>베스트</li>
+                                        <li v-on:click.prevent="linkData('women', 'new')">신상</li>
+                                        <li v-on:click.prevent="linkData('women', 'best')">베스트</li>
                                         <!-- depth2 / 신발 -->
                                         <div class="accordion" id="wsColTwo">
                                             <div class="accordion-item">
@@ -36,8 +40,9 @@
                                                 <!-- depth3 -->
                                                 <div id="wsColThree" class="accordion-collapse collapse" data-bs-parent="#wsColOne">
                                                     <ul class="accordion-body dpt3">
-                                                        <li>플랫슈즈</li>
-                                                        <li>샌들</li>
+                                                        <li v-on:click.prevent="linksys('women', 'shoes', '전체')">전체</li>
+                                                        <li v-on:click.prevent="linksys('women', 'shoes', '플랫슈즈')">플랫슈즈</li>
+                                                        <li v-on:click.prevent="linksys('women', 'shoes', '샌들')">샌들</li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -53,8 +58,9 @@
                                                 <!-- depth3 -->
                                                 <div id="wsColThree2" class="accordion-collapse collapse" data-bs-parent="#wsColOne">
                                                     <ul class="accordion-body dpt3">
-                                                        <li>백팩</li>
-                                                        <li>미니백</li>
+                                                        <li v-on:click.prevent="linksys('women', 'bag', '전체')">전체</li>
+                                                        <li v-on:click.prevent="linksys('women', 'bag', '백팩')">백팩</li>
+                                                        <li v-on:click.prevent="linksys('women', 'bag', '미니백')">미니백</li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -70,8 +76,9 @@
                                                 <!-- depth3 -->
                                                 <div id="wsColThree3" class="accordion-collapse collapse" data-bs-parent="#wsColOne">
                                                     <ul class="accordion-body dpt3">
-                                                        <li>양말</li>
-                                                        <li>모자</li>
+                                                        <li v-on:click.prevent="linksys('women', 'ac', '전체')">전체</li>
+                                                        <li v-on:click.prevent="linksys('women', 'ac', '양말')">양말</li>
+                                                        <li v-on:click.prevent="linksys('women', 'ac', '모자')">모자</li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -88,8 +95,8 @@
                                 </h2>
                                 <div id="msColOne" class="accordion-collapse collapse" data-bs-parent="#accordionDepth1">
                                     <ul class="accordion-body">
-                                        <li>신상</li>
-                                        <li>베스트</li>
+                                        <li v-on:click.prevent="linkData('men', 'new')">신상</li>
+                                        <li v-on:click.prevent="linkData('men', 'best')">베스트</li>
                                         <!-- depth2 / 신발 -->
                                         <div class="accordion" id="msColTwo">
                                             <div class="accordion-item">
@@ -101,8 +108,9 @@
                                                 <!-- depth3 -->
                                                 <div id="msColThree" class="accordion-collapse collapse" data-bs-parent="#msColOne">
                                                     <ul class="accordion-body dpt3">
-                                                        <li>스니커즈</li>
-                                                        <li>슬리퍼</li>
+                                                        <li v-on:click.prevent="linksys('men', 'shoes', '전체')">전체</li>
+                                                        <li v-on:click.prevent="linksys('men', 'shoes', '스니커즈')">스니커즈</li>
+                                                        <li v-on:click.prevent="linksys('men', 'shoes', '슬리퍼')">슬리퍼</li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -118,8 +126,9 @@
                                                 <!-- depth3 -->
                                                 <div id="msColThree2" class="accordion-collapse collapse" data-bs-parent="#msColOne">
                                                     <ul class="accordion-body dpt3">
-                                                        <li>맨즈백</li>
-                                                        <li>크로스백</li>
+                                                        <li v-on:click.prevent="linksys('men', 'bag', '전체')">전체</li>
+                                                        <li v-on:click.prevent="linksys('men', 'bag', '맨즈백')">맨즈백</li>
+                                                        <li v-on:click.prevent="linksys('men', 'bag', '크로스백')">크로스백</li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -135,8 +144,9 @@
                                                 <!-- depth3 -->
                                                 <div id="msColThree3" class="accordion-collapse collapse" data-bs-parent="#msColOne">
                                                     <ul class="accordion-body dpt3">
-                                                        <li>양말</li>
-                                                        <li>모자</li>
+                                                        <li v-on:click.prevent="linksys('men', 'ac', '전체')">전체</li>
+                                                        <li v-on:click.prevent="linksys('men', 'ac', '양말')">양말</li>
+                                                        <li v-on:click.prevent="linksys('men', 'ac', '모자')">모자</li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -153,8 +163,8 @@
                                 </h2>
                                 <div id="ksColOne" class="accordion-collapse collapse" data-bs-parent="#accordionDepth1">
                                     <ul class="accordion-body">
-                                        <li>신상</li>
-                                        <li>베스트</li>
+                                        <li v-on:click.prevent="linkData('kids', 'new')">신상</li>
+                                        <li v-on:click.prevent="linkData('kids', 'best')">베스트</li>
                                         <!-- depth2 / 신발 -->
                                         <div class="accordion" id="ksColTwo">
                                             <div class="accordion-item">
@@ -166,8 +176,9 @@
                                                 <!-- depth3 -->
                                                 <div id="ksColThree" class="accordion-collapse collapse" data-bs-parent="#ksColOne">
                                                     <ul class="accordion-body dpt3">
-                                                        <li>구두</li>
-                                                        <li>샌들</li>
+                                                        <li v-on:click.prevent="linksys('kids', 'shoes', '전체')">전체</li>
+                                                        <li v-on:click.prevent="linksys('kids', 'shoes', '구두')">구두</li>
+                                                        <li v-on:click.prevent="linksys('kids', 'shoes', '샌들')">샌들</li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -183,8 +194,9 @@
                                                 <!-- depth3 -->
                                                 <div id="ksColThree2" class="accordion-collapse collapse" data-bs-parent="#ksColOne">
                                                     <ul class="accordion-body dpt3">
-                                                        <li>슬리퍼가방</li>
-                                                        <li>패션가방</li>
+                                                        <li v-on:click.prevent="linksys('kids', 'bag', '전체')">전체</li>
+                                                        <li v-on:click.prevent="linksys('kids', 'bag', '슬리퍼가방')">슬리퍼가방</li>
+                                                        <li v-on:click.prevent="linksys('kids', 'bag', '패션가방')">패션가방</li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -200,8 +212,9 @@
                                                 <!-- depth3 -->
                                                 <div id="ksColThree3" class="accordion-collapse collapse" data-bs-parent="#ksColOne">
                                                     <ul class="accordion-body dpt3">
-                                                        <li>양말</li>
-                                                        <li>모자</li>
+                                                        <li v-on:click.prevent="linksys('kids', 'ac', '전체')">전체</li>
+                                                        <li v-on:click.prevent="linksys('kids', 'ac', '양말')">양말</li>
+                                                        <li v-on:click.prevent="linksys('kids', 'ac', '모자')">모자</li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -231,9 +244,7 @@
                                 </router-link>
                             </li>
                             <!-- sub-comp 출력되는 gnb -->
-                            <li
-                                class="tgGnb"
-                                v-for="(v, i) in $store.state.gnb" :key="i">
+                            <li class="tgGnb" v-for="(v, i) in $store.state.gnb" :key="i">
                                 <a href="#" v-on:click="chgData(i)">{{ i.toUpperCase() }}</a>
                             </li>
                             <NavComp />
@@ -258,6 +269,8 @@
 import $ from 'jquery';
 // 스토어 불러오기
 import store from '../src/js/store.js';
+// 공통기능함수
+import crossMixin from "./js/common.js";
 // 부트스트랩 불러오기
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -277,6 +290,7 @@ export default {
         LoginComp,
         WishComp,
     },
+    mixins: [crossMixin],
     methods: {
         // v-on 클릭시 gnb sub-comp 데이터 변경 발생
         chgData(parm) {

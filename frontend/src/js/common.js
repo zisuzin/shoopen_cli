@@ -106,6 +106,16 @@ const crossMixin = {
             if (store.state.callout === 0)
                 $('.callout').css({ display: 'none' });
         },
+        // gnb클릭시 링크시스템
+        linksys(cat1, cat2, cat3) {
+            const path = `/goods/${cat1}/${cat2}/${cat3}`;
+            location.href = path;
+        },
+        // new, best 클릭 전용 링크시스템!! (위랑 헷갈리지 말기!)
+        linkData(pm1, pm2) {
+            const path2 = `/product/${pm1}/${pm2}`;
+            location.href = path2;
+        },
     },
 };
 
