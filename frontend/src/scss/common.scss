@@ -61,16 +61,28 @@
         white-space: nowrap;
         background-color: var(--shoopen-color-main);
         transition: 0.3s ease;
-        overflow: hidden;
         z-index: 999;
         position: relative;
         border-bottom: 1px solid #ccc;
 
         .mo_menu {
-            /* MO 햄버거 메뉴 */
+            /* MO 햄버거 버튼 */
             display: none;
             cursor: pointer;
         }
+    }
+}
+
+/* MO GNB 메뉴 */
+.flex-column {
+    position: absolute;
+    top: 40px;
+    background-color: #fff;
+
+    a {
+        color: #333;
+        font-weight: 600;
+        font-size: 15px;
     }
 }
 

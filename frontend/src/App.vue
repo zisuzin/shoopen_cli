@@ -9,6 +9,23 @@
                     <!-- MO 햄버거 메뉴 -->
                     <div class="mo_menu">
                         <img src="/images/icon/ico_ctg_black.png" alt="모바일메뉴">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">NEW</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">BEST</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">WOEMN</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">MEN</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">KIDS</a>
+                            </li>
+                        </ul>
                     </div>
                     <div class="gnb">
                         <!-- 1. 로고영역 -->
@@ -57,6 +74,9 @@
 import $ from 'jquery';
 // 스토어 불러오기
 import store from '../src/js/store.js';
+// 부트스트랩 불러오기
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import 'bootstrap/dist/css/bootstrap.css';
 // 자식 컴포넌트
 import NavComp from './components/common/NavComp.vue';
 import SideComp from './components/common/SideComp.vue';

@@ -555,7 +555,6 @@ export default {
         function moveSec() {
             // 1. 타겟박스의 바운딩위치값 찍기
             let tgPos = retVal(tgBox);
-            console.log(tgPos)
             // 오버플로우 히든 해제
             body.setAttribute('style', 'overflow: visible');
 
@@ -739,7 +738,7 @@ export default {
             padding: 0 10px !important;
         }
         .main_best, .main_special, .main_media, .main_new, .main_store {
-            padding: 50px !important;
+            padding: 32px !important;
         }
         figure img {
             aspect-ratio: inherit !important;
