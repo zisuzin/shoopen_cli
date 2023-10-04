@@ -6,26 +6,54 @@
             <div class="top fxbx">
                 <!-- GNB -->
                 <nav>
-                    <!-- MO 햄버거 메뉴 -->
+                    <!-- MO GNB 메뉴 -->
                     <div class="mo_menu">
                         <img src="/images/icon/ico_ctg_black.png" alt="모바일메뉴">
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">NEW</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">BEST</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">WOEMN</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">MEN</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">KIDS</a>
-                            </li>
-                        </ul>
+                        <div class="accordion" id="accordionDepth1">
+                            <!-- WOMEN / depth1 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        WOMEN
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                                    <ul class="accordion-body">
+                                        <li>신상</li>
+                                        <li>베스트</li>
+                                        <!-- depth2 -->
+                                        <div class="accordion" id="accordionDepth2">
+                                            <div class="accordion-item">
+                                                <h2 class="accordion-header">
+                                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                                        여성신발
+                                                    </button>
+                                                </h2>
+                                                <div id="collapseTwo" class="accordion-collapse collapse show" data-bs-parent="#depth2Accordion">
+                                                    <ul class="accordion-body">
+                                                        <li>플랫슈즈</li>
+                                                        <li>샌들</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- 아코디언 메뉴 : KIDS -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    KIDS
+                                </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                </div>
+                                </div>
+                            </div>
+                        </div>  
                     </div>
                     <div class="gnb">
                         <!-- 1. 로고영역 -->
