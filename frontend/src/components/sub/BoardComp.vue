@@ -100,14 +100,17 @@
                                 키
                             </button>
                             <ul class="dropdown-menu opt3">
-                                <li><a class="dropdown-item" href="#">153 ~ 155cm</a></li>
-                                <li><a class="dropdown-item" href="#">156 ~ 158cm</a></li>
-                                <li><a class="dropdown-item" href="#">159 ~ 161cm</a></li>
-                                <li><a class="dropdown-item" href="#">162 ~ 164cm</a></li>
-                                <li><a class="dropdown-item" href="#">165 ~ 167cm</a></li>
-                                <li><a class="dropdown-item" href="#">168 ~ 170cm</a></li>
-                                <li><a class="dropdown-item" href="#">171 ~ 173cm</a></li>
-                                <li><a class="dropdown-item" href="#">185cm 이상</a></li>
+                                <li><a class="dropdown-item" href="#">153cm</a></li>
+                                <li><a class="dropdown-item" href="#">157cm</a></li>
+                                <li><a class="dropdown-item" href="#">160cm</a></li>
+                                <li><a class="dropdown-item" href="#">161cm</a></li>
+                                <li><a class="dropdown-item" href="#">164cm</a></li>
+                                <li><a class="dropdown-item" href="#">165cm</a></li>
+                                <li><a class="dropdown-item" href="#">166cm</a></li>
+                                <li><a class="dropdown-item" href="#">169cm</a></li>
+                                <li><a class="dropdown-item" href="#">172cm</a></li>
+                                <li><a class="dropdown-item" href="#">187cm</a></li>
+                                <li><a class="dropdown-item" href="#">191cm</a></li>
                             </ul>
                         </div>
                         <div class="dropdown opt4bx">
@@ -115,13 +118,15 @@
                                 몸무게
                             </button>
                             <ul class="dropdown-menu opt4">
-                                <li><a class="dropdown-item" href="#">44kg 이하</a></li>
-                                <li><a class="dropdown-item" href="#">45 ~ 47kg</a></li>
-                                <li><a class="dropdown-item" href="#">48 ~ 50kg</a></li>
-                                <li><a class="dropdown-item" href="#">51 ~ 53kg</a></li>
-                                <li><a class="dropdown-item" href="#">54 ~ 56kg</a></li>
-                                <li><a class="dropdown-item" href="#">57 ~ 59kg</a></li>
-                                <li><a class="dropdown-item" href="#">60kg 이상</a></li>
+                                <li><a class="dropdown-item" href="#">12kg</a></li>
+                                <li><a class="dropdown-item" href="#">44kg</a></li>
+                                <li><a class="dropdown-item" href="#">49kg</a></li>
+                                <li><a class="dropdown-item" href="#">50kg</a></li>
+                                <li><a class="dropdown-item" href="#">53kg</a></li>
+                                <li><a class="dropdown-item" href="#">55kg</a></li>
+                                <li><a class="dropdown-item" href="#">56kg</a></li>
+                                <li><a class="dropdown-item" href="#">58kg</a></li>
+                                <li><a class="dropdown-item" href="#">87kg</a></li>
                             </ul>
                         </div>
                         <div class="dropdown opt5bx">
@@ -204,15 +209,14 @@ export default {
     },
     methods: {
         photoData(cat) {
-            console.log(cat)
             axios.get('/review').then(function(res) {
                 const reviewList = document.querySelector('.reviews_body');
 
                 let hcode = "<ul>";
                     $(res.data).each(function(a,b){
 
-                        // cat 값이 없거나 b.cat값이 cat과 동일한 경우에만 출력
-                        if (!cat || b.cat === cat || cat.includes(b.cm)) {
+                        // 1. cat 값이 없거나 b.cat값이 cat과 동일한 경우에만 출력
+                        if (!cat || b.cat === cat || cat === b.cm || cat === b.kg || cat === b.size) {
                         hcode+= `
                         <li>
                             <!-- 리뷰 썸네일 -->
