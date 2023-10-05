@@ -23,7 +23,7 @@
                                     <li :key="x.idx" @click.prevent="getData(x)" v-if="$store.state.setcat === i || $store.state.setcat === 'all' && x.idx>=0 && x.idx<12+$store.state.mnum">
                                         <div class="prodbx">
                                             <div class="prod_img">
-                                                <img :src="'/images/goods/'+x.img+'.jpg'" alt="x.name" />
+                                                <img :src="'/images/goods/'+x.img+'.jpg'" :alt="x.name" />
                                             </div>
                                             <div title="찜하기" class="product_like" v-on:click="addWish(x, 1)">
                                                 <button type="button" class="fa-solid fa-heart"></button>

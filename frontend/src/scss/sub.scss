@@ -677,7 +677,7 @@ main {
             flex-direction: column;
             align-items: center;
             margin: 20px 48px;
-            padding: 10px 30px;
+            padding: 10px 25px;
 
             p:first-child {
                 width: 42px;
@@ -699,6 +699,79 @@ main {
                 padding: 10px 20px;
                 border-radius: 7px;
                 background: #ffed6159;
+            }
+        }
+    }
+
+    .winner_body {
+        .reviews_gal {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+        .reviews {
+            width: 215px;
+            cursor: pointer;
+            border: 1px solid #e5e5e5;
+
+            .review_thumb {
+                height: 237px;
+                position: relative;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+            
+            .review_author {
+                border-bottom: 1px solid #f3f3f3;
+                padding: 12px 2px 15px 2px;
+                margin: 0 10px;
+
+                .review_tit {
+                    line-height: 18px;
+                    padding-bottom: 5px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+
+            .review_prd {
+                display: flex;
+                padding: 13px 11px;
+
+                .thumb_bx {
+                    width: 33px;
+                    height: 33px;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+
+                .info_bx {
+                    margin-left: 10px;
+                    font-size: 11px;
+                    line-height: 15px;
+                    padding-top: 2px;
+
+                    .prd_det {
+                        span {
+                            color: #767676;
+                            font-weight: 400;
+                        }
+
+                        strong {
+                            padding: 0 12px 0 3px;
+                            color: #333;
+                        }
+                    }
+                }
             }
         }
     }
