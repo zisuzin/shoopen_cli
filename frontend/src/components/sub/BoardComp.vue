@@ -71,7 +71,6 @@
                 </div>
                 <div class="reviews_filter">
                     <div class="dropdown">
-                        <span>카테고리별 보기</span>
                         <button class="btn btn-secondary op1Btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             카테고리를 선택해주세요
                         </button>
@@ -82,8 +81,7 @@
                             <li><a class="dropdown-item" href="#">Ac</a></li>
                         </ul>
                         <div class="dropdown opt2bx">
-                            <span></span>
-                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="btn op2Btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 최신순
                             </button>
                             <ul class="dropdown-menu opt2">
@@ -96,6 +94,50 @@
                 </div>
                 <div class="reviews_options_search">
                     <img src="/images/icon/review_pcpc.jpg" alt="내 체형에 맞는 리뷰 모아보기">
+                    <div class="review_my_options">
+                        <div class="dropdown opt3bx">
+                            <button class="btn userOpt btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                키
+                            </button>
+                            <ul class="dropdown-menu opt3">
+                                <li><a class="dropdown-item" href="#">153 ~ 155cm</a></li>
+                                <li><a class="dropdown-item" href="#">156 ~ 158cm</a></li>
+                                <li><a class="dropdown-item" href="#">159 ~ 161cm</a></li>
+                                <li><a class="dropdown-item" href="#">162 ~ 164cm</a></li>
+                                <li><a class="dropdown-item" href="#">165 ~ 167cm</a></li>
+                                <li><a class="dropdown-item" href="#">168 ~ 170cm</a></li>
+                                <li><a class="dropdown-item" href="#">171 ~ 173cm</a></li>
+                                <li><a class="dropdown-item" href="#">185cm 이상</a></li>
+                            </ul>
+                        </div>
+                        <div class="dropdown opt4bx">
+                            <button class="btn userOpt btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                몸무게
+                            </button>
+                            <ul class="dropdown-menu opt4">
+                                <li><a class="dropdown-item" href="#">44kg 이하</a></li>
+                                <li><a class="dropdown-item" href="#">45 ~ 47kg</a></li>
+                                <li><a class="dropdown-item" href="#">48 ~ 50kg</a></li>
+                                <li><a class="dropdown-item" href="#">51 ~ 53kg</a></li>
+                                <li><a class="dropdown-item" href="#">54 ~ 56kg</a></li>
+                                <li><a class="dropdown-item" href="#">57 ~ 59kg</a></li>
+                                <li><a class="dropdown-item" href="#">60kg 이상</a></li>
+                            </ul>
+                        </div>
+                        <div class="dropdown opt5bx">
+                            <button class="btn userOpt btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                실착 사이즈
+                            </button>
+                            <ul class="dropdown-menu opt5">
+                                <li><a class="dropdown-item" href="#">150cm</a></li>
+                                <li><a class="dropdown-item" href="#">235cm</a></li>
+                                <li><a class="dropdown-item" href="#">250cm</a></li>
+                                <li><a class="dropdown-item" href="#">26호</a></li>
+                                <li><a class="dropdown-item" href="#">FREE</a></li>
+                                <li><a class="dropdown-item" href="#">M</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 <div class="reviews_body"></div>
             </section>
@@ -161,13 +203,16 @@ export default {
         }
     },
     methods: {
-        photoData() {
+        photoData(cat) {
+            console.log(cat)
             axios.get('/review').then(function(res) {
                 const reviewList = document.querySelector('.reviews_body');
 
                 let hcode = "<ul>";
                     $(res.data).each(function(a,b){
 
+                        // cat 값이 없거나 b.cat값이 cat과 동일한 경우에만 출력
+                        if (!cat || b.cat === cat || cat.includes(b.cm)) {
                         hcode+= `
                         <li>
                             <!-- 리뷰 썸네일 -->
@@ -200,19 +245,18 @@ export default {
                             </div>
                         </li>
                         `
+                        }
                     });
                 hcode+= "</ul>";
                 reviewList.innerHTML = hcode;
             })
         },
-        getImg() {
-            
-        }
     },
     created() {
         this.photoData();
     },
     mounted() {
+        const vm = this;
         $(".view_type > div").click(function(e) {
             // 이벤트막기
             e.preventDefault();
@@ -228,17 +272,18 @@ export default {
         function chgTxt() {
             let btn = $(this);
 
-            const optList = btn.siblings()[1];
+            const optList = btn.siblings()[0];
             $(optList).find("a").click(function(e) {
                 e.preventDefault();
 
                 let clkTxt = $(this).text();
                 btn.text(clkTxt);
 
-                switch (clkTxt) {
-                    case 'Option 1': 
+                // .op2Btn이 아닌 경우만 함수호출!
+                if(!btn.is(".op2Btn")) {
+                    vm.photoData(clkTxt);
                 }
-            })
+            });
         }
 
         // 옵션 버튼 클릭시 chgTxt 함수실행

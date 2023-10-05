@@ -957,4 +957,34 @@ main {
 
 .reviews_options_search {
     text-align: center;
+
+    .review_my_options {
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+        margin: 10px auto 30px;
+
+        .opt3bx, .opt4bx, .opt5bx {
+            width: 120px;
+
+            button {
+                width: 100%;
+                text-align: left;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                font-size: 14px;
+            }
+
+            ul {
+                width: 100%;
+
+                li {
+                    a {
+                        font-size: 12.5px;
+                    }
+                }
+            }
+        }
+    }
 }
