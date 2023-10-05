@@ -62,13 +62,14 @@
                     </div>
                 </div>
                 <div class="view_type">
-                    <div class="photo_type on">
+                    <div class="photo_type">
                         <a href="#">포토리뷰</a>
                     </div>
                     <div class="relative_type">
                         <a href="#">일반리뷰</a>
                     </div>
                 </div>
+                <div class="reviews_body"></div>
             </section>
           </div>
         </main>
@@ -89,6 +90,8 @@
 import $ from "jquery";
 // 하단컴포넌트
 import FootComp from "../common/FootComp.vue";
+// 엑시오스 불러오기
+import axios from "axios";
 
 export default {
     name: "BoardComp",
@@ -129,6 +132,40 @@ export default {
             ]
         }
     },
+    methods: {
+        photoData() {
+            axios.get('/review').then(function(res) {
+                console.log(res.data)
+                const reviewList = document.querySelector('.reviews_body');
+
+                let hcode = "<ul>";
+                    $(res.data).each(function(a,b){
+
+                        hcode+= `
+                        <li>
+                            <!-- 리뷰 썸네일 -->
+                            <div class="review_thumb">
+                                <img src="/images/board/reviews/${b.img}" alt="${b.writer}님의 리뷰이미지 입니다.">
+                            </div>
+                            <!-- 후기글 -->
+                            <div class="review_author">
+                                <div class="review_tit">${b.cont}</div>
+                                <div class="reviewr_name">${b.writer}</div>
+                            </div>
+                        </li>
+                        `
+                    });
+                hcode+= "</ul>";
+                reviewList.innerHTML = hcode;
+            })
+        },
+        getImg() {
+            
+        }
+    },
+    created() {
+        this.photoData();
+    },
     mounted() {
         $(".view_type > div").click(function (e) {
             // 이벤트막기
@@ -137,6 +174,9 @@ export default {
             // 클래스 on 일때 css 변경
             $(this).addClass("on").siblings().removeClass("on");
         });
+
+        // 포토리뷰 탭에 트리거 발생
+        $('.view_type > div').eq(0).addClass('on').trigger("click");
     }
 }
 </script>
