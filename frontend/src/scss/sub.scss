@@ -658,6 +658,8 @@ main {
 
 /* 수상자 안내박스 */
 .winner_info {
+    margin-bottom: 90px;
+
     .winner_head {
         text-align: center;
 
@@ -774,5 +776,32 @@ main {
                 }
             }
         }
+    }
+}
+
+/* 리뷰타입 선택탭 */
+.view_type {
+    width: 70vw;
+    margin: 0 auto;
+    border-bottom: 1px solid #000;
+
+    div {
+        display: inline-block;
+        border: 1px solid #c4c4c4;
+        width: 210px;
+        text-align: center;
+        padding: 14px 0;
+        font-size: 14px;
+        cursor: pointer;
+    }
+}
+
+/* 클래스 on */
+.view_type > div.on {
+    border: 1px solid #000;
+    border-bottom: none;
+
+    a {
+        font-weight: 600;
     }
 }

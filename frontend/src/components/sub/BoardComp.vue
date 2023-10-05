@@ -72,12 +72,29 @@
             </section>
           </div>
         </main>
+        <!-- 하단영역 -->
+        <footer id="info">
+          <!-- 속박스 -->
+          <div class="info">
+            <!-- 푸터영역 -->
+            <FootComp />
+            <p class="f_copyright">COPYRIGHT © WONDERPLACE ALL RIGHTS RESERVED.</p>
+          </div>
+        </footer>
     </div>
 </template>
 
 <script>
+// 제이쿼리 불러오기
+import $ from "jquery";
+// 하단컴포넌트
+import FootComp from "../common/FootComp.vue";
+
 export default {
     name: "BoardComp",
+    components: {
+    FootComp,
+  },
     data() {
         return {
             // 베스트리뷰
@@ -111,6 +128,15 @@ export default {
                 },
             ]
         }
+    },
+    mounted() {
+        $(".view_type > div").click(function (e) {
+            // 이벤트막기
+            e.preventDefault();
+
+            // 클래스 on 일때 css 변경
+            $(this).addClass("on").siblings().removeClass("on");
+        });
     }
 }
 </script>
