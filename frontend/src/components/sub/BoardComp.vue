@@ -65,9 +65,37 @@
                     <div class="photo_type">
                         <a href="#">포토리뷰</a>
                     </div>
-                    <div class="relative_type">
+                    <div class="general_type">
                         <a href="#">일반리뷰</a>
                     </div>
+                </div>
+                <div class="reviews_filter">
+                    <div class="dropdown">
+                        <span>카테고리별 보기</span>
+                        <button class="btn btn-secondary op1Btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            카테고리를 선택해주세요
+                        </button>
+                        <ul class="dropdown-menu opt1">
+                            <li><a class="dropdown-item" href="#">Shoes</a></li>
+                            <li><a class="dropdown-item" href="#">Bag</a></li>
+                            <li><a class="dropdown-item" href="#">Hat</a></li>
+                            <li><a class="dropdown-item" href="#">Ac</a></li>
+                        </ul>
+                        <div class="dropdown opt2bx">
+                            <span></span>
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                최신순
+                            </button>
+                            <ul class="dropdown-menu opt2">
+                                <li><a class="dropdown-item" href="#">최신순</a></li>
+                                <li><a class="dropdown-item" href="#">평점순</a></li>
+                                <li><a class="dropdown-item" href="#">리뷰순</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="reviews_options_search">
+                    <img src="/images/icon/review_pcpc.jpg" alt="내 체형에 맞는 리뷰 모아보기">
                 </div>
                 <div class="reviews_body"></div>
             </section>
@@ -135,7 +163,6 @@ export default {
     methods: {
         photoData() {
             axios.get('/review').then(function(res) {
-                console.log(res.data)
                 const reviewList = document.querySelector('.reviews_body');
 
                 let hcode = "<ul>";
@@ -152,6 +179,25 @@ export default {
                                 <div class="review_tit">${b.cont}</div>
                                 <div class="reviewr_name">${b.writer}</div>
                             </div>
+                            <!-- 리뷰 상품 -->
+                            <div class="review_prd">
+                                <div class="thumb_bx">
+                                    <img src="/images/board/reviews/2-${b.idx}.jpg" alt="${b.tit}">
+                                </div>
+                                <div class="info_bx">
+                                    <div class="prd_tit">${b.tit}</div>
+                                    <div class="prd_det">
+                                        <span>
+                                            리뷰
+                                            <strong>${b.review}</strong>
+                                        </span>
+                                        <span>
+                                            평점
+                                            <strong>${b.score}</strong>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
                         `
                     });
@@ -167,7 +213,7 @@ export default {
         this.photoData();
     },
     mounted() {
-        $(".view_type > div").click(function (e) {
+        $(".view_type > div").click(function(e) {
             // 이벤트막기
             e.preventDefault();
 
@@ -177,6 +223,26 @@ export default {
 
         // 포토리뷰 탭에 트리거 발생
         $('.view_type > div').eq(0).addClass('on').trigger("click");
+
+        // 클릭한 옵션명으로 버튼텍스트 변경
+        function chgTxt() {
+            let btn = $(this);
+
+            const optList = btn.siblings()[1];
+            $(optList).find("a").click(function(e) {
+                e.preventDefault();
+
+                let clkTxt = $(this).text();
+                btn.text(clkTxt);
+
+                switch (clkTxt) {
+                    case 'Option 1': 
+                }
+            })
+        }
+
+        // 옵션 버튼 클릭시 chgTxt 함수실행
+        $('.btn').on('click', chgTxt);
     }
 }
 </script>
