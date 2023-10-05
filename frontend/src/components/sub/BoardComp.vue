@@ -62,7 +62,7 @@
                     </div>
                 </div>
                 <div class="view_type">
-                    <div class="photo_type">
+                    <div class="photo_type on">
                         <a href="#">포토리뷰</a>
                     </div>
                     <div class="relative_type">
