@@ -272,7 +272,7 @@ export default {
 
                 let hcode = "<ul>";
                     $(res.data).each(function(x,y){
-                        
+
                         hcode+= `
                         <div class="reviews_bx">
                             <div class="left_bx">
@@ -284,7 +284,6 @@ export default {
                                     <!-- 후기글 -->
                                     <div class="review_author">
                                         <div class="review_tit">${y.cont}</div>
-                                        <div class="reviewr_name">${y.writer}</div>
                                         <div class="review_more">
                                             <span>
                                                 리뷰 더보기
@@ -350,7 +349,6 @@ export default {
                 $('.reviews_body .review_thumb').css("display", "none");
                 $('.reviews_body ul li').css({display: "flex", flexDirection: "column-reverse", border: "none", width: "100%"});
                 $('.review_author').css("borderBottom", "inherit");
-                $('.reviewr_name').css("display", "none");
                 $('.review_tit').css("fontSize", "13.5px");
                 $('.prd_tit').css("fontSize", "13px");
                 $('.prd_det').css("fontSize", "12px");
@@ -420,6 +418,7 @@ export default {
 
         // 옵션 버튼 클릭시 chgTxt 함수실행
         $('.btn').on('click', chgTxt);
+
     }
 }
 </script>

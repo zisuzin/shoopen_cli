@@ -8,12 +8,12 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-size: 12px;
+    font-size: calc(min(12px, 3.3vw));
 }
 
 @mixin infoBx {
     margin-left: 10px;
-    font-size: 11px;
+    font-size: calc(min(11px, 3.3vw));
     line-height: 15px;
     padding-top: 2px;
 }
@@ -699,7 +699,7 @@ main {
 
         p {
             font-weight: 500;
-            font-size: 24px;
+            font-size: calc(min(24px, 4vw));
             margin: 20px auto;
         }
     }
@@ -725,12 +725,12 @@ main {
                 color: #000;
                 text-align: center;
                 
-                font-size: 13px;
+                font-size: calc(min(13px, 3vw));
                 font-weight: 600;
             }
 
             p:last-child {
-                font-size: 16px;
+                font-size: calc(min(16px, 3.2vw));
                 font-weight: 500;
                 padding: 10px 20px;
                 border-radius: 7px;
@@ -767,7 +767,7 @@ main {
                 }
 
                 .reviewr_name {
-                    font-size: 11px;
+                    font-size: calc(min(11px, 3.3vw));
                     padding: 8px 0;
                 }
             }
@@ -811,7 +811,7 @@ main {
     margin: 0 auto;
     border-bottom: 1px solid #000;
 
-    div {
+    div:not(.write_btn) {
         display: inline-block;
         border: 1px solid #c4c4c4;
         width: 210px;
@@ -823,7 +823,7 @@ main {
 }
 
 /* 클래스 on */
-.view_type > div.on {
+.view_type > div:not(.write_btn).on {
     border: 1px solid #000;
     border-bottom: none;
 
@@ -834,7 +834,7 @@ main {
 
 /* 리뷰리스트 */
 .reviews_body {
-    width: 70vw;
+    width: 60vw;
     margin: 0 auto;
     padding-bottom: 80px;
 
@@ -848,7 +848,7 @@ main {
 
             .review_thumb {
                 height: 260px;
-                width: 215px;
+                width: 100%;
 
                 img {
                     @include imgBx;
