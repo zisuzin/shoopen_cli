@@ -209,7 +209,7 @@ export default {
     },
     methods: {
         photoData(cat) {
-            axios.get('/review').then(function(res) {
+            axios.get('/photo').then(function(res) {
                 const reviewList = document.querySelector('.reviews_body');
 
                 let hcode = "<ul>";
@@ -261,25 +261,95 @@ export default {
                     });
                 hcode+= "</ul>";
                 reviewList.innerHTML = hcode;
+
+                $('.reviews_filter').css("display", "block");
+                $('.reviews_options_search').css("display", "block");
             })
         },
-    },
-    mounted() {
-        const vm = this;
-        $(".view_type > div").click(function(e) {
-            // 이벤트막기
-            e.preventDefault();
+        generalData() {
+            axios.get('/general').then(function(res) {
+                const reviewList = document.querySelector('.reviews_body');
 
-            // 클래스 on 일때 css 변경
-            $(this).addClass("on").siblings().removeClass("on");
+                let hcode = "<ul>";
+                    $(res.data).each(function(x,y){
+                        
+                        hcode+= `
+                        <div class="reviews_bx">
+                            <div class="left_bx">
+                                <li>
+                                    <!-- 리뷰 썸네일 -->
+                                    <div class="review_thumb">
+                                        <img src="/images/board/reviews/${y.img}" alt="${y.writer}님의 리뷰이미지 입니다.">
+                                    </div>
+                                    <!-- 후기글 -->
+                                    <div class="review_author">
+                                        <div class="review_tit">${y.cont}</div>
+                                        <div class="reviewr_name">${y.writer}</div>
+                                        <div class="review_more">
+                                            <span>
+                                                리뷰 더보기
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 8 8" class="more_arrow">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M.667 2.333L4 5.667l3.333-3.334"></path>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <!-- 리뷰 상품 -->
+                                    <div class="review_prd">
+                                        <div class="thumb_bx">
+                                            <img src="/images/board/reviews/2-${y.idx}.jpg" alt="${y.tit}">
+                                        </div>
+                                        <div class="info_bx">
+                                            <div class="prd_tit">${y.tit}</div>
+                                            <div class="prd_det">
+                                                <span>
+                                                    리뷰
+                                                    <strong>${y.review}</strong>
+                                                </span>
+                                                <span>
+                                                    평점
+                                                    <strong>${y.score}</strong>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </div>
+                            <div class="right_bx">
+                                <div class="user_name">
+                                    <b>${y.writer}</b>님의 리뷰입니다.
+                                </div>
+                                <div class="opt_dpt">
+                                    <span>키</span>
+                                    <span>${y.cm}</span>
+                                </div>
+                                <div class="opt_dpt">
+                                    <span>몸무게</span>
+                                    <span>${y.kg}</span>
+                                </div>
+                                <div class="opt_dpt">
+                                    <span>회원 등급</span>
+                                    <span>${y.grade}</span>
+                                </div>
+                                <div class="opt_dpt">
+                                    <span>색상</span>
+                                    <span>${y.color}</span>
+                                </div>
+                                <div class="opt_dpt">
+                                    <span>착용 사이즈</span>
+                                    <span>${y.size}</span>
+                                </div>
+                            </div>
+                        </div>
+                        `
+                    });
+                hcode+= "</ul>";
+                reviewList.innerHTML = hcode;
 
-            if ($(this).is('.photo_type')) {
-                vm.photoData();
-            }
-            else if ($(this).is('.general_type')) {
                 $('.reviews_body ul').css({display: "flex", flexDirection: "column"});
-                $('.review_thumb').css("display", "none");
-                $('.reviews_body ul li').css({display: "flex", flexDirection: "column-reverse", width: "75%", border: "none"});
+                $('.reviews_body .review_thumb').css("display", "none");
+                $('.reviews_body ul li').css({display: "flex", flexDirection: "column-reverse", border: "none", width: "100%"});
+                $('.review_author').css("borderBottom", "inherit");
                 $('.reviewr_name').css("display", "none");
                 $('.review_tit').css("fontSize", "13.5px");
                 $('.prd_tit').css("fontSize", "13px");
@@ -287,6 +357,9 @@ export default {
                 $('.thumb_bx').css({width: "40px", height: "40px"});
                 $('.info_bx').css("lineHeight", "17px");
                 $('.review_more').css("display", "block");
+                $('.left_bx').css("borderRight", "1px solid #d8dde5");
+                $('.reviews_filter').css("display", "none");
+                $('.reviews_options_search').css("display", "none");
 
                 $('.review_more').click(function() {
                     $(this).toggleClass("on");
@@ -304,6 +377,23 @@ export default {
                         $(this).find("span").find("svg").css("transform", "inherit");
                     }
                 });
+            })
+        }
+    },
+    mounted() {
+        const vm = this;
+        $(".view_type > div").click(function(e) {
+            // 이벤트막기
+            e.preventDefault();
+
+            // 클래스 on 일때 css 변경
+            $(this).addClass("on").siblings().removeClass("on");
+
+            if ($(this).is('.photo_type')) {
+                vm.photoData();
+            }
+            else if ($(this).is('.general_type')) {
+                vm.generalData();
             }
         });
 

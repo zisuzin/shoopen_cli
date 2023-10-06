@@ -914,6 +914,10 @@ main {
             }
         }
 
+        .reviews_bx {
+            display: flex;
+        }
+
     }
 }
 
@@ -1003,6 +1007,31 @@ main {
                         font-size: 12.5px;
                     }
                 }
+            }
+        }
+    }
+}
+
+/* general_type탭 리뷰박스 */
+.reviews_bx {
+    padding: 32px 0;
+    border-bottom: 1px solid #e5e5e5;
+
+    .left_bx {
+        width: 75%;
+    }
+
+    .right_bx {
+        width: 25%;
+        font-size: 12px;
+        padding-left: 40px;
+
+        .opt_dpt {
+            margin-top: 4px;
+
+            span:first-child {
+                font-weight: bold;
+                margin-right: 4px;
             }
         }
     }

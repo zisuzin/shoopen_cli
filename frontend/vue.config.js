@@ -8,11 +8,18 @@ module.exports = {
                     '^/api': '/store/db.php', // 실제 API 엔드포인트
                 },
             },
-            '/review': {
+            '/photo': {
                 target: 'http://localhost',
                 changeOrigin: true,
                 pathRewrite: {
-                    '^/review': '/board/photo_reviews.php',
+                    '^/photo': '/board/photo_reviews.php',
+                },
+            },
+            '/general': {
+                target: 'http://localhost',
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/general': '/board/general_reviews.php',
                 },
             },
         },
