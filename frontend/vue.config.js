@@ -12,7 +12,7 @@ module.exports = {
                 target: 'http://localhost',
                 changeOrigin: true,
                 pathRewrite: {
-                    '^/review': '/board/reviews.php',
+                    '^/review': '/board/photo_reviews.php',
                 },
             },
         },
