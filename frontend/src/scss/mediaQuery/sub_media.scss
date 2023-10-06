@@ -110,6 +110,10 @@
     .prd-cat-option .option-right {
         justify-content: right;
     }
+    .view_type {
+        width: 100% !important;
+        white-space: nowrap;
+    }
 }
 
 @media screen and (max-width: 350px) {

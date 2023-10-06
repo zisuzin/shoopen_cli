@@ -810,11 +810,12 @@ main {
     width: 70vw;
     margin: 0 auto;
     border-bottom: 1px solid #000;
+    white-space: nowrap;
 
-    div:not(.write_btn) {
+    div {
         display: inline-block;
         border: 1px solid #c4c4c4;
-        width: 210px;
+        width: calc(min(210px, 50vw));
         text-align: center;
         padding: 14px 0;
         font-size: 14px;
@@ -823,7 +824,7 @@ main {
 }
 
 /* 클래스 on */
-.view_type > div:not(.write_btn).on {
+.view_type > div.on {
     border: 1px solid #000;
     border-bottom: none;
 
