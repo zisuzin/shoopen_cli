@@ -768,6 +768,7 @@ main {
 
                 .reviewr_name {
                     font-size: 11px;
+                    padding: 8px 0;
                 }
             }
 
@@ -863,6 +864,20 @@ main {
 
                 .reviewr_name {
                     font-size: 11px;
+                }
+
+                .review_more {
+                    color: #888;
+                    width: fit-content;
+                    font-size: 12px;
+                    display: none;
+
+                    .more_arrow {
+                        stroke: #cccccc;
+                        width: 8px;
+                        height: 8px;
+                        margin-left: 4px;
+                    }
                 }
             }
 

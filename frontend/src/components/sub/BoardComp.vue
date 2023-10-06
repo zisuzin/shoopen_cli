@@ -227,6 +227,14 @@ export default {
                             <div class="review_author">
                                 <div class="review_tit">${b.cont}</div>
                                 <div class="reviewr_name">${b.writer}</div>
+                                <div class="review_more">
+                                    <span>
+                                        리뷰 더보기
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 8 8" class="more_arrow">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M.667 2.333L4 5.667l3.333-3.334"></path>
+                                        </svg>
+                                    </span>
+                                </div>
                             </div>
                             <!-- 리뷰 상품 -->
                             <div class="review_prd">
@@ -256,9 +264,6 @@ export default {
             })
         },
     },
-    created() {
-        this.photoData();
-    },
     mounted() {
         const vm = this;
         $(".view_type > div").click(function(e) {
@@ -267,6 +272,39 @@ export default {
 
             // 클래스 on 일때 css 변경
             $(this).addClass("on").siblings().removeClass("on");
+
+            if ($(this).is('.photo_type')) {
+                vm.photoData();
+            }
+            else if ($(this).is('.general_type')) {
+                $('.reviews_body ul').css({display: "flex", flexDirection: "column"});
+                $('.review_thumb').css("display", "none");
+                $('.reviews_body ul li').css({display: "flex", flexDirection: "column-reverse", width: "75%", border: "none"});
+                $('.reviewr_name').css("display", "none");
+                $('.review_tit').css("fontSize", "13.5px");
+                $('.prd_tit').css("fontSize", "13px");
+                $('.prd_det').css("fontSize", "12px");
+                $('.thumb_bx').css({width: "40px", height: "40px"});
+                $('.info_bx').css("lineHeight", "17px");
+                $('.review_more').css("display", "block");
+
+                $('.review_more').click(function() {
+                    $(this).toggleClass("on");
+                    let sible = $(this).siblings()[0];
+
+                    if ($(this).hasClass("on")) {
+                        $(sible).css({whiteSpace: "inherit", textOverflow: "inherit", overflow: "inherit"});
+
+                        $(this).find("span").html('리뷰 접기<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 8 8" class="more_arrow"><path stroke-linecap="round" stroke-linejoin="round" d="M.667 2.333L4 5.667l3.333-3.334"></path></svg>');
+                        $(this).find("span").find("svg").css("transform", "rotate(180deg)");
+                    }
+                    else {
+                        $(sible).css({whiteSpace: "nowrap", textOverflow: "ellipsis", overflow: "hidden"});
+                        $(this).find("span").html('리뷰 더보기<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 8 8" class="more_arrow"><path stroke-linecap="round" stroke-linejoin="round" d="M.667 2.333L4 5.667l3.333-3.334"></path></svg>');
+                        $(this).find("span").find("svg").css("transform", "inherit");
+                    }
+                });
+            }
         });
 
         // 포토리뷰 탭에 트리거 발생
