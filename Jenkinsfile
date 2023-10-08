@@ -1,6 +1,3 @@
-# 젠킨스파일 작성, 내용은 위와 동일하게 진행해도 되지만 이번에는 조건에 부합한 형태로 진행
-vi Jenkinsfile
-
 pipeline {
   agent { label 'jenkins-node' }
    
