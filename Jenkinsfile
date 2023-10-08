@@ -20,7 +20,9 @@ pipeline {
     }
 
     stage('Maven Build') {
-      tools { maven 'Maven-3' }
+      tools {
+        maven name: 'Maven-3', type: 'hudson.tasks.Maven$MavenInstallation' 
+      }
       steps {
         sh 'mvn clean package'
       }
