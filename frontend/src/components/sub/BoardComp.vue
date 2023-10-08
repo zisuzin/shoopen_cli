@@ -212,7 +212,7 @@ export default {
             axios.get('/photo').then(function(res) {
                 const reviewList = document.querySelector('.reviews_body');
 
-                let hcode = "<ul>";
+                let hcode = "<ul class='photo_wrap'>";
                     $(res.data).each(function(a,b){
 
                         // 1. cat 값이 없거나 b.cat값이 cat과 동일한 경우에만 출력
@@ -270,7 +270,7 @@ export default {
             axios.get('/general').then(function(res) {
                 const reviewList = document.querySelector('.reviews_body');
 
-                let hcode = "<ul>";
+                let hcode = "<ul class='general_wrap'>";
                     $(res.data).each(function(x,y){
 
                         hcode+= `
@@ -349,8 +349,8 @@ export default {
                 $('.reviews_body .review_thumb').css("display", "none");
                 $('.reviews_body ul li').css({display: "flex", flexDirection: "column-reverse", border: "none", width: "100%"});
                 $('.review_author').css("borderBottom", "inherit");
-                $('.review_tit').css("fontSize", "13.5px");
-                $('.prd_tit').css("fontSize", "13px");
+                $('.review_tit').css("fontSize", "calc(min(13.5px, 3.5vw))");
+                $('.prd_tit').css("fontSize", "calc(min(13px, 3.5vw))");
                 $('.prd_det').css("fontSize", "12px");
                 $('.thumb_bx').css({width: "40px", height: "40px"});
                 $('.info_bx').css("lineHeight", "17px");
@@ -376,7 +376,7 @@ export default {
                     }
                 });
             })
-        }
+        },
     },
     mounted() {
         const vm = this;

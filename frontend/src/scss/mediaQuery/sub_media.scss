@@ -22,17 +22,18 @@
         grid-template-columns: repeat(2, 1fr) !important; 
     }
     .reviews_body ul li {
-        width: 300px !important;
+        width: calc(min(300px, 70vw)) !important;
     }
 }
 
 @media screen and (max-width: 905px) {
-    .reviews_body ul {
+    .reviews_body .photo_wrap {
         display: flex !important;
         flex-wrap: wrap;
-    }
-    .reviews_body ul li {
-        width: 100% !important;
+
+        li {
+            width: 100% !important;
+        }
     }
 }
 
@@ -47,6 +48,25 @@
     }
     .mo_sorting {
         display: block !important;
+    }
+    .reviews_bx {
+        flex-direction: column;
+    }
+    // 일반리뷰 박스
+    .general_wrap {
+        display: block !important;
+
+        .left_bx {
+            width: 100% !important;
+            border-right: none !important;
+        }
+        .right_bx {
+            width: 100% !important;
+            padding-left: 10px !important;
+        }
+    }
+    .view_type {
+        border: none !important;
     }
 }
 
@@ -113,6 +133,13 @@
     .view_type {
         width: 100% !important;
         white-space: nowrap;
+
+        div {
+            width: 50% !important;
+        }
+    }
+    .opt2bx button {
+        width: 100% !important;
     }
 }
 

@@ -719,14 +719,14 @@ main {
                 width: 42px;
                 height: 42px;
                 background: #ffed61;
-                padding: 10px;
                 margin: 0px 10px;
                 border-radius: 50%;
                 color: #000;
                 text-align: center;
-                
+
                 font-size: calc(min(13px, 3vw));
                 font-weight: 600;
+                line-height: 42px;
             }
 
             p:last-child {
@@ -809,12 +809,12 @@ main {
 .view_type {
     width: 70vw;
     margin: 0 auto;
-    border-bottom: 1px solid #000;
     white-space: nowrap;
 
     div {
         display: inline-block;
-        border: 1px solid #c4c4c4;
+        border: 1px solid #E1E1E1;
+        border-bottom: 2px solid #000;
         width: calc(min(210px, 50vw));
         text-align: center;
         padding: 14px 0;
@@ -825,8 +825,9 @@ main {
 
 /* 클래스 on */
 .view_type > div.on {
-    border: 1px solid #000;
-    border-bottom: none;
+    background-color: #fff;
+    border: 2px solid #191919;
+    border-bottom: transparent;
 
     a {
         font-weight: 600;
@@ -934,7 +935,7 @@ main {
 
         /* 버튼 공통 */
         .btn {
-            font-size: 14px;
+            font-size: calc(min(14px, 4vw));
             margin: 0 5px;
         }
 
@@ -951,7 +952,7 @@ main {
             width: 177px;
 
             .dropdown-item {
-                font-size: 12.5px;
+                font-size: calc(min(12.5px, 3.5vw));
             }
         }
         
@@ -978,11 +979,15 @@ main {
 .reviews_options_search {
     text-align: center;
 
+    img {
+        width: calc(min(485px, 90vw));
+    }
+
     .review_my_options {
         display: flex;
         justify-content: center;
         gap: 25px;
-        margin: 10px auto 30px;
+        margin: 10px 20px 30px;
 
         .opt3bx, .opt4bx, .opt5bx {
             width: 120px;
@@ -993,7 +998,7 @@ main {
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                font-size: 14px;
+                font-size: calc(min(14px, 4vw));
             }
 
             .userOpt {
@@ -1005,7 +1010,7 @@ main {
 
                 li {
                     a {
-                        font-size: 12.5px;
+                        font-size: calc(min(12.5px, 3.5vw));
                     }
                 }
             }
@@ -1024,7 +1029,7 @@ main {
 
     .right_bx {
         width: 25%;
-        font-size: 12px;
+        font-size: calc(min(12px, 3.5vw));
         padding-left: 40px;
 
         .opt_dpt {
@@ -1036,4 +1041,10 @@ main {
             }
         }
     }
+}
+
+.review_board {
+    padding: 13px 0 13px 20px;
+    font-weight: 500;
+    font-size: 15px;
 }

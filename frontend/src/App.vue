@@ -222,6 +222,7 @@
                                     </ul>
                                 </div>
                             </div>
+                            <div class="review_board" v-on:click.prevent="linksys2">REVIEW</div>
                         </div>  
                     </div>
                     <div class="gnb">
@@ -314,6 +315,11 @@ export default {
             store.state.setdpt1 = store.state.gnb[parm].dpt1;
             store.state.setdpt2 = store.state.gnb[parm].dpt2;
             store.state.setdpt3 = store.state.gnb[parm].dpt3;
+        },
+        // 리뷰게시판 링크시스템
+        linksys2() {
+            const path = '/board';
+            location.href = path;
         },
     },
     mounted() {
