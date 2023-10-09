@@ -30,7 +30,7 @@ podTemplate(label: 'docker-build',
         stage('Build'){
             container('docker'){
                 script {
-                    appImage = docker.build("jisujin/dockerdeploy")
+                    appImage = docker.build("<jisujin>/dockerdeploy")
                 }
             }
         }
