@@ -13,7 +13,6 @@ node {
      }
  }
 
-#변경점
      stage('Build image') {
          app = docker.build("jisujin/dockerdeploy") #Push Image 단계에서 빌드번호를 붙이기 때문에 옵션 제거
      }
