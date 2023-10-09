@@ -1,61 +1,25 @@
-podTemplate(label: 'docker-build', 
-  containers: [
-    containerTemplate(
-      name: 'git',
-      image: 'alpine/git',
-      command: 'cat',
-      ttyEnabled: true
-    ),
-    containerTemplate(
-      name: 'docker',
-      image: 'docker',
-      command: 'cat',
-      ttyEnabled: true
-    ),
-  ],
-  volumes: [ 
-    hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock'), 
-  ]
-) {
-    node('docker-build') {
-        def dockerHubCred = credentials('github-access-token')
-        def appImage
-        
-        stage('Checkout'){
-            container('git'){
-                checkout scm
-            }
-        }
-        
-        stage('Build'){
-            container('docker'){
-                script {
-                    appImage = docker.build("<jisujin>/dockerdeploy")
-                }
-            }
-        }
-        
-        stage('Test'){
-            container('docker'){
-                script {
-                    appImage.inside {
-                        sh 'npm install'
-                        sh 'npm test'
-                    }
-                }
-            }
-        }
+node {
+     stage('Clone repository') {
+         checkout scm
+     }
+     stage('Build image') {
+         app = docker.build("jisujin/dockerdeploy")
+     }
+     stage('Push image') {
+         docker.withRegistry('https://registry.hub.docker.com', 'docker-access-token') {
+             app.push("${env.BUILD_NUMBER}")
+             app.push("latest")
+         }
+     }
+ }
 
-        stage('Push'){
-            container('docker'){
-                script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'docker-access-token'){
-                        appImage.push("${env.BUILD_NUMBER}")
-                        appImage.push("latest")
-                    }
-                }
-            }
-        }
-    }
-    
-}
+#변경점
+     stage('Build image') {
+         app = docker.build("jisujin/dockerdeploy") #Push Image 단계에서 빌드번호를 붙이기 때문에 옵션 제거
+     }
+     stage('Push image') {
+         docker.withRegistry('https://registry.hub.docker.com', 'docker-access-token') #업로드할 레지스트리 정보, Jenkins Credentials ID {
+             app.push("${env.BUILD_NUMBER}") #image에 빌드번호를 태그로 붙인 후 Push
+             app.push("latest") #image에 latest를 태그로 붙인 후 Push
+     }
+  }
