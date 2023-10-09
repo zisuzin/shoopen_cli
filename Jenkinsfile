@@ -18,7 +18,7 @@ podTemplate(label: 'docker-build',
   ]
 ) {
     node('docker-build') {
-        def dockerHubCred = <github-access-token>
+        def dockerHubCred = credentials('github-access-token')
         def appImage
         
         stage('Checkout'){
