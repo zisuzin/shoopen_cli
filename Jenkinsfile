@@ -1,37 +1,61 @@
-pipeline {
-  agent { label 'jenkins-node' }
-   
-  triggers {
-    pollSCM '* * * * *'
-  }
-  
-  
-  parameters {
-    string defaultValue: 'ubuntu', name: 'TOMCAT_USER_ID'
-    string defaultValue: '172.31.47.106', name: 'TOMCAT_IP'  
-    string defaultValue: '/var/lib/tomcat9/webapps', name: 'TOMCAT_WEBAPP_DIR'
-  }
+podTemplate(label: 'docker-build', 
+  containers: [
+    containerTemplate(
+      name: 'git',
+      image: 'alpine/git',
+      command: 'cat',
+      ttyEnabled: true
+    ),
+    containerTemplate(
+      name: 'docker',
+      image: 'docker',
+      command: 'cat',
+      ttyEnabled: true
+    ),
+  ],
+  volumes: [ 
+    hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock'), 
+  ]
+) {
+    node('docker-build') {
+        def dockerHubCred = <github-access-token>
+        def appImage
+        
+        stage('Checkout'){
+            container('git'){
+                checkout scm
+            }
+        }
+        
+        stage('Build'){
+            container('docker'){
+                script {
+                    appImage = docker.build("jisujin/dockerdeploy")
+                }
+            }
+        }
+        
+        stage('Test'){
+            container('docker'){
+                script {
+                    appImage.inside {
+                        sh 'npm install'
+                        sh 'npm test'
+                    }
+                }
+            }
+        }
 
-  stages {
-    stage('Checkout') {
-      steps {
-        git branch: 'main', url: 'https://github.com/zisuzin/shoopen_cli.git'
-      }
+        stage('Push'){
+            container('docker'){
+                script {
+                    docker.withRegistry('https://registry.hub.docker.com', dockerHubCred){
+                        appImage.push("${env.BUILD_NUMBER}")
+                        appImage.push("latest")
+                    }
+                }
+            }
+        }
     }
-
-    stage('Maven Build') {
-      tools {
-        maven name: 'Maven-3', type: 'hudson.tasks.Maven$MavenInstallation' 
-      }
-      steps {
-        sh 'mvn clean package'
-      }
-    }
-
-    stage('Deploy to Tomcat') {
-      steps {
-        sh "scp \${WORKSPACE}/target/hello-world.war ${params.TOMCAT_LOGIN_USER}@${params.TOMCAT_IP}:${params.TOMCAT_WEBAPP_DIR}"
-      }
-    }
-  }
+    
 }
