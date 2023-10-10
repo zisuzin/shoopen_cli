@@ -270,7 +270,8 @@ export default {
             store.state.curUrl2 = num;
 
             // 이벤트 버블링 막기
-            $('.product_like').click(function (e) {
+            $(".product_like").click(function(e) {
+                $(this).toggleClass("on");
                 e.stopPropagation();
             });
 
@@ -489,6 +490,11 @@ export default {
         $(".filter_color > li").click(function () {
             $(this).toggleClass("on");
         }); ///////// click ////////////
+
+        $(".product_like").click(function(e) {
+            e.stopPropagation();
+            $(this).toggleClass("on");
+        });
 
         // 최초호출!
         this.pdLength();
