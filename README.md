@@ -15,6 +15,7 @@
 |:---:|
 |<a href="https://github.com/zisuzin"> <img src="https://avatars.githubusercontent.com/zisuzin" width=200px alt="지수진"/> </a>|
 |프론트엔드|  
+2023.09.10 ~ 2023.10.08 (28일)
 
 <br>
 
@@ -26,3 +27,6 @@
 ## ⚙️ 인프라 기술 스택 
 
 ## 🦁 프론트엔드 인프라 구조
+
+## 📚 SPA 구조
+![Group 18](https://github.com/zisuzin/shoopen_cli/assets/120540018/748a4d93-74d7-43fe-b8fa-b3c14f63fc59)
