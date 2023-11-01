@@ -20,13 +20,27 @@
 <br>
 
 ## ✨ 프론트엔드 기술 스택
-![stack_front](https://github.com/zisuzin/shoopen_cli/assets/120540018/e2730c50-2439-4447-9e55-3fca31d9afbf)
+![Group 25](https://github.com/zisuzin/shoopen_cli/assets/120540018/853568d1-4886-46f2-a275-fca9594f8cca)
 
 <br/>
 
 ## ⚙️ 인프라 기술 스택 
+![Group 26](https://github.com/zisuzin/shoopen_cli/assets/120540018/9bd18e85-9227-4c88-b7cd-3c90ae9df99a)
 
-## 🦁 프론트엔드 인프라 구조
+<br/>
+
+## 🌖 프론트엔드 인프라 구조
+
+<br/>
+
+## ✨ Preview
+> Redux state 상태 변경, 새로고침시 state 값 유지 프리뷰입니다.
+
+|Redux state 상태 변경|새로고침시 state 값 유지|
+|---|---|
+|![ssl proxy server](https://github.com/zisuzin/idle_next/assets/120540018/4251185b-d320-42f4-8b70-604caf56b244)|![api server](https://user-images.githubusercontent.com/61215550/214685251-875a31aa-b303-4382-955b-1920cdba6236.gif)|
+
+<br/>
 
 ## 📚 SPA 구조
 ![Group 18](https://github.com/zisuzin/shoopen_cli/assets/120540018/748a4d93-74d7-43fe-b8fa-b3c14f63fc59)
