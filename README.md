@@ -40,6 +40,14 @@
 |---|---|
 |![store-search](https://github.com/zisuzin/shoopen_cli/assets/120540018/b11db82f-e285-4d7f-ae8d-4cc7117184fc)|![add-wish](https://github.com/zisuzin/shoopen_cli/assets/120540018/56361877-d5d7-4587-acfa-da4999fd6cc7)
 
+> 가로방향 스크롤, 무한 롤링 배너 프리뷰입니다.
+
+|가로방향 스크롤|무한 롤링 배너|
+|---|---|
+|![horizontal-banner2](https://github.com/zisuzin/shoopen_cli/assets/120540018/41b4ae75-635b-4a45-b9b4-8334f30ed3ca)|![infinite-move](https://github.com/zisuzin/shoopen_cli/assets/120540018/a95486af-5139-405c-92ab-5c85c5ebed4a)
+
+<br/>
+
 <br/>
 
 ## 📚 SPA 구조
