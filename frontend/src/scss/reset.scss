@@ -12,8 +12,9 @@ button,mark,aside,figure,figcaption {
 }
 
 /* 가로스크롤 생김 방지!(특히 모바일) */
-body, html {
+body,html {
     overflow-x: hidden;
+    user-select: none;
 }
 
 /* ul,ol 블릿/숫자없앰 */

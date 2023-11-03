@@ -482,17 +482,21 @@ main {
                     height: 100%;
                     line-height: 31px;
 
-                    input {
-                        background: #fff;
-                        width: 100%;
-                        border-radius: 5px;
-                        padding: 5px 30px 5px 15px;
-                        height: 100%;
-                        font-size: calc(min(14px, 3.8vw));
-                        // 넘치는 텍스트 숨김
-                        overflow: hidden;
-                        white-space: nowrap;
-                        text-overflow: ellipsis;
+                    label {
+                        margin-right: 10px;
+
+                        input {
+                            background: #fff;
+                            width: 100%;
+                            border-radius: 5px;
+                            padding: 5px 30px 5px 10px;
+                            height: 100%;
+                            font-size: calc(min(14px, 3.8vw));
+                            // 넘치는 텍스트 숨김
+                            overflow: hidden;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                        }
                     }
 
                     .fa-magnifying-glass:before {
@@ -502,7 +506,9 @@ main {
                         right: 15px;
                         top: 50%;
                         transform: translateY(-50%);
+                        cursor: pointer;
                     }
+
                 }
             }
         }

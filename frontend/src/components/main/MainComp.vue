@@ -745,6 +745,12 @@ export default {
             height: 100%;
             object-fit: cover;
         }
+        .txt_cont label {
+            width: 50% !important;
+        }
+        .fa-magnifying-glass:before {
+            right: inherit !important;
+        }
     }
 
     @media screen and (max-width: 900px) {
