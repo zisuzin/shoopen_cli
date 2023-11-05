@@ -10,5 +10,9 @@ module.exports = {
     },
     rules: {
         'vue/no-use-v-if-with-v-for': 'off',
+        'no-unused-vars': 'off',
+    },
+    globals: {
+        globalThis: false,
     },
 };

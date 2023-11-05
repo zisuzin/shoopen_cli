@@ -483,6 +483,7 @@ export default {
         this.fetchData();
     },
     mounted() {
+        /* global kakao */
         // 뷰 인스턴스 저장용 변수
         const vm = this;
         // 카카오맵 API 로드후 메서드 호출!
@@ -490,7 +491,6 @@ export default {
             showMap();
         } else {
             const script = document.createElement('script');
-            /* global kakao */
             script.onload = () => kakao.maps.load(function() {
                 // 로드되었을때 li 첫번째 트리거!
                 document.querySelector(".cont_inner li:first-child").click();

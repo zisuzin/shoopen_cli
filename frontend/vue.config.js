@@ -1,5 +1,5 @@
 module.exports = {
-    publicPath: '/frontend/',
+    publicPath: process.env.NODE_ENV === 'production' ? '/frontend/dist/' : '/',
     devServer: {
         proxy: {
             '/api': {
