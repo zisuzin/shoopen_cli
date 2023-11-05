@@ -210,6 +210,12 @@ export default {
         };
     },
     methods: {
+        addKakaoMap() {
+            const script = document.createElement('script');
+            script.onload = () => window.kakao.maps.load(this.storeMap);
+            script.src = 'http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=967c1df5ef6ef37cb1facf79cca53e7b';
+            document.head.appendChild(script);
+        },
         fetchData() {
             // 뷰 인스턴스 저장용 변수
             const vm = this; 
@@ -252,10 +258,13 @@ export default {
                     // 클릭한 지점명과 데이터 일치시 storeMap 호출!
                     $(res.data).each(function(a,b){
                         if (b.name === clktxt){
-                            vm.storeMap(b.lat, b.lng, b.name, b.det, b.tel)
+                            vm.storeMap(b.lat, b.lng, b.name, b.det, b.tel);
                         }
                     })
                 }); ////// click ///////
+
+                // 로드되었을때 li 첫번째 트리거!
+                document.querySelector(".cont_inner li:first-child").click();
             });
         },
         /************************************** 
@@ -287,31 +296,31 @@ export default {
 
             const mapContainer = document.getElementById('map'), // 지도를 표시할 div
             mapOption = {
-                center: new kakao.maps.LatLng(lat, lng), // 지도의 중심좌표
+                center: new window.kakao.maps.LatLng(lat, lng), // 지도의 중심좌표
                 level: 3, // 지도의 확대 레벨
                 disableDoubleClickZoom: true, // 두번 클릭시 확대 기능 막기
             };
 
             // 지도 생성
-            const map = new kakao.maps.Map(mapContainer, mapOption); 
+            const map = new window.kakao.maps.Map(mapContainer, mapOption); 
             //인포윈도우 표시 위치
-            const iwPosition = new kakao.maps.LatLng(lat, lng); 
+            const iwPosition = new window.kakao.maps.LatLng(lat, lng); 
 
             // 마커 이미지 주소
             const imageSrc =
                 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png';
                 
             // 마커 이미지 크기
-            const imageSize = new kakao.maps.Size(24, 35);
+            const imageSize = new window.kakao.maps.Size(24, 35);
 
             // 마커 이미지 생성
-            const markerImage = new kakao.maps.MarkerImage(
+            const markerImage = new window.kakao.maps.MarkerImage(
                 imageSrc,
                 imageSize,
             );
 
             // 마커 생성
-            var marker = new kakao.maps.Marker({
+            var marker = new window.kakao.maps.Marker({
                 map: map, // 마커를 표시할 지도
                 position: iwPosition, // 마커를 표시할 위치
                 image: markerImage, // 마커 이미지
@@ -321,7 +330,7 @@ export default {
             marker.setMap(map);
 
             // 인포윈도우를 생성하고 지도에 표시
-            const infowindow = new kakao.maps.InfoWindow({
+            const infowindow = new window.kakao.maps.InfoWindow({
                 position : iwPosition, 
                 disableAutoPan: true,
                 content : `<div class="info_tit" style="width:185px; padding:15px;">
@@ -345,11 +354,11 @@ export default {
             
             var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
             mapOption = { 
-                center: new kakao.maps.LatLng(37.477774, 127.125041), // 지도의 중심좌표
+                center: new window.kakao.maps.LatLng(37.477774, 127.125041), // 지도의 중심좌표
                 level: 3 // 지도의 확대 레벨
             };
 
-            var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+            var map = new window.kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
             
             // // 마커 이미지의 이미지 주소입니다
             var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
@@ -361,37 +370,37 @@ export default {
                     {
                         title: '미아점', 
                         desc: '서울특별시 강북구 도봉로 52 (미아동) 지하2층',
-                        latlng: new kakao.maps.LatLng(37.626218, 127.013474),
+                        latlng: new window.kakao.maps.LatLng(37.626218, 127.013474),
                         tel: '02-6312-6281'
                     },
                     {
                         title: 'NC백화점 송파점', 
                         desc: '서울특별시 송파구 충민로 66 (문정동) NC백화점 송파점 패션관 1층',
-                        latlng: new kakao.maps.LatLng(37.477774, 127.125041),
+                        latlng: new window.kakao.maps.LatLng(37.477774, 127.125041),
                         tel: '02-2157-5252'
                     },
                     {
                         title: '홍대점', 
                         desc: '서울특별시 마포구 양화로 153(동교동) 1층',
-                        latlng: new kakao.maps.LatLng(37.556568, 126.922696),
+                        latlng: new window.kakao.maps.LatLng(37.556568, 126.922696),
                         tel: '02-338-5751'
                     },
                     {
                         title: '2001아울렛 천호점',
                         desc: '서울특별시 강동구 구천면로 189 (천호동, 동아코아아파트) 2001아울렛 천호점 1층',
-                        latlng: new kakao.maps.LatLng(37.541384, 127.125996),
+                        latlng: new window.kakao.maps.LatLng(37.541384, 127.125996),
                         tel: '02-2224-6586'
                     },
                     {
                         title: '아이파크몰 용산점', 
                         desc: '서울특별시 용산구 한강대로23길 55 아이파크백화점 패션관 2층',
-                        latlng: new kakao.maps.LatLng(37.529943, 126.964667),
+                        latlng: new window.kakao.maps.LatLng(37.529943, 126.964667),
                         tel: '02-2012-3780'
                     },
                     {
                         title: '타임스퀘어 영등포점',
                         desc: '서울특별시 영등포구 영중로 15 (영등포동4가) 타음스퀘어 영등포점 지하1층',
-                        latlng: new kakao.maps.LatLng(37.517318, 126.905595),
+                        latlng: new window.kakao.maps.LatLng(37.517318, 126.905595),
                         tel: '02-2069-4105'
                     },
                 ],
@@ -399,31 +408,31 @@ export default {
                     {
                         title: 'NC백화점 부산대점', 
                         desc: '부산광역시 금정구 장전동 40 NC백화점 부산대점 1층',
-                        latlng: new kakao.maps.LatLng(35.232473, 129.084245),
+                        latlng: new window.kakao.maps.LatLng(35.232473, 129.084245),
                         tel: '051-509-7035'
                     },
                     {
                         title: '뉴코아아울렛 덕천점',
                         desc: '부산광역시 북구 만덕대로 23 (덕천동) 뉴코아아울렛 덕천점 5층',
-                        latlng: new kakao.maps.LatLng(35.211306, 129.007551),
+                        latlng: new window.kakao.maps.LatLng(35.211306, 129.007551),
                         tel: '051-366-2427'
                     },
                     {
                         title: '부산 아트몰링점', 
                         desc: '부산광역시 사하구 낙동남로 1413 (하단동) 6층',
-                        latlng: new kakao.maps.LatLng(35.106692, 128.966336),
+                        latlng: new window.kakao.maps.LatLng(35.106692, 128.966336),
                         tel: '051-999-7399'
                     },
                     {
                         title: 'NC백화점 서면점',
                         desc: '부산광역시 부산진구 동천로 92 (전포동) NC백화점 서면점 1층',
-                        latlng: new kakao.maps.LatLng(35.157141, 129.063072),
+                        latlng: new window.kakao.maps.LatLng(35.157141, 129.063072),
                         tel: '051-794-7052'
                     },
                     {
                         title: 'NC백화점 해운대점',
                         desc: '부산광역시 해운대구 좌동 1467-4 NC백화점 해운대점 1층',
-                        latlng: new kakao.maps.LatLng(35.170707, 129.177125),
+                        latlng: new window.kakao.maps.LatLng(35.170707, 129.177125),
                         tel: '051-709-5572'
                     },
                 ],
@@ -431,32 +440,32 @@ export default {
                     {
                         title: '뉴코아아울렛 논현점',
                         desc: '인천광역시 남동구 청능대로 596 (논현동) 뉴코아아울렛 논현점 2층',
-                        latlng: new kakao.maps.LatLng(37.400955, 126.726028),
+                        latlng: new window.kakao.maps.LatLng(37.400955, 126.726028),
                         tel: '032-454-8315'
                     },
                     {
                         title: '스퀘어원 연수점',
                         desc: '인천광역시 연수구 청능대로 210 스퀘어원몰 2층',
-                        latlng: new kakao.maps.LatLng(37.406251, 126.683756),
+                        latlng: new window.kakao.maps.LatLng(37.406251, 126.683756),
                         tel: '032-456-4271'
                     },
                 ]
             };
 
             // bounds 객체 생성
-            var bounds = new kakao.maps.LatLngBounds();
+            var bounds = new window.kakao.maps.LatLngBounds();
 
             for (var i = 0; i < positions[txt].length; i++) {
                 var markerPosition = positions[txt][i].latlng;
 
                 // 마커 이미지 크기
-                var imageSize = new kakao.maps.Size(24, 35); 
+                var imageSize = new window.kakao.maps.Size(24, 35); 
                 
                 // 마커 이미지 생성   
-                var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+                var markerImage = new window.kakao.maps.MarkerImage(imageSrc, imageSize); 
                 
                 // 마커 생성
-                const marker = new kakao.maps.Marker({
+                const marker = new window.kakao.maps.Marker({
                     map: map, // 마커 표시 지도
                     position: positions[txt][i].latlng, // 마커 표시 위치
                     image : markerImage // 마커 이미지 
@@ -465,7 +474,7 @@ export default {
                 bounds.extend(markerPosition);
 
                 // 인포윈도우를 생성하고 지도에 표시
-                const infowindow = new kakao.maps.InfoWindow({
+                const infowindow = new window.kakao.maps.InfoWindow({
                     position: markerPosition, 
                     disableAutoPan: true,
                     content: `<div class="info_locals" style="width:150px; padding:15px; text-align: center;">
@@ -483,23 +492,13 @@ export default {
         this.fetchData();
     },
     mounted() {
-        /* global kakao */
+        window.kakao && window.kakao.maps ?
+        this.storeMap()
+        : this.addKakaoMap();
+
         // 뷰 인스턴스 저장용 변수
         const vm = this;
-        // 카카오맵 API 로드후 메서드 호출!
-        if (window.kakao && window.kakao.maps) {
-            showMap();
-        } else {
-            const script = document.createElement('script');
-            script.onload = () => kakao.maps.load(function() {
-                // 로드되었을때 li 첫번째 트리거!
-                document.querySelector(".cont_inner li:first-child").click();
-            });
-            script.src = 'http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=967c1df5ef6ef37cb1facf79cca53e7b';
-            document.head.appendChild(script);
-            showMap();
-        }
-        
+
         // 메인 배너 함수
         function bannerSwiper() {
             // 스와이퍼 커스텀
@@ -707,6 +706,7 @@ export default {
         // 쵤초호출!
         bannerSwiper();
         this.rollBan();
+        showMap();
         chgMove();
     },
 };
