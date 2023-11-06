@@ -24,11 +24,6 @@
 
 <br/>
 
-## ⚙️ 인프라 기술 스택 
-![Group 26](https://github.com/zisuzin/shoopen_cli/assets/120540018/9bd18e85-9227-4c88-b7cd-3c90ae9df99a)
-
-<br/>
-
 ## ✨ Preview
 > 매장 위치 표시, 위시리스트 추가/삭제/수량 변경 프리뷰입니다.
 
