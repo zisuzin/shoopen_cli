@@ -38,7 +38,7 @@
 
 |매장 위치 표시|위시리스트 추가/삭제/수량 변경|
 |---|---|
-|![store-search](https://github.com/zisuzin/shoopen_cli/assets/120540018/b11db82f-e285-4d7f-ae8d-4cc7117184fc)|![add-wish](https://github.com/zisuzin/shoopen_cli/assets/120540018/56361877-d5d7-4587-acfa-da4999fd6cc7)
+![store-map](https://github.com/zisuzin/shoopen_cli/assets/120540018/c8cdea28-27b6-4f07-88dc-1172cf57db37)|![add-wish](https://github.com/zisuzin/shoopen_cli/assets/120540018/56361877-d5d7-4587-acfa-da4999fd6cc7)
 
 > 가로방향 스크롤, 무한 롤링 배너 프리뷰입니다.
 
