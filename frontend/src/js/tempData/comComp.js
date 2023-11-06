@@ -53,7 +53,7 @@ const comData = {
                     <a href="#">장바구니</a>
                     <a href="#">구매</a>
                 </div>
-                <div class="buybtn clbtn" v-on:click="wishClose()">
+                <div class="buybtn clbtn" v-on:click.prevent="wishClose()">
                     <a href="#">
                         닫기
                         <i class="fa-solid fa-xmark"></i>

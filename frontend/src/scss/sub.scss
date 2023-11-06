@@ -48,6 +48,7 @@ main {
     padding-top: 80px;
     /* 메인 최소높이 */
     min-height: 100vh;
+    margin-bottom: 30px;
 }
 
 .pagewrap {
@@ -263,6 +264,7 @@ main {
         background: url(/public/images/icon/ico_filter_close.png) no-repeat 100% 50%;
         padding-right: 40px;
         line-height: 21px;
+        font-size: calc(min(13px, 3.9vw));
     }
 }
 

@@ -99,7 +99,7 @@ const mainData = {
                 </li>
             </ul>
         </div>
-  </section>
+    </section>
     `,
 };
 
