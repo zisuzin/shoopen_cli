@@ -12,12 +12,13 @@ import BoardComp from "./components/sub/BoardComp.vue";
 
 const routes = [
     { path: '/', component: MainComp },
-    { path: '#/product/:type/:id', component: ProdComp },
-    { path: '#/goods/:cat1/:cat2/:cat3', component: GoodsComp },
-    { path: '#/board', component: BoardComp },
+    { path: '/product/:type/:id', component: ProdComp },
+    { path: '/goods/:cat1/:cat2/:cat3', component: GoodsComp },
+    { path: '/board', component: BoardComp },
 ];
 
 const router = createRouter({
+    history: createWebHistory(process.env.BASE_URL), // 해시태그 방지
     routes,
     scrollBehavior(){
         return { top: 0 } // 스크롤 위치 상단 이동
