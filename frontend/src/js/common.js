@@ -50,7 +50,7 @@ const crossMixin = {
             const discount = ((oprice - dprice) / oprice) * 100;
             return Math.floor(discount) + '%';
         },
-        // 카트 추가 메서드
+        // 위시리스트 추가 메서드
         addWish(pm, cnt) {
             console.log('담긴 위시 아이템:', pm);
             // 로컬스에 담을 데이터
