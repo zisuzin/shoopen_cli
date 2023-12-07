@@ -3,8 +3,13 @@
 ![header](https://capsule-render.vercel.app/api?type=waving&color=0:F9E547,50:ffd60a,100:fbec5d&height=200&section=header&text=Shoopen&fontColor=fff&fontSize=70&fontAlign=50&fontAlignY=40)
 
 # 🛒 Shoopen
+※ AWS Free Tier 과금 문제로 Cli 프로젝트 연결 중단 후, CDN 환경으로 옮겨 재 작업하였습니다.
+<br/>
+(기존 프로젝트와 가급적 동일하게 작업하려 하였으나, 일부 아래 프리뷰처럼 동작하지 않는 기능이 있을 수 있습니다.)
 
-`Vue cli`환경에서 개발한 `쇼핑몰 SPA 사이트` 입니다.<br>
+<br/>
+<br/>
+`Vue cdn`환경에서 개발한 `쇼핑몰 SPA 사이트` 입니다.<br>
 <p align="middle"><a href="https://shoopen.vercel.app/">배포 링크</a></p>
 <p align="middle"><a href="https://drive.google.com/file/d/1RcAuyTN9bBm25qNEtLzmBYNSy8b_3dmD/view?usp=sharing">가이드문서</a></p>
 
