@@ -7,9 +7,7 @@
 <br/>
 (기존 프로젝트와 가급적 동일하게 작업하려 하였으나, 일부 아래 프리뷰처럼 동작하지 않는 기능이 있을 수 있습니다.)
 
-<br/>
-<br/>
-`Vue cdn`환경에서 개발한 `쇼핑몰 SPA 사이트` 입니다.<br>
+`Vue CDN`환경에서 개발한 `슈펜 쇼핑몰 사이트` 입니다.<br>
 <p align="middle"><a href="https://shoopen.vercel.app/">배포 링크</a></p>
 <p align="middle"><a href="https://drive.google.com/file/d/1RcAuyTN9bBm25qNEtLzmBYNSy8b_3dmD/view?usp=sharing">가이드문서</a></p>
 
